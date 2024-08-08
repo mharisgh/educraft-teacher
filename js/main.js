@@ -29,7 +29,7 @@ toggleBtn.addEventListener('click', () => {
   toggleBtnArea.classList.toggle('justify-end');
   toggleBtnArea.classList.toggle('justify-center');
 
-  toggleBtn.classList.toggle('rotate-90')
+  toggleBtn.classList.toggle('rotate-180')
 
   // center the logo when sidemenu shrink
   sidemenuLogo.classList.toggle('justify-center');

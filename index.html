@@ -21,44 +21,99 @@
   <!-- =========================================== -->
 
   <aside id="sidebar"
-    class="bg-primary z-50 text-white w-64 h-screen transition-all  ease-out duration-300 hidden lg:block px-4  ">
+    class="bg-primary z-50 text-white w-64 h-screen transition-all  ease-out duration-300 hidden lg:block ">
 
-    <div class=" pt-4">
-      <!-- educraft logo -->
-      <div id="sidemenu-logo" class="flex items-center  gap-2 ">
-        <img src="./assets/img/educraft-logo-white.svg" alt="educraft logo">
-        <span id="logo-text" class="font-bold text-2xl">EduCraft</span>
+    <div class="h-full overflow-y-scroll px-4 flex flex-col justify-between">
+
+      <div>
+
+        <!-- educraft logo -->
+        <div id="sidemenu-logo" class="mt-4 flex items-center  gap-2 ">
+          <img src="./assets/img/educraft-logo-white.svg" alt="educraft logo">
+          <span id="logo-text" class="font-bold text-2xl">EduCraft</span>
+        </div>
+
+        <!-- shrink expand button -->
+        <div id="toggle-btn-area" class="w-full flex justify-end py-6 ">
+          <button id="toggleBtn" class="bg-white/20 p-3  rounded-lg">
+            <img class="w-4 h-4 " src="assets/icons/small.svg" alt="menu expand button">
+          </button>
+        </div>
+
+        <!-- top menu list -->
+        <nav class="flex flex-col justify-between ">
+          <ul class="flex flex-col gap-1">
+
+            <li id="sidemenu-list"
+              class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list active">
+              <a href="#" class="flex gap-4">
+                <img class="w-6 h-6" src="assets/icons/home.svg" alt="home">
+                <span class="sidebar-text">Home</span>
+              </a>
+            </li>
+            <li id="sidemenu-list"
+              class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300">
+              <a href="#" class="flex gap-4 items-center">
+                <img class="w-6 h-6" src="assets/icons/my-courses.svg" alt="home">
+                <span class="sidebar-text">Courses</span>
+              </a>
+            </li>
+            <li id="sidemenu-list"
+              class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300">
+              <a href="#" class="flex gap-4 items-center">
+                <img class="w-6 h-6" src="assets/icons/learning-journey.svg" alt="home">
+                <span class="sidebar-text">Learning Journey</span>
+              </a>
+            </li>
+
+          </ul>
+
+        </nav>
       </div>
 
-      <div id="toggle-btn-area" class="w-full flex justify-end py-4 ">
-        <button id="toggleBtn" class="bg-white/20 p-3  rounded-lg">
-          <img class="w-4 h-4 " src="assets/icons/small.svg" alt="menu expand button">
-        </button>
-      </div>
 
-      <nav>
-        <ul class="flex flex-col gap-2">
-          <li id="sidemenu-list"
-            class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list active">
-            <a href="#" class="flex gap-4">
-              <img class="w-6 h-6" src="assets/icons/home.svg" alt="home">
-              <span class="sidebar-text">Home</span>
-            </a>
-          </li>
-          <li id="sidemenu-list" class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list">
-            <a href="#" class="flex gap-4 items-center">
-              <img class="w-6 h-6" src="assets/icons/my-courses.svg" alt="home">
-              <span class="sidebar-text">Courses</span>
-            </a>
-          </li>
-          <li id="sidemenu-list" class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list">
-            <a href="#" class="flex gap-4 items-center">
-              <img class="w-6 h-6" src="assets/icons/learning-journey.svg" alt="home">
-              <span class="sidebar-text">Journey</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <!-- bottom menu list -->
+      <div>
+
+        <!-- educat chatbot -->
+        <div class="lg:min-h-[100px] bg-white/20 p-2 py-4 rounded-2xl relative my-8">
+          <img class="absolute z-10  w-[100px] top-4 right-0" src="assets/img/educy.webp" alt="chat bot">
+          <p>I'm</p>
+          <p>Educat 2.0</p>
+          <p>Your AI Learning Assistant</p>
+          
+          <button class="bg-white text-[#bf4b00] w-full py-4 text-semibolds">Let's Talk</button>
+        </div>
+        <nav class="pb-4">
+          <ul class="flex flex-col gap-1">
+            <li id="sidemenu-list"
+              class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list">
+              <a href="#" class="flex gap-4">
+                <img class="w-6 h-6" src="assets/icons/home.svg" alt="home">
+                <span class="sidebar-text">Help</span>
+              </a>
+            </li>
+            <li id="sidemenu-list"
+              class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300">
+              <a href="#" class="flex gap-4 items-center">
+                <img class="w-6 h-6" src="assets/icons/my-courses.svg" alt="home">
+                <span class="sidebar-text">Settings</span>
+              </a>
+            </li>
+            
+            <!-- sperator -->
+            <li class="w-full h-[2px] bg-white/20"></li>
+
+            <li id="sidemenu-list"
+              class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300">
+              <a href="#" class="flex gap-4 items-center">
+                <img class="w-6 h-6" src="assets/icons/learning-journey.svg" alt="home">
+                <span class="sidebar-text">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
 
   </aside>
@@ -68,7 +123,7 @@
   <!-- Main -->
   <!-- =========================================== -->
 
-  <div class="w-full h-screen bg-red-800 overflow-hidden">
+  <div class="w-full h-screen  overflow-hidden">
 
     <!-- =========================================== -->
     <!-- Top Header Menu -->
@@ -87,7 +142,7 @@
 
     <main id="main"
       class="bg-yellow-800 h-full  max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row">
-      <div class="bg-green-800 lg:w-2/3 p-4 overflow-scroll">
+      <div class=" lg:w-2/3 p-4 overflow-scroll">
         <div class="h-full">
           <div class="flex">
             <div class="w-full min-h-[250px] bg-red-200">motivation message</div>
