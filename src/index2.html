@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="./output.css" rel="stylesheet">
+  <style>
+    @layer utilities {
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+      }
+
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari and Opera */
+      }
+    }
+  </style>
+</head>
+
+<body class="flex">
+  <div class="h-screen bg-gray-400 w-64">leftsidebar</div>
+  <main class="w-full h-screen overflow-y-scroll">
+
+    <header class="bg-green-600 h-20 fixed top-0 w-full">header</header>
+
+    <section class="bg-orange-500  flex flex-col gap-5 pt-20">
+      <div class="bg-green-800 min-h-[200px]">component</div>
+      <div class="bg-green-800 min-h-[200px]">component</div>
+      <div class="bg-green-800 min-h-[200px]">component</div>
+      <div class="bg-green-800 min-h-[200px]">component</div>
+      <div class="bg-green-800 min-h-[200px]">component</div>
+      <div class="bg-green-800 min-h-[200px]">component</div>
+    </section>
+
+  </main>
+</body>
+
+</html>
