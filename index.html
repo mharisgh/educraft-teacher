@@ -5,107 +5,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Educraft</title>
-  <link href="./output.css" rel="stylesheet">
+  <link href="output.css" rel="stylesheet">
 
   <style>
     .active {
-      background-color: #4B5563;
+      background-color: #fa9d53;
     }
-
   </style>
 </head>
 
 <body class="flex">
 
   <!-- =========================================== -->
-  <!-- Nav menu sidebar -->
+  <!-- Nav menu left sidebar -->
   <!-- =========================================== -->
 
-  <aside id="sidebar" class="bg-primary z-50 text-white w-64 h-screen transition-all ease-out duration-300 fixed">
+  <aside id="sidebar"
+    class="bg-primary z-50 text-white w-64 h-screen transition-all  ease-out duration-300 hidden lg:block px-4  ">
 
-    <div class="flex items-center justify-between p-4">
-      <div class="flex gap-2 items-center">
-        <p>E</p>
-        <h1 class="text-xl font-bold sidebar-text">Menu</h1>
+    <div class=" pt-4">
+      <!-- educraft logo -->
+      <div id="sidemenu-logo" class="flex items-center  gap-2 ">
+        <img src="./assets/img/educraft-logo-white.svg" alt="educraft logo">
+        <span id="logo-text" class="font-bold text-2xl">EduCraft</span>
       </div>
+
+      <div id="toggle-btn-area" class="w-full flex justify-end py-4 ">
+        <button id="toggleBtn" class="bg-white/20 p-3  rounded-lg">
+          <img class="w-4 h-4 " src="assets/icons/small.svg" alt="menu expand button">
+        </button>
+      </div>
+
+      <nav>
+        <ul class="flex flex-col gap-2">
+          <li id="sidemenu-list"
+            class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list active">
+            <a href="#" class="flex gap-4">
+              <img class="w-6 h-6" src="assets/icons/home.svg" alt="home">
+              <span class="sidebar-text">Home</span>
+            </a>
+          </li>
+          <li id="sidemenu-list" class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list">
+            <a href="#" class="flex gap-4 items-center">
+              <img class="w-6 h-6" src="assets/icons/my-courses.svg" alt="home">
+              <span class="sidebar-text">Courses</span>
+            </a>
+          </li>
+          <li id="sidemenu-list" class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list">
+            <a href="#" class="flex gap-4 items-center">
+              <img class="w-6 h-6" src="assets/icons/learning-journey.svg" alt="home">
+              <span class="sidebar-text">Journey</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
-
-    <button id="toggleBtn" class="text-white p-1 bg-red-800  focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path id="toggleIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6"></path>
-      </svg>
-    </button>
-
-    <nav>
-      <ul>
-        <li class="p-4 hover:bg-gray-700">
-          <a href="#" class="flex items-center">
-            <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l9 9 9-9-9-9-9 9z"></path>
-            </svg>
-            <span class="sidebar-text">Home</span>
-          </a>
-        </li>
-        <li class="p-4 hover:bg-gray-700">
-          <a href="#" class="flex items-center">
-            <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20l9-18-9 18-9-18"></path>
-            </svg>
-            <span class="sidebar-text">My Courses</span>
-          </a>
-        </li>
-        <li class="p-4 hover:bg-gray-700">
-          <a href="#" class="flex items-center">
-            <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <span class="sidebar-text">Learning Journey</span>
-          </a>
-        </li>
-        <li class="p-4 hover:bg-gray-700">
-          <a href="#" class="flex items-center">
-            <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 10l-7 7-7-7"></path>
-            </svg>
-            <span class="sidebar-text">Help</span>
-          </a>
-        </li>
-        <li class="p-4 hover:bg-gray-700">
-          <a href="#" class="flex items-center">
-            <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M15 12h2a2 2 0 002-2v-2m-4 6h2a2 2 0 002-2v-2m0 12a9 9 0 100-18 9 9 0 000 18zm0 0H9m0 0H7a2 2 0 01-2-2v-2a2 2 0 012-2h2">
-              </path>
-            </svg>
-            <span class="sidebar-text">Settings</span>
-          </a>
-        </li>
-        <li class="p-4 hover:bg-gray-700">
-          <a href="#" class="flex items-center">
-            <svg class="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-            <span class="sidebar-text">Logout</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
 
   </aside>
 
-  <div class="w-full min-h-screen bg-red-800 ">
+
+  <!-- =========================================== -->
+  <!-- Main -->
+  <!-- =========================================== -->
+
+  <div class="w-full h-screen bg-red-800 overflow-hidden">
 
     <!-- =========================================== -->
     <!-- Top Header Menu -->
     <!-- =========================================== -->
 
-    <header id="header-menu" class="bg-gray-300 pl-64 flex justify-between w-full h-12 items-center fixed transition-all ease-out duration-300">
+    <header id="header-menu"
+      class="bg-gray-300 flex justify-between w-full h-12 items-center  transition-all ease-out duration-300  ">
       <p>Dashboard</p>
       <p>Search</p>
       <p>Faisal Saleem</p>
@@ -115,24 +85,26 @@
     <!-- Main Content Area - Dashboard -->
     <!-- =========================================== -->
 
-    <main id="main" class="bg-yellow-800 h-full  max-w-screen-2xl   mx-auto flex pt-12 pl-64 transition-all ease-out duration-300">
-      <div class="bg-purple-600 w-2/3 flex flex-col gap-4">
-        <div class="min-h-[200px] bg-gray-400">layer 1</div>
-        <div class="min-h-[200px] bg-gray-400">layer 1</div>
-        <div class="min-h-[200px] bg-gray-400">layer 1</div>
-        <div class="min-h-[200px] bg-gray-400">layer 1</div>
-        <div class="min-h-[200px] bg-gray-400">layer 1</div>
-        <div class="min-h-[200px] bg-gray-400">layer 1</div>
+    <main id="main"
+      class="bg-yellow-800 h-full  max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row">
+      <div class="bg-green-800 lg:w-2/3 p-4 overflow-scroll">
+        <div class="h-full">
+          <div class="flex">
+            <div class="w-full min-h-[250px] bg-red-200">motivation message</div>
+            <div class="w-full min-h-[250px] bg-red-300">profile</div>
+          </div>
+          <div class="w-full h-full bg-orange-400">skill map</div>
+        </div>
       </div>
-      <div class="bg-yellow-400 h-fill  w-1/3">
-        sec components
+      <div class="bg-blue-800 flex flex-col lg:w-1/3 p-4 overflow-scroll ">
+        <div class="w-full h-full bg-red-200">motivation message</div>
+        <div class="w-full h-full bg-red-300">Ann message</div>
+        <div class="w-full h-full bg-red-400">Comment message</div>
       </div>
     </main>
 
+
   </div>
-
-
-
 
 
 
