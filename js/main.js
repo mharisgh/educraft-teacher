@@ -20,7 +20,7 @@ toggleBtn.addEventListener('click', () => {
 
   // toggle width and padding when click the shrink button
   sidebar.classList.toggle('w-24');
-  sidebar.classList.toggle('w-64');
+  sidebar.classList.toggle('w-72');
 
 
   // hide logo text when sidemenu shrink

@@ -7,6 +7,9 @@ module.exports = {
         primary: '#f8740b',
         secondary: '#ecc94b',
       },
+      fontFamily: {
+        sans: ['Poppins', 'Arial', 'sans-serif'],
+      },
     },
   },
   plugins: [],

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-size: 14px; /* Global font size */
+}
+
 @layer utilities {
 
   /* ================================== */
@@ -60,4 +64,32 @@
     background-color: #009f30;
   }
 
+}
+
+@layer base {
+
+  /* Big title (e.g., page headers) */
+  .text-xl-custom {
+    @apply text-xl font-semibold leading-tight;
+  }
+
+  /* Heading (e.g., section headers)*/
+  .text-lg-custom {
+    @apply text-lg font-medium leading-tight;
+  }
+
+  /* Base body text */
+  .text-base-custom {
+    @apply text-base font-normal leading-relaxed;
+  }
+
+  /* Badge (e.g., tags or small highlights) */
+  .text-xs-custom {
+    @apply text-xs font-medium uppercase tracking-wide;
+  }
+
+  /* Small text (e.g., captions or footnotes) */
+  .text-sm-custom {
+    @apply text-sm font-normal leading-relaxed;
+  }
 }
