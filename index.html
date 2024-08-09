@@ -23,10 +23,9 @@
   <aside id="sidebar"
     class="bg-primary z-50 text-white w-64 h-screen transition-all  ease-out duration-300 hidden lg:block ">
 
-    <div class="h-full overflow-y-scroll px-4 flex flex-col justify-between">
+    <div class="h-full overflow-y-auto px-4 flex flex-col justify-between scrollbar-custom">
 
       <div>
-
         <!-- educraft logo -->
         <div id="sidemenu-logo" class="mt-4 flex items-center  gap-2 ">
           <img src="./assets/img/educraft-logo-white.svg" alt="educraft logo">
@@ -34,9 +33,9 @@
         </div>
 
         <!-- shrink expand button -->
-        <div id="toggle-btn-area" class="w-full flex justify-end py-6 ">
-          <button id="toggleBtn" class="bg-white/20 p-3  rounded-lg">
-            <img class="w-4 h-4 " src="assets/icons/small.svg" alt="menu expand button">
+        <div id="toggle-btn-area" class="w-full flex justify-end py-4 ">
+          <button id="toggleBtn" class="bg-white/20 p-2  rounded-lg">
+            <img class="w-3 h-3 " src="assets/icons/small.svg" alt="menu expand button">
           </button>
         </div>
 
@@ -75,39 +74,57 @@
       <!-- bottom menu list -->
       <div>
 
-        <!-- educat chatbot -->
-        <div class="lg:min-h-[100px] bg-white/20 p-2 py-4 rounded-2xl relative my-8">
-          <img class="absolute z-10  w-[100px] top-4 right-0" src="assets/img/educy.webp" alt="chat bot">
-          <p>I'm</p>
-          <p>Educat 2.0</p>
-          <p>Your AI Learning Assistant</p>
-          
-          <button class="bg-white text-[#bf4b00] w-full py-4 text-semibolds">Let's Talk</button>
+        <!-- expanded educat chatbot button-->
+        <div id="educat-sidemenu-big" class="lg:min-h-[100px] bg-white/20  rounded-2xl relative my-6 overflow-hidden">
+          <img class="absolute z-10  w-[90px] top-2 -right-2 " src="assets/img/educy.webp" alt="chat bot">
+          <div class="px-3 py-3">
+            <p class="">I'm</p>
+            <p class="font-bold text-lg tracking-tight -mt-1">EduCat<span class="text-xs font-base">&nbsp;2.0</span></p>
+
+            <p class="mt-6">Your AI</p>
+            <p class=" text-sm tracking-tight">Learning Assistant</p>
+
+            <button
+              class="bg-white text-[#bf4b00] mt-4 w-full py-2 text-semibold flex gap-1 rounded-lg justify-center items-center font-lg font-semibold">
+              <img src="assets/icons/chat-regular.svg" alt="chat with educat">
+              Let's Chat
+            </button>
+          </div>
+
         </div>
+
+        <!-- shrink educat chatbot button -->
+        <button id="educat-sidemenu-sm"
+          class="bg-white text-[#bf4b00] my-6 w-full py-2 text-semibold hidden rounded-lg justify-center items-center">
+          <img src="assets/icons/chat-regular.svg" alt="chat with educat">
+          
+        </button>
+
+        <!-- bottom menu list -->
         <nav class="pb-4">
           <ul class="flex flex-col gap-1">
             <li id="sidemenu-list"
               class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list">
               <a href="#" class="flex gap-4">
-                <img class="w-6 h-6" src="assets/icons/home.svg" alt="home">
+                <img class="w-6 h-6" src="assets/icons/help-center.svg" alt="home">
                 <span class="sidebar-text">Help</span>
               </a>
             </li>
             <li id="sidemenu-list"
               class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300">
               <a href="#" class="flex gap-4 items-center">
-                <img class="w-6 h-6" src="assets/icons/my-courses.svg" alt="home">
+                <img class="w-6 h-6" src="assets/icons/settings.svg" alt="home">
                 <span class="sidebar-text">Settings</span>
               </a>
             </li>
-            
+
             <!-- sperator -->
             <li class="w-full h-[2px] bg-white/20"></li>
 
             <li id="sidemenu-list"
               class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300">
               <a href="#" class="flex gap-4 items-center">
-                <img class="w-6 h-6" src="assets/icons/learning-journey.svg" alt="home">
+                <img class="w-6 h-6" src="assets/icons/logout.svg" alt="home">
                 <span class="sidebar-text">Logout</span>
               </a>
             </li>

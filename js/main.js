@@ -11,6 +11,8 @@ const headerMenu = document.getElementById('header-menu');
 const sidemenuList = document.querySelectorAll('.sidemenu-list');
 const sidemenuLogo = document.getElementById('sidemenu-logo');
 const toggleBtnArea = document.getElementById('toggle-btn-area');
+const educatSidemenuBigBtn = document.getElementById('educat-sidemenu-big');
+const educatSidemenuSmBtn = document.getElementById('educat-sidemenu-sm');
 const menuItems = document.querySelectorAll('nav ul li');
 
 // when click the shrink button from sidemenu
@@ -19,8 +21,7 @@ toggleBtn.addEventListener('click', () => {
   // toggle width and padding when click the shrink button
   sidebar.classList.toggle('w-24');
   sidebar.classList.toggle('w-64');
-  sidebar.classList.toggle('px-2');
-  sidebar.classList.toggle('px-4');
+
 
   // hide logo text when sidemenu shrink
   logoText.classList.toggle('hidden');
@@ -29,7 +30,12 @@ toggleBtn.addEventListener('click', () => {
   toggleBtnArea.classList.toggle('justify-end');
   toggleBtnArea.classList.toggle('justify-center');
 
+
   toggleBtn.classList.toggle('rotate-180')
+
+  educatSidemenuBigBtn.classList.toggle('hidden')
+  educatSidemenuSmBtn.classList.toggle('flex')
+  educatSidemenuSmBtn.classList.toggle('hidden')
 
   // center the logo when sidemenu shrink
   sidemenuLogo.classList.toggle('justify-center');

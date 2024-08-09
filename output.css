@@ -659,16 +659,16 @@ video {
   inset: -0.25rem;
 }
 
+.-right-2 {
+  right: -0.5rem;
+}
+
 .end-1 {
   inset-inline-end: 0.25rem;
 }
 
-.right-0 {
-  right: 0px;
-}
-
-.top-4 {
-  top: 1rem;
+.top-2 {
+  top: 0.5rem;
 }
 
 .isolate {
@@ -679,12 +679,12 @@ video {
   isolation: auto;
 }
 
-.z-50 {
-  z-index: 50;
-}
-
 .z-10 {
   z-index: 10;
+}
+
+.z-50 {
+  z-index: 50;
 }
 
 .float-start {
@@ -736,14 +736,13 @@ video {
   margin-right: auto;
 }
 
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+.-mt-1 {
+  margin-top: -0.25rem;
 }
 
 .mr-4 {
@@ -756,6 +755,10 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
 }
 
 .box-border {
@@ -861,8 +864,8 @@ video {
   height: 3rem;
 }
 
-.h-4 {
-  height: 1rem;
+.h-3 {
+  height: 0.75rem;
 }
 
 .h-6 {
@@ -879,10 +882,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-8 {
-  height: 2rem;
 }
 
 .min-h-\[200px\] {
@@ -913,8 +912,8 @@ video {
   width: 6rem;
 }
 
-.w-4 {
-  width: 1rem;
+.w-3 {
+  width: 0.75rem;
 }
 
 .w-6 {
@@ -923,6 +922,10 @@ video {
 
 .w-64 {
   width: 16rem;
+}
+
+.w-\[90px\] {
+  width: 90px;
 }
 
 .w-\[this-is\\\\\] {
@@ -939,42 +942,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.w-8 {
-  width: 2rem;
-}
-
-.w-\[\] {
-  width: ;
-}
-
-.w-\[20\] {
-  width: 20;
-}
-
-.w-\[30px\] {
-  width: 30px;
-}
-
-.w-\[20px\] {
-  width: 20px;
-}
-
-.w-\[120px\] {
-  width: 120px;
-}
-
-.w-\[0px\] {
-  width: 0px;
-}
-
-.w-\[90px\] {
-  width: 90px;
-}
-
-.w-\[100px\] {
-  width: 100px;
 }
 
 .max-w-screen-2xl {
@@ -2165,10 +2132,6 @@ video {
   padding: 0.5rem;
 }
 
-.p-3 {
-  padding: 0.75rem;
-}
-
 .p-4 {
   padding: 1rem;
 }
@@ -2183,9 +2146,9 @@ video {
   padding-right: 0.375rem;
 }
 
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .px-4 {
@@ -2198,13 +2161,22 @@ video {
   padding-right: 1.25rem;
 }
 
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .py-4 {
   padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.pb-4 {
   padding-bottom: 1rem;
 }
 
@@ -2222,14 +2194,6 @@ video {
 
 .pt-12 {
   padding-top: 3rem;
-}
-
-.pt-4 {
-  padding-top: 1rem;
-}
-
-.pb-4 {
-  padding-bottom: 1rem;
 }
 
 .text-left {
@@ -2293,13 +2257,32 @@ video {
   line-height: 2rem;
 }
 
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-bold {
   font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .uppercase {
@@ -2368,6 +2351,10 @@ video {
 .stacked-fractions {
   --tw-numeric-fraction: stacked-fractions;
   font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
+}
+
+.tracking-tight {
+  letter-spacing: -0.025em;
 }
 
 .text-\[\#336699\]\/\[\.35\] {
@@ -2763,6 +2750,52 @@ video {
 
 .forced-color-adjust-none {
   forced-color-adjust: none;
+}
+
+/* ================================== */
+
+/* hide scrollbar */
+
+/* ================================== */
+
+/* ================================== */
+
+/* custom scrollbar design */
+
+/* ================================== */
+
+.scrollbar-custom {
+  scrollbar-width: auto;
+  /* For Firefox */
+  scrollbar-color: #fcba85 #f8740b;
+  /* For Firefox */
+  &::-webkit-scrollbar {
+    width: 6px;
+    /* For Chrome, Safari, and Edge */
+  }
+  &::-webkit-scrollbar-track {
+    background: #f8740b;
+    /* Track color */
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #fcba85;
+    /* Thumb color */
+    border-radius: 10px;
+    /* Rounded corners */
+    border: 6px solid #f8740b;
+    /* Space around thumb */
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #fbcca5;
+    /* Thumb color on hover */
+  }
+}
+
+/* Optional: Hover effect for the scrollbar thumb */
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background-color: #009f30;
 }
 
 @media (min-width: 640px) {
