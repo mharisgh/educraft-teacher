@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-  font-size: 14px; /* Global font size */
+  font-size: 14px;
+  /* Global font size */
 }
 
 @layer utilities {
@@ -29,7 +30,7 @@ body {
   .scrollbar-custom {
     scrollbar-width: auto;
     /* For Firefox */
-    scrollbar-color: #fcba85 #f8740b;
+    scrollbar-color: #fcba85 #ffffff;
     /* For Firefox */
 
 
@@ -66,6 +67,10 @@ body {
 
 }
 
+/* ================================== */
+/* custom font styles */
+/* ================================== */
+
 @layer base {
 
   /* Big title (e.g., page headers) */
@@ -79,17 +84,38 @@ body {
   }
 
   /* Base body text */
-  .text-base-custom {
-    @apply text-base font-normal leading-relaxed;
-  }
-
-  /* Badge (e.g., tags or small highlights) */
-  .text-xs-custom {
-    @apply text-xs font-medium uppercase tracking-wide;
+  .text-md-custom {
+    @apply text-[16px] font-normal;
   }
 
   /* Small text (e.g., captions or footnotes) */
   .text-sm-custom {
     @apply text-sm font-normal leading-relaxed;
   }
+
+  /* Badge (e.g., tags or small highlights) */
+  .text-xs-custom {
+    @apply text-xs font-medium uppercase tracking-wide;
+
+  }
+}
+
+/* ================================== */
+/* Carousal Swiper  */
+/* ================================== */
+
+.swiper-slide {
+  max-width: 90%;
+}
+
+/* Change the color of the pagination bullets */
+.swiper-pagination-bullet {
+  background-color: #f9d1b6;
+  /* Custom color for bullets (e.g., tomato color) */
+}
+
+/* Change the color of the active pagination bullet */
+.swiper-pagination-bullet-active {
+  background-color: #ec650a;
+  /* Custom color for the active bullet (e.g., orange red) */
 }

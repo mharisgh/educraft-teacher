@@ -1,5 +1,10 @@
 {
+  "name": "educraft",
+  "version": "2.0.0",
   "devDependencies": {
     "tailwindcss": "^3.4.7"
+  },
+  "dependencies": {
+    "swiper": "^11.1.9"
   }
 }

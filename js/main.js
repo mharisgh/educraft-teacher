@@ -1,3 +1,26 @@
+
+// ===========================================
+// swiper carousel
+// ===========================================
+
+// Initialize Swiper
+document.addEventListener('DOMContentLoaded', () => {
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 'auto',
+    centeredSlides: true,
+    spaceBetween: 10,
+    loop: true, // Enable looping
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    autoplay: {
+      delay: 2500, // Delay between slides in ms
+      disableOnInteraction: false, // Continue autoplay after interaction
+    },
+  });
+});
+
 // ===========================================
 // sidebar
 // ===========================================
@@ -42,7 +65,7 @@ toggleBtn.addEventListener('click', () => {
 
   // hide the side menu list text when shrink
   sidebarTexts.forEach(text => text.classList.toggle('hidden'));
-  
+
   // center the menu icons when shrink the side menu bar
   sidemenuList.forEach(li => {
     li.classList.toggle('justify-center');

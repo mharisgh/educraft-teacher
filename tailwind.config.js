@@ -1,11 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./**/*.{html,js}"],
+  mode: 'jit',
+  purge: ['./src/**/*.{html,js}', './index.html'],
+  content: ["./**/*.{html,js}","./index.html"],
   theme: {
     extend: {
       colors: {
         primary: '#f8740b',
-        secondary: '#ecc94b',
+        primaryDark: '#bf4b00',
+        primaryLight: '#fcf7f0',
       },
       fontFamily: {
         sans: ['Poppins', 'Arial', 'sans-serif'],
