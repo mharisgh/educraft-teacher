@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Educraft</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link href="output.css" rel="stylesheet">
@@ -51,8 +53,8 @@
 
             <a href="/index.html">
               <li id="sidemenu-list"
-                class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list active cursor-pointer">
-                <div class="flex gap-4">
+                class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list  cursor-pointer active">
+                <div class="flex gap-4 ">
                   <img class="w-6 h-6" src="assets/icons/home.svg" alt="home">
                   <span class="sidebar-text">Home</span>
                 </div>
@@ -61,7 +63,7 @@
 
             <a href="mycourses.html">
               <li id="sidemenu-list"
-                class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer">
+                class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer ">
                 <div class="flex gap-4 items-center">
                   <img class="w-6 h-6" src="assets/icons/my-courses.svg" alt="home">
                   <span class="sidebar-text">Courses</span>
@@ -96,7 +98,7 @@
             <p class=" text-sm tracking-tight">Learning Assistant</p>
 
             <button
-              class="bg-white text-[#bf4b00] mt-4 w-full py-2 text-semibold flex gap-1 rounded-lg justify-center items-center font-lg font-semibold">
+              class="bg-white text-[#bf4b00] mt-4 w-full py-2 text-semibold flex gap-1 rounded-lg justify-center items-center font-lg font-semibold hover:shadow-sm">
               <img src="assets/icons/chat-regular.svg" alt="chat with educat">
               Let's Chat
             </button>
@@ -339,7 +341,7 @@
               </div>
             </div>
 
-            <div class="flex gap-4 ">
+            <div class="flex gap-4">
               <!-- educoin -->
               <div class="flex gap-2 justify-center items-center">
                 <img class="w-[40px] h-[38px] " src="assets/img/educoin-sm.png" alt="educoin">
@@ -371,8 +373,95 @@
 
           </div>
 
-          <div class="  relative pb-8">
-            <img class="w-full h-full  object-cover" src="assets/img/skillmap-full.png" alt="skillmap">
+          <div class="min-h-[500px] relative rounded-br-2xl rounded-bl-2xl overflow-hidden">
+
+            <div class="absolute flex flex-col  w-full">
+
+              <div class="flex ">
+                <!-- level -->
+                <div
+                  class="relative overflow-visible w-[130px] h-[150px] flex flex-col justify-end items-center gap-1 top-[2.7rem] left-[6rem]">
+
+                  <div class=" w-[44px] h-[44px] top-0 right-4 absolute">
+                    <div class="w-full h-full relative flex justify-center items-center">
+                      <img class="absolute h-full w-full object-cover" src="assets//img/educoin-sm.png" alt="">
+                      <p class="absolute z-10 text-white font-semibold shadow-md">3</p>
+                    </div>
+                  </div>
+
+                  <img class="w-[90px]" src="assets//img/skillmap/level1.png" alt="">
+                  <!-- <img class="hidden w-[100px]" src="assets//img/skillmap/level1.png" alt=""> -->
+                  <p class="text-center font-medium">Computer Network & Internet</p>
+                </div>
+
+                <!-- level -->
+                <div
+                  class="relative overflow-visible w-[130px] h-[150px] flex flex-col justify-end items-center gap-1 top-[2.7rem] left-[22rem] ">
+
+                  <div class=" w-[44px] h-[44px] top-0 right-4 absolute">
+                    <div class="w-full h-full relative flex justify-center items-center">
+                      <img class="absolute h-full w-full object-cover" src="assets/img/educoin-sm.png" alt="">
+                      <p class="absolute z-10 text-white font-semibold shadow-md">5</p>
+                    </div>
+                  </div>
+
+                  <img class="w-[90px]" src="assets//img/skillmap/level2.png" alt="">
+                  <!-- <img class="hidden w-[100px]" src="assets//img/skillmap/level1.png" alt=""> -->
+                  <p class="text-center font-medium">Computer Network & Internet</p>
+                </div>
+              </div>
+
+              <div>
+                <!-- level -->
+                <div
+                  class="relative overflow-visible w-[130px] h-[110px] flex flex-col justify-end items-center gap-1 top-[3.2rem] left-[19rem] ">
+
+
+                  <p class="text-center text-xs font-medium text-primaryDark">You're here</p>
+
+                  <img class="w-[75px]" src="assets//img/skillmap/here.png" alt="">
+                  <!-- <img class="hidden w-[100px]" src="assets//img/skillmap/level1.png" alt=""> -->
+                  <p class="text-center font-medium">Introduction to Google sheets</p>
+                </div>
+              </div>
+
+              <div class="flex ">
+                <!-- level -->
+                <div
+                  class="relative w-[130px] h-[150px] flex flex-col justify-end items-center gap-1 top-[2.9rem] left-[6rem] ">
+
+                  <img class="w-[90px]" src="assets//img/skillmap/locked.png" alt="">
+                  
+                  <p class="text-center font-medium">Computer Network & Internet</p>
+                </div>
+
+                <!-- level -->
+                <div
+                  class="relative w-[130px] h-[150px] flex flex-col justify-end items-center gap-1 top-[2.9rem] left-[16rem] ">
+
+                  <img class="w-[90px]" src="assets//img/skillmap/locked.png" alt="">
+                  
+                  <p class="text-center font-medium">Computer Network & Internet</p>
+                </div>
+
+
+                <!-- level -->
+                <div
+                  class="relative overflow-visible w-[130px] h-[150px] flex flex-col justify-end items-center gap-1 top-[2.7rem] left-[22rem] ">
+
+
+                  <img class="w-[90px]" src="assets//img/skillmap/award-visible.png" alt="">
+                  <!-- <img class="hidden w-[100px]" src="assets//img/skillmap/level1.png" alt=""> -->
+                  <p class="text-center font-medium">Award & Certificate</p>
+                </div>
+              </div>
+
+            </div>
+
+
+
+            <!-- skill map background -->
+            <img class="w-full h-full object-cover" src="assets/img/skillmap/skillmap-bg.png" alt="skillmap">
           </div>
 
         </div>
