@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Educraft</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link href="output.css" rel="stylesheet">
@@ -211,26 +211,28 @@
               <img class="w-8 h-8" src="assets/img/hi.webp" alt="hi">
 
             </div>
-            <div class="bg-[#ffeeb1] h-[220px] p-4 rounded-2xl flex flex-col justify-between relative overflow-hidden">
+            <div class="bg-[#ffeeb1] h-[220px] p-4 rounded-2xl relative overflow-hidden">
 
-              <p class="text-md-custom max-w-[75%]">You've completed
+              <div class="flex flex-col justify-between h-full relative z-10">
 
-                <!-- percentage dynamic change here -->
-                <span class="text-primaryDark font-semibold">32%</span>
+                <p class="text-md-custom max-w-[75%]">You've completed
 
-                of your last chapter!
-              </p>
+                  <!-- percentage dynamic change here -->
+                  <span class="text-primaryDark font-semibold">32%</span>
 
-              <div>
-                <p class="text-sm font-medium pb-6 max-w-[50%]">Keep it up and improve your progress!</p>
+                  of your last chapter!
+                </p>
+
+                <p class="text-sm font-medium pb-6 max-w-[70%]">Keep it up and improve your progress!</p>
 
                 <!-- dynamic button redirect to last course session page -->
-                <button class="px-6 py-3 rounded-xl bg-primaryDark text-white hover:bg-primary">Start Now</button>
+                <button class="px-6 py-3 rounded-xl bg-primaryDark text-white hover:bg-primary w-fit">Start Now</button>
 
 
               </div>
 
-              <img src="assets/img/umbrella.png" class="absolute bottom-0 right-0 w-[200px]" alt="motivational-image">
+              <img src="assets/img/umbrella.png" class="absolute z-0 bottom-0 right-0 w-[200px]"
+                alt="motivational-image">
 
             </div>
           </div>
@@ -312,7 +314,7 @@
           </div>
         </div>
 
-        <!-- skill map -->
+        <!-- skill map needs to updated -->
         <div class="hidden lg:block rounded-2xl  w-full bg-primaryLight border border-black/10">
 
           <div class="flex justify-between p-4">
@@ -375,88 +377,7 @@
 
           <div class="min-h-[500px] relative rounded-br-2xl rounded-bl-2xl overflow-hidden">
 
-            <div class="absolute flex flex-col  w-full">
 
-              <div class="flex ">
-                <!-- level -->
-                <div
-                  class="relative overflow-visible w-[130px] h-[150px] flex flex-col justify-end items-center gap-1 top-[2.7rem] left-[6rem]">
-
-                  <div class=" w-[44px] h-[44px] top-0 right-4 absolute">
-                    <div class="w-full h-full relative flex justify-center items-center">
-                      <img class="absolute h-full w-full object-cover" src="assets//img/educoin-sm.png" alt="">
-                      <p class="absolute z-10 text-white font-semibold shadow-md">3</p>
-                    </div>
-                  </div>
-
-                  <img class="w-[90px]" src="assets//img/skillmap/level1.png" alt="">
-                  <!-- <img class="hidden w-[100px]" src="assets//img/skillmap/level1.png" alt=""> -->
-                  <p class="text-center font-medium">Computer Network & Internet</p>
-                </div>
-
-                <!-- level -->
-                <div
-                  class="relative overflow-visible w-[130px] h-[150px] flex flex-col justify-end items-center gap-1 top-[2.7rem] left-[22rem] ">
-
-                  <div class=" w-[44px] h-[44px] top-0 right-4 absolute">
-                    <div class="w-full h-full relative flex justify-center items-center">
-                      <img class="absolute h-full w-full object-cover" src="assets/img/educoin-sm.png" alt="">
-                      <p class="absolute z-10 text-white font-semibold shadow-md">5</p>
-                    </div>
-                  </div>
-
-                  <img class="w-[90px]" src="assets//img/skillmap/level2.png" alt="">
-                  <!-- <img class="hidden w-[100px]" src="assets//img/skillmap/level1.png" alt=""> -->
-                  <p class="text-center font-medium">Computer Network & Internet</p>
-                </div>
-              </div>
-
-              <div>
-                <!-- level -->
-                <div
-                  class="relative overflow-visible w-[130px] h-[110px] flex flex-col justify-end items-center gap-1 top-[3.2rem] left-[19rem] ">
-
-
-                  <p class="text-center text-xs font-medium text-primaryDark">You're here</p>
-
-                  <img class="w-[75px]" src="assets//img/skillmap/here.png" alt="">
-                  <!-- <img class="hidden w-[100px]" src="assets//img/skillmap/level1.png" alt=""> -->
-                  <p class="text-center font-medium">Introduction to Google sheets</p>
-                </div>
-              </div>
-
-              <div class="flex ">
-                <!-- level -->
-                <div
-                  class="relative w-[130px] h-[150px] flex flex-col justify-end items-center gap-1 top-[2.9rem] left-[6rem] ">
-
-                  <img class="w-[90px]" src="assets//img/skillmap/locked.png" alt="">
-                  
-                  <p class="text-center font-medium">Computer Network & Internet</p>
-                </div>
-
-                <!-- level -->
-                <div
-                  class="relative w-[130px] h-[150px] flex flex-col justify-end items-center gap-1 top-[2.9rem] left-[16rem] ">
-
-                  <img class="w-[90px]" src="assets//img/skillmap/locked.png" alt="">
-                  
-                  <p class="text-center font-medium">Computer Network & Internet</p>
-                </div>
-
-
-                <!-- level -->
-                <div
-                  class="relative overflow-visible w-[130px] h-[150px] flex flex-col justify-end items-center gap-1 top-[2.7rem] left-[22rem] ">
-
-
-                  <img class="w-[90px]" src="assets//img/skillmap/award-visible.png" alt="">
-                  <!-- <img class="hidden w-[100px]" src="assets//img/skillmap/level1.png" alt=""> -->
-                  <p class="text-center font-medium">Award & Certificate</p>
-                </div>
-              </div>
-
-            </div>
 
 
 
@@ -963,6 +884,7 @@
 
 
   </div>
+
 
   <!-- custom script -->
   <script src="./js/main.js"></script>
