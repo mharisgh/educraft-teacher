@@ -1,0 +1,1175 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Detail Page</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link href="output.css" rel="stylesheet">
+
+
+
+
+  <style>
+    .tab-active {
+      color: #fa9d53;
+    }
+
+
+    .timeline-active {
+      background-color: #edf1f2;
+    }
+
+    /* accordion css */
+
+    .accordion-item {
+      border-radius: 1rem;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      border-radius: 1rem;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .accordion-content {
+      padding: 12px;
+      display: none;
+      flex-direction: column;
+      margin: .8rem 0;
+      gap: 1.5rem;
+      background-color: white;
+    }
+
+    .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-header.active+.accordion-content {
+      display: block;
+    }
+
+    .accordion-header.active .arrow {
+      transform: rotate(180deg);
+    }
+
+    /* progress ring */
+
+
+    .progress-ring__circle {
+      transition: 0.35s stroke-dashoffset;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+
+    /* tab css */
+
+    .tabs {
+      width: 100%;
+    }
+
+    .tab-header {
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 3px solid #ddd;
+    }
+
+    .tab {
+      padding: 15px 20px;
+      cursor: pointer;
+      position: relative;
+      text-align: center;
+      flex-grow: 1;
+      gap: 0.5rem;
+      justify-content: center;
+      display: flex;
+      font-weight: 600;
+    }
+
+    .tab.tab-active {
+      color: #f8740b;
+    }
+
+    .tab.tab-active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #f8740b;
+    }
+
+    .tab-content {
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-top: none;
+    }
+  </style>
+</head>
+
+<body class="flex font-sans">
+
+  <!-- =========================================== -->
+  <!-- Nav menu left sidebar -->
+  <!-- =========================================== -->
+
+  <aside id="sidebar"
+    class="bg-primary z-50 text-white w-72 h-screen transition-all ease-out duration-300 hidden lg:block ">
+
+    <div class="h-full overflow-y-auto px-4 flex flex-col justify-between scrollbar-custom">
+
+      <div>
+        <!-- educraft logo -->
+        <div id="sidemenu-logo" class="mt-4 flex items-center  gap-2 ">
+          <img src="./assets/img/educraft-logo-white.svg" alt="educraft logo">
+          <span id="logo-text" class="font-bold text-2xl">EduCraft</span>
+        </div>
+
+        <!-- shrink expand button -->
+        <div id="toggle-btn-area" class="w-full flex justify-end py-4 ">
+          <button id="toggleBtn" class="bg-white/20 p-2  rounded-lg">
+            <img class="w-3 h-3 " src="assets/icons/small.svg" alt="menu expand button">
+          </button>
+        </div>
+
+        <!-- top menu list -->
+        <nav class="flex flex-col justify-between ">
+          <ul class="flex flex-col gap-1">
+
+            <a href="/index.html">
+              <li id="sidemenu-list"
+                class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list  cursor-pointer">
+                <div class="flex gap-4">
+                  <img class="w-6 h-6" src="assets/icons/home.svg" alt="home">
+                  <span class="sidebar-text">Home</span>
+                </div>
+              </li>
+            </a>
+
+            <a href="mycourses.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer active">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/my-courses.svg" alt="home">
+                  <span class="sidebar-text">Courses</span>
+                </div>
+              </li>
+            </a>
+            <li id="sidemenu-list"
+              class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer">
+              <a href="#" class="flex gap-4 items-center">
+                <img class="w-6 h-6" src="assets/icons/learning-journey.svg" alt="home">
+                <span class="sidebar-text">Learning Journey</span>
+              </a>
+            </li>
+
+          </ul>
+
+        </nav>
+      </div>
+
+
+      <!-- bottom menu list -->
+      <div>
+
+        <!-- expanded educat chatbot button-->
+        <div id="educat-sidemenu-big" class="lg:min-h-[100px] bg-white/20  rounded-2xl relative my-6 overflow-hidden">
+          <img class="absolute z-10  w-[90px] top-2 -right-2 " src="assets/img/educy.webp" alt="chat bot">
+          <div class="px-3 py-3">
+            <p class="">I'm</p>
+            <p class="font-bold text-lg tracking-tight -mt-1">EduCat<span class="text-xs font-base">&nbsp;2.0</span></p>
+
+            <p class="mt-6">Your AI</p>
+            <p class=" text-sm tracking-tight">Learning Assistant</p>
+
+            <button
+              class="bg-white text-[#bf4b00] mt-4 w-full py-2 text-semibold flex gap-1 rounded-lg justify-center items-center font-lg font-semibold">
+              <img src="assets/icons/chat-regular.svg" alt="chat with educat">
+              Let's Chat
+            </button>
+          </div>
+
+        </div>
+
+        <!-- shrink educat chatbot button -->
+        <button id="educat-sidemenu-sm"
+          class="bg-white text-[#bf4b00] my-6 w-full py-2 text-semibold hidden rounded-lg justify-center items-center">
+          <img src="assets/icons/chat-regular.svg" alt="chat with educat">
+
+        </button>
+
+        <!-- bottom menu list -->
+        <nav class="pb-4">
+          <ul class="flex flex-col gap-1">
+            <li id="sidemenu-list"
+              class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list">
+              <a href="#" class="flex gap-4">
+                <img class="w-6 h-6" src="assets/icons/help-center.svg" alt="home">
+                <span class="sidebar-text">Help</span>
+              </a>
+            </li>
+            <li id="sidemenu-list"
+              class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300">
+              <a href="#" class="flex gap-4 items-center">
+                <img class="w-6 h-6" src="assets/icons/settings.svg" alt="home">
+                <span class="sidebar-text">Settings</span>
+              </a>
+            </li>
+
+            <!-- sperator -->
+            <li class="w-full h-[2px] bg-white/20"></li>
+
+            <li id="sidemenu-list"
+              class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300">
+              <a href="#" class="flex gap-4 items-center">
+                <img class="w-6 h-6" src="assets/icons/logout.svg" alt="home">
+                <span class="sidebar-text">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  </aside>
+
+
+  <!-- =========================================== -->
+  <!-- Main -->
+  <!-- =========================================== -->
+
+  <div class="w-full h-screen  overflow-hidden">
+
+    <!-- =========================================== -->
+    <!-- Top Header Menu -->
+    <!-- =========================================== -->
+
+    <header id="header-menu"
+      class="  bg-white  flex justify-between w-full h-14 items-center  transition-all ease-out duration-300  p-4 border border-b-black/10">
+      <p class="text-xl-custom">My Courses</p>
+
+      <!-- Search Input -->
+      <div class="relative w-1/3">
+        <input type="text" placeholder="Search"
+          class="w-full pl-12 pr-4 py-2 rounded-full bg-[#fffaf4] focus:outline-none focus:border-primary border border-gray-200">
+        <img src="assets/icons/search-bar.svg" alt="Search Icon"
+          class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-red-700" />
+      </div>
+
+      <div>
+        <!-- notification -->
+        <div class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative">
+          <span
+            class="w-4 h-4 bg-[#ffbc00] absolute top-1 right-1 rounded-full flex justify-center text-xs font-semibold items-center">4</span>
+          <img src="assets/icons/bell.svg" alt="">
+        </div>
+      </div>
+
+      <!-- user profile -->
+      <div class="flex gap-2 justify-center items-center">
+        <p class="font-semibold">Faisal Saleem</p>
+        <img class="w-10 h-10 rounded-full border-2 border-primary" src="assets/img/user.png" alt="user profile">
+      </div>
+    </header>
+
+    <!-- =========================================== -->
+    <!-- Main Content Area - Dashboard -->
+    <!-- =========================================== -->
+
+    <main id="main"
+      class=" bg-primaryLight  max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row overflow-auto lg:overflow-hidden h-[calc(100vh-3.5rem)] relative">
+
+      <!-- main section-->
+      <section class="w-full p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide lg:h-full ">
+
+        <div class="text-black/50 font-medium">
+          <a href="mycourses.html">My Courses /</a>
+          <a href="mycourses.html">Unit 3 /</a>
+          <a href="mycourses.html">3D Modeling in Blender /</a>
+        </div>
+
+        <video id="videoPlayer" class="rounded-2xl max-h-[80vh]" controls loop mute>
+          <!-- MP4 for most browsers -->
+          <source src="/assets/videos/video1.mp4" type="video/mp4">
+
+          <!-- WebM for newer versions of Chrome, Firefox, and Opera -->
+          <source src="video.webm" type="video/webm">
+
+          <!-- Ogg for older Firefox versions -->
+          <source src="video.ogv" type="video/ogg">
+
+          <!-- Fallback text for browsers that do not support the video tag -->
+          Your browser does not support the video tag.
+        </video>
+
+        <!-- ============================================
+         Overivew, Comments, Downloads - Tabs
+         ============================================ -->
+
+        <div class="tabs">
+
+          <div class="tab-header">
+            <div class="tab tab-active" data-tab="overview">
+              <svg class="w-[20px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z">
+                </path>
+              </svg>
+              <p>Overview</p>
+            </div>
+            <div class="tab" data-tab="comments">
+              <svg class="w-[20px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M6.45455 19L2 22.5V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V18C22 18.5523 21.5523 19 21 19H6.45455ZM5.76282 17H20V5H4V18.3851L5.76282 17ZM11 10H13V12H11V10ZM7 10H9V12H7V10ZM15 10H17V12H15V10Z">
+                </path>
+              </svg>
+              <p>Comments</p>
+              <p>137</p>
+            </div>
+            <div class="tab" data-tab="downloads">
+              <svg class="w-[20px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M13 10H18L12 16L6 10H11V3H13V10ZM4 19H20V12H22V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V12H4V19Z">
+                </path>
+              </svg>
+              <p>Downloads</p>
+              <p>3</p>
+            </div>
+          </div>
+
+          <div class="tab-content" id="overview">
+
+            <div class="flex flex-col gap-10 py-4">
+              <div>
+                <p class="text-lg-custom mb-3">Introduction to 3D Modeling and Animation</p>
+                <p>This course will take you through the fundamentals of 3D modeling and animation, providing you with
+                  the skills to create realistic 3D scenes and animations using industry-standard tools. Whether you are
+                  a beginner or have some experience, this course will enhance your ability to work in a 3D environment.
+                </p>
+              </div>
+
+              <div>
+                <p class="text-lg-custom mb-3">What you will learn</p>
+                <div class="flex gap-2">
+                  <svg class="w-[20px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f8740b">
+                    <path
+                      d="M11.602 13.7599L13.014 15.1719L21.4795 6.7063L22.8938 8.12051L13.014 18.0003L6.65 11.6363L8.06421 10.2221L10.189 12.3469L11.6025 13.7594L11.602 13.7599ZM11.6037 10.9322L16.5563 5.97949L17.9666 7.38977L13.014 12.3424L11.6037 10.9322ZM8.77698 16.5873L7.36396 18.0003L1 11.6363L2.41421 10.2221L3.82723 11.6352L3.82604 11.6363L8.77698 16.5873Z">
+                    </path>
+                  </svg>
+                  Understand the basics of 3D modeling using Blender.
+                </div>
+                <div class="flex gap-2">
+                  <svg class="w-[20px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f8740b">
+                    <path
+                      d="M11.602 13.7599L13.014 15.1719L21.4795 6.7063L22.8938 8.12051L13.014 18.0003L6.65 11.6363L8.06421 10.2221L10.189 12.3469L11.6025 13.7594L11.602 13.7599ZM11.6037 10.9322L16.5563 5.97949L17.9666 7.38977L13.014 12.3424L11.6037 10.9322ZM8.77698 16.5873L7.36396 18.0003L1 11.6363L2.41421 10.2221L3.82723 11.6352L3.82604 11.6363L8.77698 16.5873Z">
+                    </path>
+                  </svg>
+                  Learn how to detail models to add realism and depth.
+                </div>
+                <div class="flex gap-2">
+                  <svg class="w-[20px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f8740b">
+                    <path
+                      d="M11.602 13.7599L13.014 15.1719L21.4795 6.7063L22.8938 8.12051L13.014 18.0003L6.65 11.6363L8.06421 10.2221L10.189 12.3469L11.6025 13.7594L11.602 13.7599ZM11.6037 10.9322L16.5563 5.97949L17.9666 7.38977L13.014 12.3424L11.6037 10.9322ZM8.77698 16.5873L7.36396 18.0003L1 11.6363L2.41421 10.2221L3.82723 11.6352L3.82604 11.6363L8.77698 16.5873Z">
+                    </path>
+                  </svg>
+                  Master lighting techniques to enhance the visual appeal of your scenes.
+                </div>
+                <div class="flex gap-2">
+                  <svg class="w-[20px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f8740b">
+                    <path
+                      d="M11.602 13.7599L13.014 15.1719L21.4795 6.7063L22.8938 8.12051L13.014 18.0003L6.65 11.6363L8.06421 10.2221L10.189 12.3469L11.6025 13.7594L11.602 13.7599ZM11.6037 10.9322L16.5563 5.97949L17.9666 7.38977L13.014 12.3424L11.6037 10.9322ZM8.77698 16.5873L7.36396 18.0003L1 11.6363L2.41421 10.2221L3.82723 11.6352L3.82604 11.6363L8.77698 16.5873Z">
+                    </path>
+                  </svg>
+                  Create basic animations to bring your models to life.
+                </div>
+              </div>
+
+              <div>
+                <div>
+                  <p class="text-lg-custom mb-3">Prerequisites</p>
+                  <p>&bull;&nbsp;<span>No prior experience in 3D modeling or animation is required.</span></p>
+                  <p>&bull;&nbsp;<span>Basic knowledge of computer operations is recommended.</span></p>
+                  <p>&bull;&nbsp;<span>An interest in creative and technical aspects of 3D design.</span></p>
+                  <p>&bull;&nbsp;<span>Willingness to explore and experiment with 3D tools and techniques.</span></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="tab-content" id="comments" style="display:none;">
+            <p>This is the content for Comments.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus mollitia veritatis magnam labore
+              officiis hic molestiae totam placeat dolore! Doloribus aliquam, nulla quo qui numquam nihil est deserunt
+              repudiandae quam.
+              Consectetur rerum inventore minus eum, nisi autem nulla odio. Blanditiis fugit eligendi officia aliquid
+              mollitia natus ab quas, iure vero maxime nesciunt eum dignissimos. Quod necessitatibus blanditiis nisi!
+              Debitis, ratione!
+              Numquam sit quibusdam autem illo non veniam distinctio iste aliquam? Exercitationem totam quasi quia
+              quaerat reiciendis sit, corporis nesciunt doloribus possimus in, facilis numquam distinctio vel. Quod
+              nulla esse id!
+              Aliquam quos mollitia laboriosam, distinctio harum molestias adipisci, quas fugiat accusantium laborum,
+              vitae eum vero officia accusamus voluptates qui iste! Ipsum nam libero amet, voluptates inventore iure
+              assumenda praesentium magni.
+              Consequatur veniam harum facilis ex in, molestias alias assumenda excepturi est sequi repudiandae! Facilis
+              assumenda impedit ad tempore quo dolore porro accusamus laborum nesciunt nisi omnis, praesentium, natus
+              fugiat laboriosam!
+              Odio porro necessitatibus consectetur ratione optio sequi asperiores, laboriosam doloribus adipisci
+              quisquam ea officia aliquam quae fuga expedita ipsum non, dicta rem! Ad eius quae ut, placeat inventore
+              quasi quas?
+              Voluptatem, nobis. Cumque, fuga beatae voluptates corporis nesciunt ipsa blanditiis minus omnis, rem illo
+              at dolorem hic autem a velit porro temporibus cum sunt tenetur nulla saepe fugit odit veritatis.
+              Vero ipsum dicta accusamus ratione quisquam corporis dolor rem eos nemo repellat obcaecati aut ab
+              consectetur voluptatum, iure modi sapiente velit omnis atque harum sunt ea iusto? A, velit deleniti.</p>
+          </div>
+
+          <div class="tab-content" id="downloads" style="display:none;">
+            <div class="flex flex-wrap gap-3 justify-between py-4">
+              <div class="flex gap-2 items-center">
+                <svg class="w-[20px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z">
+                  </path>
+                </svg>
+                <p>M Block Software</p>
+                <a href="#">
+                  <button
+                    class="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-primaryDark">Download</button>
+                </a>
+                <p class="text-xs text-black/50">File Size <span>23.32</span>mb</p>
+              </div>
+
+              <div class="flex gap-2 items-center">
+                <svg class="w-[20px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z">
+                  </path>
+                </svg>
+                <p>M Block Software</p>
+                <a href="#">
+                  <button
+                    class="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-primaryDark">Download</button>
+                </a>
+                <p class="text-xs text-black/50">File Size <span>23.32</span>mb</p>
+              </div>
+            </div>
+
+          </div>
+
+      </section>
+
+      <!-- right side section -->
+      <section id="timeline-window"
+        class="shrinked bg-white border border-l-black/20 flex flex-col lg:w-[40%] p-4 gap-4 lg:overflow-auto scrollbar-hide shrinked">
+
+        <div class="timeline-badge flex justify-between">
+          <p class="timeline-text text-lg-custom ">Timeline</p>
+          <button id="timeline-inside-btn">
+            <img class="w-[20px] rotate-180" src="/assets//icons/shrink.svg" alt="shrink button">
+          </button>
+        </div>
+
+
+        <!-- Accordian  -->
+
+        <div class="accordion flex flex-col gap-4">
+          <div class=" accordion-item ">
+
+            <div class="accordion-header justify-between">
+
+              <!-- progress icon & percentage -->
+              <div class="flex gap-4 items-center ">
+
+                <div class="min-w-[44px] h-[44px] rounded-full bg-primary flex justify-center items-center">
+                  <img class="w-[20px]" src="/assets/icons/played.svg" alt="completed">
+                </div>
+
+                <div class="max-w-[70%]">
+                  <!-- change lesson here -->
+                  <p class="text-xs font-medium text-black/60">Lesson &nbsp;<span>1</span></p>
+                  <p class="text-md-custom leading-5 font-medium">Basics of Working in
+                    Blender</p>
+                </div>
+
+              </div>
+
+              <!-- arrow -->
+              <img class="arrow w-[18px] " src="/assets/icons/arrow.svg" alt="">
+
+            </div>
+
+            <!-- video details -->
+            <div class="accordion-content">
+
+              <!-- video 1 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - played  -->
+                  <div class="ml-1 min-w-[28px] h-[28px] rounded-full bg-primary flex justify-center items-center">
+
+                    <img class="w-[14px]" src="/assets/icons/played.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Introduction to Blender Interface</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">5:12</p>
+
+              </div>
+
+              <!-- video 2 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - played  -->
+                  <div class="ml-1 min-w-[28px] h-[28px] rounded-full bg-primary flex justify-center items-center">
+
+                    <img class="w-[14px]" src="/assets/icons/played.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Navigating the 3D Space</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">6:45</p>
+
+              </div>
+
+              <!-- video 3 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - played  -->
+                  <div class="ml-1 min-w-[28px] h-[28px] rounded-full bg-primary flex justify-center items-center">
+
+                    <img class="w-[14px]" src="/assets/icons/played.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Basic Object Manipulation</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">7:30</p>
+
+              </div>
+
+              <!-- video 4 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - played  -->
+                  <div class="ml-1 min-w-[28px] h-[28px] rounded-full bg-primary flex justify-center items-center">
+
+                    <img class="w-[14px]" src="/assets/icons/played.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Understanding Viewports</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">4:50</p>
+
+              </div>
+
+              <!-- video 5 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - played  -->
+                  <div class="ml-1 min-w-[28px] h-[28px] rounded-full bg-primary flex justify-center items-center">
+
+                    <img class="w-[14px]" src="/assets/icons/played.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Saving and Exporting Your Work</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">5:05</p>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class=" accordion-item ">
+
+            <div class="accordion-header justify-between">
+
+              <!-- progress icon & percentage -->
+              <div class="flex gap-4 items-center ">
+
+                <div class="min-w-[44px] h-[44px] rounded-full bg-primary flex justify-center items-center">
+                  <img class="w-[20px]" src="/assets/icons/played.svg" alt="completed">
+                </div>
+
+                <div class="max-w-[70%]">
+                  <!-- change lesson here -->
+                  <p class="text-xs font-medium text-black/60">Lesson &nbsp;<span>2</span></p>
+                  <p class="text-md-custom leading-5 font-medium">Modeling Details</p>
+                </div>
+
+              </div>
+
+              <!-- arrow -->
+              <img class="arrow w-[18px] " src="/assets/icons/arrow.svg" alt="">
+
+            </div>
+
+            <!-- video details -->
+            <div class="accordion-content">
+
+              <!-- video 1 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - played  -->
+                  <div class="ml-1 min-w-[28px] h-[28px] rounded-full bg-primary flex justify-center items-center">
+
+                    <img class="w-[14px]" src="/assets/icons/played.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Introduction to Modeling Tools</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">6:20</p>
+
+              </div>
+
+              <!-- video 2 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - played  -->
+                  <div class="ml-1 min-w-[28px] h-[28px] rounded-full bg-primary flex justify-center items-center">
+
+                    <img class="w-[14px]" src="/assets/icons/played.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Creating Basic Shapes</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">7:05</p>
+
+              </div>
+
+              <!-- video 3 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - played  -->
+                  <div class="ml-1 min-w-[28px] h-[28px] rounded-full bg-primary flex justify-center items-center">
+
+                    <img class="w-[14px]" src="/assets/icons/played.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Extrusion and Inset Techniques</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">8:15</p>
+
+              </div>
+
+              <!-- video 4 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - played  -->
+                  <div class="ml-1 min-w-[28px] h-[28px] rounded-full bg-primary flex justify-center items-center">
+
+                    <img class="w-[14px]" src="/assets/icons/played.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Working with Modifiers</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">9:30</p>
+
+              </div>
+
+              <!-- video 5 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - played  -->
+                  <div class="ml-1 min-w-[28px] h-[28px] rounded-full bg-primary flex justify-center items-center">
+
+                    <img class="w-[14px]" src="/assets/icons/played.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Detailing Your Model</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">7:45</p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class=" accordion-item ">
+
+            <div class="accordion-header timeline-active justify-between">
+
+              <!-- progress icon & percentage -->
+              <div class="flex gap-4 items-center ">
+
+                <!-- <div class="min-w-[44px] h-[44px] rounded-full bg-primary flex justify-center items-center">
+                  <img class="w-[20px]" src="/assets/icons/played.svg" alt="completed">
+                </div> -->
+
+                <div
+                  class="min-w-[44px] h-[44px] rounded-full bg-primaryLight border border-black/10 flex justify-center items-center relative">
+                  <p class="font-semibold absolute">20%</p>
+                  <svg class="progress-ring" width="44" height="44">
+                    <circle class="progress-ring__circle" stroke="#f8740b" stroke-width="4" fill="transparent" r="20"
+                      cx="22" cy="22" />
+                  </svg>
+                </div>
+
+                <div class="max-w-[70%]">
+                  <!-- change lesson here -->
+                  <p class="text-xs font-medium text-black/60">Lesson &nbsp;<span>3</span></p>
+                  <p class="text-md-custom leading-5 font-medium">Learning Lighting Techniques</p>
+                </div>
+
+              </div>
+
+              <!-- arrow -->
+              <img class="arrow w-[18px] " src="/assets/icons/arrow.svg" alt="">
+
+            </div>
+
+            <!-- video details -->
+            <div class="accordion-content">
+
+              <!-- video 1 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - played  -->
+                  <div class="ml-1 min-w-[28px] h-[28px] rounded-full bg-primary flex justify-center items-center">
+
+                    <img class="w-[14px]" src="/assets/icons/played.svg" alt="completed">
+                  </div>
+
+                  <!-- status - play & pause -->
+                  <!-- <div id="playPauseBtn"
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full bg-[#ffdfd9] flex justify-center items-center cursor-pointer">
+
+                    <img id="playPauseIcon" class="w-[14px]" src="/assets/icons/pause-orange.svg" alt="completed">
+                  </div> -->
+
+
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Using Different Types of Lighting</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">15:56</p>
+
+              </div>
+
+              <!-- video 2 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - played  -->
+                  <!-- <div class="ml-1 min-w-[28px] h-[28px] rounded-full bg-primary flex justify-center items-center">
+
+                    <img class="w-[14px]" src="/assets/icons/played.svg" alt="completed">
+                  </div> -->
+
+                  <!-- status - play & pause -->
+                  <div id="playPauseBtn"
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full bg-[#ffdfd9] flex justify-center items-center cursor-pointer">
+
+                    <img id="playPauseIcon" class="w-[14px]" src="/assets/icons/play-orange.svg" alt="completed">
+
+                  </div>
+
+                  <!-- status - locked -->
+                  <!-- <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="completed">
+                  </div> -->
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Creating Light Effects</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">28:34</p>
+
+              </div>
+
+              <!-- video 3 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Adjusting Lighting Parameters</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">41:23</p>
+
+              </div>
+
+              <!-- video 3 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Using HDR Images</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">39:41</p>
+
+              </div>
+
+              <!-- video 3 -->
+              <div class="flex justify-between">
+
+                <div class="flex gap-5">
+
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="completed">
+                  </div>
+
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%] 0">Creating Realistic Scenes</p>
+                </div>
+
+                <!-- video duration -->
+                <p class="text-black/50">11:04</p>
+
+              </div>
+            </div>
+
+
+
+
+          </div>
+
+          <div class=" accordion-item ">
+
+            <div class="accordion-header justify-between">
+
+              <!-- progress icon & percentage -->
+              <div class="flex gap-4 items-center ">
+
+                <div
+                  class="min-w-[44px] h-[44px] rounded-full bg-primaryLight border border-black/10 flex justify-center items-center relative">
+                  <p class="font-semibold absolute">0%</p>
+                  <!-- <svg class="progress-ring" width="44" height="44">
+                    <circle class="progress-ring__circle" stroke="#f8740b" stroke-width="4" fill="transparent" r="20"
+                      cx="22" cy="22" />
+                  </svg> -->
+                </div>
+
+                <div class="max-w-[80%]">
+                  <!-- change lesson here -->
+                  <p class="text-xs font-medium text-black/60">Lesson &nbsp;<span>4</span></p>
+                  <p class="text-md-custom leading-5 font-medium">Creating Animations</p>
+                </div>
+
+              </div>
+
+              <!-- arrow -->
+              <img class="arrow w-[18px] " src="/assets/icons/arrow.svg" alt="">
+
+            </div>
+
+            <!-- video details -->
+            <div class="accordion-content">
+
+              <!-- video 1 -->
+              <div class="flex justify-between">
+                <div class="flex gap-5">
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="locked">
+                  </div>
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%]">Creating Realistic Scenes</p>
+                </div>
+                <!-- video duration -->
+                <p class="text-black/50">11:04</p>
+              </div>
+
+              <!-- video 2 -->
+              <div class="flex justify-between">
+                <div class="flex gap-5">
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="locked">
+                  </div>
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%]">Animating Objects</p>
+                </div>
+                <!-- video duration -->
+                <p class="text-black/50">12:30</p>
+              </div>
+
+              <!-- video 3 -->
+              <div class="flex justify-between">
+                <div class="flex gap-5">
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="locked">
+                  </div>
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%]">Applying Textures</p>
+                </div>
+                <!-- video duration -->
+                <p class="text-black/50">10:45</p>
+              </div>
+
+              <!-- video 4 -->
+              <div class="flex justify-between">
+                <div class="flex gap-5">
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="locked">
+                  </div>
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%]">Lighting and Rendering</p>
+                </div>
+                <!-- video duration -->
+                <p class="text-black/50">14:20</p>
+              </div>
+
+              <!-- video 5 -->
+              <div class="flex justify-between">
+                <div class="flex gap-5">
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="locked">
+                  </div>
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%]">Exporting Your Project</p>
+                </div>
+                <!-- video duration -->
+                <p class="text-black/50">13:15</p>
+              </div>
+
+            </div>
+
+
+
+
+          </div>
+
+          <div class=" accordion-item ">
+
+            <div class="accordion-header justify-between">
+
+              <!-- progress icon & percentage -->
+              <div class="flex gap-4 items-center ">
+
+                <div
+                  class="min-w-[44px] h-[44px] rounded-full bg-primaryLight border border-black/10 flex justify-center items-center relative">
+                  <p class="font-semibold absolute">0%</p>
+                  <!-- <svg class="progress-ring" width="44" height="44">
+                    <circle class="progress-ring__circle" stroke="#f8740b" stroke-width="4" fill="transparent" r="20"
+                      cx="22" cy="22" />
+                  </svg> -->
+                </div>
+
+                <div class="max-w-[80%]">
+                  <!-- change lesson here -->
+                  <p class="text-xs font-medium text-black/60">Lesson &nbsp;<span>5</span></p>
+                  <p class="text-md-custom leading-5 font-medium">Final Project</p>
+                </div>
+
+              </div>
+
+              <!-- arrow -->
+              <img class="arrow w-[18px] " src="/assets/icons/arrow.svg" alt="">
+
+            </div>
+
+            <!-- video details -->
+            <div class="accordion-content">
+
+              <!-- video 1 -->
+              <div class="flex justify-between">
+                <div class="flex gap-5">
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="locked">
+                  </div>
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%]">Planning Your Final Project</p>
+                </div>
+                <!-- video duration -->
+                <p class="text-black/50">12:10</p>
+              </div>
+
+              <!-- video 2 -->
+              <div class="flex justify-between">
+                <div class="flex gap-5">
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="locked">
+                  </div>
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%]">Designing Your Scene Layout</p>
+                </div>
+                <!-- video duration -->
+                <p class="text-black/50">14:05</p>
+              </div>
+
+              <!-- video 3 -->
+              <div class="flex justify-between">
+                <div class="flex gap-5">
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="locked">
+                  </div>
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%]">Implementing Advanced Techniques</p>
+                </div>
+                <!-- video duration -->
+                <p class="text-black/50">13:50</p>
+              </div>
+
+              <!-- video 4 -->
+              <div class="flex justify-between">
+                <div class="flex gap-5">
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="locked">
+                  </div>
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[70%]">Finalizing Your Project</p>
+                </div>
+                <!-- video duration -->
+                <p class="text-black/50">15:20</p>
+              </div>
+
+              <!-- video 5 -->
+              <div class="flex justify-between">
+                <div class="flex gap-5">
+                  <!-- status - locked -->
+                  <div
+                    class="ml-1 min-w-[28px] h-[28px] rounded-full border bg-black/5 flex justify-center items-center">
+                    <img class="w-[17px] ml-[1px]" src="/assets/icons/video-lock.svg" alt="locked">
+                  </div>
+                  <!-- video title -->
+                  <p class="font-medium leading-4 max-w-[80%]">Assessment or Quiz</p>
+                </div>
+                <!-- video duration -->
+                <p class="text-black/50">10:00</p>
+              </div>
+
+
+            </div>
+
+
+
+
+          </div>
+
+
+
+        </div>
+
+      </section>
+
+      <!-- timeline shrinked badge button-->
+      <div
+        class="hidden timeline-badge-btn rounded bg-primary absolute right-0 top-10 z-[100] w-[36px] h-[115px] p-2 hover:bg-primaryDark cursor-pointer">
+        <button id="timeline-btn ">
+          <img class="w-[16px] h-[16px]" src="/assets/icons/small.svg" alt="">
+        </button>
+        <p class="timeline-text mt-1 rotate-90 text-white  text-base">Timeline</p>
+      </div>
+
+
+    </main>
+
+
+  </div>
+
+  <!-- custom script -->
+  <script src="./js/main.js"></script>
+  <script src="./js/courseDetails.js"></script>
+
+
+</body>
+
+</html>

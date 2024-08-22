@@ -144,3 +144,7 @@ body {
 .course-unlocked{
   display: none;
 }
+
+.active {
+  background-color: #fa9d53;
+}
