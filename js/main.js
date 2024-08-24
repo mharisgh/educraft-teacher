@@ -1,12 +1,10 @@
-
 // ===========================================
 // swiper carousel
-// ===========================================
-
+// 
 
 // Initialize Swiper
 document.addEventListener('DOMContentLoaded', () => {
-  var swiper = new Swiper(".mySwiper", {
+  var swiper = new Swiper(".whatsNewSlider", {
     slidesPerView: 'auto',
     centeredSlides: true,
     spaceBetween: 10,
@@ -74,12 +72,6 @@ toggleBtn.addEventListener('click', () => {
     li.classList.toggle('pl-0');
   });
 
-  // Toggle icon direction
-  // if (sidebar.classList.contains('w-16')) {
-  //   toggleIcon.setAttribute('d', 'M9 18l6-6-6-6');
-  // } else {
-  //   toggleIcon.setAttribute('d', 'M6 9l6 6 6-6');
-  // }
 });
 
 menuItems.forEach(item => {

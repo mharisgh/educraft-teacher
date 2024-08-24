@@ -101,27 +101,6 @@ body {
 }
 
 /* ================================== */
-/* Carousal Swiper  */
-/* ================================== */
-
-.swiper-slide {
-  max-width: 90%;
-}
-
-/* Change the color of the pagination bullets */
-.swiper-pagination-bullet {
-  background-color: #f9d1b6;
-  /* Custom color for bullets (e.g., tomato color) */
-}
-
-/* Change the color of the active pagination bullet */
-.swiper-pagination-bullet-active {
-  background-color: #ec650a;
-  /* Custom color for the active bullet (e.g., orange red) */
-}
-
-
-/* ================================== */
 /* Other css  */
 /* ================================== */
 
