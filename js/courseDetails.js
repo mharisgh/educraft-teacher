@@ -29,67 +29,165 @@ document.querySelectorAll('.accordion-header').forEach(header => {
 // Play pause video & icon change on timeline
 // ============================================
 
+// Video and Play/Pause Button Elements
 const video = document.getElementById('videoPlayer');
 const playPauseBtn = document.getElementById('playPauseBtn');
 const playPauseIcon = document.getElementById('playPauseIcon');
 
+// Function to update the play/pause icon
+function updatePlayPauseIcon() {
+  if (video.paused) {
+    playPauseIcon.src = '/assets/icons/play-orange.svg';
+    playPauseIcon.alt = 'Play';
+  } else {
+    playPauseIcon.src = '/assets/icons/pause-orange.svg';
+    playPauseIcon.alt = 'Pause';
+  }
+}
+
+// Toggle play/pause when the button is clicked
 playPauseBtn.addEventListener('click', () => {
   if (video.paused) {
     video.play();
-    playPauseIcon.src = '/assets/icons/pause-orange.svg';
-    playPauseIcon.alt = 'Pause';
   } else {
     video.pause();
-    playPauseIcon.src = '/assets/icons/play-orange.svg';
-    playPauseIcon.alt = 'Play';
   }
+  updatePlayPauseIcon();
 });
 
+// Update icon when video is played or paused
+video.addEventListener('play', updatePlayPauseIcon);
+video.addEventListener('pause', updatePlayPauseIcon);
+
+// Show popup when the video ends
+video.addEventListener('ended', () => {
+  updatePlayPauseIcon();
+  showCompletionPopup();
+});
+
+// Confetti Effect
+function triggerConfetti() {
+  confetti({
+    particleCount: 200,
+    spread: 100,
+    origin: { y: 0.6 },
+    colors: ['#ff0', '#f00', '#0f0', '#00f'],
+    zIndex: 10000,
+    ticks: 300, // Increase the duration
+    scalar: 1.2, // Adjust scalar
+    drift: 0.05, // Slight drift
+    gravity: 0.5, // Reduced gravity
+    disableForReducedMotion: true, // Respect reduced motion preferences
+    shapes: ['circle', 'square'], // Variety of shapes
+    angle: 90, // Shoot confetti upwards
+    startVelocity: 30 // Reduced starting velocity
+  });
+}
+
+// Function to show the completion popup with animation
+// function showCompletionPopup() {
+//   // Create the popup element
+//   const popup = document.createElement('div');
+//   popup.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'h-full', 'z-[9999]', 'bg-black/70', 'flex', 'justify-center', 'items-center', 'opacity-0', 'pointer-events-none', 'transition-opacity', 'duration-300');
+
+//   // Add the popup content
+//   popup.innerHTML = `
+//     <div class="bg-white p-6 rounded-lg text-center min-h-[60vh] relative transform scale-90 translate-y-10 transition-transform duration-300 ease-in-out">
+//       <button id="closePopupBtn" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">&#x2715;</button>
+//       <p class="text-sm text-gray-700 mb-4">"Every step forward brings you closer to your goals."</p>
+//       <div class="flex justify-center items-center mb-4">
+//         <div class="relative w-32 h-32">
+//           <svg class="absolute top-0 left-0 w-full h-full">
+//             <circle class="text-gray-200" stroke-width="10" stroke="currentColor" fill="transparent" r="50%" cx="50%" cy="50%" />
+//             <circle class="text-orange-500 progress-ring__circle" stroke-width="10" stroke="currentColor" fill="transparent" r="50%" cx="50%" cy="50%" stroke-dasharray="314" stroke-dashoffset="314" />
+//           </svg>
+//           <span class="absolute inset-0 flex items-center justify-center text-lg font-bold progressPercentageText">60%</span>
+//         </div>
+//       </div>
+//       <h1 class="text-2xl font-semibold mb-4">You're Awesome!</h1>
+//       <p class="text-gray-700 mb-2">Lesson 3 Completed</p>
+//       <p class="text-gray-700 mb-2">You're 65% through this unit.</p>
+//       <p class="text-gray-700 mb-4">Ready for the next lesson?</p>
+//       <button id="startNextLessonBtn" class="bg-orange-500 text-white py-2 px-4 rounded-md">Start Next Lesson</button>
+//     </div>
+//   `;
+
+//   // Append the popup to the body
+//   document.body.appendChild(popup);
+
+//   // Force reflow to ensure the animation starts correctly
+//   popup.offsetHeight; // trigger a reflow
+  
+//   // Show popup with animation
+//   setTimeout(() => {
+//     popup.classList.remove('opacity-0', 'pointer-events-none');
+//     popup.querySelector('div').classList.remove('scale-90', 'translate-y-10');
+//   }, 10);
+
+//   // Add event listener for the "Close" button
+//   document.getElementById('closePopupBtn').addEventListener('click', () => {
+//     popup.classList.add('opacity-0', 'pointer-events-none');
+//     popup.querySelector('div').classList.add('scale-90', 'translate-y-10');
+//     setTimeout(() => popup.remove(), 300); // Match the duration of the transition
+//   });
+
+//   triggerConfetti()
+
+//   // Add event listener for the "Start Next Lesson" button
+//   document.getElementById('startNextLessonBtn').addEventListener('click', () => {
+//     popup.classList.add('opacity-0', 'pointer-events-none');
+//     popup.querySelector('div').classList.add('scale-90', 'translate-y-10');
+//     setTimeout(() => {
+//       popup.remove();
+//       console.log('Proceed to the next lesson');
+//     }, 300); // Match the duration of the transition
+//   });
+// }
+
 
 // ============================================
-// Timeline progress ring & percentage
+// Timeline progress ring
 // ============================================
 
-// Total number of videos in the lesson
-const totalVideos = 5;
-const videoProgressPercentage = 100 / totalVideos;
+// Progress Ring Logic
+const totalVideos = 4;
+const initialProgress = 75; // Initial value set to 75% (3 out of 4 videos completed)
+const remainingProgress = 25; // Remaining 25% to complete the lesson
 
-// Function to set the progress ring
 function setProgress(percent) {
-    const circle = document.querySelector('.progress-ring__circle');
-    const radius = circle.r.baseVal.value;
-    const circumference = 2 * Math.PI * radius;
+  const circle = document.querySelector('.progress-ring__circle');
+  const radius = circle.r.baseVal.value;
+  const circumference = 2 * Math.PI * radius;
 
-    circle.style.strokeDasharray = `${circumference} ${circumference}`;
-    circle.style.strokeDashoffset = `${circumference}`;
+  circle.style.strokeDasharray = `${circumference} ${circumference}`;
+  circle.style.strokeDashoffset = `${circumference}`;
 
-    const offset = circumference - (percent / 100) * circumference;
-    circle.style.strokeDashoffset = offset;
+  const offset = circumference - (percent / 100) * circumference;
+  circle.style.strokeDashoffset = offset;
 
-    document.querySelector('.progressPercentageText').textContent = `${Math.round(percent)}%`;
+  document.querySelector('.progressPercentageText').textContent = `${Math.round(percent)}%`;
 }
 
-// Function to update progress based on video time
 function updateProgressFromVideo() {
-    const video = document.getElementById('videoPlayer');
-    const totalDuration = video.duration; // Total duration of the video in seconds
-    const currentTime = video.currentTime; // Current playback time in seconds
+  const totalDuration = video.duration;
+  const currentTime = video.currentTime;
 
-    // Calculate percentage based on current time and total duration
-    const videoPercent = (currentTime / totalDuration) * 100;
+  // Calculate percentage based on current time and total duration
+  const videoPercent = (currentTime / totalDuration) * remainingProgress;
 
-    // Convert video percentage to lesson percentage
-    const lessonPercent = videoPercent * (videoProgressPercentage / 100);
+  // Add this video percentage to the initial progress
+  const lessonPercent = initialProgress + videoPercent;
 
-    // Update progress
-    setProgress(lessonPercent);
+  // Update progress
+  setProgress(lessonPercent);
 }
-
-// Update progress periodically while the video is playing
-document.getElementById('videoPlayer').addEventListener('timeupdate', updateProgressFromVideo);
 
 // Set initial progress when the video is loaded
-document.getElementById('videoPlayer').addEventListener('loadedmetadata', updateProgressFromVideo);
+video.addEventListener('loadedmetadata', () => setProgress(initialProgress));
+
+// Update progress as the video plays
+video.addEventListener('timeupdate', updateProgressFromVideo);
+
 
 
 
@@ -232,3 +330,4 @@ document.getElementById('timeline-inside-btn').addEventListener('click', functio
   timelineWindow.classList.toggle('hidden');
 
 });
+
