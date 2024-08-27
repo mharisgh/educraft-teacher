@@ -249,7 +249,7 @@
   <!-- Main -->
   <!-- =========================================== -->
 
-  <div class="w-full h-screen  overflow-hidden ">
+  <div class="w-full h-screen overflow-hidden relative">
 
     <!-- =========================================== -->
     <!-- Top Header Menu -->
@@ -257,6 +257,7 @@
 
     <header id="header-menu"
       class="  bg-white  flex justify-between w-full h-14 items-center  transition-all ease-out duration-300  p-4 border border-b-black/10">
+
       <p class="text-xl-custom">My Courses</p>
 
       <!-- Search Input -->
@@ -267,13 +268,21 @@
           class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-red-700" />
       </div>
 
-      <div>
-        <!-- notification -->
-        <div class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative">
-          <span
-            class="w-4 h-4 bg-[#ffbc00] absolute top-1 right-1 rounded-full flex justify-center text-xs font-semibold items-center">4</span>
-          <img src="assets/icons/bell.svg" alt="">
-        </div>
+      <div class="flex gap-4">
+
+        <!-- Fullscreen Toggle Button -->
+        <button id="fullscreenToggle"
+          class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative">
+          <img src="assets/icons/fullscreen.svg" alt="fullscreen">
+          <button>
+
+            <!-- notification -->
+            <div class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative">
+              <span
+                class="w-4 h-4 bg-[#ffbc00] absolute top-1 right-1 rounded-full flex justify-center text-xs font-semibold items-center">4</span>
+              <img src="assets/icons/bell.svg" alt="">
+            </div>
+
       </div>
 
       <!-- user profile -->
@@ -281,13 +290,14 @@
         <p class="font-semibold">Faisal Saleem</p>
         <img class="w-10 h-10 rounded-full border-2 border-primary" src="assets/img/user.png" alt="user profile">
       </div>
+
     </header>
 
     <!-- =========================================== -->
     <!-- Main Content Area - Dashboard -->
     <!-- =========================================== -->
 
-    <main id="main"
+    <main id="main relative"
       class=" bg-primaryLight  max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row overflow-auto lg:overflow-hidden h-[calc(100vh-3.5rem)] relative">
 
       <!-- main section-->
@@ -1266,11 +1276,13 @@
       </div>
 
 
+
     </main>
 
+    <div class="z-[100] bg-red-800 h-screen w-screen absolute">skdjflkasdjf</div>
 
     <!-- popup -->
-    <!-- <div
+    <div
       class="fixed top-0 left-0 w-full h-full z-[9999] bg-black/70 flex justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300">
 
       <div
@@ -1296,7 +1308,8 @@
         <button id="startNextLessonBtn" class="bg-orange-500 text-white py-2 px-4 rounded-md">Start Next Lesson</button>
       </div>
 
-    </div> -->
+    </div>
+
 
   </div>
 

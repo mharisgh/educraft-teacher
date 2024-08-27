@@ -1,3 +1,21 @@
+// ============================================
+// Full screen btn
+// ============================================
+
+
+const fullscreenToggle = document.getElementById('fullscreenToggle');
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
+
+fullscreenToggle.addEventListener('click', toggleFullscreen);
 
 // ============================================
 // Timeline accordion
@@ -117,7 +135,7 @@ function triggerConfetti() {
 
 //   // Force reflow to ensure the animation starts correctly
 //   popup.offsetHeight; // trigger a reflow
-  
+
 //   // Show popup with animation
 //   setTimeout(() => {
 //     popup.classList.remove('opacity-0', 'pointer-events-none');
