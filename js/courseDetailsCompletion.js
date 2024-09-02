@@ -1,30 +1,3 @@
-
-// ============================================
-// Timeline accordion
-// ============================================
-
-document.querySelectorAll('.accordion-header').forEach(header => {
-  const content = header.nextElementSibling;
-  const arrow = header.querySelector('.arrow');
-
-  // Check if the header has the active class
-  if (header.classList.contains('timeline-active')) {
-    content.style.display = 'flex';
-    arrow.style.transform = 'rotate(180deg)';
-  }
-
-  header.addEventListener('click', () => {
-    // Toggle active class
-    header.classList.toggle('timeline-active');
-
-    // Toggle content visibility
-    content.style.display = content.style.display === 'flex' ? 'none' : 'flex';
-
-    // Rotate the arrow
-    arrow.style.transform = content.style.display === 'flex' ? 'rotate(180deg)' : 'rotate(0deg)';
-  });
-});
-
 // ============================================
 // Quiz completion popup
 // ============================================
@@ -48,8 +21,8 @@ submitBtn.addEventListener('click', () => {
 // Hide the popup when either the OK or Cancel button is clicked
 quizContinueBtn.addEventListener('click', () => {
   quizCompletionPopup.classList.add('hidden');
-  studentReviewPopup.classList.remove('hidden')
-  studentReviewPopup.classList.add('flex')
+  studentReviewPopup.classList.remove('hidden');
+  studentReviewPopup.classList.add('flex');
 });
 
 cancelBtn.addEventListener('click', () => {
@@ -72,7 +45,10 @@ function selectOption(selectedDiv, questionName) {
 }
 
 // ============================================
-// Quiz, rating, feedback
+// Quiz Rating, feedback
+// ============================================
+// ============================================
+// Quiz Rating, feedback
 // ============================================
 
 // Sample questions JSON
@@ -101,12 +77,36 @@ const questions = [
       { emojiImg: "😡", emojiName: "Very Poor" }
     ]
   },
+  {
+    id: 2,
+    questionNo: 2,
+    question: "How do you rate the teacher's explanation?",
+    options: [
+      { emojiImg: "😊", emojiName: "Excellent" },
+      { emojiImg: "🙂", emojiName: "Good" },
+      { emojiImg: "😐", emojiName: "Average" },
+      { emojiImg: "😕", emojiName: "Poor" },
+      { emojiImg: "😡", emojiName: "Very Poor" }
+    ]
+  },
+  {
+    id: 2,
+    questionNo: 2,
+    question: "How do you rate the teacher's explanation?",
+    options: [
+      { emojiImg: "😊", emojiName: "Excellent" },
+      { emojiImg: "🙂", emojiName: "Good" },
+      { emojiImg: "😐", emojiName: "Average" },
+      { emojiImg: "😕", emojiName: "Poor" },
+      { emojiImg: "😡", emojiName: "Very Poor" }
+    ]
+  }
   // Add more questions here...
 ];
 
-let currentQuestion = 0;
 let answers = [];
 let rating = 0;
+let currentQuestion = 0;
 
 // Initialize quiz
 function initQuiz() {
@@ -138,7 +138,7 @@ function renderQuestion() {
   // Create the options container
   const optionsContainer = document.createElement("div");
   optionsContainer.classList.add(
-    "flex", "lg:flex-row", "flex-col", 
+    "flex", "lg:flex-row", "flex-col",
     "w-full", "justify-between", "gap-3", "pt-3"
   );
 
@@ -146,9 +146,9 @@ function renderQuestion() {
     const optionDiv = document.createElement("div");
     optionDiv.classList.add(
       "std-review-radio-option", // Specific class for styling
-      "p-5", "bg-[#f7f7f7]", "w-full", "min-h-[20%]", 
-      "flex", "flex-col", "justify-center", "items-center", 
-      "gap-2", "rounded-2xl", "cursor-pointer", 
+      "p-5", "bg-[#f7f7f7]", "w-full", "min-h-[20%]",
+      "flex", "flex-col", "justify-center", "items-center",
+      "gap-2", "rounded-2xl", "cursor-pointer",
       "border-[3px]", "border-transparent"
     );
     optionDiv.dataset.option = option.emojiName;
@@ -190,41 +190,37 @@ function selectOption(selectedDiv, questionName) {
   // Select the clicked option by changing border color to primary
   selectedDiv.classList.remove('border-transparent');
   selectedDiv.classList.add('border-primary');
-  
+
   // Set the corresponding radio input as checked
   const input = selectedDiv.querySelector('input[type="radio"]');
   input.checked = true;
 }
-
-function selectOption(selectedDiv, questionName) {
-  // Deselect all options for the current question by setting border to transparent
-  const allOptions = selectedDiv.parentNode.querySelectorAll("div[data-option]");
-  allOptions.forEach(option => {
-    option.classList.remove('border-primary');
-    option.classList.add('border-transparent');
-  });
-
-  // Select the clicked option by changing border color to primary
-  selectedDiv.classList.remove('border-transparent');
-  selectedDiv.classList.add('border-primary');
-  
-  // Set the corresponding radio input as checked
-  const input = selectedDiv.querySelector('input[type="radio"]');
-  input.checked = true;
-}
-
 
 // Update the progress bar
 function updateProgressBar() {
   const progressBar = document.getElementById("progressBar");
-  const progressPercent = ((currentQuestion + 1) / (questions.length + 1)) * 100;
-  progressBar.style.width = `${progressPercent}%`;
+  const totalQuestions = questions.length;
+
+  // Update progress only if currentQuestion is greater than 0
+  if (currentQuestion > 0) {
+    const progressPercent = ((currentQuestion) / (totalQuestions - 1)) * 100;
+    progressBar.style.width = `${progressPercent}%`;
+  } else {
+    // Keep at 0% if it's the first question
+    progressBar.style.width = '0%';
+  }
 }
 
 // Handle Close button click
-stdReviewCloseBtn.addEventListener('click', () => {
-  studentReviewPopup.classList.add('hidden');
+document.getElementById("stdReviewCloseBtn").addEventListener('click', () => {
+  document.getElementById("studentReviewPopup").classList.add('hidden');
 });
+
+// Handle unitCompletionPopupCloseBtn button click
+document.getElementById("unitCompletionPopupCloseBtn").addEventListener('click', () => {
+  document.getElementById("unitCompletionPopup").classList.add('hidden');
+});
+
 
 // Handle Next button click
 document.getElementById("nextBtn").addEventListener("click", () => {
@@ -246,16 +242,25 @@ document.getElementById("nextBtn").addEventListener("click", () => {
   } else if (currentQuestion === questions.length - 1) {
     document.getElementById("questionContainer").style.display = "none";
     document.getElementById("ratingContainer").style.display = "block";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("prevBtn").style.display = "none";
+
+    document.getElementById("submitFinalBtn").style.display = "block";
     updateProgressBar();
+
+    // Change button container class to align buttons to the right
+    document.getElementById("buttonContainer").classList.remove("justify-between");
+    document.getElementById("buttonContainer").classList.add("justify-end");
   }
 });
 
 // Handle Previous button click
 document.getElementById("prevBtn").addEventListener("click", () => {
-  if (currentQuestion > 0) {
+  if (currentQuestion === 0) {
     currentQuestion--;
     renderQuestion();
     updateProgressBar();
+    document.getElementById("prevBtn").disabled = true;
     document.getElementById("nextBtn").style.display = "block";
     document.getElementById("submitBtn").style.display = "none";
   }
@@ -266,16 +271,21 @@ document.getElementById("prevBtn").addEventListener("click", () => {
 });
 
 // Handle Star Rating click
-document.querySelectorAll('.star').forEach(star => {
-  star.addEventListener('click', function () {
-    rating = this.getAttribute('data-value');
-    updateStarRating(rating);
+const stars = document.querySelectorAll('.student-rating-star');
+
+stars.forEach((star, index) => {
+  star.addEventListener('click', () => {
+    stars.forEach((s, i) => {
+      s.setAttribute('fill', i <= index ? 'rgba(255,186,7,1)' : 'rgba(216,205,200,1)');
+    });
+    // Store rating value
+    rating = index + 1;
   });
 });
 
 // Update Star Rating UI
 function updateStarRating(rating) {
-  document.querySelectorAll('.star').forEach(star => {
+  document.querySelectorAll('.student-rating-star').forEach(star => {
     const value = star.getAttribute('data-value');
     if (value <= rating) {
       star.classList.add('active');
@@ -285,30 +295,26 @@ function updateStarRating(rating) {
   });
 }
 
-
 // Handle Submit Final button click
 document.getElementById("submitFinalBtn").addEventListener("click", () => {
   const comment = document.getElementById("comment").value;
 
-  studentReviewPopup.classList.add('hidden')
-  studentReviewPopup.classList.remove('flex')
-  studentReviewPopup.classList.remove('fixed')
+  document.getElementById("studentReviewPopup").classList.add('hidden');
+  document.getElementById("studentReviewPopup").classList.remove('flex');
+  document.getElementById("studentReviewPopup").classList.remove('fixed');
 
-  console.log(unitCompletionPopup.classList)
-
-  unitCompletionPopup.classList.remove('hidden')
-  // unitCompletionPopup.classList.add('fixed')
+  document.getElementById("unitCompletionPopup").classList.remove('hidden');
 
   const finalData = {
     answers,
     rating,
     comment
   };
-
+  triggerConfetti()
   console.log("Final Submission:", finalData);
 
   // Reset Quiz
-  // resetQuiz();
+  resetQuiz();
 });
 
 // Reset the quiz after submission
@@ -319,13 +325,52 @@ function resetQuiz() {
   document.getElementById("questionContainer").style.display = "block";
   document.getElementById("ratingContainer").style.display = "none";
   renderQuestion();
-  updateStarRating(0);
-  document.getElementById("prevBtn").disabled = true;
   updateProgressBar();
+  stars.forEach((star) => {
+    star.setAttribute('fill', 'rgba(216,205,200,1)');
+  });
+  document.getElementById("comment").value = "";
+  document.getElementById("prevBtn").disabled = true;
 }
 
-// Initialize the quiz on page load
+// Initialize the quiz when the page is ready
 initQuiz();
+
+// Function to trigger the confetti
+function triggerConfetti() {
+  confetti({
+    particleCount: 200, // Number of confetti particles
+    spread: 70, // Spread of the confetti
+    origin: { y: 0.6 }, // Origin of the confetti (centered vertically)
+    colors: ['#FFA500', '#FF8C00', '#FF4500', '#FFD700'], // Shades of orange
+  });
+}
+
+// ============================================
+// Timeline accordion
+// ============================================
+
+document.querySelectorAll('.accordion-header').forEach(header => {
+  const content = header.nextElementSibling;
+  const arrow = header.querySelector('.arrow');
+
+  // Check if the header has the active class
+  if (header.classList.contains('timeline-active')) {
+    content.style.display = 'flex';
+    arrow.style.transform = 'rotate(180deg)';
+  }
+
+  header.addEventListener('click', () => {
+    // Toggle active class
+    header.classList.toggle('timeline-active');
+
+    // Toggle content visibility
+    content.style.display = content.style.display === 'flex' ? 'none' : 'flex';
+
+    // Rotate the arrow
+    arrow.style.transform = content.style.display === 'flex' ? 'rotate(180deg)' : 'rotate(0deg)';
+  });
+});
 
 
 // ============================================
@@ -486,3 +531,5 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 });
+
+

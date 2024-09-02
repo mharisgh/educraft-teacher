@@ -23,24 +23,31 @@
     }
 
     .student-rating-star {
-      width: 40px;
-      height: 40px;
+      width: 34px;
+      height: 34px;
       cursor: pointer;
+      /* fill : rgba(216,205,200,1) */
     }
 
     .star.active {
-      fill: #FFD700;
-      /* Yellow color for active stars */
-      stroke: #FFD700;
+      fill: rgba(255, 186, 7, 1)
     }
 
-    textarea {
+    .student-feedback-textarea {
       width: 100%;
-      margin-top: 10px;
-      padding: 10px;
+      margin-top: 20px;
+      padding: 12px;
       font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      border-radius: 10px;
+      border: 2px solid #eaeaea;
+      outline: none;
+    }
+
+    /* Focus state styling */
+    .student-feedback-textarea:focus {
+      border: 2px solid #f8740b;
+      /* Change border color to orange */
+      box-shadow: #f8740b;
     }
 
     .submit-button {
@@ -135,6 +142,51 @@
 
     .swiper-button-prev {
       left: 10px;
+    }
+
+    /* ====================================== */
+    /* animation */
+    /* ====================================== */
+
+    @keyframes slideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+        /* Start 50px below the original position */
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        /* End at the original position */
+      }
+    }
+
+    .animate-slide-up {
+      animation: slideUp .8s ease-out;
+      /* Duration, easing, delay, and forward fill-mode */
+    }
+
+    @keyframes scaleAndMove {
+      0% {
+        transform: scale(0) translateY(100px);
+        /* Start at scale 0 and 100px below */
+      }
+
+      50% {
+        transform: scale(1.2) translateY(0);
+        /* Scale up to 120% and move to original position */
+      }
+
+      100% {
+        transform: scale(1) translateY(0);
+        /* Scale back to 100% and stay at original position */
+      }
+    }
+
+    .animate-scale-move {
+      animation: scaleAndMove 1.6s ease-out;
+      /* Animation duration, easing, delay, and forward fill-mode */
     }
 
     /* ====================================== */
@@ -1356,10 +1408,10 @@
     <!-- ============================= -->
 
     <div id="quizCompletionPopup"
-      class="fixed top-0 left-0 w-full h-full bg-black/50 justify-center items-center hidden  z-[80] ">
+      class="fixed top-0 left-0 w-full h-full bg-black/50 justify-center items-center z-[80] hidden">
 
       <div
-        class="bg-gradient-to-b from-[#fffbf0] to-[#feeec6] p-6 rounded-xl shadow-lg min-w-[700px] min-h-[65vh] flex flex-col justify-around items-center">
+        class="bg-gradient-to-b from-[#fffbf0] to-[#feeec6] p-6 rounded-xl shadow-lg min-w-[700px] min-h-[480px] flex flex-col justify-around items-center">
 
         <p class="text-xl font-semibold mb-4">Quiz Completed!</p>
 
@@ -1375,17 +1427,15 @@
     </div>
 
     <!-- ============================= -->
-    <!-- student review popup  -->
+    <!-- student review emoji & rating suggestion  popup  -->
     <!-- ============================= -->
 
     <div id="studentReviewPopup"
       class="fixed top-0 left-0 h-full w-full bg-black/50   items-center justify-center z-[90] hidden ">
 
-      <!-- temp comment - add a hidden class above -->
+      <div class="bg-white lg:max-w-[800px] w-full mx-auto rounded-xl relative">
 
-      <div class="bg-white lg:max-w-[800px] w-full mx-auto rounded-xl overflow-hidden relative ">
-
-        <div class="px-20 py-7 flex flex-col justify-between min-h-[70vh] h-full ">
+        <div class="px-20 py-7 flex flex-col justify-between lg:min-h-[500px] h-full ">
 
           <!-- Progress Bar -->
           <div class=" bg-[#e6e6e6] rounded-full">
@@ -1394,36 +1444,36 @@
 
 
           <!-- Question Container -->
-          <div id="questionContainer hidden" class="">
+          <div id="questionContainer" class="">
             <!-- Questions will be dynamically added here -->
           </div>
 
           <!-- Final Rating and Comment Section -->
-          <div id="ratingContainer" style="display: none;">
-            <!-- style="display: none;" -->
+          <div id="ratingContainer" style=" display: none;">
+            <!-- style=" display: none;" -->
 
-            <p>Rating & Additional Comments or Feedback</p>
+            <p>Rating & Additional Feedback</p>
             <p class="font-semibold text-lg">Please rate the course from 1 to 5 stars.</p>
 
-            <div id="stars" class="flex gap-1">
+            <div id="stars" class="flex gap-1 mt-1">
 
               <!-- filled color is fill="rgba(255,186,7,1)"> -->
               <svg class="student-rating-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                fill="rgba(255,186,7,1)">
+                fill="rgba(216,205,200,1)">
                 <path
                   d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z">
                 </path>
               </svg>
 
               <svg class="student-rating-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                fill="rgba(255,186,7,1)">
+                fill="rgba(216,205,200,1)">
                 <path
                   d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z">
                 </path>
               </svg>
 
               <svg class="student-rating-star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                fill="rgba(255,186,7,1)">
+                fill="rgba(216,205,200,1)">
                 <path
                   d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z">
                 </path>
@@ -1446,25 +1496,23 @@
 
             </div>
 
-            <textarea id="comment" placeholder="Please provide your comments..." rows="4"></textarea>
+            <textarea class="student-feedback-textarea " id="comment" placeholder="Please provide your feedback..."
+              rows="4"></textarea>
 
-            <button id="submitFinalBtn" class="submit-button">Submit</button>
           </div>
 
           <!-- Navigation Buttons -->
-          <div class="button-container flex w-full justify-between">
-
+          <div id="buttonContainer" class="button-container flex w-full justify-between">
             <button id="prevBtn" disabled
               class="border border-black/30 hover:bg-primary hover:text-white hover:border-transparent cursor-pointer px-4 py-2 rounded-lg w-full lg:max-w-[140px]">Previous</button>
 
             <button id="nextBtn"
               class="bg-[#bf4b00] hover:bg-primary text-white px-4 py-2 rounded-lg w-full lg:max-w-[140px]">Continue</button>
 
-            <button id="submitFinalBtn hidden"
-              class="bg-[#bf4b00] hover:bg-primary text-white px-4 py-2 rounded-lg w-full lg:max-w-[140px]">Submit</button>
-
-
+            <button id="submitFinalBtn"
+              class="hidden bg-[#bf4b00] hover:bg-primary text-white px-4 py-2 rounded-lg w-full lg:max-w-[140px]">Submit</button>
           </div>
+
 
         </div>
 
@@ -1485,21 +1533,44 @@
     <!-- ============================= -->
 
     <div id="unitCompletionPopup"
-      class="fixed top-0 left-0 w-full h-full bg-black/50 justify-center items-center z-[80] hidden">
+      class="fixed top-0 left-0 w-full h-full bg-black/50 flex justify-center items-center z-[80] hidden ">
 
       <div
-        class="bg-gradient-to-b from-[#fffbf0] to-[#feeec6] p-6 rounded-xl shadow-lg min-w-[700px] min-h-[70vh] flex flex-col justify-around items-center">
+        class="bg-gradient-to-b from-[#fffbf0] to-[#feeec6] p-6 rounded-xl shadow-lg min-w-[700px] min-h-[500px] flex flex-col justify-around items-center relative">
 
-        <p class="text-xl font-semibold mb-4">Unit successfully completed!</p>
+        <p class="animate-slide-up">Keep up the momentum and continue your learning journey!</p>
 
-        <div class="flex flex-col gap-2 items-center">
-          <button id="quizContinueBtn"
-            class="bg-[#bf4b00] text-white px-4 py-2 rounded-lg w-full lg:min-w-[240px]">Home</button>
-          <button id="cancelBtn" class="border border-black px-4 py-2 rounded-lg w-full lg:min-w-[240px]">Review
-            Answer</button>
+        <div class=" flex flex-col justify-center items-center relative">
+          <img class="absolute top-0 w-[120px] animate-scale-move" src="assets/img/educoin-big.png" alt="">
+          <p class="animate-slide-up text-3xl font-bold mb-3 mt-[120px]">Congratulations!</p>
+          <p class="animate-slide-up text-primaryDark font-semibold max-w-[70%] text-center">You've successfully
+            completed this unit and
+            earned 8 Educoins</p>
+          <p class="animate-slide-up font-semibold pb-4 pt-6">Great Progress!</p>
         </div>
 
+        <!-- buttons -->
+        <div class="flex flex-col gap-3 items-center animate-slide-up">
+          <!-- <a href="/index.html"> -->
+          <a onclick="triggerConfetti(); return false;" href="#">
+            <button id="quizContinueBtn"
+              class="bg-[#bf4b00] text-white px-4 py-2 rounded-lg w-full lg:min-w-[240px] font-medium">Back to
+              Home</button></a>
+          <a href="/mycourses.html">
+            <button id="cancelBtn"
+              class="border border-black/30 px-4 py-2 rounded-lg w-full lg:min-w-[240px] font-medium">Start
+              Next Unit</button></a>
+        </div>
+
+        <!-- close x button -->
+        <button id="unitCompletionPopupCloseBtn"
+          class="bg-[#f4f4f4] hover:bg-[#e4e2e2] absolute top-4 right-4 p-1.5 rounded-full">
+          <img class="w-5 h-5" src="/assets/icons/close-line.svg" alt="close">
+        </button>
+
       </div>
+
+
 
     </div>
 
@@ -1513,6 +1584,9 @@
   <!-- custom script -->
   <script src="./js/courseDetailsCompletion.js"></script>
   <script src="./js/main.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@latest/dist/confetti.browser.min.js"></script>
+
 
 
 </body>
