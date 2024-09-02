@@ -13,7 +13,9 @@
 
   <link href="output.css" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
 
 
 
@@ -665,7 +667,7 @@
 
               <div>
                 <a id="openCertificate" href="#">
-                  <img class="w-[200px] border-2 border-primaryLight rounded-xl" src="assets/img/certficate-faisal.png"
+                  <img class="w-[200px] border-2 border-primaryLight rounded-xl" src="assets/img/certificate-hs.png"
                     alt=""></a>
                 <p class="text-black/60 pt-2">Issued at 25th 2024</p>
               </div>
@@ -1120,26 +1122,32 @@
 
     <!-- E-Certificate Popup -->
     <div id="certificatePopup"
-      class="fixed z-[1000] inset-0 flex items-center justify-center bg-black bg-opacity-50    ">
-      <div class="bg-white p-6 rounded-lg max-w-[800px] max-h-[700px] relative">
+      class="fixed z-[1000] inset-0  items-center justify-center bg-black bg-opacity-50 hidden ">
+      <div class="bg-white p-6 rounded-lg max-w-[800px] min-h-[600px] relative flexf flex-col">
 
-        <div id="" class="p-4 flex flex-col justify-center items-center">
-          <h1 class="text-center text-2xl font-bold mb-4">Certificate of Completion</h1>
-          <p class="text-center mb-8">This is to certify that [Your Name] has successfully completed the 3D Robotics
-            Design Course.</p>
-          <img src="/assets/img/educraft-certificate.png" alt="Certificate Image"
-            class="max-w-[500px] mb-4 border border-black/20 rounded-xl">
+        <p class="text-center pb-4">Issued at 25th 2024</p>
 
+        <div class="rounded-xl overflow-hidden border border-black/20">
 
-          <div id="certificateContent" class="hidden">
-            <img src="/assets/img/educraft-certificate.png" alt="Certificate Image" />
+          <div id="certificateContent" class="relative bg-red-800">
+            <div class="absolute w-full h-full">
+              <div class="w-full h-full relative ">
+                <p id="studentCertName" class="absolute left-[35%] top-[36%] text-[3rem]  leading-[3rem] "
+                  style="font-family: 'Courgette', 'Poppins';">Faisal <br>Saleem</p>
+
+                <p class="leading-5 absolute left-[35%] top-[60%]">For participating in the Robotics & Al Summer Camp
+                  2024-25<br>
+                  Held by Educraft from 1 st July 2024 to 1 lth July 2024.</p>
+                <p class="font-medium text-base absolute left-[35%] bottom-[8%]">Sep 25th, 2024</p>
+              </div>
+            </div>
+            <img class="" src="/assets/img/certificate-hs.png" alt="Certificate Image" />
           </div>
 
-
-          <!-- Add more content as needed -->
         </div>
 
-        <div class="flex justify-center ">
+
+        <div class="flex justify-center pt-4 ">
           <button id="downloadPdf"
             class="bg-[#bf4b00] hover:bg-primary text-white px-4 py-2 rounded-lg w-full lg:max-w-[140px]">Download
             PDF</button>
@@ -1170,42 +1178,59 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <script>
-    // Show the popup when the image is clicked
-    document.getElementById("openCertificate").addEventListener("click", function () {
-      document.getElementById("certificatePopup").classList.remove("hidden");
+
+    // close button
+    document.getElementById("closePopup").addEventListener('click', () => {
+      document.getElementById("certificatePopup").classList.add('hidden');
     });
 
-    // Close the popup
-    document.getElementById("closePopup").addEventListener("click", function () {
-      document.getElementById("certificatePopup").classList.add("hidden");
+    // close button
+    document.getElementById("openCertificate").addEventListener('click', () => {
+      document.getElementById("certificatePopup").classList.remove('hidden');
+      document.getElementById("certificatePopup").classList.add('flex');
+
     });
 
-    // Show PDF in a new tab and download
+
     document.getElementById("downloadPdf").addEventListener("click", function () {
-      const element = document.getElementById("certificateContent");
 
-      // Options for html2pdf
+
+      const certificateContent = document.getElementById("certificateContent");
+
+      // Get the student's name from the <p> element
+      const studentName = document.getElementById("studentCertName").innerText.trim().replace(/\s+/g, '_');
+
+      // Get the width and height of the div in pixels
+      const contentWidth = certificateContent.offsetWidth;
+      const contentHeight = certificateContent.offsetHeight;
+
+      // Convert pixel dimensions to millimeters (1 pixel ≈ 0.264583 mm)
+      const mmWidth = contentWidth * 0.264583;
+      const mmHeight = contentHeight * 0.264583;
+
       const opt = {
-        margin: 10,
-        filename: 'certificate.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
+        margin: 0, // Set margin to 0 for exact match
+        filename: `${studentName}_ec_certificate.pdf`, // Use student's name as filename
+        image: { type: 'jpeg', quality: 1 },
         html2canvas: { scale: 2 },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        jsPDF: {
+          unit: 'mm',
+          format: [mmWidth, mmHeight], // Set custom size
+          orientation: 'landscape' // or 'portrait' based on your design
+        },
       };
 
-      // Generate PDF and open in new tab
-      html2pdf()
-        .set(opt)
-        .from(element)
-        .toPdf()
-        .get('pdf')
-        .then(function (pdf) {
-          const pdfBlob = pdf.output('blob');
-          const blobUrl = URL.createObjectURL(pdfBlob);
-          window.open(blobUrl, '_blank');
-        });
-    });
+      html2pdf().from(certificateContent).set(opt).toPdf().get('pdf').then(function (pdf) {
+        const pdfBlob = pdf.output('blob');
+        const blobUrl = URL.createObjectURL(pdfBlob);
 
+        // Open the PDF in a new tab
+        window.open(blobUrl, '_blank');
+
+        // Trigger the download
+        pdf.save(opt.filename);
+      });
+    });
   </script>
 
 
