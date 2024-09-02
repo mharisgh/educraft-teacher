@@ -210,7 +210,7 @@ video.addEventListener('timeupdate', updateProgressFromVideo);
 
 
 // ============================================
-// Overivew, Comments, Downloads - Tabs
+// Overview, Comments, Downloads - Tabs
 // ============================================
 
 document.querySelectorAll('.course-view-tab').forEach(tab => {
@@ -290,7 +290,8 @@ document.getElementById('studentCmtPostBtn').addEventListener('click', function 
 
     const timeText = document.createElement('p');
     timeText.className = 'text-black/50 underline text-sm';
-    timeText.innerHTML = `at ${timeSpan.outerHTML}`;
+    timeText.innerHTML = `at 5:00`;
+    // timeText.innerHTML = `at ${timeSpan.outerHTML}`;
 
     nameAndTimeDiv.appendChild(userName);
     nameAndTimeDiv.appendChild(timeText);
