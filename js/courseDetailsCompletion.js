@@ -3,7 +3,7 @@
 // ============================================
 
 // Grab the necessary elements
-const submitBtn = document.getElementById('submitBtn');
+const submitBtn = document.getElementById('quizSubmitBtn');
 const quizCompletionPopup = document.getElementById('quizCompletionPopup');
 const quizContinueBtn = document.getElementById('quizContinueBtn');
 const cancelBtn = document.getElementById('cancelBtn');
@@ -16,6 +16,7 @@ const stdReviewCloseBtn = document.getElementById('stdReviewCloseBtn');
 submitBtn.addEventListener('click', () => {
   quizCompletionPopup.classList.remove('hidden');
   quizCompletionPopup.classList.add('flex');
+  triggerConfetti()
 });
 
 // Hide the popup when either the OK or Cancel button is clicked
@@ -56,53 +57,66 @@ const questions = [
   {
     id: 1,
     questionNo: 1,
-    question: "What does 3D design mean?",
+    question: "Did you find the concept of 3D modeling in robotics easy to understand?",
     options: [
-      { emojiImg: "😉", emojiName: "Clear" },
-      { emojiImg: "😇", emojiName: "Good" },
-      { emojiImg: "😐", emojiName: "Average" },
-      { emojiImg: "😞", emojiName: "Bad" },
-      { emojiImg: "😡", emojiName: "Very Bad" }
+      { emojiImg: "🙂", emojiName: "Easy" },
+      { emojiImg: "😄", emojiName: "Clear" },
+      { emojiImg: "😐", emojiName: "Neutral" },
+      { emojiImg: "😕", emojiName: "Difficult" },
+      { emojiImg: "😫", emojiName: "Hard" }
     ]
   },
   {
     id: 2,
     questionNo: 2,
-    question: "How do you rate the teacher's explanation?",
+    question: "How clear were the instructions for using 3D design software in the course?",
     options: [
-      { emojiImg: "😊", emojiName: "Excellent" },
-      { emojiImg: "🙂", emojiName: "Good" },
-      { emojiImg: "😐", emojiName: "Average" },
-      { emojiImg: "😕", emojiName: "Poor" },
-      { emojiImg: "😡", emojiName: "Very Poor" }
+      { emojiImg: "😃", emojiName: "Clear" },
+      { emojiImg: "😊", emojiName: "Good" },
+      { emojiImg: "😐", emojiName: "Okay" },
+      { emojiImg: "😕", emojiName: "Unclear" },
+      { emojiImg: "😠", emojiName: "Confusing" }
     ]
   },
   {
-    id: 2,
-    questionNo: 2,
-    question: "How do you rate the teacher's explanation?",
+    id: 3,
+    questionNo: 3,
+    question: "How well did the course cover the basics of robotics components?",
     options: [
-      { emojiImg: "😊", emojiName: "Excellent" },
+      { emojiImg: "😎", emojiName: "Thorough" },
       { emojiImg: "🙂", emojiName: "Good" },
-      { emojiImg: "😐", emojiName: "Average" },
-      { emojiImg: "😕", emojiName: "Poor" },
-      { emojiImg: "😡", emojiName: "Very Poor" }
+      { emojiImg: "😐", emojiName: "Moderate" },
+      { emojiImg: "😕", emojiName: "Sparse" },
+      { emojiImg: "😣", emojiName: "Lacking" }
     ]
   },
   {
-    id: 2,
-    questionNo: 2,
-    question: "How do you rate the teacher's explanation?",
+    id: 4,
+    questionNo: 4,
+    question: "Was the example project provided helpful in understanding robotics design principles?",
     options: [
-      { emojiImg: "😊", emojiName: "Excellent" },
-      { emojiImg: "🙂", emojiName: "Good" },
-      { emojiImg: "😐", emojiName: "Average" },
-      { emojiImg: "😕", emojiName: "Poor" },
-      { emojiImg: "😡", emojiName: "Very Poor" }
+      { emojiImg: "🤩", emojiName: "Helpful" },
+      { emojiImg: "😄", emojiName: "Useful" },
+      { emojiImg: "😐", emojiName: "Neutral" },
+      { emojiImg: "😕", emojiName: "Not Helpful" },
+      { emojiImg: "😢", emojiName: "Useless" }
+    ]
+  },
+  {
+    id: 5,
+    questionNo: 5,
+    question: "How effective was the feedback provided during the course in improving your understanding?",
+    options: [
+      { emojiImg: "💯", emojiName: "Effective" },
+      { emojiImg: "🙂", emojiName: "Helpful" },
+      { emojiImg: "😐", emojiName: "Neutral" },
+      { emojiImg: "😕", emojiName: "Ineffective" },
+      { emojiImg: "👎", emojiName: "Poor" }
     ]
   }
-  // Add more questions here...
 ];
+
+
 
 let answers = [];
 let rating = 0;
@@ -166,6 +180,7 @@ function renderQuestion() {
 
     const label = document.createElement("label");
     label.classList.add("font-medium");
+    label.classList.add("text-center");
     label.innerText = option.emojiName;
 
     optionDiv.appendChild(radio);
@@ -221,6 +236,11 @@ document.getElementById("unitCompletionPopupCloseBtn").addEventListener('click',
   document.getElementById("unitCompletionPopup").classList.add('hidden');
 });
 
+// Handle quizCompletionPopupCloseBtn button click
+document.getElementById("quizCompletionPopupCloseBtn").addEventListener('click', () => {
+  document.getElementById("quizCompletionPopup").classList.add('hidden');
+});
+
 
 // Handle Next button click
 document.getElementById("nextBtn").addEventListener("click", () => {
@@ -238,7 +258,12 @@ document.getElementById("nextBtn").addEventListener("click", () => {
     currentQuestion++;
     renderQuestion();
     updateProgressBar();
-    document.getElementById("prevBtn").disabled = false;
+    // document.getElementById("prevBtn").disabled = false;
+    // document.getElementById("prevBtn").style.remove = "opacity-0";
+    // document.getElementById("prevBtn").style.remove = "opacity-0";
+    document.getElementById("prevBtn").classList.remove("opacity-0");
+
+
   } else if (currentQuestion === questions.length - 1) {
     document.getElementById("questionContainer").style.display = "none";
     document.getElementById("ratingContainer").style.display = "block";
