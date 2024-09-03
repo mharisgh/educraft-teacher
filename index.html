@@ -138,8 +138,8 @@
             <p class="mt-6">Your AI</p>
             <p class=" text-sm tracking-tight">Learning Assistant</p>
 
-            <button id="ecChatBotBtn"
-              class="bg-white text-[#bf4b00] mt-4 w-full py-2 text-semibold flex gap-1 rounded-lg justify-center items-center font-lg font-semibold hover:shadow-sm">
+            <button 
+              class=" ecChatBotBtn bg-white text-[#bf4b00] mt-4 w-full py-2 text-semibold flex gap-1 rounded-lg justify-center items-center font-lg font-semibold hover:shadow-sm">
               <img src="assets/icons/chat-regular.svg" alt="chat with educat">
               Let's Chat
             </button>
@@ -151,7 +151,7 @@
 
         <!-- shrink educat chatbot button -->
         <button id="educat-sidemenu-sm"
-          class="bg-white text-[#bf4b00] my-6 w-full py-2 text-semibold hidden rounded-lg justify-center items-center">
+          class="ecChatBotBtnSm bg-white text-[#bf4b00] my-6 w-full py-2 text-semibold hidden rounded-lg justify-center items-center">
           <img src="assets/icons/chat-regular.svg" alt="chat with educat">
 
         </button>
@@ -214,13 +214,21 @@
           class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-red-700" />
       </div>
 
-      <div>
-        <!-- notification -->
-        <div class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative">
-          <span
-            class="w-4 h-4 bg-[#ffbc00] absolute top-1 right-1 rounded-full flex justify-center text-xs font-semibold items-center">4</span>
-          <img src="assets/icons/bell.svg" alt="">
-        </div>
+      <div class="flex gap-4">
+
+        <!-- Fullscreen Toggle Button -->
+        <button id="fullscreenToggle"
+          class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative">
+          <img src="assets/icons/fullscreen.svg" alt="fullscreen">
+          <button>
+
+            <!-- notification -->
+            <div class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative">
+              <span
+                class="w-4 h-4 bg-[#ffbc00] absolute top-1 right-1 rounded-full flex justify-center text-xs font-semibold items-center">4</span>
+              <img src="assets/icons/bell.svg" alt="">
+            </div>
+
       </div>
 
       <!-- user profile -->

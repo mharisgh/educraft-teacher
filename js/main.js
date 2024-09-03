@@ -85,3 +85,19 @@ menuItems.forEach(item => {
 
 // sidebar END
 // ===========================================
+
+
+
+const fullscreenToggle = document.getElementById('fullscreenToggle');
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
+
+fullscreenToggle.addEventListener('click', toggleFullscreen);
