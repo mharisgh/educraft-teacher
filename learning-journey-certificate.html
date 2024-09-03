@@ -665,14 +665,26 @@
               <img class="absolute w-[200px] -top-[3rem] -right-[3rem] opacity-10" src="assets/img/certificate.png"
                 alt="">
 
-              <div>
-                <a id="openCertificate" href="#">
-                  <img class="w-[200px] border-2 border-primaryLight rounded-xl" src="assets/img/certificate-hs.png"
-                    alt=""></a>
-                <p class="text-black/60 pt-2">Issued at 25th 2024</p>
+              <div class="flex gap-2 relative z-[50 ]">
+
+                <div id="openCertificate">
+                  <a href="#">
+                    <img class="w-[200px] border-2 border-primaryLight rounded-xl" src="assets/img/certificate-hs.png"
+                      alt=""></a>
+                  <p class="text-black/60 pt-2">July 2024</p>
+                </div>
+
+                <div id="openCertificate2" class="">
+                  <a class="cursor-pointer" href="#">
+                    <img class="w-[200px] border-2 border-primaryLight rounded-xl"
+                      src="assets/img/ec-certificate-sm-grade.png" alt=""></a>
+                  <p class="text-black/60 pt-2">Mar 2023</p>
+                </div>
+
               </div>
 
             </div>
+
           </div>
 
         </div>
@@ -1160,6 +1172,47 @@
       </div>
     </div>
 
+    <!-- E-Certificate Popup -->
+    <div id="certificate2Popup"
+      class="fixed z-[1000] inset-0  items-center justify-center bg-black bg-opacity-50 hidden ">
+      <div class="bg-white p-6 rounded-lg max-w-[800px] min-h-[600px] relative flexf flex-col">
+
+        <p class="text-center pb-4">Issued at 25th 2024</p>
+
+        <div class="rounded-xl overflow-hidden border border-black/20">
+
+          <div id="certificateContent" class="relative bg-red-800">
+            <div class="absolute w-full h-full">
+              <div class="w-full h-full relative ">
+                <p id="studentCertName" class="absolute left-[35%] top-[36%] text-[3rem]  leading-[3rem] "
+                  style="font-family: 'Courgette', 'Poppins';">Faisal <br>Saleem</p>
+
+                <p class="leading-5 absolute left-[35%] top-[60%]">For participating in the Robotics & Al Summer Camp
+                  2024-25<br>
+                  Held by Educraft from 1 st July 2024 to 1 lth July 2024.</p>
+                <p class="font-medium text-base absolute left-[35%] bottom-[8%]">Sep 25th, 2024</p>
+              </div>
+            </div>
+            <img class="" src="/assets/img/certificate-hs.png" alt="Certificate Image" />
+          </div>
+
+        </div>
+
+
+        <div class="flex justify-center pt-4 ">
+          <button id="downloadPdf"
+            class="bg-[#bf4b00] hover:bg-primary text-white px-4 py-2 rounded-lg w-full lg:max-w-[140px]">Download
+            PDF</button>
+        </div>
+
+        <!-- close x button -->
+        <button id="closePopup" class="bg-[#f4f4f4] hover:bg-[#e4e2e2] absolute top-4 right-4 p-1.5 rounded-full">
+          <img class="w-5 h-5" src="/assets/icons/close-line.svg" alt="close">
+        </button>
+      </div>
+    </div>
+
+
 
   </div>
 
@@ -1184,8 +1237,15 @@
       document.getElementById("certificatePopup").classList.add('hidden');
     });
 
-    // close button
+    // popup opens when cliking the certificate
     document.getElementById("openCertificate").addEventListener('click', () => {
+      document.getElementById("certificatePopup").classList.remove('hidden');
+      document.getElementById("certificatePopup").classList.add('flex');
+
+    });
+
+    // popup opens when cliking the certificate
+    document.getElementById("openCertificate2").addEventListener('click', () => {
       document.getElementById("certificatePopup").classList.remove('hidden');
       document.getElementById("certificatePopup").classList.add('flex');
 
