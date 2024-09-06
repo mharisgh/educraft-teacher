@@ -479,7 +479,8 @@
 
         <div class="bg-gray-300 min-h-[70vh] relative">
           <!-- Submit Button -->
-          <button id="quizSubmitBtn" class="bg-primary text-white px-4 py-2 rounded absolute bottom-10 right-10">Submit Quiz</button>
+          <button id="quizSubmitBtn" class="bg-primary text-white px-4 py-2 rounded absolute bottom-10 right-10">Submit
+            Quiz</button>
         </div>
 
         <!-- test btn -->
@@ -1408,16 +1409,39 @@
     <!-- ============================= -->
 
     <div id="quizCompletionPopup"
-      class="fixed top-0 left-0 w-full h-full bg-black/50 justify-center items-center flex z-[80] hidden">
+      class="fixed top-0 left-0 w-full h-full bg-black/50 justify-center items-center flex z-[80]   hidden  ">
 
       <div
         class="bg-gradient-to-b from-[#fffbf0] to-[#feeec6] p-6 rounded-xl shadow-lg min-w-[700px] min-h-[500px] flex flex-col justify-around items-center relative ">
 
-        <p class="animate-slide-up">Every quiz completed is a step closer to mastering the material.</p>
+        <p class="animate-slide-up">Quiz Completed</p>
 
         <div class=" flex flex-col justify-center items-center relative">
-          <img class="absolute top-0 w-[120px] animate-slide-up" src="assets/img/percentage-ring.svg" alt="">
-          <p class="animate-slide-up text-3xl font-bold mb-3 mt-[120px]">Quiz Completed!</p>
+
+          <div class="relative w-32 h-32 ">
+            <!-- Full background circle (gray) -->
+            <svg class="absolute inset-0 w-full h-full">
+              <circle cx="50%" cy="50%" r="45%" stroke="#ffefc5" stroke-width="14" fill="none" />
+            </svg>
+
+            <!-- Progress circle (orange) -->
+            <svg class="absolute inset-0 w-full h-full transform -rotate-90">
+              <circle id="progressCircle" cx="50%" cy="50%" r="45%" stroke="orange" stroke-width="14" fill="none"
+                stroke-dasharray="283" stroke-dashoffset="283" />
+            </svg>
+
+            <!-- Text in the middle of the circle -->
+            <div class="absolute inset-0 flex items-center justify-center text-4xl font-bold text-orange-500 -mt-10"
+              id="progressText">
+              0%
+            </div>
+
+            <p class="font-medium text-md absolute bottom-8 right-10 leading-4">correct <br>answers</p>
+            
+          </div>
+
+
+          <p class="animate-slide-up text-3xl font-bold mb-3">You're Awesome!</p>
 
           <div class="flex gap-1 animate-slide-up items-center justify-center">
             <p class="  text-center">You earned</p>
@@ -1530,7 +1554,7 @@
 
           <!-- Navigation Buttons -->
           <div id="buttonContainer" class="button-container flex w-full justify-between">
-            <button id="prevBtn" 
+            <button id="prevBtn"
               class="border border-black/30 hover:bg-primary hover:text-white hover:border-transparent cursor-pointer px-4 py-2 rounded-lg w-full lg:max-w-[140px] opacity-0">Previous</button>
 
             <button id="nextBtn"

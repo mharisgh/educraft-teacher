@@ -1,9 +1,3 @@
-// ============================================
-// Full screen btn
-// ============================================
-
-
-const fullscreenToggle = document.getElementById('fullscreenToggle');
 
 function toggleFullscreen() {
   if (!document.fullscreenElement) {
@@ -15,7 +9,9 @@ function toggleFullscreen() {
   }
 }
 
-fullscreenToggle.addEventListener('click', toggleFullscreen);
+document.getElementById('fullscreenToggle').addEventListener('click', toggleFullscreen);
+
+
 
 // ============================================
 // Timeline accordion
@@ -297,7 +293,7 @@ document.getElementById('studentCmtPostBtn').addEventListener('click', function 
     nameAndTimeDiv.appendChild(timeText);
 
     const commentParagraph = document.createElement('p');
-    commentParagraph.className = 'max-w-[85%]';
+    commentParagraph.className = 'max-w-[75%] overflow-hidden';
     commentParagraph.textContent = textValue;
 
     textContainer.appendChild(nameAndTimeDiv);

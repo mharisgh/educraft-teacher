@@ -512,6 +512,31 @@ document.getElementById('studentCmtPostBtn').addEventListener('click', function 
 });
 
 // ====================================
+// Quiz popup - Result pie progress bar
+// ====================================
+
+function updatePieProgress(correct, total) {
+  const progress = (correct / total) * 100;
+  const circle = document.getElementById('progressCircle');
+  const text = document.getElementById('progressText');
+
+  // Total circumference for 100% progress (for r=45% of 32x32 svg it's around 283px)
+  const totalCircumference = 283;
+
+  // Calculate the stroke offset based on the progress
+  const offset = totalCircumference - (progress / 100) * totalCircumference;
+
+  // Update stroke-dashoffset for progress
+  circle.style.strokeDashoffset = offset;
+
+  // Update the text in the middle
+  text.textContent = `${Math.round(progress/10)}`;
+}
+
+// Example usage:
+updatePieProgress(8, 10); // Updates the pie chart to reflect 80%
+
+// ====================================
 // Timeline details
 // ====================================
 
