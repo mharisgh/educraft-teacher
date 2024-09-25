@@ -10,6 +10,7 @@
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&display=swap" rel="stylesheet">
   <link href="output.css" rel="stylesheet">
 
 
@@ -59,6 +60,24 @@
     /* Tailwind extension */
     .rotate-chat {
       animation: rotateChat 10s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+    }
+
+    @keyframes custom-ping {
+      0% {
+        transform: scale(.9);
+      }
+
+      50%{
+        transform: scale(1)
+      }
+
+      100% {
+        transform: scale(.9);
+      }
+    }
+
+    .custom-ping {
+      animation: custom-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
   </style>
 </head>
@@ -428,50 +447,12 @@
           </div>
 
           <!-- skill map Journey -->
-          <div class="max-h-[600px] bg-pink-600  w-full relative flex justify-center ">
+          <div class="max-h-[600px]  w-full relative flex justify-center ">
 
             <!-- skill map path -->
-            <div class="flex flex-col gap-8 w-full pt-4 pb-20 bg-green-100 overflow-auto" id="skillMapCourseContainer">
-
-              <!-- road map illustration right-->
-              <!-- <div class="relative bg-green-500 w-full h-full">
-                <div
-                  class="absolute z-[100] border-dashed border-[2px] border-white/80 border-l-transparent w-[195px] rounded-full min-h-[88px] top-[6px]">
-                </div>
-                <div
-                  class="absolute border-[12px] border-orange-500 border-l-transparent w-[200px]  rounded-full min-h-[100px]">
-                </div>
-              </div> -->
-
-              <!-- road map illustration left-->
-              <!-- <div class="relative bg-green-500 w-full h-full">
-                <div
-                  class="absolute z-[100] border-dashed border-[2px] border-white/80 border-r-transparent w-[195px] left-[4px] rounded-full min-h-[88px] top-[6px]">
-                </div>
-                <div
-                  class="absolute border-[12px] border-orange-500 border-r-transparent w-[200px]  rounded-full min-h-[100px]">
-                </div>
-              </div> -->
-
-              <!-- <img class="w-[160px]" src="assets/img/skillmap/path-left.svg" alt=""> -->
-
+            <div class="flex flex-col gap-10 w-full pt-8 pb-20 overflow-auto" id="skillMapCourseContainer">
+<a href=""></a>
             </div>
-
-
-
-            <!-- each course -->
-            <!-- <div class="bg-orange-300 lg:max-w-[360px] py-1 px-3 rounded-[2rem] border-[.25rem] border-orange-800 flex gap-4 items-center">
-              <div class="relative w-fit">
-                <img class="w-[65px]" src="/assets/img/skillmap/course-icon-1.png" alt="course 1">
-                <img class="w-[40px] absolute -top-3 -right-2" src="/assets/img/educoin-big.png"
-                  alt="course 1">
-              </div>
-              <div>
-                <p>completed</p>
-                <p>copmuter network & Internet</p>
-              </div>
-
-            </div> -->
 
 
           </div>

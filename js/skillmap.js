@@ -4,52 +4,67 @@ const courseData = [
     id: "1",
     coinCount: 5,
     courseStatus: "completed",
-    courseName: "Computer Networks",
-    bgColor: "bg-red-800"
+    courseName: "HARDWARE AND SOFTWARE",
+    courseLink: "/hardware-software" // Add the link for each course
   },
   {
     id: "2",
     coinCount: 5,
     courseStatus: "completed",
-    courseName: "Computer Networks",
-    bgColor: "bg-red-800"
+    courseName: "GOOGLE SLIDES",
+    courseLink: "/hardware-software" // Add the link for each course
   },
   {
     id: "3",
     coinCount: 5,
     courseStatus: "completed",
-    courseName: "Computer Networks",
-    bgColor: "bg-red-800"
+    courseName: "MICROBIT PROJECTS",
+    courseLink: "/hardware-software" // Add the link for each course
   },
   {
     id: "4",
     coinCount: 8,
     courseStatus: "now",
-    courseName: "Data Structures",
-    bgColor: "bg-pink-600"
+    courseName: "INTRODUCTION TO LOGO PROGRAMMING",
+    courseLink: "/hardware-software" // Add the link for each course
   },
   {
     id: "5",
     coinCount: 3,
     courseStatus: "locked",
-    courseName: "Operating Systems",
-    bgColor: "bg-blue-600"
+    courseName: "Introduction to Robotics I",
+    courseLink: "/hardware-software" // Add the link for each course
   },
   {
     id: "6",
     coinCount: 3,
     courseStatus: "locked",
-    courseName: "Operating Systems",
-    bgColor: "bg-blue-600"
+    courseName: "Introduction to Game Developments",
+    courseLink: "/hardware-software" // Add the link for each course
   },
   {
     id: "7",
     coinCount: 3,
+    courseStatus: "locked",
+    courseName: " Artificial Intelligence",
+    courseLink: "/hardware-software" // Add the link for each course
+  },
+  {
+    id: "8",
+    coinCount: 3,
+    courseStatus: "locked",
+    courseName: " Introduction to Coding and Programming Languages",
+    courseLink: "/hardware-software" // Add the link for each course
+  },
+  {
+    id: "9",
+    coinCount: 3,
     courseStatus: "final",
     courseName: "Operating Systems",
-    bgColor: "bg-blue-600"
+    courseLink: "/hardware-software" // Add the link for each course
   }
 ];
+
 
 // Initialize a counter to track completed course status
 let completedCounter = 0;
@@ -72,6 +87,23 @@ function getImageForStatus(status) {
   }
 }
 
+// Function to set the border and background classes based on course status and image
+function getCourseClasses(status, imageSrc) {
+  switch (status) {
+    case 'completed':
+      return imageSrc === 'course-icon-2.png'
+        ? ["border-[#dca1e2]", "bg-[#fef2ff]"]
+        : ["border-[#dc8b39]", "bg-[#feefdd]"];
+    case 'now':
+      return ["border-[#fad704]", "bg-[#fdf7d6]"];
+    case 'locked':
+    case 'final':
+      return ["border-[#b6bbc1]", "bg-[#f5f5f5]"];
+    default:
+      return [];
+  }
+}
+
 // Function to generate the course card HTML based on JSON data
 function generateCourseCards() {
   const container = document.getElementById("skillMapCourseContainer");
@@ -89,27 +121,47 @@ function generateCourseCards() {
     // Create a new div for left-right margin for skill map course
     const courseOuterDiv = document.createElement("div");
     courseOuterDiv.classList.add("lg:w-[52%]", "mx-auto", "grid", "relative");
-
+    
     // Alternate between 'justify-self-start' and 'justify-self-end' for every other course
     const alignmentClass = index % 2 === 0 ? 'justify-self-start' : 'justify-self-end';
     const pathImage = index % 2 === 0 ? 'path-right.svg' : 'path-left.svg';
 
-    // Create a new div for each course
-    const courseDiv = document.createElement("div");
-    courseDiv.classList.add("lg:w-[340px]", alignmentClass, course.bgColor, "h-[90px]", "flex", "z-[12]");
+     // Create a new div for each course
+    const courseDiv = document.createElement("a");
+    const courseClasses = getCourseClasses(course.courseStatus, course.imageSrc);
+    courseDiv.classList.add("cursor-pointer", "lg:w-[340px]", "border-[.2rem]", "px-2", "py-1", "rounded-[1.5rem]", alignmentClass, "h-[80px]", "flex", "z-[12]", ...courseClasses);
+    courseDiv.href = course.courseLink;
+
+    // Function to capitalize the first letter of each word
+    function toTitleCase(str) {
+      return str
+        .toLowerCase() // Convert the entire string to lowercase
+        .split(' ') // Split the string into an array of words
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
+        .join(' '); // Join the array back into a string
+    }
+
 
     // Inner HTML of the course card using template literals
-    courseDiv.innerHTML = `
+    courseDiv.innerHTML = `    
+    <div class="relative">
       <img
-      class="w-[80px] object-contain"
-      id="${course.id}" src='/assets/img/skillmap/${course.imageSrc}' alt="${course.courseName}">
-      <div>
-        <p>${course.coinCount}</p>
-        <img class="w-[36px]"
-         src="/assets/img/educoin-big.png" alt="educoin points">
+      class="min-w-[60px] max-w-[60px] object-contain ${course.courseStatus === 'now' ? 'custom-ping' : ''}"
+      id="${course.id}" src='/assets/img/skillmap/${course.imageSrc}' alt="points">
+      <div class="absolute -top-3 -right-2">
+      <div id="skillMapCourseCoinCount" class="w-full h-full relative ${['locked', 'final', 'now'].includes(course.courseStatus) ? 'hidden' : 'flex'} justify-center items-center text-white font-semibold">
+        <p class="absolute">${course.coinCount}</p>
+        <img class="w-[38px]"
+         src="/assets/img/educoin-sm.png" alt="educoin points">
       </div>
-      <p>${course.courseStatus}</p>
-      <p>${course.courseName}</p>
+      
+      </div>
+    </div>
+
+    <div class="pl-4 flex flex-col justify-center">
+      <p class="capitalize text-xs text-primaryDark pb-1">${course.courseStatus}</p>
+      <p class="text-[12px] font-semibold font-[Comfortaa]">${toTitleCase(course.courseName)}</p>
+    </div>
       <div style="visibility: ${pathLine}; height: 2px; background-color: black; margin-top: 10px;"></div>
     `;
 
@@ -125,14 +177,17 @@ function generateCourseCards() {
 
       // Add multiple classes to pathImg
       pathImg.classList.add(
-        "w-[260px]",
+        "w-[240px]",
         "absolute",
-
         positionClass, // Use the determined position class
-
-        "top-[40px]",
-        "z-[10]"
+        "top-[30px]",
+        "z-[10]",
       );
+
+      // Add saturation class conditionally
+      if (course.courseStatus === 'locked') {
+        pathImg.classList.add('filter', 'saturate-0'); // Only add these classes if locked
+      }
 
       // Set the source and alt attributes
       pathImg.src = `/assets/img/skillmap/${pathImage}`;
