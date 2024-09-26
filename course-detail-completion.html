@@ -167,6 +167,24 @@
       /* Duration, easing, delay, and forward fill-mode */
     }
 
+    @keyframes educyFly {
+      0% {
+        transform: rotate(40deg) translateX(0px);
+      }
+
+      50% {
+        transform: rotate(44deg) translateX(6px);
+      }
+
+      100% {
+        transform: rotate(40deg) translateX(0px);
+      }
+    }
+
+    .educy-fly {
+      animation: educyFly 4s ease-in-out infinite;
+    }
+
     @keyframes scaleAndMove {
       0% {
         transform: scale(0) translateY(100px);
@@ -444,13 +462,20 @@
           class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-red-700" />
       </div>
 
-      <div>
-        <!-- notification -->
-        <div class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative">
-          <span
-            class="w-4 h-4 bg-[#ffbc00] absolute top-1 right-1 rounded-full flex justify-center text-xs font-semibold items-center">4</span>
-          <img src="assets/icons/bell.svg" alt="">
-        </div>
+      <div class="flex gap-4">
+
+        <!-- Fullscreen Toggle Button -->
+        <button id="fullscreenToggle"
+          class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative">
+          <img src="assets/icons/fullscreen.svg" alt="fullscreen">
+          <button>
+
+            <!-- notification -->
+            <div class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative">
+              <span
+                class="w-4 h-4 bg-[#ffbc00] absolute top-1 right-1 rounded-full flex justify-center text-xs font-semibold items-center">4</span>
+              <img src="assets/icons/bell.svg" alt="">
+            </div>
       </div>
 
       <!-- user profile -->
@@ -474,19 +499,69 @@
           <a href="mycourses.html">My Courses /</a>
           <a href="mycourses.html">Unit 3 /</a>
           <a href="mycourses.html">3D Modeling in Blender /</a>
-          <a class="text-black" href="#">Lesson 3</a>
+          <a class="text-black" href="#">
+            <div id="quizNameQuiz"></div>
+          </a>
         </div>
 
-        <div class="bg-gray-300 min-h-[70vh] relative">
+        <div
+          class="bg-gradient-to-b from-[#FFF2E7] to-[#FDE1CA] lg:min-h-[70vh] min-h-[85vh] relative border border-black/10 rounded-2xl p-5 flex flex-col justify-between h-full">
+
+          <div>
+            <!-- progress bar -->
+            <div class="flex items-center justify-between">
+              <div id="quizQuestionProgressBar" class="bg-black/10 h-[10px] rounded-full lg:w-[93%] w-[80%] relative">
+
+                <img id="quizProgressEducy"
+                  class="w-[40px] rotate-[40deg] absolute left-[0%] -top-[16px] transition-all duration-500 ease-in-out educy-fly"
+                  src="assets/img/educy-fly.png" alt="progress">
+
+                <div id="progressBarFill" class="h-full bg-primary rounded transition-all duration-500 ease-in-out">
+                </div>
+
+              </div>
+
+              <div id="quizQuestionProgressNumber" class="text-black/80"></div>
+            </div>
+
+            <!-- Question type and educoins -->
+            <div class="flex justify-between pt-6">
+              <div id="quizQuestionType"></div>
+              <div id="quizQuestionCurrentEducoin"></div>
+            </div>
+
+            <!-- Question and options -->
+            <div>
+              <div id="quizQuestionCurrentNum" class="pt-[4%]"></div>
+              <div id="quizQuestionText"></div>
+              <div id="quizOptions"></div>
+            </div>
+
+          </div>
+
+          <div class="w-full grid">
+            <button id="quizNextBtn"
+              class="bg-[#bf4b00] hover:bg-primary text-white px-4 py-2 rounded-lg w-full lg:max-w-[140px] justify-self-end">Next
+            </button>
+          </div>
+
+
+          <!-- Modal Popup -->
+          <div id="resultModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h2 class="text-xl font-bold mb-4">Quiz Results</h2>
+              <p id="resultText"></p>
+              <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded" onclick="location.reload()">Restart</button>
+            </div>
+          </div>
+
+
           <!-- Submit Button -->
-          <button id="quizSubmitBtn" class="bg-primary text-white px-4 py-2 rounded absolute bottom-10 right-10">Submit
-            Quiz</button>
-        </div>
+          <!-- <button id="quizSubmitBtn" class="bg-primary text-white px-4 py-2 rounded absolute bottom-10 right-10">
+            Submit Quiz
+          </button> -->
 
-        <!-- test btn -->
-        <!-- <div class="bg-gray-300 flex items-center justify-center min-h-[70vh]">
-          <button id="testBtn" class="bg-blue-500 text-white px-4 py-2 rounded">testSubmit</button>
-        </div> -->
+        </div>
 
         <div class="tabs">
           <div class="tab-header">
@@ -1409,7 +1484,7 @@
     <!-- ============================= -->
 
     <div id="quizCompletionPopup"
-      class="fixed top-0 left-0 w-full h-full bg-black/50 justify-center items-center flex z-[80]   hidden  ">
+      class="fixed top-0 left-0 w-full h-full bg-black/50 justify-center items-center z-[80] hidden  ">
 
       <div
         class="bg-gradient-to-b from-[#fffbf0] to-[#feeec6] p-6 rounded-xl shadow-lg min-w-[700px] min-h-[500px] flex flex-col justify-around items-center relative ">
@@ -1436,8 +1511,9 @@
               0%
             </div>
 
-            <p class="font-medium text-md absolute bottom-8 right-10 leading-4">correct <br>answers</p>
-            
+            <p class="font-medium text-md absolute bottom-8 right-10 leading-4">correct <br>answers
+            </p>
+
           </div>
 
 
@@ -1446,16 +1522,17 @@
           <div class="flex gap-1 animate-slide-up items-center justify-center">
             <p class="  text-center">You earned</p>
             <img src="assets/img/educoin-sm.png" class=" w-8 flex gap-2 items-center justify-center" alt="">
-            <p class="text-primaryDark font-semibold">8 Educoins</p>
+            <p class="text-primaryDark font-semibold"><span id="quizResultEducoinEarned"></span> Educoins</p>
             <p>on this quiz</p>
           </div>
         </div>
 
         <p class="animate-slide-up font-semibold pb-4 pt-6">
-          <span class="text-primaryDark font-semibold">8</span>
+          You got
+          <span class="text-primaryDark font-semibold quizCorrectAnswers"></span>
           out of
-          <span class="text-primaryDark font-semibold">10</span>
-          answers correct on this quiz,
+          <span class="quiz-popup-total-question-count text-primaryDark font-semibold"></span>
+          questions correct on this quiz,
         </p>
 
 
@@ -1561,7 +1638,8 @@
               class="bg-[#bf4b00] hover:bg-primary text-white px-4 py-2 rounded-lg w-full lg:max-w-[140px]">Continue</button>
 
             <button id="submitFinalBtn"
-              class="hidden bg-[#bf4b00] hover:bg-primary text-white px-4 py-2 rounded-lg w-full lg:max-w-[140px]">Submit</button>
+              class="hidden bg-[#bf4b00] hover:bg-primary text-white px-4 py-2 rounded-lg w-full lg:max-w-[140px]">Submit
+            </button>
           </div>
 
 
@@ -1632,8 +1710,9 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <!-- custom script -->
-  <script src="./js/courseDetailsCompletion.js"></script>
+  <!-- <script src="./js/courseDetailsCompletion.js"></script> -->
   <script src="./js/main.js"></script>
+  <script src="./js/quiz.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@latest/dist/confetti.browser.min.js"></script>
 

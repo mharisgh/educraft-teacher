@@ -24,21 +24,21 @@ const courseData = [
   {
     id: "4",
     coinCount: 8,
-    courseStatus: "now",
+    courseStatus: "completed",
     courseName: "INTRODUCTION TO LOGO PROGRAMMING",
     courseLink: "/course-detail.html" // Add the link for each course
   },
   {
     id: "5",
     coinCount: 3,
-    courseStatus: "locked",
+    courseStatus: "completed",
     courseName: "Introduction to Robotics I",
     courseLink: "/mycourses.html" // Add the link for each course
   },
   {
     id: "6",
     coinCount: 3,
-    courseStatus: "locked",
+    courseStatus: "now",
     courseName: "Introduction to Game Developments",
     courseLink: "/mycourses.html" // Add the link for each course
   },
