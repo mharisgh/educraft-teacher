@@ -86,7 +86,6 @@ let correctQuizAnswers = 0;
 const userQuizAnswers = [];
 
 // Unique DOM elements
-// const quizNameElem = document.getElementById("quizNameQuiz");
 const quizQuestionCurrentEducoinElem = document.getElementById("quizQuestionCurrentEducoin");
 
 const quizQuestionTypeElem = document.getElementById("quizQuestionType");
@@ -103,10 +102,18 @@ const quizResultEducoinEarnedElem = document.getElementById("quizResultEducoinEa
 
 const quizTotalQuestionCount = document.querySelectorAll(".quiz-popup-total-question-count");
 
+const quizName = document.querySelectorAll(".quiz-name");
+
 // Update the text of each element in the NodeList
 quizTotalQuestionCount.forEach((element) => {
   element.innerText = quizData.totalQuestions.length;
 })
+
+quizName.forEach((element) => {
+  element.innerText = quizData.quizName;
+})
+
+
 
 function loadQuizQuestion() {
   const questionData = quizData.totalQuestions[currentQuizQuestion];
