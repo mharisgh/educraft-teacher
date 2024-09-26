@@ -5,63 +5,63 @@ const courseData = [
     coinCount: 5,
     courseStatus: "completed",
     courseName: "HARDWARE AND SOFTWARE",
-    courseLink: "/hardware-software" // Add the link for each course
+    courseLink: "/mycourses.html" // Add the link for each course
   },
   {
     id: "2",
-    coinCount: 5,
+    coinCount: 3,
     courseStatus: "completed",
     courseName: "GOOGLE SLIDES",
-    courseLink: "/hardware-software" // Add the link for each course
+    courseLink: "/mycourses.html" // Add the link for each course
   },
   {
     id: "3",
-    coinCount: 5,
+    coinCount: 4,
     courseStatus: "completed",
     courseName: "MICROBIT PROJECTS",
-    courseLink: "/hardware-software" // Add the link for each course
+    courseLink: "/mycourses.html" // Add the link for each course
   },
   {
     id: "4",
     coinCount: 8,
     courseStatus: "now",
     courseName: "INTRODUCTION TO LOGO PROGRAMMING",
-    courseLink: "/hardware-software" // Add the link for each course
+    courseLink: "/course-detail.html" // Add the link for each course
   },
   {
     id: "5",
     coinCount: 3,
     courseStatus: "locked",
     courseName: "Introduction to Robotics I",
-    courseLink: "/hardware-software" // Add the link for each course
+    courseLink: "/mycourses.html" // Add the link for each course
   },
   {
     id: "6",
     coinCount: 3,
     courseStatus: "locked",
     courseName: "Introduction to Game Developments",
-    courseLink: "/hardware-software" // Add the link for each course
+    courseLink: "/mycourses.html" // Add the link for each course
   },
   {
     id: "7",
     coinCount: 3,
     courseStatus: "locked",
     courseName: " Artificial Intelligence",
-    courseLink: "/hardware-software" // Add the link for each course
+    courseLink: "/mycourses.html" // Add the link for each course
   },
   {
     id: "8",
     coinCount: 3,
     courseStatus: "locked",
     courseName: " Introduction to Coding and Programming Languages",
-    courseLink: "/hardware-software" // Add the link for each course
+    courseLink: "/mycourses.html" // Add the link for each course
   },
   {
     id: "9",
     coinCount: 3,
     courseStatus: "final",
     courseName: "Operating Systems",
-    courseLink: "/hardware-software" // Add the link for each course
+    courseLink: "/mycourses.html" // Add the link for each course
   }
 ];
 
@@ -120,7 +120,7 @@ function generateCourseCards() {
 
     // Create a new div for left-right margin for skill map course
     const courseOuterDiv = document.createElement("div");
-    courseOuterDiv.classList.add("lg:w-[52%]", "mx-auto", "grid", "relative");
+    courseOuterDiv.classList.add("lg:w-[48%]", "mx-auto", "grid", "relative");
     
     // Alternate between 'justify-self-start' and 'justify-self-end' for every other course
     const alignmentClass = index % 2 === 0 ? 'justify-self-start' : 'justify-self-end';
