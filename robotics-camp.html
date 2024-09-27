@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Classroom</title>
+  <title>Robotics Camp | Classroom</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -12,13 +12,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
 
 
-
-
   <style>
     .active {
       background-color: #fa9d53;
     }
   </style>
+
 </head>
 
 <body class="flex font-sans">
@@ -190,28 +189,34 @@
       class=" bg-primaryLight  max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row overflow-auto lg:overflow-hidden h-[calc(100vh-3.5rem)]">
 
       <!-- main section-->
-      <section class="bg-primaryLight lg:w-2/3 p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide lg:h-full">
+      <section class="bg-primaryLight p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide lg:h-full ">
 
-        <div class="w-full flex justify-between">
-          <p class="text-lg-custom h-10">All Classes</p>
-          <div class="flex gap-4 items-center">
-            <p>Recent</p>
+        <div class="flex gap-4 items-center ">
+          <a href="#" onclick="history.back(); return false;"
+            class="pl-2 pr-6 h-[40px] rounded-xl bg-white  border border-black/20 hover:border-black/50 flex items-center gap-1">
+            <img class="w-5" src="/assets/icons/arrow-left.svg" alt="back">
+            <p class="font-medium">Back</p>
+          </a>
+          <div class="flex gap-3 items-center">
+            <p class="text-lg-custom">Robotics Camp</p>
+            <img class="w-6" src="/assets/img/classroom/folder-icon.png" alt="folder">
           </div>
         </div>
 
+        <p class="text-lg-custom mt-2">Materials</p>
 
-        <div id="classFoldersContainer" class="flex flex-wrap gap-x-4 gap-y-8"></div>
+        <div id="classroomClassContents" class="flex flex-wrap gap-4">
+        </div>
 
+        <p class="text-lg-custom mt-6">Quiz</p>
+
+        <div id="classroomClassQuizes" class="flex flex-wrap gap-4">
+
+        </div>
 
       </section>
 
-      <!-- right side section -->
-      <section
-        class="bg-white border border-l-black/20 flex flex-col lg:w-1/3 p-4 gap-4 lg:overflow-auto scrollbar-hide">
 
-        <p class="text-lg-custom h-10">Announcements</p>
-
-      </section>
 
 
     </main>
@@ -221,7 +226,7 @@
 
   <!-- custom script -->
   <script src="./js/main.js"></script>
-  <script src="./js/classroom.js"></script>
+  <script src="./js/robotics-camp.js"></script>
 
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
