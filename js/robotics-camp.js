@@ -85,7 +85,7 @@ function displayQuizzes() {
     const quizElement = document.createElement("a");
     quizElement.className = "bg-white border border-black/20 p-4 rounded-xl lg:min-w-[300px] group hover:border-black/40";
     quizElement.href = quiz.quizLink;  // Set the link for the quiz
-    quizElement.target = "_blank";      // Open link in a new tab
+    // quizElement.target = "_blank";      // Open link in a new tab
 
     let studentList = quiz.students
       .map((student) => `<img src="${student.profilePicture}" alt="${student.name}" title="${student.name}" />`)

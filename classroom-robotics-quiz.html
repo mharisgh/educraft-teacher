@@ -191,20 +191,31 @@
 
             <a href="mycourses.html">
               <li id="sidemenu-list"
-                class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer active">
+                class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer ">
                 <div class="flex gap-4 items-center">
                   <img class="w-6 h-6" src="assets/icons/my-courses.svg" alt="home">
                   <span class="sidebar-text">Courses</span>
                 </div>
               </li>
             </a>
-            <li id="sidemenu-list"
-              class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer">
-              <a href="learning-journey.html" class="flex gap-4 items-center">
-                <img class="w-6 h-6" src="assets/icons/learning-journey.svg" alt="home">
-                <span class="sidebar-text">Learning Journey</span>
-              </a>
-            </li>
+            <a href="">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/learning-journey.svg" alt="home">
+                  <span class="sidebar-text">Learning Journey</span>
+                </div>
+              </li>
+            </a>
+            <a href="/classroom.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer active ">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/clasroom.svg" alt="home">
+                  <span class="sidebar-text">Classroom</span>
+                </div>
+              </li>
+            </a>
 
           </ul>
 
@@ -244,21 +255,6 @@
         <!-- bottom menu list -->
         <nav class="pb-4">
           <ul class="flex flex-col gap-1">
-            <li id="sidemenu-list"
-              class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list">
-              <a href="#" class="flex gap-4">
-                <img class="w-6 h-6" src="assets/icons/help-center.svg" alt="home">
-                <span class="sidebar-text">Help</span>
-              </a>
-            </li>
-            <li id="sidemenu-list"
-              class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300">
-              <a href="#" class="flex gap-4 items-center">
-                <img class="w-6 h-6" src="assets/icons/settings.svg" alt="home">
-                <span class="sidebar-text">Settings</span>
-              </a>
-            </li>
-
             <!-- sperator -->
             <li class="w-full h-[2px] bg-white/20"></li>
 
@@ -344,11 +340,17 @@
       <!-- main section-->
       <section class="w-full p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide lg:h-full ">
 
-        <div class="text-black/50 font-medium">
-          <a href="mycourses.html">My Courses /</a>
-          <a href="mycourses.html">Unit 3 /</a>
-          <a href="mycourses.html">3D Modeling in Blender /</a>
-          <a class="text-black quiz-name" href="#"></a>
+        <div class="text-black/50 font-medium flex items-center gap-2">
+          <a href="#" onclick="history.back(); return false;"
+            class="pl-2 pr-6 h-[40px] rounded-xl bg-white  border border-black/20 hover:border-black/50 flex items-center gap-1 w-fit">
+            <img class="w-5" src="/assets/icons/arrow-left.svg" alt="back">
+            <p class="font-medium text-black">Back</p>
+          </a>
+          <div>
+            <a href="classroom.html">All Classes/</a>
+            <a href="robotics-camp.html">Robotics Camp /</a>
+            <a class="text-black" href="#">AI Fundamentals Quiz</a>
+          </div>
         </div>
 
         <div
