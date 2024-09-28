@@ -32,7 +32,7 @@ function renderMenuItems() {
           }
       } else if (item.type === "separator") {
           const separatorDiv = document.createElement('div');
-          separatorDiv.className = 'h-1 w-full bg-gradient-to-b from-transparent via-gray-200 to-transparent my-4'; // Style for separator
+          separatorDiv.className = 'h-1 w-full max-w-[360px] bg-gradient-to-b from-transparent via-gray-200 to-transparent my-4'; // Style for separator
           menuItemsContainer.appendChild(separatorDiv);
           return; // Skip adding to menu items container
       }
