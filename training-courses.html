@@ -1,0 +1,694 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Courses</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link href="output.css" rel="stylesheet">
+
+
+
+
+  <style>
+    .active {
+      background-color: #ba9070;
+    }
+
+    .courses-progress-clip-50 {
+      clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+    }
+
+    .course-progress-clip-50-right {
+      clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+    }
+  </style>
+</head>
+
+<body class="flex font-sans">
+
+  <!-- =========================================== -->
+  <!-- Nav menu left sidebar -->
+  <!-- =========================================== -->
+
+  <aside id="sidebar"
+    class="bg-[#9c663b] z-50 text-white w-72 h-screen transition-all ease-out duration-300 hidden lg:block">
+
+    <div class="h-full overflow-y-auto px-4 flex flex-col justify-between scrollbar-custom">
+
+      <div>
+        <!-- educraft logo -->
+        <div id="sidemenu-logo" class=" flex gap-2 ml-3 items-start mt-4">
+          <img src="./assets/img/educraft-logo-white.svg" alt="educraft logo">
+          <div class="grid">
+            <p class="logo-text font-bold text-2xl">EduCraft</p>
+            <p class="logo-text justify-self-end">Teacher</p>
+          </div>
+        </div>
+
+        <!-- shrink expand button -->
+        <div id="toggle-btn-area" class="w-full flex justify-end py-4 ">
+          <button id="toggleBtn" class="bg-white/20 p-2  rounded-lg">
+            <img class="w-3 h-3 " src="assets/icons/small.svg" alt="menu expand button">
+          </button>
+        </div>
+
+        <!-- top menu list -->
+        <nav class="flex flex-col justify-between ">
+          <ul class="flex flex-col gap-1">
+
+            <a href="/index.html">
+              <li id="sidemenu-list"
+                class="h-12 flex items-center hover:bg-[#ba9070] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list  cursor-pointer ">
+                <div class="flex gap-4 ">
+                  <img class="w-6 h-6" src="assets/icons/home.svg" alt="home">
+                  <span class="sidebar-text">Home</span>
+                </div>
+              </li>
+            </a>
+
+            <a href="/training-courses.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer active">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/my-courses.svg" alt="home">
+                  <span class="sidebar-text">Training Courses</span>
+                </div>
+              </li>
+            </a>
+
+            <a href="/student-courses.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer ">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/student-courses.svg" alt="home">
+                  <span class="sidebar-text">Student Courses</span>
+                </div>
+              </li>
+            </a>
+
+            <a href="/classroom/index.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer ">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/clasroom.svg" alt="home">
+                  <span class="sidebar-text">Classroom</span>
+                </div>
+              </li>
+            </a>
+            <a href="/report/index.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer ">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/report.svg" alt="home">
+                  <span class="sidebar-text">Report</span>
+                </div>
+              </li>
+            </a>
+
+          </ul>
+
+        </nav>
+      </div>
+
+
+      <!-- bottom menu list -->
+      <div>
+
+        <!-- expanded educat chatbot button-->
+        <div id="educat-sidemenu-big"
+          class="lg:min-h-[100px] bg-gradient-to-b from-[#92623d] to-[#ad764c] rounded-2xl relative my-6 overflow-hidden">
+          <img class="absolute z-10  w-[90px] top-2 -right-2 " src="assets/img/educy.webp" alt="chat bot">
+          <div class="px-3 py-3">
+            <p class="">I'm</p>
+            <p class="font-bold text-lg tracking-tight -mt-1">EduCy<span class="text-xs font-base">&nbsp;2.0</span></p>
+
+            <p class="mt-6">Your AI</p>
+            <p class=" text-sm tracking-tight">Learning Assistant</p>
+
+            <button
+              class=" ecChatBotBtn bg-white text-[#bf4b00] mt-4 w-full py-2 text-semibold flex gap-1 rounded-lg justify-center items-center font-lg font-semibold hover:shadow-sm">
+              <img src="assets/icons/chat-regular.svg" alt="chat with educat">
+              Let's Chat
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- shrink educat chatbot button -->
+        <button id="educat-sidemenu-sm"
+          class="ecChatBotBtnSm bg-white text-[#bf4b00] my-6 w-full py-2 text-semibold hidden rounded-lg justify-center items-center">
+          <img src="assets/icons/chat-regular.svg" alt="chat with educat">
+
+        </button>
+
+        <!-- bottom menu list -->
+        <nav class="pb-4">
+          <ul class="flex flex-col gap-1">
+            <!-- <li id="sidemenu-list"
+              class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list">
+              <a href="#" class="flex gap-4">
+                <img class="w-6 h-6" src="assets/icons/help-center.svg" alt="home">
+                <span class="sidebar-text">Help</span>
+              </a>
+            </li> -->
+
+
+            <!-- sperator -->
+            <li class="w-full h-[2px] bg-white/20"></li>
+
+            <li id="sidemenu-list"
+              class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300">
+              <a href="#" class="flex gap-4 items-center">
+                <img class="w-6 h-6" src="assets/icons/logout.svg" alt="home">
+                <span class="sidebar-text">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  </aside>
+
+
+  <!-- =========================================== -->
+  <!-- Main -->
+  <!-- =========================================== -->
+
+  <div class="w-full h-screen  overflow-hidden relative z-[10]">
+
+    <!-- =========================================== -->
+    <!-- Top Header Menu -->
+    <!-- =========================================== -->
+
+    <header id="header-menu"
+      class="  bg-white  flex justify-between w-full h-14 items-center  transition-all ease-out duration-300  p-4 border border-b-black/10">
+      <p class="text-xl-custom">My Courses</p>
+
+      <!-- Search Input -->
+      <div class="relative w-1/3">
+        <input type="text" placeholder="Search"
+          class="w-full pl-12 pr-4 py-2 rounded-full bg-[#fffaf4] focus:outline-none focus:border-primary border border-gray-200">
+        <img src="assets/icons/search-bar.svg" alt="Search Icon"
+          class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-red-700" />
+      </div>
+
+      <div>
+        <!-- notification -->
+        <div class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative">
+          <span
+            class="w-4 h-4 bg-[#ffbc00] absolute top-1 right-1 rounded-full flex justify-center text-xs font-semibold items-center">4</span>
+          <img src="assets/icons/bell.svg" alt="">
+        </div>
+      </div>
+
+      <!-- user profile -->
+      <div class="flex gap-2 justify-center items-center">
+        <p class="font-semibold">Faisal Saleem</p>
+        <img class="w-10 h-10 rounded-full border-2 border-primary" src="assets/img/general/user.png"
+          alt="user profile">
+      </div>
+    </header>
+
+    <!-- =========================================== -->
+    <!-- Main Content Area - Dashboard -->
+    <!-- =========================================== -->
+
+    <main id="main"
+      class=" bg-primaryLight  max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row overflow-auto lg:overflow-hidden h-[calc(100vh-3.5rem)]">
+
+      <!-- main section-->
+      <section class=" p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide lg:h-full ">
+
+        <div class="flex gap-4 flex-col lg:flex-row ">
+
+          <!-- Continue learning  -->
+          <div class="w-full flex-col flex gap-2  ">
+            <div class=" flex h-10 items-center text-lg-custom gap-2 ">
+              <p>Continue Learning</p>
+            </div>
+
+            <!-- dyanmic content here.. -->
+            <div
+              class="bg-white border border-black/10  p-2 rounded-2xl flex flex-col justify-between lg:flex-row gap-4 ">
+
+              <!-- course thumbnail image -->
+              <img class="w-full lg:max-w-[180px] max-h-[240px] lg:h-[100px] object-cover rounded-xl "
+                src="assets/img/course-thumbnail/modern.jpg" alt="Courses">
+
+              <div class="w-full flex flex-col lg:flex-row justify-between lg:items-center gap-4">
+                <!-- Name, Lesson, Rating, Unit, Progress -->
+                <div class="flex gap-2 flex-col justify-around">
+
+                  <p class="text-md font-semibold">Classroom Management and Student Engagement</p>
+
+                  <div class="flex gap-6 items-center">
+                    <div class="flex gap-2">
+                      <img class="min-w-[20px]" src="assets/icons/lesson.svg" alt="lesson">
+                      <span class="font-semibold">11</span>
+                      <p class="text-black/60">Lesson</p>
+                    </div>
+
+                    <div class="flex gap-2">
+                      <img class="min-w-[20px]" src="assets/icons/star.svg" alt="rating">
+                      <span>4.7</span>
+                    </div>
+
+                    <p>Unit 2</p>
+
+                  </div>
+
+
+                  <!-- progress -->
+                  <div class="flex gap-4 items-center ">
+
+                    <div class="relative  h-[10px] w-full">
+
+                      <!-- progress width percentage dynamic value -->
+                      <div
+                        class="absolute z-[10] rounded-xl h-full w-[23%] bg-gradient-to-r from-[#FD9512] to-[#FFC770]">
+                      </div>
+                      <div class="absolute h-full w-full z-[2] bg-gray-100 rounded-xl"></div>
+                    </div>
+
+                    <!-- progress percentage dynamic value -->
+                    <span class="text-xs font-semibold">23%</span>
+
+
+                  </div>
+
+
+                </div>
+
+                <!-- dynamic button -->
+                <a href="#">
+                  <button
+                    class="px-6 py-3 h-[40px] w-fit rounded-xl bg-primaryDark text-white hover:bg-primary flex items-center gap-2">
+                    Resume
+                    <span><img src="assets/icons/Play.svg" alt="play"></span>
+                  </button>
+                </a>
+              </div>
+
+            </div>
+
+            <div
+              class="bg-white border border-black/10  p-2 rounded-2xl flex flex-col justify-between lg:flex-row gap-4 ">
+
+              <!-- course thumbnail image -->
+              <img class="w-full lg:max-w-[180px] max-h-[240px] lg:h-[100px] object-cover rounded-xl "
+                src="assets/img/course-thumbnail/diverse.jpg" alt="Courses">
+
+              <div class="w-full flex flex-col lg:flex-row justify-between lg:items-center gap-4">
+                <!-- Name, Lesson, Rating, Unit, Progress -->
+                <div class="flex gap-2 flex-col justify-around">
+
+                  <p class="text-md font-semibold">Differentiated Instruction for Diverse Learners</p>
+
+                  <div class="flex gap-6 items-center">
+                    <div class="flex gap-2">
+                      <img class="min-w-[20px]" src="assets/icons/lesson.svg" alt="lesson">
+                      <span class="font-semibold">11</span>
+                      <p class="text-black/60">Lesson</p>
+                    </div>
+
+                    <div class="flex gap-2">
+                      <img class="min-w-[20px]" src="assets/icons/star.svg" alt="rating">
+                      <span>4.7</span>
+                    </div>
+
+                    <p>Unit 2</p>
+
+                  </div>
+
+
+                  <!-- progress -->
+                  <div class="flex gap-4 items-center ">
+
+                    <div class="relative  h-[10px] w-full">
+
+                      <!-- progress width percentage dynamic value -->
+                      <div
+                        class="absolute z-[10] rounded-xl h-full w-[68%] bg-gradient-to-r from-[#FD9512] to-[#FFC770]">
+                      </div>
+                      <div class="absolute h-full w-full z-[2] bg-gray-100 rounded-xl"></div>
+                    </div>
+
+                    <!-- progress percentage dynamic value -->
+                    <span class="text-xs font-semibold">68%</span>
+
+
+                  </div>
+
+                </div>
+
+                <!-- dynamic button -->
+                <a href="#">
+                  <button
+                    class="px-6 py-3 h-[40px] w-fit rounded-xl bg-primaryDark text-white hover:bg-primary flex items-center gap-2">
+                    Resume
+                    <span><img src="assets/icons/Play.svg" alt="play"></span>
+                  </button>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <!-- All Courses -->
+        <div class="w-full">
+          <div class="flex h-10 items-center text-lg-custom gap-2">
+            <p>All Courses</p>
+          </div>
+
+          <div class="grid lg:grid-cols-4 gap-4">
+
+            <!-- course list in grid - dymanic change here.. -->
+            <div
+              class="bg-white w-full flex flex-col gap-3 border border-black/10 rounded-2xl p-3 relative hover:border-black/20 justify-between">
+
+              <!-- course image, unit, time -->
+              <div class="h-[160px] w-full relative rounded-xl overflow-hidden">
+                <div class="flex justify-between w-full bg-black/40 backdrop-blur-md  absolute text-white bottom-0 px-2 py-1
+                text-xs items-center">
+                  <p>Digital Literacy</p>
+                </div>
+                <img src="/assets/img/course-thumbnail/modern.jpg" alt="course">
+              </div>
+
+              <p class="text-md font-semibold">Classroom Management and Student Engagement</p>
+              <div class="flex justify-between w-full items-center">
+
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/star.svg" alt="rating">
+                  <span>4.7</span>
+                </div>
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/idea.svg" alt="lesson">
+                  <span class="font-semibold">3</span>
+                  <p class="text-black/60">skills</p>
+                </div>
+
+
+              </div>
+
+              <div class="flex gap-2 items-center justify-between ">
+                <div class="flex  gap-2">
+                  <div class="bg-white border border-black/20 rounded-full w-8 h-8 flex justify-center items-center">
+                    <img class="w-[20px]" src="assets/img/general/educraft-color.svg" alt="teacher">
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold">Educraft</p>
+                    <p class="text-black/50 text-xs">Author</p>
+                  </div>
+                </div>
+
+                <!-- progress chart ellipse -->
+                <div>
+
+                  <div class="relative flex items-center justify-center " style="width: 44px; height: 44px;">
+                    <svg class="absolute" width="40" height="40">
+                      <circle class="text-orange-200" stroke-width="4" stroke="currentColor" fill="transparent" r="16"
+                        cx="20" cy="20" />
+                      <circle class="text-orange-500" stroke-width="4" stroke-dasharray="100" stroke-dashoffset="77"
+                        stroke-linecap="round" stroke="currentColor" fill="transparent" r="16" cx="20" cy="20" />
+                    </svg>
+                    <span class="absolute text-[10px] font-semibold">23%</span>
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+
+            <div
+              class="bg-white w-full flex flex-col gap-3 border border-black/10 rounded-2xl p-3 relative hover:border-black/20 justify-between">
+
+              <!-- course image, unit, time -->
+              <div class="h-[160px] w-full relative rounded-xl overflow-hidden">
+                <div class="flex justify-between w-full bg-black/40 backdrop-blur-md  absolute text-white bottom-0 px-2 py-1
+                text-xs items-center">
+                  <p>Digital Literacy</p>
+                </div>
+                <img src="/assets/img/course-thumbnail/diverse.jpg" alt="course">
+              </div>
+
+              <p class="text-md font-semibold">Differentiated Instruction for Diverse Learners</p>
+              <div class="flex justify-between w-full items-center">
+
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/star.svg" alt="rating">
+                  <span>4.7</span>
+                </div>
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/idea.svg" alt="lesson">
+                  <span class="font-semibold">3</span>
+                  <p class="text-black/60">skills</p>
+                </div>
+
+
+              </div>
+
+              <div class="flex gap-2 items-center justify-between ">
+                <div class="flex  gap-2">
+                  <div class="bg-white border border-black/20 rounded-full w-8 h-8 flex justify-center items-center">
+                    <img class="w-[20px]" src="assets/img/general/educraft-color.svg" alt="teacher">
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold">Educraft</p>
+                    <p class="text-black/50 text-xs">Author</p>
+                  </div>
+                </div>
+
+                <!-- progress chart ellipse -->
+                <div>
+
+                  <div class="relative flex items-center justify-center " style="width: 44px; height: 44px;">
+                    <svg class="absolute" width="40" height="40">
+                      <circle class="text-orange-200" stroke-width="4" stroke="currentColor" fill="transparent" r="16"
+                        cx="20" cy="20" />
+                      <circle class="text-orange-500" stroke-width="4" stroke-dasharray="100" stroke-dashoffset="77"
+                        stroke-linecap="round" stroke="currentColor" fill="transparent" r="16" cx="20" cy="20" />
+                    </svg>
+                    <span class="absolute text-[10px] font-semibold">68%</span>
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+
+            <div
+              class="bg-white w-full flex flex-col gap-3 border border-black/10 rounded-2xl p-3 relative hover:border-black/20 justify-between">
+
+              <!-- course image, unit, time -->
+              <div class="h-[160px] w-full relative rounded-xl overflow-hidden">
+                <div class="flex justify-between w-full bg-black/40 backdrop-blur-md  absolute text-white bottom-0 px-2 py-1
+              text-xs items-center">
+                  <p>Digital Literacy</p>
+                </div>
+                <img src="/assets/img/course-thumbnail/clasroom.jpg" alt="course">
+              </div>
+
+              <p class="text-md font-semibold">Technology Integration in Modern Classrooms</p>
+              <div class="flex justify-between w-full items-center">
+
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/star.svg" alt="rating">
+                  <span>4.7</span>
+                </div>
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/idea.svg" alt="lesson">
+                  <span class="font-semibold">3</span>
+                  <p class="text-black/60">skills</p>
+                </div>
+
+
+              </div>
+
+              <div class="flex gap-2 items-center justify-between ">
+                <div class="flex  gap-2">
+                  <div class="bg-white border border-black/20 rounded-full w-8 h-8 flex justify-center items-center">
+                    <img class="w-[20px]" src="assets/img/general/educraft-color.svg" alt="teacher">
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold">Educraft</p>
+                    <p class="text-black/50 text-xs">Author</p>
+                  </div>
+                </div>
+
+                <!-- progress chart ellipse -->
+                <div>
+
+                  <div class="relative flex items-center justify-center " style="width: 44px; height: 44px;">
+                    <svg class="absolute" width="40" height="40">
+                      <circle class="text-orange-200" stroke-width="4" stroke="currentColor" fill="transparent" r="16"
+                        cx="20" cy="20" />
+                    </svg>
+                    <span class="absolute text-[10px] font-semibold">0%</span>
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+
+            <div
+              class="bg-white w-full flex flex-col gap-3 border border-black/10 rounded-2xl p-3 relative hover:border-black/20 justify-between">
+
+              <!-- course image, unit, time -->
+              <div class="h-[160px] w-full relative rounded-xl overflow-hidden">
+                <div class="flex justify-between w-full bg-black/40 backdrop-blur-md  absolute text-white bottom-0 px-2 py-1
+            text-xs items-center">
+                  <p>Digital Literacy</p>
+                </div>
+                <img src="/assets/img/course-thumbnail/learning-env.webp" alt="course">
+              </div>
+
+              <p class="text-md font-semibold">Building Inclusive Learning Environments</p>
+              <div class="flex justify-between w-full items-center">
+
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/star.svg" alt="rating">
+                  <span>4.7</span>
+                </div>
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/idea.svg" alt="lesson">
+                  <span class="font-semibold">3</span>
+                  <p class="text-black/60">skills</p>
+                </div>
+
+
+              </div>
+
+              <div class="flex gap-2 items-center justify-between ">
+                <div class="flex  gap-2">
+                  <div class="bg-white border border-black/20 rounded-full w-8 h-8 flex justify-center items-center">
+                    <img class="w-[20px]" src="assets/img/general/educraft-color.svg" alt="teacher">
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold">Educraft</p>
+                    <p class="text-black/50 text-xs">Author</p>
+                  </div>
+                </div>
+
+                <!-- progress chart ellipse -->
+                <div>
+
+                  <div class="relative flex items-center justify-center " style="width: 44px; height: 44px;">
+                    <svg class="absolute" width="40" height="40">
+                      <circle class="text-orange-200" stroke-width="4" stroke="currentColor" fill="transparent" r="16"
+                        cx="20" cy="20" />
+                    </svg>
+                    <span class="absolute text-[10px] font-semibold">0%</span>
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+            <div
+              class="bg-white w-full flex flex-col gap-3 border border-black/10 rounded-2xl p-3 relative hover:border-black/20 justify-between">
+
+              <!-- course image, unit, time -->
+              <div class="h-[160px] w-full relative rounded-xl overflow-hidden">
+                <div class="flex justify-between w-full bg-black/40 backdrop-blur-md  absolute text-white bottom-0 px-2 py-1
+          text-xs items-center">
+                  <p>Digital Literacy</p>
+                </div>
+                <img src="/assets/img/course-thumbnail/management.jpeg" alt="course">
+              </div>
+
+              <p class="text-md font-semibold">Teaching Critical Thinking and Problem-Solving</p>
+              <div class="flex justify-between w-full items-center">
+
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/star.svg" alt="rating">
+                  <span>4.7</span>
+                </div>
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/idea.svg" alt="lesson">
+                  <span class="font-semibold">3</span>
+                  <p class="text-black/60">skills</p>
+                </div>
+
+
+              </div>
+
+              <div class="flex gap-2 items-center justify-between ">
+                <div class="flex  gap-2">
+                  <div class="bg-white border border-black/20 rounded-full w-8 h-8 flex justify-center items-center">
+                    <img class="w-[20px]" src="assets/img/general/educraft-color.svg" alt="teacher">
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold">Educraft</p>
+                    <p class="text-black/50 text-xs">Author</p>
+                  </div>
+                </div>
+
+                <!-- progress chart ellipse -->
+                <div>
+
+                  <div class="relative flex items-center justify-center " style="width: 44px; height: 44px;">
+                    <svg class="absolute" width="40" height="40">
+                      <circle class="text-orange-200" stroke-width="4" stroke="currentColor" fill="transparent" r="16"
+                        cx="20" cy="20" />
+
+                    </svg>
+                    <span class="absolute text-[10px] font-semibold">0%</span>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+
+
+      </section>
+
+    </main>
+
+
+  </div>
+
+  <!-- custom script -->
+  <script src="./js/main.js"></script>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+</body>
+
+</html>

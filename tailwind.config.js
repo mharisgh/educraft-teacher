@@ -5,9 +5,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#f8740b',
-        primaryDark: '#bf4b00',
+        primary: '#9c663b',
+        primaryDark: '#8f5c34',
         primaryLight: '#fcf7f0',
+        primaryStudents: '#f6782c',
       },
       fontFamily: {
         sans: ['Poppins', 'Arial', 'sans-serif'],

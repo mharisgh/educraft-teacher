@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ===========================================
 
 const sidebar = document.getElementById('sidebar');
-const logoText = document.getElementById('logo-text');
+const logoTexts = document.querySelectorAll('.logo-text');
 const toggleBtn = document.getElementById('toggleBtn');
 const sidebarTexts = document.querySelectorAll('.sidebar-text');
 const main = document.getElementById('main');
@@ -105,7 +105,7 @@ toggleBtn.addEventListener('click', () => {
 
 
   // hide logo text when sidemenu shrink
-  logoText.classList.toggle('hidden');
+  logoTexts.forEach(text => text.classList.toggle('hidden'));
 
   // toggle btn will center when sidemenu shrink
   toggleBtnArea.classList.toggle('justify-end');
