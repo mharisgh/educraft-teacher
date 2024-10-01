@@ -89,7 +89,7 @@
               </li>
             </a>
 
-            <a href="/classroom/index.html">
+            <a href="/classroom.html">
               <li id="sidemenu-list"
                 class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer ">
                 <div class="flex gap-4 items-center">
@@ -98,7 +98,7 @@
                 </div>
               </li>
             </a>
-            <a href="/report/index.html">
+            <a href="/report.html">
               <li id="sidemenu-list"
                 class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer ">
                 <div class="flex gap-4 items-center">
@@ -247,13 +247,139 @@
               </div>
             </div>
 
+            <!-- Add New Course Button -->
             <button
-              class="h-10 bg-primary hover:bg-primaryDark flex gap-1 items-center text-white px-3 rounded-xl text-sm ">
+              class="h-10 bg-primary hover:bg-primaryDark flex gap-1 items-center text-white px-3 rounded-xl text-sm"
+              id="addCourseButton">
               <svg class="fill-white w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
               </svg>
               Add New Course
             </button>
+
+
+            <!-- Popup Overlay -->
+            <div id="popupOverlay" class="hidden fixed inset-0 bg-black/70   justify-center items-center z-[1000]">
+
+              <!-- Popup Box container -->
+              <div
+                class="bg-white rounded-xl lg:max-w-4xl w-full lg:max-h-[640px] h-full  flex flex-col py-3 relative overflow-hidden">
+
+                <!-- Popup Header -->
+                <div class="flex justify-between pb-2 px-4">
+                  <p class="text-lg font-semibold">Add New Course</p>
+                  <button id="closePopupButton"
+                    class="w-8 h-8 bg-black/10 rounded-full flex justify-center items-center hover:bg-black/20">
+                    <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
+                  </button>
+                </div>
+
+                <!-- Separator -->
+                <div class="w-full bg-gradient-to-r from-black/5 via-gray-200 to-black/5 min-h-[1px] mb-4 ">
+                </div>
+
+                <!-- Form Fields -->
+                <div class="overflow-auto px-4 scrollbar-custom flex flex-col lg:flex-row ">
+
+                  <div class="flex flex-col space-y-4 lg:w-[65%] overflow-auto">
+                    <!-- Course Title -->
+                    <div>
+                      <label class="block text-sm font-medium">Course Title</label>
+                      <input id="courseTitle" type="text" placeholder="Enter course name"
+                        class="w-full border border-gray-300 rounded-lg p-2 mt-1">
+                    </div>
+                    <div class="flex gap-2 ">
+                      <!-- Category Dropdown -->
+                      <div class="w-[70%]">
+                        <label class="block text-sm font-medium">Category</label>
+                        <select id="courseCategory" class="w-full border border-gray-300 rounded-lg p-2 mt-1">
+                          <option value="" disabled selected>Select Category</option>
+                          <option value="Computer Science">Computer Science</option>
+                          <option value="Mathematics">Mathematics</option>
+                          <option value="Science">Science</option>
+                        </select>
+                      </div>
+
+                      <!-- Grade Dropdown -->
+                      <div class="w-[30%]">
+                        <label class="block text-sm font-medium">Grade</label>
+                        <select id="courseGrade" class="w-full border border-gray-300 rounded-lg p-2 mt-1">
+                          <option value="" disabled selected>Select Grade</option>
+                          <option value="Grade 1">Grade 1</option>
+                          <option value="Grade 2">Grade 2</option>
+                          <option value="Grade 3">Grade 3</option>
+                        </select>
+                      </div>
+
+                    </div>
+                    <!-- Skills Selection -->
+                    <div>
+                      <label class="block text-sm font-medium">Skills</label>
+                      <div class="flex space-x-2">
+                        <select id="skillDropdown" class="border border-gray-300 rounded-lg p-2 mt-1 w-full">
+                          <option value="" disabled selected>Select Skill</option>
+                          <option value="Basic Computer Skills">Basic Computer Skills</option>
+                          <option value="Coding">Coding</option>
+                          <option value="Word Processing">Word Processing</option>
+                        </select>
+                        <button id="addSkillButton" class="bg-primary text-white rounded-lg px-3">Add Skill</button>
+                      </div>
+
+                      <!-- Skill Tags -->
+                      <div id="skillTags" class="flex flex-wrap gap-2 mt-3"></div>
+                    </div>
+
+                    <!-- Course Overview -->
+                    <div>
+                      <label class="block text-sm font-medium">Overview</label>
+                      <textarea id="courseOverview" class="w-full border border-gray-300 rounded-lg p-2 mt-1" rows="4"
+                        placeholder="Write a brief overview of the course"></textarea>
+                    </div>
+
+                    <!-- Upload Thumbnail -->
+                    <div>
+                      <label class="block text-sm font-medium">Upload Thumbnail</label>
+                      <input id="thumbnailInput" type="file" accept="image/*"
+                        class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer mt-2">
+                      <p class="mt-2 text-sm text-gray-500">Click to upload thumbnail image.</p>
+                      <!-- Display Thumbnail -->
+                      <img id="thumbnailPreview" class="mt-2 w-32 h-32 object-cover hidden" alt="Course Thumbnail">
+                    </div>
+                  </div>
+
+                  <div class=" lg:w-[35%] px-3">
+                    <div>
+                      <p class="my-2">Thumbnail</p>
+                      <div class="bg-[#fff5e7] w-full h-[120px] rounded-lg"></div>
+                    </div>
+
+                    
+
+                    <!-- Live Course Preview -->
+                    <div class="mt-4 bg-white p-4 rounded-lg h-[320px] border border-black/10 shadow-2xl">
+                      <p class="font-semibold">Live Course Preview</p>
+                      <p id="previewTitle" class="text-sm mt-2"></p>
+                      <p id="previewCategory" class="text-sm mt-1"></p>
+                      <p id="previewGrade" class="text-sm mt-1"></p>
+                      <p id="previewSkills" class="text-sm mt-1"></p>
+                    </div>
+                  </div>
+
+
+                </div>
+
+                <!-- Popup Footer -->
+                <div
+                  class="flex absolute bottom-0 justify-end gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
+                  <button id="cancelButton" class="bg-gray-200 text-black px-4 py-2 rounded-lg">Cancel</button>
+                  <button id="createButton" class="bg-primary text-white px-4 py-2 rounded-lg">Create</button>
+                </div>
+
+              </div>
+            </div>
+
+
+            <!-- course add end here -->
 
           </div>
 
@@ -775,7 +901,7 @@
 
             <!-- High flyers stats card -->
             <div
-              class="bg-primaryLight my-2 border border-black/20 rounded-xl max-h-[210px] overflow-auto relative scrollbar-custom">
+              class="bg-primaryLight my-2 border border-black/20 rounded-xl max-h-[30vh] overflow-auto relative scrollbar-custom">
               <!-- labels -->
               <div class="grid grid-cols-[190px_1fr_1fr] text-black/70 min-h-[40px] sticky top-0 bg-[#fffcf6] ">
                 <div class="flex items-center gap-1 pl-2">
@@ -810,7 +936,7 @@
 
             <!-- Medium flyers stats card -->
             <div
-              class="bg-primaryLight my-2 border border-black/20 rounded-xl max-h-[210px] overflow-auto relative scrollbar-custom">
+              class="bg-primaryLight my-2 border border-black/20 rounded-xl max-h-[30vh] overflow-auto relative scrollbar-custom">
               <!-- labels -->
               <div class="grid grid-cols-[190px_1fr_1fr] text-black/70 min-h-[40px] sticky top-0 bg-[#fffcf6] ">
                 <div class="flex items-center gap-1 pl-2">
@@ -845,7 +971,7 @@
 
             <!-- Low flyers stats card -->
             <div
-              class="bg-primaryLight my-2 border border-black/20 rounded-xl max-h-[210px] overflow-auto relative scrollbar-custom">
+              class="bg-primaryLight my-2 border border-black/20 rounded-xl max-h-[30vh] overflow-auto relative scrollbar-custom">
               <!-- labels -->
               <div class="grid grid-cols-[190px_1fr_1fr] text-black/70 min-h-[40px] sticky top-0 bg-[#fffcf6] ">
                 <div class="flex items-center gap-1 pl-2">

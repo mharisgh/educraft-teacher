@@ -10,7 +10,10 @@ const data = {
     { id: 1, studentName: "Rahul Menon", studentClass: "5A", noOfCourses: 2, educoins: 20 },
     { id: 2, studentName: "Sara Khan", studentClass: "5A", noOfCourses: 3, educoins: 19 },
     { id: 3, studentName: "Ravi Varma", studentClass: "5B", noOfCourses: 2, educoins: 18 },
-    { id: 4, studentName: "Priya Kapoor", studentClass: "5C", noOfCourses: 2, educoins: 17 }
+    { id: 4, studentName: "Priya Kapoor", studentClass: "5C", noOfCourses: 2, educoins: 17 },
+    { id: 5, studentName: "Priya Kapoor", studentClass: "5C", noOfCourses: 2, educoins: 17 },
+    { id: 6, studentName: "Priya Kapoor", studentClass: "5C", noOfCourses: 2, educoins: 17 }
+
   ],
   lowFlyers: [
     { id: 1, studentName: "John Smith", studentClass: "6A", noOfCourses: 1, educoins: 10 },
@@ -65,3 +68,130 @@ function updateFlyersSection(sectionId, countId, listId, flyers) {
 updateFlyersSection("highFlyersSection", "highFlyerCount", "highFlyersList", data.highFlyers);
 updateFlyersSection("mediumFlyersSection", "mediumFlyerCount", "mediumFlyersList", data.mediumFlyers);
 updateFlyersSection("lowFlyersSection", "lowFlyerCount", "lowFlyersList", data.lowFlyers);
+
+
+
+// References to DOM elements
+const popupOverlay = document.getElementById('popupOverlay');
+const addCourseButton = document.getElementById('addCourseButton');
+const closePopupButton = document.getElementById('closePopupButton');
+const cancelButton = document.getElementById('cancelButton');
+const createButton = document.getElementById('createButton');
+
+const courseTitle = document.getElementById('courseTitle');
+const courseCategory = document.getElementById('courseCategory');
+const courseGrade = document.getElementById('courseGrade');
+const skillDropdown = document.getElementById('skillDropdown');
+const addSkillButton = document.getElementById('addSkillButton');
+const skillTags = document.getElementById('skillTags');
+const courseOverview = document.getElementById('courseOverview');
+const thumbnailInput = document.getElementById('thumbnailInput');
+const thumbnailPreview = document.getElementById('thumbnailPreview');
+
+const previewTitle = document.getElementById('previewTitle');
+const previewCategory = document.getElementById('previewCategory');
+const previewGrade = document.getElementById('previewGrade');
+const previewSkills = document.getElementById('previewSkills');
+
+let selectedSkills = [];
+
+// Event listeners to open and close popup
+addCourseButton.addEventListener('click', () => {
+  popupOverlay.classList.remove('hidden');
+  popupOverlay.classList.add('flex');
+});
+
+closePopupButton.addEventListener('click', closePopup);
+cancelButton.addEventListener('click', closePopup);
+
+function closePopup() {
+  popupOverlay.classList.add('hidden');
+  resetForm();
+}
+
+// Add skill and display as tags
+addSkillButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  const selectedSkill = skillDropdown.value;
+  if (selectedSkill && !selectedSkills.includes(selectedSkill)) {
+    selectedSkills.push(selectedSkill);
+    updateSkillTags();
+  }
+});
+
+function updateSkillTags() {
+  skillTags.innerHTML = '';
+  selectedSkills.forEach(skill => {
+    const skillTag = document.createElement('div');
+    skillTag.classList.add('bg-blue-100', 'px-2', 'py-1', 'rounded-lg', 'flex', 'items-center', 'gap-2');
+
+    skillTag.innerHTML = `
+      <span>${skill}</span>
+      <button class="text-red-500 hover:text-red-700" onclick="removeSkill('${skill}')">x</button>
+    `;
+    skillTags.appendChild(skillTag);
+  });
+}
+
+function removeSkill(skill) {
+  selectedSkills = selectedSkills.filter(s => s !== skill);
+  updateSkillTags();
+}
+
+// Live preview update
+courseTitle.addEventListener('input', () => {
+  previewTitle.textContent = `Title: ${courseTitle.value}`;
+});
+courseCategory.addEventListener('change', () => {
+  previewCategory.textContent = `Category: ${courseCategory.value}`;
+});
+courseGrade.addEventListener('change', () => {
+  previewGrade.textContent = `Grade: ${courseGrade.value}`;
+});
+addSkillButton.addEventListener('click', () => {
+  previewSkills.textContent = `Skills: ${selectedSkills.join(', ')}`;
+});
+
+// Thumbnail upload preview
+thumbnailInput.addEventListener('change', () => {
+  const file = thumbnailInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      thumbnailPreview.src = e.target.result;
+      thumbnailPreview.classList.remove('hidden');
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+// Create button to gather form data
+createButton.addEventListener('click', () => {
+  const courseData = {
+    title: courseTitle.value,
+    category: courseCategory.value,
+    grade: courseGrade.value,
+    skills: selectedSkills,
+    overview: courseOverview.value,
+    thumbnail: thumbnailPreview.src,
+  };
+  console.log(courseData); // Send this JSON to backend
+
+  closePopup();
+});
+
+// Reset form
+function resetForm() {
+  courseTitle.value = '';
+  courseCategory.value = '';
+  courseGrade.value = '';
+  selectedSkills = [];
+  updateSkillTags();
+  courseOverview.value = '';
+  thumbnailInput.value = '';
+  thumbnailPreview.classList.add('hidden');
+  previewTitle.textContent = '';
+  previewCategory.textContent = '';
+  previewGrade.textContent = '';
+  previewSkills.textContent = '';
+}

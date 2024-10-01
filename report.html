@@ -83,7 +83,7 @@
 
             <a href="/classroom.html">
               <li id="sidemenu-list"
-                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer menu-active ">
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer ">
                 <div class="flex gap-4 items-center">
                   <img class="w-6 h-6" src="assets/icons/clasroom.svg" alt="home">
                   <span class="sidebar-text">Classroom</span>
@@ -92,7 +92,7 @@
             </a>
             <a href="/report.html">
               <li id="sidemenu-list"
-                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer  ">
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer menu-active ">
                 <div class="flex gap-4 items-center">
                   <img class="w-6 h-6" src="assets/icons/report.svg" alt="home">
                   <span class="sidebar-text">Report</span>
@@ -179,7 +179,7 @@
 
     <header id="header-menu"
       class="  bg-white  flex justify-between w-full h-14 items-center  transition-all ease-out duration-300  p-4 border border-b-black/10">
-      <p class="text-xl-custom">Classrooms</p>
+      <p class="text-xl-custom">Student Courses</p>
 
       <!-- Search Input -->
       <div class="relative w-1/3">
@@ -226,98 +226,86 @@
       class=" bg-primaryLight  max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row overflow-auto lg:overflow-hidden h-[calc(100vh-3.5rem)]">
 
       <!-- main section-->
-      <section class="bg-primaryLight lg:w-2/3 p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide lg:h-full">
+      <section class="p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide lg:h-full w-full">
 
-        <div class="">
+        <p class="text-lg-custom">Students Report</p>
 
-          <div class="flex justify-between w-full">
-            <p class="text-lg-custom h-10">All Classes</p>
 
-            <!-- Add New Class Button -->
-            <button
-              class="bg-primary hover:bg-primaryDark flex gap-1 items-center text-white px-3 rounded-xl text-sm justify-center"
-              id="createClassButton">
-              <svg class="fill-white w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+        <div class="flex justify-between w-full items-center =">
+
+
+          <!-- Tab Buttons -->
+          <div class="flex justify-around mb-4">
+            <!-- Student Tab -->
+            <button id="studentTab"
+              class="tab-btn flex items-center gap-2 p-2 focus:outline-none text-primary border-b-2 border-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5.121 17.804A5.002 5.002 0 0112 7v7h1a1 1 0 011 1v5H9v-5a1 1 0 011-1h1V7a3 3 0 10-3 3v7.804z" />
               </svg>
-              Create a Class
+              Student
+            </button>
+
+            <!-- Quiz Tab -->
+            <button id="quizTab" class="tab-btn flex items-center gap-2 p-2 focus:outline-none text-gray-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 6a4 4 0 118 0v4a4 4 0 11-8 0V6zM6 12v4m12-4v4m-6 8v2m0-2H6m6 0h6m-6-6v-4m0 4v2m0-6h.01" />
+              </svg>
+              Quiz
             </button>
           </div>
 
-          <!-- Modal Overlay -->
-          <div id="classModalOverlay" class="fixed inset-0 bg-black/70 hidden z-50"></div>
+          <!-- Tab Content -->
+          <div id="tabContent">
+            <!-- Filter Section -->
+            <div class="flex gap-3">
+              <!-- Class Filter -->
 
-          <!-- Modal Content -->
-          <div id="classModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
-            <div class="bg-white w-[400px] p-5 rounded-lg shadow-lg relative">
-              <button id="closeClassModal" class="absolute top-2 right-2 text-gray-500 hover:text-black">
-                &times;
+              <p>Filter by</p>
+              <div>
+                <label class="block text-sm font-medium">Class</label>
+                <select id="classDropdown" class="w-full border border-gray-300 rounded-lg p-2 mt-1">
+                  <!-- Dynamic options will be loaded here -->
+                </select>
+              </div>
+
+              <!-- Grade Filter -->
+              <div>
+                <label class="block text-sm font-medium">Grade</label>
+                <select id="gradeDropdown" class="w-full border border-gray-300 rounded-lg p-2 mt-1">
+                  <!-- Dynamic options will be loaded here -->
+                </select>
+              </div>
+
+              <!-- Download PDF Button -->
+              <button id="downloadPdfBtn" class="bg-primary text-white px-4 py-2 rounded-lg mt-4">
+                Download PDF
               </button>
-              <h2 class="text-xl font-semibold mb-2">Create a Class</h2>
-              <hr class="mb-4">
-              <form id="createClassForm">
-                <label class="block mb-2">Class Name</label>
-                <input id="classNameInput" type="text" class="w-full p-2 border border-gray-300 rounded mb-4"
-                  placeholder="Enter class name (Max 30 characters)" maxlength="30" required>
-
-                <label class="block mb-2">Choose Folder Color</label>
-                <div class="flex gap-2 mb-4">
-                  <div class="w-6 h-6 cursor-pointer" style="background-color: #ec6409;" data-color="#ec6409"></div>
-                  <div class="w-6 h-6 cursor-pointer" style="background-color: #b7a597;" data-color="#b7a597"></div>
-                  <div class="w-6 h-6 cursor-pointer" style="background-color: #9d673d;" data-color="#9d673d"></div>
-                  <div class="w-6 h-6 cursor-pointer" style="background-color: #7a4e2a;" data-color="#7a4e2a"></div>
-                  <div class="w-6 h-6 cursor-pointer" style="background-color: #cca487;" data-color="#cca487"></div>
-                  <div class="w-6 h-6 cursor-pointer" style="background-color: #ffaf43;" data-color="#ffaf43"></div>
-                </div>
-
-                <input type="hidden" id="selectedColor" value="#ec6409">
-
-                <div class="flex justify-end gap-3">
-                  <button type="button" id="cancelButton"
-                    class="bg-gray-300 hover:bg-gray-400 text-black px-3 py-2 rounded">Cancel</button>
-                  <button type="submit"
-                    class="bg-primary hover:bg-primaryDark text-white px-3 py-2 rounded">Create</button>
-                </div>
-              </form>
             </div>
           </div>
 
-          <!-- Class Folders Container -->
-          <div id="classFoldersContainer" class="flex flex-wrap gap-4 mt-5"></div>
+        </div>
 
 
-      </section>
-
-      <!-- right side section -->
-      <section
-        class="bg-white border border-l-black/20 flex flex-col lg:w-1/3 p-4 gap-4 lg:overflow-auto scrollbar-custom">
-
-        <p class="text-lg-custom h-10">Announcements</p>
-
-        <div id="announcementContainer" class="flex flex-col gap-5">
-          <!-- Announcements will be injected here by JavaScript -->
-
-          <div id="postNewAnnoucementBtn" class="w-full h-[60px] cursor-pointer  bg-[#fff5e7] hover:bg-[#f9ebd8] flex justify-center items-center font-semibold text-primaryDark rounded-lg">
-            <svg class="fill-primary w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-            </svg>
-            Post New Announcement
-          </div>
+        <div>
+          <img src="assets/img/std-report.svg" class="w-full" alt="">
         </div>
 
       </section>
 
 
-    </main>
 
+    </main>
 
 
   </div>
 
   <!-- custom script -->
   <script src="./js/main.js"></script>
-  <script src="./js/classroom.js"></script>
-  <script src="./js/classroomTeacher.js"></script>
+  <script src="./js/reports.js"></script>
 
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
