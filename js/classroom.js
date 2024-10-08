@@ -1,6 +1,6 @@
 const classFoldersData = [
-  { id: 1, className: "Robotics Camp", classStudentCount: 3, classFolderColor: "#b7a597", link: "/robotics-camp.html" },
-  { id: 2, className: "Mathematics", classStudentCount: 5, classFolderColor: "#9d673d", link: "/classroom/mathematics" },
+  { id: 1, className: "Robotics Camp", classStudentCount: 3, classFolderColor: "#b7a597", link: "/classroom-detail.html" },
+  { id: 2, className: "Mathematics", classStudentCount: 5, classFolderColor: "#9d673d", link: "/robotics-camp.html" },
   { id: 3, className: "Class 4A", classStudentCount: 7, classFolderColor: "#7a4e2a", link: "/class-4a" },
   { id: 4, className: "Art", classStudentCount: 8, classFolderColor: "#cca487", link: "/classroom/art" },
   { id: 5, className: "History", classStudentCount: 3, classFolderColor: "#ec6409", link: "/history" },

@@ -1,0 +1,564 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Report</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link href="output.css" rel="stylesheet">
+
+  <style>
+    .menu-active {
+      background-color: #ba9070;
+    }
+  </style>
+</head>
+
+<body class="flex font-sans">
+
+  <!-- =========================================== -->
+  <!-- Nav menu left sidebar -->
+  <!-- =========================================== -->
+
+  <aside id="sidebar"
+    class="bg-[#9c663b] z-50 text-white w-72 h-screen transition-all ease-out duration-300 hidden lg:block">
+
+    <div class="h-full overflow-y-auto px-4 flex flex-col justify-between scrollbar-custom">
+
+      <div>
+        <!-- educraft logo -->
+        <div id="sidemenu-logo" class=" flex gap-2 ml-3 items-start mt-4">
+          <img src="./assets/img/educraft-logo-white.svg" alt="educraft logo">
+          <div class="grid">
+            <p class="logo-text font-bold text-2xl">EduCraft</p>
+            <p class="logo-text justify-self-end">Teacher</p>
+          </div>
+        </div>
+
+        <!-- shrink expand button -->
+        <div id="toggle-btn-area" class="w-full flex justify-end py-4 ">
+          <button id="toggleBtn" class="bg-white/20 p-2  rounded-lg">
+            <img class="w-3 h-3 " src="assets/icons/small.svg" alt="menu expand button">
+          </button>
+        </div>
+
+        <!-- top menu list -->
+        <nav class="flex flex-col justify-between ">
+          <ul class="flex flex-col gap-1">
+
+            <a href="/index.html">
+              <li id="sidemenu-list"
+                class="h-12 flex items-center hover:bg-[#ba9070] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list  cursor-pointer ">
+                <div class="flex gap-4 ">
+                  <img class="w-6 h-6" src="assets/icons/home.svg" alt="home">
+                  <span class="sidebar-text">Home</span>
+                </div>
+              </li>
+            </a>
+
+            <a href="/training-courses.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer ">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/my-courses.svg" alt="home">
+                  <span class="sidebar-text">Training Courses</span>
+                </div>
+              </li>
+            </a>
+
+            <a href="/student-courses.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer ">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/student-courses.svg" alt="home">
+                  <span class="sidebar-text">Student Courses</span>
+                </div>
+              </li>
+            </a>
+
+            <a href="/classroom.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer menu-active ">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/clasroom.svg" alt="home">
+                  <span class="sidebar-text">Classroom</span>
+                </div>
+              </li>
+            </a>
+            <a href="/report.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer  ">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/report.svg" alt="home">
+                  <span class="sidebar-text">Report</span>
+                </div>
+              </li>
+            </a>
+
+          </ul>
+
+        </nav>
+      </div>
+
+
+      <!-- bottom menu list -->
+      <div>
+
+        <!-- expanded educat chatbot button-->
+        <div id="educat-sidemenu-big"
+          class="lg:min-h-[100px] bg-gradient-to-b from-[#92623d] to-[#ad764c] rounded-2xl relative my-6 overflow-hidden">
+          <img class="absolute z-10  w-[90px] top-2 -right-2 " src="assets/img/educy.webp" alt="chat bot">
+          <div class="px-3 py-3">
+            <p class="">I'm</p>
+            <p class="font-bold text-lg tracking-tight -mt-1">EduCy<span class="text-xs font-base">&nbsp;2.0</span></p>
+
+            <p class="mt-6">Your AI</p>
+            <p class=" text-sm tracking-tight">Learning Assistant</p>
+
+            <button
+              class=" ecChatBotBtn bg-white text-[#bf4b00] mt-4 w-full py-2 text-semibold flex gap-1 rounded-lg justify-center items-center font-lg font-semibold hover:shadow-sm">
+              <img src="assets/icons/chat-regular.svg" alt="chat with educat">
+              Let's Chat
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- shrink educat chatbot button -->
+        <button id="educat-sidemenu-sm"
+          class="ecChatBotBtnSm bg-white text-[#bf4b00] my-6 w-full py-2 text-semibold hidden rounded-lg justify-center items-center">
+          <img src="assets/icons/chat-regular.svg" alt="chat with educat">
+
+        </button>
+
+        <!-- bottom menu list -->
+        <nav class="pb-4">
+          <ul class="flex flex-col gap-1">
+            <!-- <li id="sidemenu-list"
+              class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list">
+              <a href="#" class="flex gap-4">
+                <img class="w-6 h-6" src="assets/icons/help-center.svg" alt="home">
+                <span class="sidebar-text">Help</span>
+              </a>
+            </li> -->
+
+
+            <!-- sperator -->
+            <li class="w-full h-[2px] bg-white/20"></li>
+
+            <li id="sidemenu-list"
+              class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300">
+              <a href="#" class="flex gap-4 items-center">
+                <img class="w-6 h-6" src="assets/icons/logout.svg" alt="home">
+                <span class="sidebar-text">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  </aside>
+
+
+  <!-- =========================================== -->
+  <!-- Main -->
+  <!-- =========================================== -->
+
+  <div class="w-full h-screen  overflow-hidden relative ">
+
+    <!-- =========================================== -->
+    <!-- Top Header Menu -->
+    <!-- =========================================== -->
+
+    <header id="header-menu"
+      class="  bg-white  flex justify-between w-full h-14 items-center  transition-all ease-out duration-300  p-4 border border-b-black/10">
+      <p class="text-xl-custom">Classrooms</p>
+
+      <!-- Search Input -->
+      <div class="relative w-1/3">
+        <input type="text" placeholder="Search"
+          class="w-full pl-12 pr-4 py-2 rounded-full bg-[#fffaf4] focus:outline-none focus:border-primary border border-gray-200">
+        <img src="assets/icons/search-bar.svg" alt="Search Icon"
+          class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-red-700" />
+      </div>
+
+      <!-- full screen toggle & notification -->
+      <div class="flex gap-4">
+
+        <!-- Fullscreen Toggle Button -->
+        <div id="fullscreenToggle"
+          class="bg-[#fdf0e7] rounded-full w-10 h-10 lg:flex justify-center items-center relative hidden">
+
+          <img src="assets/icons/fullscreen.svg" alt="fullscreen">
+
+        </div>
+
+        <!-- Notification Button -->
+        <div id="notificationBtn"
+          class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative cursor-pointer">
+          <span
+            class="w-4 h-4 bg-[#ffbc00] absolute top-1 right-1 rounded-full flex justify-center text-xs font-semibold items-center">4</span>
+          <img src="assets/icons/bell.svg" alt="Notification Bell">
+        </div>
+
+      </div>
+
+      <!-- user profile -->
+      <div class="flex gap-2 justify-center items-center">
+        <p class="font-semibold">Fathima Thasneem</p>
+        <img class="w-10 h-10 rounded-full border-2 border-primary" src="assets/img/general/teacher.png"
+          alt="user profile">
+      </div>
+    </header>
+
+    <!-- =========================================== -->
+    <!-- Main Content Area - Dashboard -->
+    <!-- =========================================== -->
+
+    <main id="main"
+      class=" bg-primaryLight  max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row overflow-auto lg:overflow-hidden h-[calc(100vh-3.5rem)]">
+
+      <!-- main section-->
+      <section class="bg-primaryLight lg:w-2/3 p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide lg:h-full">
+
+        <!-- Page title & back button -->
+        <div class="flex gap-4 items-center ">
+          <a href="#" onclick="history.back(); return false;"
+            class="pl-2 pr-6 h-[40px] rounded-xl bg-white  border border-black/20 hover:border-black/50 flex items-center gap-1">
+            <img class="w-5" src="/assets/icons/arrow-left.svg" alt="back">
+            <p class="font-medium">Back</p>
+          </a>
+          <div class="flex gap-3 items-center">
+            <p class="text-lg-custom">Robotics Camp</p>
+            <img class="w-6" src="/assets/img/classroom/folder-icon.png" alt="folder">
+          </div>
+        </div>
+
+        <!-- ================================================ -->
+
+        <!-- tabs & contents -->
+        <div>
+          <!-- Tab Navigation -->
+          <div class="flex space-x-4 mb-4">
+            <div id="materialsTab" class="tab bg-gray-200 p-2 cursor-pointer">Materials</div>
+            <div id="quizzesTab" class="tab bg-gray-200 p-2 cursor-pointer">Quiz</div>
+          </div>
+
+          <!-- Add Button -->
+          <button id="materialQuizAddBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Add Material</button>
+
+          <!-- Tab Content -->
+          <div id="content" class="mt-4">
+            <div id="materialsContent" class="tab-content hidden">
+              <h2 class="font-semibold">Materials List</h2>
+              <div id="materialsList" class="mt-2"></div>
+            </div>
+            <div id="quizzesContent" class="tab-content hidden">
+              <h2 class="font-semibold">Quizzes List</h2>
+              <div id="quizzesList" class="mt-2"></div>
+            </div>
+          </div>
+
+          <!-- Popup for Adding Materials -->
+          <div id="materialModal"
+            class="modal hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+            <div class="bg-white p-6 rounded-lg w-96">
+              <h2 class="font-semibold mb-4">Add Material</h2>
+              <input id="materialName" type="text" placeholder="Material Name" class="border p-2 w-full mb-4">
+              <input id="materialFile" type="file" class="border p-2 w-full mb-4">
+              <div class="flex justify-between">
+                <button id="addMaterialBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Add</button>
+                <button id="closeMaterialModal" class="bg-gray-400 text-white px-4 py-2 rounded">Cancel</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Popup for Adding Quizzes -->
+          <div id="quizModal"
+            class="modal hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+            <div class="bg-white p-6 rounded-lg w-96">
+              <h2 class="font-semibold mb-4">Add Quiz</h2>
+              <input id="quizName" type="text" placeholder="Quiz Name" class="border p-2 w-full mb-4">
+              <div class="flex mb-4">
+                <input type="radio" name="quizType" id="scratch" value="scratch" class="mr-2">
+                <label for="scratch">Scratch</label>
+              </div>
+              <div class="flex mb-4">
+                <input type="radio" name="quizType" id="ai" value="ai" class="mr-2">
+                <label for="ai">AI</label>
+              </div>
+              <div class="flex mb-4">
+                <input type="radio" name="quizType" id="worksheet" value="worksheet" class="mr-2">
+                <label for="worksheet">Worksheet</label>
+              </div>
+              <div class="flex justify-between">
+                <button id="createQuizBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Create</button>
+                <button id="closeQuizModal" class="bg-gray-400 text-white px-4 py-2 rounded">Cancel</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Full-Screen Popup for Creating Quiz -->
+          <div id="QuizQuestionWindowModal" class="hidden flex  z-[60] transition-all top-0 left-0 fixed h-screen w-screen">
+
+            <div class="bg-white h-screen w-full lg:max-w-screen-2xl relative rounded-lg shadow-lg">
+
+              <!-- bottom fixed  -->
+              <div
+                class="bg-white border border-t-black/30 border-transparent fixed bottom-0 px-4 py-2 w-full lg:max-w-screen-2xl flex justify-end gap-4 z-[200]">
+                <button type="button" onclick="closeQuizQuestionWindow()"
+                  class="px-4 py-2  border border-black/20 hover:border-black/30 rounded-lg ">
+                  Cancel
+                </button>
+
+                <button type="button" onclick="closeQuizQuestionWindow()"
+                  class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primaryDark">
+                  Publish
+                </button>
+              </div>
+
+              <!-- header fixed -->
+              <div>
+
+                <div class="flex justify-between px-4 py-2">
+                  <!-- quiz name -->
+                  <p class="text-lg font-semibold">Robotics Club - Quiz</p>
+
+                  <!-- Close Button -->
+                  <button onclick="closeQuizQuestionWindow()"
+                    class=" bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
+                    <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
+                  </button>
+
+                </div>
+
+                <!-- seprator -->
+                <div class="w-full bg-gradient-to-r from-black/5 via-black/10 to-black/5 min-h-[2px]"></div>
+
+              </div>
+
+              <!-- Content of Quiz Creation Window -->
+              <div class="lg:flex h-full">
+
+                <!-- question type  -->
+                <div class="lg:min-w-[180px] border border-r-black/10  p-4 ">
+
+                  <!-- Question Type Selection -->
+                  <div class="flex lg:flex-col items-center gap-3 lg:h-screen text-center">
+                    <p class=" text-black/60 text-xs font-medium ">QUESTION TYPE</p>
+
+                    <div id="mcqOption"
+                      class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                      <img class="w-8" src="assets/img/classroom/mcq.png" alt="mcq">
+                      <input type="radio" class="hidden" name="questionType" value="mcq" />
+                      <p>Multiple Choice</p>
+                    </div>
+
+                    <div id="trueFalseOption"
+                      class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                      <img class="w-8" src="assets/img/classroom/trueorfalse.png" alt="truefalse">
+                      <input type="radio" class="hidden" name="questionType" value="trueFalse" />
+                      <p>True/False</p>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <!-- question creation  -->
+                <div class="w-full  relative grid grid-rows-[min(240px)_1f_1fr] overflow-auto">
+
+                  <!-- question Creation -->
+                  <div class="p-3">
+
+                    <div id="mcqQuestionCreator" class="flex gap-3 bg-gray-100 rounded-xl h-full p-3">
+
+                      <div class=" w-[85%] border border-transparent border-r-black/10">
+
+                        <label for="questionTitle" class="block text-xs  font-medium text-black/50 ">QUESTION
+                          TITLE</label>
+                        <input type="text" id="questionTitle"
+                          class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg font-medium"
+                          placeholder="Type Question here...">
+
+                        <div class="flex mt-8 gap-3 items-center pr-4">
+
+                          <div id="mcqOption"
+                            class="radioOption bg-white flex justify-center flex-col items-center border-[3px] border-transparent rounded-lg px-4 py-2 cursor-pointer w-full relative min-h-[100px]">
+
+                            <img id="deleteAnswer" class="w-4 absolute top-2 right-2" src="assets/icons/delete.svg"
+                              alt="mcq">
+
+                            <input type="radio" class="hidden" name="questionType" value="mcq" />
+                            <input type="text" id="questionTitle"
+                              class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0"
+                              placeholder="Type answer here...">
+                          </div>
+
+                          <div id="mcqOption"
+                            class="radioOption bg-white flex justify-center flex-col items-center border-[3px] border-transparent rounded-lg px-4 py-2 cursor-pointer w-full relative min-h-[100px]">
+
+                            <img id="deleteAnswer" class="w-4 absolute top-2 right-2" src="assets/icons/delete.svg"
+                              alt="mcq">
+
+                            <input type="radio" class="hidden" name="questionType" value="mcq" />
+                            <input type="text" id="questionTitle"
+                              class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0"
+                              placeholder="Type answer here...">
+                          </div>
+
+                          <div id="mcqOption"
+                            class="radioOption bg-white flex justify-center flex-col items-center border-[3px] border-transparent rounded-lg px-4 py-2 cursor-pointer w-full relative min-h-[100px]">
+
+                            <img id="deleteAnswer" class="w-4 absolute top-2 right-2" src="assets/icons/delete.svg"
+                              alt="mcq">
+
+                            <input type="radio" class="hidden" name="questionType" value="mcq" />
+                            <input type="text" id="questionTitle"
+                              class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0"
+                              placeholder="Type answer here...">
+                          </div>
+
+                          <div id="mcqOption"
+                            class="radioOption bg-white flex justify-center flex-col items-center border-[3px] border-transparent rounded-lg px-4 py-2 cursor-pointer w-full relative min-h-[100px]">
+
+                            <img id="deleteAnswer" class="w-4 absolute top-2 right-2" src="assets/icons/delete.svg"
+                              alt="mcq">
+
+                            <input type="radio" class="hidden" name="questionType" value="mcq" />
+                            <input type="text" id="questionTitle"
+                              class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0"
+                              placeholder="Type answer here...">
+                          </div>
+
+                          <div id="mcqOptionAddBtn">
+                            <p
+                              class="leading-3 text-2xl w-10 h-10 bg-white rounded-lg flex justify-center items-center hover:bg-primaryLight cursor-pointer">
+                              +</p>
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                      <div class="w-[15%]">
+
+                        <!-- Question Type -->
+                        <p class="text-black/80 mb-2">Question Type</p>
+                        <div class="flex gap-2">
+                          <img class="w-6" src="assets/img/classroom/mcq.png" alt="mcq">
+                          <p class="font-semibold">Multiple Choice</p>
+                        </div>
+
+                        <!-- Educoin Dropdown -->
+                        <div class="mt-4">
+                          <div class="flex gap-1 items-center mb-2">
+                            <p class="text-black/80">Educoins</p>
+                            <img class="w-6 " src="assets/img/general/educoin-sm.png" alt="educoin">
+                          </div>
+
+                          <select id="educoin"
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md font-medium">
+                            <option value="1">1 Educoin</option>
+                            <option value="2">2 Educoin</option>
+                            <option value="3">3 Educoin</option>
+                            <option value="4">4 Educoin</option>
+                            <option value="5">5 Educoin</option>
+                            <option value="6">6 Educoin</option>
+                            <option value="7">7 Educoin</option>
+                            <option value="8">8 Educoin</option>
+                            <option value="9">9 Educoin</option>
+                          </select>
+                        </div>
+
+                        <!--  Add Quesiton Button -->
+                        <button type="button" onclick="createQuizQuestion()"
+                          class="px-4 py-2 mt-3 bg-primary text-white rounded-lg hover:bg-primaryDark">
+                          + Add Question
+                        </button>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <!-- sticky question header-->
+                  <div
+                    class="py-2 px-4 flex justify-between items-center sticky top-0 bg-white border border-b-black/20 border-transparent shadow">
+                    <div class="flex gap-1 items-center">
+                      <div class="text-lg font-semibold">All Questions</div>
+                      <div
+                        class="w-[20px] h-[20px] flex justify-center font-semibold items-center bg-primary text-white rounded-full">
+                        3</div>
+                    </div>
+
+                    <div>
+                      <div class="flex gap-1 items-center mb-2">
+                        <img class="w-6 " src="assets/img/general/educoin-sm.png" alt="educoin">
+                        <p class="text-black/80">Educoins:</p>
+                        <p class="font-semibold">8</p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- question listing -->
+                  <div class="bg-primaryLight w-full flex flex-col p-4 pb-[120px]">
+
+                    <div id="questionContainer" class="space-y-6"></div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <!-- ================================================ -->
+
+
+
+      </section>
+
+      <!-- right side section -->
+      <section
+        class="bg-white border border-l-black/20 flex flex-col lg:w-1/3 p-4 gap-4 lg:overflow-auto scrollbar-custom">
+
+        <p class="text-lg-custom h-10">Students</p>
+
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+
+
+  <!-- custom script -->
+  <script src="./js/main.js"></script>
+  <script src="./js/classroomDetail.js"></script>
+  <script src="./js/quizQuestionCreation.js"></script>
+
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+</body>
+
+</html>

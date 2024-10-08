@@ -7,6 +7,7 @@
   <title>Educraft</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
@@ -389,20 +390,9 @@
       <section class="lg:w-2/3 p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide h-full relative">
 
 
-        <div class="absolute flex w-full h-full justify-center items-center z-[100]">
-          <p class="text-primary text-2xl font-semibold  ">Under Development
-          </p>
-
-          <video width="100" height="200" autoplay loop>
-            <source src="assets/videos/under-dev.webm" type="video/webm">
-            <!-- Fallback text for unsupported browsers -->
-            Your browser does not support the WebM video format.
-          </video>
-
-        </div>
 
         <!-- welcome & user profile -->
-        <div class="flex gap-4 flex-col lg:flex-row opacity-15">
+        <div class="flex gap-4 flex-col lg:flex-row">
 
           <!-- motivation message  -->
           <div class="w-full flex-col flex gap-2 ">
@@ -428,424 +418,114 @@
           </div>
         </div>
 
-        <!-- skill map -->
-        <div class="opacity-15">
-          <img src="assets/img/Dashboard/course-insight-bar-chart.svg" alt="">
+        <!-- course insight chart -->
+        <div class="bg-primaryLight rounded-2xl border border-black/10 px-4 py-3">
+          <div id="courseInsightChart">
+            <div class="flex justify-between">
+              <p class="text-lg-custom">Course Insight</p>
+              <select name="insight-class" id="insightClass"
+                class="cursor-pointer bg-transparent text-primaryDark font-medium px-2 py-1">
+                <option value="1">Class 4B</option>
+                <option value="2">Class 5B</option>
+                <option value="3">Class 6B</option>
+                <option value="4">Class 6C</option>
+                <option value="5">Class 6D</option>
+              </select>
+            </div>
+          </div>
         </div>
 
-        <div class="opacity-15">
-          <img src="assets/img/Dashboard/performance.svg" alt="">
+        <!-- Student Performance Pie Chart -->
+        <div class="bg-primaryLight rounded-xl border border-black/10 px-4 py-3">
+
+          <div class="flex justify-between">
+            <p class="text-lg-custom">Student Performance</p>
+            <select name="stdPrfm-class" id="stdPrfmClass"
+              class="cursor-pointer bg-transparent text-primaryDark font-medium px-2 py-1">
+              <option value="1">Class 4B</option>
+              <option value="2">Class 5B</option>
+              <option value="3">Class 6B</option>
+              <option value="4">Class 6C</option>
+              <option value="5">Class 6D</option>
+            </select>
+          </div>
+
+          <div class="flex items-center">
+            <!-- Pie chart container -->
+            <div id="studentPerformanceChart" class="flex-1 max-w-[240px]"></div>
+
+            <!-- Performance Details -->
+            <div class="w-full grid gap-6">
+              <!-- High Flyers -->
+              <div class="grid grid-cols-[130px_1fr_80px] gap-5">
+                <div class="flex gap-3">
+                  <div class="w-4 h-4 rounded bg-[#ffc66e]"></div>
+                  <p>High Flyers</p>
+                </div>
+                <div class="w-full lg:max-w-[380px] h-5 rounded overflow-hidden bg-[#f3ebdf] relative">
+                  <div id="highFlyersPercentage"
+                    class="bg-gradient-to-r from-[#fd9715] to-[#ffc66d] absolute left-0 h-full rounded"></div>
+                </div>
+                <p id="stdPrfmHighFlyersCount"></p>
+              </div>
+
+              <!-- Medium Flyers -->
+              <div class="grid grid-cols-[130px_1fr_80px] gap-5">
+                <div class="flex gap-3">
+                  <div class="w-4 h-4 rounded bg-[#ec6409]"></div>
+                  <p>Medium Flyers</p>
+                </div>
+                <div class="w-full lg:max-w-[380px] h-5 rounded overflow-hidden bg-[#f3ebdf] relative">
+                  <div id="mediumFlyersPercentage"
+                    class="bg-gradient-to-r from-[#eb6207] to-[#eb6409] absolute left-0 h-full rounded"></div>
+                </div>
+                <p id="stdPrfmMediumFlyersCount"></p>
+              </div>
+
+              <!-- Low Flyers -->
+              <div class="grid grid-cols-[130px_1fr_80px] gap-5">
+                <div class="flex gap-3">
+                  <div class="w-4 h-4 rounded bg-[#bf4b00]"></div>
+                  <p>Low Flyers</p>
+                </div>
+                <div class="w-full lg:max-w-[380px] h-5 rounded overflow-hidden bg-[#f3ebdf] relative">
+                  <div id="lowFlyersPercentage"
+                    class="bg-gradient-to-r from-[#bf4b00] to-[#bf4b00] absolute left-0 h-full rounded"></div>
+                </div>
+                <p id="stdPrfmlowFlyersCount"></p>
+              </div>
+            </div>
+          </div>
         </div>
+
+
 
 
 
       </section>
 
       <!-- right side section -->
-      <section class="border border-l-black/20 flex flex-col lg:w-1/3 p-4 gap-4 lg:overflow-auto scrollbar-hide">
+      <section class="border border-l-black/20 flex flex-col lg:w-1/3 p-4 gap-2 lg:overflow-auto scrollbar-hide">
 
-        <!-- whats new -->
-        <div class="w-full flex flex-col gap-2">
-          <div class="h-10  flex justify-between items-center">
-            <p class="text-lg-custom">What's New</p>
-          </div>
-
-          <div class=" min-h-[220px]">
-
-            <!-- swiper carousel -->
-            <div class="swiper whatsNewSlider h-full">
-              <div class="swiper-wrapper">
-
-                <div class="swiper-slide rounded-2xl overflow-hidden relative ">
-
-                  <!-- text content here -->
-                  <div class="absolute w-full h-full  p-4 flex z-20  flex-col justify-between">
-
-                    <div>
-                      <!-- category name -->
-                      <p class="w-fit p-2 bg-primary rounded-full text-white text-xs-custom">Events</p>
-                    </div>
-
-                    <div class="mb-4">
-
-                      <!-- source name -->
-                      <div class="flex gap-2 items-center text-white">
-                        <a class="underline " href="#">Linkedin</a>
-
-                        <!-- post time -->
-                        <div class="w-1.5 h-1.5 bg-white rounded-full">
-                        </div>
-
-                        <span class="text-xs">6 hours ago</span>
-
-                      </div>
-
-                      <!-- title in max 3 lines -->
-                      <a href="https://www.linkedin.com/posts/educraft-dubai-india_educraft-littleinnovators-robotics-activity-7227946782620573696-FY7c/?utm_source=share&utm_medium=member_desktop"
-                        target="_blank" class="font-medium tracking-wide pt-2 text-white">Exciting News! EduCraft
-                        Robotics Program
-                        Launching in
-                        Abudhabi School This Fall..
-                      </a>
-
-                    </div>
-
-                  </div>
-
-                  <!-- carousal slide image here -->
-                  <div class="absolute w-full h-full ">
-                    <div class="absolute w-full h-full bg-gradient-to-t from-black/70 to-transparent"></div>
-                    <img class="w-full h-full object-cover" src="assets/img/carousal-1.webp" alt="news">
-                  </div>
-
-                </div>
-
-                <div class="swiper-slide rounded-2xl overflow-hidden relative ">
-
-                  <!-- text content here -->
-                  <div class="absolute w-full h-full  p-4 flex z-20  flex-col justify-between">
-
-                    <div>
-                      <!-- category name -->
-                      <p class="w-fit p-2 bg-primary rounded-full text-white text-xs-custom">Events</p>
-                    </div>
-
-                    <div class="mb-4">
-
-                      <!-- source name -->
-                      <div class="flex gap-2 items-center text-white">
-                        <a class="underline " href="#">Linkedin</a>
-
-                        <!-- post time -->
-                        <div class="w-1.5 h-1.5 bg-white rounded-full">
-                        </div>
-
-                        <span class="text-xs">6 hours ago</span>
-
-                      </div>
-
-                      <!-- title in max 3 lines -->
-                      <a href="https://www.linkedin.com/posts/educraft-dubai-india_educraft-littleinnovators-robotics-activity-7227946782620573696-FY7c/?utm_source=share&utm_medium=member_desktop"
-                        target="_blank" class="font-medium tracking-wide pt-2 text-white">Exciting News! EduCraft
-                        Robotics Program
-                        Launching in
-                        Abudhabi School This Fall..
-                      </a>
-
-                    </div>
-
-                  </div>
-
-                  <!-- carousal slide image here -->
-                  <div class="absolute w-full h-full ">
-                    <div class="absolute w-full h-full bg-gradient-to-t from-black/70 to-transparent"></div>
-                    <img class="w-full h-full object-cover" src="assets/img/carousal-2.jpg" alt="news">
-                  </div>
-
-                </div>
-
-                <div class="swiper-slide rounded-2xl overflow-hidden relative ">
-
-                  <!-- text content here -->
-                  <div class="absolute w-full h-full  p-4 flex z-20  flex-col justify-between">
-
-                    <div>
-                      <!-- category name -->
-                      <p class="w-fit p-2 bg-primary rounded-full text-white text-xs-custom">Events</p>
-                    </div>
-
-                    <div class="mb-4">
-
-                      <!-- source name -->
-                      <div class="flex gap-2 items-center text-white">
-                        <a class="underline " href="#">Linkedin</a>
-
-                        <!-- post time -->
-                        <div class="w-1.5 h-1.5 bg-white rounded-full">
-                        </div>
-
-                        <span class="text-xs">6 hours ago</span>
-
-                      </div>
-
-                      <!-- title in max 3 lines -->
-                      <a href="https://www.linkedin.com/posts/educraft-dubai-india_educraft-littleinnovators-robotics-activity-7227946782620573696-FY7c/?utm_source=share&utm_medium=member_desktop"
-                        target="_blank" class="font-medium tracking-wide pt-2 text-white">Exciting News! EduCraft
-                        Robotics Program
-                        Launching in
-                        Abudhabi School This Fall..
-                      </a>
-
-                    </div>
-
-                  </div>
-
-                  <!-- carousal slide image here -->
-                  <div class="absolute w-full h-full ">
-                    <div class="absolute w-full h-full bg-gradient-to-t from-black/70 to-transparent"></div>
-                    <img class="w-full h-full object-cover" src="assets/img/carousal-3.jpg" alt="news">
-                  </div>
-
-                </div>
-
-                <div class="swiper-slide rounded-2xl overflow-hidden relative ">
-
-                  <!-- text content here -->
-                  <div class="absolute w-full h-full  p-4 flex z-20  flex-col justify-between">
-
-                    <div>
-                      <!-- category name -->
-                      <p class="w-fit p-2 bg-primary rounded-full text-white text-xs-custom">Events</p>
-                    </div>
-
-                    <div class="mb-4">
-
-                      <!-- source name -->
-                      <div class="flex gap-2 items-center text-white">
-                        <a class="underline " href="#">Linkedin</a>
-
-                        <!-- post time -->
-                        <div class="w-1.5 h-1.5 bg-white rounded-full">
-                        </div>
-
-                        <span class="text-xs">6 hours ago</span>
-
-                      </div>
-
-                      <!-- title in max 3 lines -->
-                      <a href="https://www.linkedin.com/posts/educraft-dubai-india_educraft-littleinnovators-robotics-activity-7227946782620573696-FY7c/?utm_source=share&utm_medium=member_desktop"
-                        target="_blank" class="font-medium tracking-wide pt-2 text-white">Exciting News! EduCraft
-                        Robotics Program
-                        Launching in
-                        Abudhabi School This Fall..
-                      </a>
-
-                    </div>
-
-                  </div>
-
-                  <!-- carousal slide image here -->
-                  <div class="absolute w-full h-full ">
-                    <div class="absolute w-full h-full bg-gradient-to-t from-black/70 to-transparent"></div>
-                    <img class="w-full h-full object-cover" src="assets/img/carousal-4.jpg" alt="news">
-                  </div>
-
-                </div>
-
-                <div class="swiper-slide rounded-2xl overflow-hidden relative ">
-
-                  <!-- text content here -->
-                  <div class="absolute w-full h-full  p-4 flex z-20  flex-col justify-between">
-
-                    <div>
-                      <!-- category name -->
-                      <p class="w-fit p-2 bg-primary rounded-full text-white text-xs-custom">Events</p>
-                    </div>
-
-                    <div class="mb-4">
-
-                      <!-- source name -->
-                      <div class="flex gap-2 items-center text-white">
-                        <a class="underline " href="#">Linkedin</a>
-
-                        <!-- post time -->
-                        <div class="w-1.5 h-1.5 bg-white rounded-full">
-                        </div>
-
-                        <span class="text-xs">6 hours ago</span>
-
-                      </div>
-
-                      <!-- title in max 3 lines -->
-                      <a href="https://www.linkedin.com/posts/educraft-dubai-india_educraft-littleinnovators-robotics-activity-7227946782620573696-FY7c/?utm_source=share&utm_medium=member_desktop"
-                        target="_blank" class="font-medium tracking-wide pt-2 text-white">Exciting News! EduCraft
-                        Robotics Program
-                        Launching in
-                        Abudhabi School This Fall..
-                      </a>
-
-                    </div>
-
-                  </div>
-
-                  <!-- carousal slide image here -->
-                  <div class="absolute w-full h-full ">
-                    <div class="absolute w-full h-full bg-gradient-to-t from-black/70 to-transparent"></div>
-                    <img class="w-full h-full object-cover" src="assets/img/carousal-5.jpg" alt="news">
-                  </div>
-
-                </div>
-
-
-              </div>
-              <div class="swiper-pagination "></div>
-            </div>
-
-
-          </div>
-        </div>
+        <!-- whatsnew code here -->
 
         <!-- seprator -->
         <div class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[3px] "></div>
 
 
         <!-- Comments -->
-        <div class="w-full min-h-[390px] overflow-hidden">
+        <div class="w-full min-h-[280px] overflow-hidden ">
 
           <!-- heading -->
-          <div class="h-[44px] flex justify-between items-center">
+          <div class="h-[24px] flex justify-between items-center">
             <p class="text-lg-custom">Comments</p>
-            <a href="#" class="text-primaryDark text-xs font-medium hover:underline">View detail</a>
+            <a href="#" class="text-primaryDark text-xs font-medium hover:underline">View All</a>
           </div>
 
 
-          <div class="flex flex-col h-[calc(390px-44px)] gap-4 pt-4 pr-4 scrollbar-custom  overflow-auto">
+          <div class="flex flex-col h-[calc(280px-34px)] gap-4 pt-4 pr-4 scrollbar-custom  overflow-auto">
 
-            <!-- comment 1 -->
-            <div>
-
-              <div class="bg-[#fae3d2] h-[6px] w-[90%] mx-auto rounded-tl-lg rounded-tr-lg "></div>
-
-              <!-- change content here.. -->
-              <div class="bg-[#fff6ef] w-full rounded-xl px-2 py-4 relative border border-black/10">
-                <div class=" gap-4 flex flex-col">
-
-                  <div class="flex items-center  gap-2">
-
-                    <!-- teacher profile details - dynamic content -->
-                    <img class="w-[44x] h-[44px] rounded-full" src="/assets/img/general/teacher.png"
-                      alt="user-profile-picture">
-
-                    <div class="w-full">
-                      <div class="flex justify-between w-full">
-                        <p class="font-semibold ">Sarah Ahmed <span class="font-normal text-black/50 pl-2">replied to
-                            you</span></p>
-
-                        <!-- time - dyanmic value -->
-                        <p class="text-xs font-semibold text-primaryDark">3hr</p>
-
-                      </div>
-
-                      <!-- student comment - dyanmic text -->
-                      <p class="text-black/50 pt-1">I have a question about the assign...</p>
-                    </div>
-
-                  </div>
-
-                  <!-- seperator -->
-                  <div class="w-full min-h-[1px] bg-gray-200"></div>
-
-                  <div class="flex justify-between items-center">
-                    <div class="flex gap-2  items-center">
-                      <img class="w-8" src="/assets/icons/book.svg" alt="comments-section">
-                      <p>Computer network & Internet</p>
-
-
-                    </div>
-                    <a href="#" class="text-xs font-semibold text-primaryDark hover:underline">View reply</a>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <!-- comment 2 -->
-            <div>
-
-              <div class="bg-[#f3eacf] h-[6px] w-[90%] mx-auto rounded-tl-lg rounded-tr-lg"></div>
-
-              <!-- change content here.. -->
-              <div class="bg-[#fdf6e1] w-full rounded-xl px-2 py-4 relative border border-black/10">
-                <div class=" gap-4 flex flex-col  ">
-
-                  <div class="flex items-center  gap-2">
-
-                    <!-- teacher profile details - dynamic content -->
-                    <img class="w-[44x] h-[44px] rounded-full" src="/assets/img/general/teacher2.jpg"
-                      alt="user-profile-picture">
-
-                    <div class="w-full">
-                      <div class="flex justify-between w-full">
-                        <p class="font-semibold ">Hamza Yusuf <span class="font-normal text-black/50 pl-2">replied to
-                            you</span></p>
-
-                        <!-- time - dyanmic value -->
-                        <p class="text-xs font-semibold text-primaryDark">3hr</p>
-
-                      </div>
-
-                      <!-- student comment - dyanmic text -->
-                      <p class="text-black/50 pt-1">Is there a way to get extra educoins...</p>
-                    </div>
-
-                  </div>
-
-                  <!-- seperator -->
-                  <div class="w-full min-h-[1px] bg-gray-200"></div>
-
-                  <div class="flex justify-between items-center">
-                    <div class="flex gap-2  items-center">
-                      <img class="w-8" src="/assets/icons/book.svg" alt="comments-section">
-                      <p>Familiarization of Microbit</p>
-
-
-                    </div>
-                    <a href="#" class="text-xs font-semibold text-primaryDark hover:underline">View reply</a>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <!-- comment 3 -->
-            <div>
-
-              <div class="bg-[#fae3d2] h-[6px] w-[90%] mx-auto rounded-tl-lg rounded-tr-lg "></div>
-
-              <!-- change content here.. -->
-              <div class="bg-[#fff6ef] w-full rounded-xl px-2 py-4 relative border border-black/10">
-                <div class=" gap-4 flex flex-col">
-
-                  <div class="flex items-center  gap-2">
-
-                    <!-- teacher profile details - dynamic content -->
-                    <img class="w-[44x] h-[44px] rounded-full" src="/assets/img/general/teacher.png"
-                      alt="user-profile-picture">
-
-                    <div class="w-full">
-                      <div class="flex justify-between w-full">
-                        <p class="font-semibold ">Sarah Ahmed <span class="font-normal text-black/50 pl-2">replied to
-                            you</span></p>
-
-                        <!-- time - dyanmic value -->
-                        <p class="text-xs font-semibold text-primaryDark">3hr</p>
-
-                      </div>
-
-                      <!-- student comment - dyanmic text -->
-                      <p class="text-black/50 pt-1">I have a question about the assign...</p>
-                    </div>
-
-                  </div>
-
-                  <!-- seperator -->
-                  <div class="w-full min-h-[1px] bg-gray-200"></div>
-
-                  <div class="flex justify-between items-center">
-                    <div class="flex gap-2  items-center">
-                      <img class="w-8" src="/assets/icons/book.svg" alt="comments-section">
-                      <p>Computer network & Internet</p>
-
-
-                    </div>
-                    <a href="#" class="text-xs font-semibold text-primaryDark hover:underline">View reply</a>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-
+            <div id="commentsContainer" class="flex flex-col gap-4"></div>
 
           </div>
         </div>
@@ -853,10 +533,106 @@
         <!-- seprator -->
         <div class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[3px] "></div>
 
+        <!-- Reviews -->
+        <div class="w-full min-h-[290px] overflow-hidden">
 
-        <div class="flex flex-col gap-4 ">
-          <img src="assets/img/Dashboard/review-list.svg" alt="">
-          <img src="assets/img/Dashboard/review-list.svg" alt="">
+          <!-- heading -->
+          <div class="h-[24px] flex justify-between items-center">
+            <p class="text-lg-custom">Reviews</p>
+            <!-- <a href="#" class="text-primaryDark text-xs font-medium hover:underline">View All</a> -->
+          </div>
+
+
+          <div class="flex flex-col h-[calc(290px-44px)] gap-4 pr-4 scrollbar-custom  overflow-auto">
+
+            <div id="reviewsContainer" class="flex flex-col gap-4">
+
+              <div
+                class="bg-white hover:bg-[#fffcf6] border border-black/10 w-full rounded-xl px-2 py-2 relative hover:border-black/20 cursor-pointer">
+
+                <div class="gap-2 flex flex-col">
+
+                  <div class="flex justify-between">
+
+                    <!-- profile pic, name, rating star -->
+                    <div class="flex items-center gap-2">
+
+                      <img class="w-[34px] h-[34px] rounded-full" src="/assets/img/general/user.png"
+                        alt="user-profile-picture">
+
+                      <div>
+                        <p id="studentName" class="font-semibold">Shemin Shah</p>
+                        <div id="starRating" class="flex gap-1">
+
+                          <svg id="fullStar" class="w-4 fill-orange-400" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z">
+                            </path>
+                          </svg>
+
+                          <svg id="halfStar" class="w-4 fill-orange-400" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M12.0006 15.968L16.2473 18.3451L15.2988 13.5717L18.8719 10.2674L14.039 9.69434L12.0006 5.27502V15.968ZM12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z">
+                            </path>
+                          </svg>
+
+                          <svg id="noStar" class="w-4 fill-gray-300" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z">
+                            </path>
+                          </svg>
+
+                          <svg id="noStar" class="w-4 fill-gray-300" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z">
+                            </path>
+                          </svg>
+
+
+                          <svg id="noStar" class="w-4 fill-gray-300" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z">
+                            </path>
+                          </svg>
+
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- timestamp, coursename -->
+                    <div class="flex flex-col items-end">
+
+                      <div class="flex gap-1 items-center">
+                        <div id="newComment-${comment.id}"
+                          class="w-2 h-2 bg-orange-500 rounded-full ${!comment.isNew ? 'hidden' : ''}"></div>
+                        <p class="text-xs font-semibold text-primaryDark">1 day ago</p>
+                      </div>
+
+                      <div class="flex gap-2 items-center">
+                        <img src="assets/icons/book.svg" alt="">
+                        <p class="courseName">Familiarize in microbit</p>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <p id="studentComment-${comment.id}" class="text-black/50 pt-1">
+                    The Robotics course was amazing! Your step-by-step explanations made even the complex concepts...
+                  </p>
+
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
         </div>
 
       </section>
@@ -947,7 +723,6 @@
   <!-- Popup Notification -->
   <!-- =========================================== -->
 
-
   <div id="popupNotification" class=" hidden fixed z-[1000] bg-black/70 w-full justify-center items-center h-screen">
     <div class="bg-white lg:max-h-[80vh] h-full lg:max-w-3xl w-full rounded-xl">
 
@@ -979,6 +754,7 @@
   <script src="./js/chatbot.js"></script>
   <script src="./js/main.js"></script>
   <script src="./js/notification.js"></script>
+  <script src="./js/chart.js"></script>
 
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
