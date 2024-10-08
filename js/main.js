@@ -222,7 +222,7 @@ function timeAgo(dateString) {
 function createComment(comment, index) {
 
   // Determine background color based on the index (odd/even)
-  const bgColor = index % 2 === 0 ? '#29bc1e' : '#ec1b43';
+  const bgColor = index % 2 === 0 ? '#29bc1e' : '#fff6ef';
   const hoverColor = index % 2 === 0 ? '#fbf0ce' : '#fffaf6'; // Slightly lighter hover color
 
 
