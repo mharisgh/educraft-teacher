@@ -31,7 +31,7 @@ var options = {
   }],
   chart: {
     type: 'bar',
-    height: 350,
+    height: 280,
     toolbar: {
       show: false  // Remove toolbar (hamburger menu)
     }
