@@ -243,288 +243,68 @@
 
         <!-- ================================================ -->
 
-        <!-- tabs & contents -->
-        <div>
-          <!-- Tab Navigation -->
-          <div class="flex space-x-4 mb-4">
-            <div id="materialsTab" class="tab bg-gray-200 p-2 cursor-pointer">Materials</div>
-            <div id="quizzesTab" class="tab bg-gray-200 p-2 cursor-pointer">Quiz</div>
-          </div>
+        <!-- Tabs and Content Section -->
+        <div class="flex flex-col">
 
-          <!-- Add Button -->
-          <button id="materialQuizAddBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Add Material</button>
+          <div class="flex justify-between w-full">
+            <!-- Tabs for switching between views -->
+            <div class="flex bg-white border border-black/10 rounded-lg w-fit mb-4">
 
-          <!-- Tab Content -->
-          <div id="content" class="mt-4">
-            <div id="materialsContent" class="tab-content hidden">
-              <h2 class="font-semibold">Materials List</h2>
-              <div id="materialsList" class="mt-2"></div>
-            </div>
-            <div id="quizzesContent" class="tab-content hidden">
-              <h2 class="font-semibold">Quizzes List</h2>
-              <div id="quizzesList" class="mt-2"></div>
-            </div>
-          </div>
+              <!-- Tab Buttons -->
+              <button
+                class="post-announcement-tab-btn active px-4 min-w-[140px] py-2 rounded-lg bg-primary text-white w-fit flex gap-2 items-center justify-center"
+                data-tab="quiz-tab">
+                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z">
+                  </path>
+                </svg>
+                <p>Quiz</p>
+              </button>
 
-          <!-- Popup for Adding Materials -->
-          <div id="materialModal"
-            class="modal hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-            <div class="bg-white p-6 rounded-lg w-96">
-              <h2 class="font-semibold mb-4">Add Material</h2>
-              <input id="materialName" type="text" placeholder="Material Name" class="border p-2 w-full mb-4">
-              <input id="materialFile" type="file" class="border p-2 w-full mb-4">
-              <div class="flex justify-between">
-                <button id="addMaterialBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Add</button>
-                <button id="closeMaterialModal" class="bg-gray-400 text-white px-4 py-2 rounded">Cancel</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Popup for Adding Quizzes -->
-          <div id="quizModal"
-            class="modal hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-            <div class="bg-white p-6 rounded-lg w-96">
-              <h2 class="font-semibold mb-4">Add Quiz</h2>
-              <input id="quizName" type="text" placeholder="Quiz Name" class="border p-2 w-full mb-4">
-              <div class="flex mb-4">
-                <input type="radio" name="quizType" id="scratch" value="scratch" class="mr-2">
-                <label for="scratch">Scratch</label>
-              </div>
-              <div class="flex mb-4">
-                <input type="radio" name="quizType" id="ai" value="ai" class="mr-2">
-                <label for="ai">AI</label>
-              </div>
-              <div class="flex mb-4">
-                <input type="radio" name="quizType" id="worksheet" value="worksheet" class="mr-2">
-                <label for="worksheet">Worksheet</label>
-              </div>
-              <div class="flex justify-between">
-                <button id="createQuizBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Create</button>
-                <button id="closeQuizModal" class="bg-gray-400 text-white px-4 py-2 rounded">Cancel</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Full-Screen Popup for Creating Quiz -->
-          <div id="QuizQuestionWindowModal" class="hidden flex  z-[60] transition-all top-0 left-0 fixed h-screen w-screen">
-
-            <div class="bg-white h-screen w-full lg:max-w-screen-2xl relative rounded-lg shadow-lg">
-
-              <!-- bottom fixed  -->
-              <div
-                class="bg-white border border-t-black/30 border-transparent fixed bottom-0 px-4 py-2 w-full lg:max-w-screen-2xl flex justify-end gap-4 z-[200]">
-                <button type="button" onclick="closeQuizQuestionWindow()"
-                  class="px-4 py-2  border border-black/20 hover:border-black/30 rounded-lg ">
-                  Cancel
-                </button>
-
-                <button type="button" onclick="closeQuizQuestionWindow()"
-                  class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primaryDark">
-                  Publish
-                </button>
-              </div>
-
-              <!-- header fixed -->
-              <div>
-
-                <div class="flex justify-between px-4 py-2">
-                  <!-- quiz name -->
-                  <p class="text-lg font-semibold">Robotics Club - Quiz</p>
-
-                  <!-- Close Button -->
-                  <button onclick="closeQuizQuestionWindow()"
-                    class=" bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
-                    <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
-                  </button>
-
-                </div>
-
-                <!-- seprator -->
-                <div class="w-full bg-gradient-to-r from-black/5 via-black/10 to-black/5 min-h-[2px]"></div>
-
-              </div>
-
-              <!-- Content of Quiz Creation Window -->
-              <div class="lg:flex h-full">
-
-                <!-- question type  -->
-                <div class="lg:min-w-[180px] border border-r-black/10  p-4 ">
-
-                  <!-- Question Type Selection -->
-                  <div class="flex lg:flex-col items-center gap-3 lg:h-screen text-center">
-                    <p class=" text-black/60 text-xs font-medium ">QUESTION TYPE</p>
-
-                    <div id="mcqOption"
-                      class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
-                      <img class="w-8" src="assets/img/classroom/mcq.png" alt="mcq">
-                      <input type="radio" class="hidden" name="questionType" value="mcq" />
-                      <p>Multiple Choice</p>
-                    </div>
-
-                    <div id="trueFalseOption"
-                      class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
-                      <img class="w-8" src="assets/img/classroom/trueorfalse.png" alt="truefalse">
-                      <input type="radio" class="hidden" name="questionType" value="trueFalse" />
-                      <p>True/False</p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <!-- question creation  -->
-                <div class="w-full  relative grid grid-rows-[min(240px)_1f_1fr] overflow-auto">
-
-                  <!-- question Creation -->
-                  <div class="p-3">
-
-                    <div id="mcqQuestionCreator" class="flex gap-3 bg-gray-100 rounded-xl h-full p-3">
-
-                      <div class=" w-[85%] border border-transparent border-r-black/10">
-
-                        <label for="questionTitle" class="block text-xs  font-medium text-black/50 ">QUESTION
-                          TITLE</label>
-                        <input type="text" id="questionTitle"
-                          class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg font-medium"
-                          placeholder="Type Question here...">
-
-                        <div class="flex mt-8 gap-3 items-center pr-4">
-
-                          <div id="mcqOption"
-                            class="radioOption bg-white flex justify-center flex-col items-center border-[3px] border-transparent rounded-lg px-4 py-2 cursor-pointer w-full relative min-h-[100px]">
-
-                            <img id="deleteAnswer" class="w-4 absolute top-2 right-2" src="assets/icons/delete.svg"
-                              alt="mcq">
-
-                            <input type="radio" class="hidden" name="questionType" value="mcq" />
-                            <input type="text" id="questionTitle"
-                              class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0"
-                              placeholder="Type answer here...">
-                          </div>
-
-                          <div id="mcqOption"
-                            class="radioOption bg-white flex justify-center flex-col items-center border-[3px] border-transparent rounded-lg px-4 py-2 cursor-pointer w-full relative min-h-[100px]">
-
-                            <img id="deleteAnswer" class="w-4 absolute top-2 right-2" src="assets/icons/delete.svg"
-                              alt="mcq">
-
-                            <input type="radio" class="hidden" name="questionType" value="mcq" />
-                            <input type="text" id="questionTitle"
-                              class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0"
-                              placeholder="Type answer here...">
-                          </div>
-
-                          <div id="mcqOption"
-                            class="radioOption bg-white flex justify-center flex-col items-center border-[3px] border-transparent rounded-lg px-4 py-2 cursor-pointer w-full relative min-h-[100px]">
-
-                            <img id="deleteAnswer" class="w-4 absolute top-2 right-2" src="assets/icons/delete.svg"
-                              alt="mcq">
-
-                            <input type="radio" class="hidden" name="questionType" value="mcq" />
-                            <input type="text" id="questionTitle"
-                              class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0"
-                              placeholder="Type answer here...">
-                          </div>
-
-                          <div id="mcqOption"
-                            class="radioOption bg-white flex justify-center flex-col items-center border-[3px] border-transparent rounded-lg px-4 py-2 cursor-pointer w-full relative min-h-[100px]">
-
-                            <img id="deleteAnswer" class="w-4 absolute top-2 right-2" src="assets/icons/delete.svg"
-                              alt="mcq">
-
-                            <input type="radio" class="hidden" name="questionType" value="mcq" />
-                            <input type="text" id="questionTitle"
-                              class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0"
-                              placeholder="Type answer here...">
-                          </div>
-
-                          <div id="mcqOptionAddBtn">
-                            <p
-                              class="leading-3 text-2xl w-10 h-10 bg-white rounded-lg flex justify-center items-center hover:bg-primaryLight cursor-pointer">
-                              +</p>
-                          </div>
-
-                        </div>
-
-                      </div>
-
-                      <div class="w-[15%]">
-
-                        <!-- Question Type -->
-                        <p class="text-black/80 mb-2">Question Type</p>
-                        <div class="flex gap-2">
-                          <img class="w-6" src="assets/img/classroom/mcq.png" alt="mcq">
-                          <p class="font-semibold">Multiple Choice</p>
-                        </div>
-
-                        <!-- Educoin Dropdown -->
-                        <div class="mt-4">
-                          <div class="flex gap-1 items-center mb-2">
-                            <p class="text-black/80">Educoins</p>
-                            <img class="w-6 " src="assets/img/general/educoin-sm.png" alt="educoin">
-                          </div>
-
-                          <select id="educoin"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md font-medium">
-                            <option value="1">1 Educoin</option>
-                            <option value="2">2 Educoin</option>
-                            <option value="3">3 Educoin</option>
-                            <option value="4">4 Educoin</option>
-                            <option value="5">5 Educoin</option>
-                            <option value="6">6 Educoin</option>
-                            <option value="7">7 Educoin</option>
-                            <option value="8">8 Educoin</option>
-                            <option value="9">9 Educoin</option>
-                          </select>
-                        </div>
-
-                        <!--  Add Quesiton Button -->
-                        <button type="button" onclick="createQuizQuestion()"
-                          class="px-4 py-2 mt-3 bg-primary text-white rounded-lg hover:bg-primaryDark">
-                          + Add Question
-                        </button>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                  <!-- sticky question header-->
-                  <div
-                    class="py-2 px-4 flex justify-between items-center sticky top-0 bg-white border border-b-black/20 border-transparent shadow">
-                    <div class="flex gap-1 items-center">
-                      <div class="text-lg font-semibold">All Questions</div>
-                      <div
-                        class="w-[20px] h-[20px] flex justify-center font-semibold items-center bg-primary text-white rounded-full">
-                        3</div>
-                    </div>
-
-                    <div>
-                      <div class="flex gap-1 items-center mb-2">
-                        <img class="w-6 " src="assets/img/general/educoin-sm.png" alt="educoin">
-                        <p class="text-black/80">Educoins:</p>
-                        <p class="font-semibold">8</p>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <!-- question listing -->
-                  <div class="bg-primaryLight w-full flex flex-col p-4 pb-[120px]">
-
-                    <div id="questionContainer" class="space-y-6"></div>
-
-                  </div>
-
-                </div>
-
-              </div>
+              <button
+                class="post-announcement-tab-btn px-4 min-w-[140px] py-2 rounded-lg w-fit flex gap-2 items-center justify-center"
+                data-tab="materials-tab">
+                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM4 5V19H20V7H11.5858L9.58579 5H4ZM13 13H16L12 17L8 13H11V9H13V13Z">
+                  </path>
+                </svg>
+                <p>Materials</p>
+              </button>
 
             </div>
 
+            <!-- Create Quiz Button -->
+            <button
+              class="h-10 bg-primary hover:bg-primaryDark flex gap-1 items-center text-white px-3 rounded-lg text-sm w-fit"
+              id="createQuizBtn">
+              <svg class="fill-white w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+              </svg>
+              Create Quiz
+            </button>
+
+            <!-- Add Material Button -->
+            <button
+              class="hidden h-10 bg-primary hover:bg-primaryDark gap-1 items-center text-white px-3 flex rounded-lg text-sm w-fit"
+              id="addMaterialBtn">
+              <svg class="fill-white w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+              </svg>
+              Add Material
+            </button>
           </div>
 
+          <!-- Tab Quiz Content -->
+          <div id="quiz-tab" class="tab-content block">
+            <div id="classroomClassQuizes" class="grid lg:grid-cols-3 gap-4"></div>
+          </div>
+
+          <!-- Tab Material Content -->
+          <div id="materials-tab" class="tab-content hidden">
+            <div id="classroomClassContents" class="flex flex-wrap gap-4"></div>
+          </div>
 
         </div>
 
@@ -538,12 +318,172 @@
       <section
         class="bg-white border border-l-black/20 flex flex-col lg:w-1/3 p-4 gap-4 lg:overflow-auto scrollbar-custom">
 
-        <p class="text-lg-custom h-10">Students</p>
+        <!-- Header and add button -->
+        <div class="flex justify-between items-center>
+          <p class="text-lg-custom h-10">Students</p>
+          <!-- Create Quiz Button -->
+          <button
+            class="h-10 bg-primary hover:bg-primaryDark flex gap-1 items-center text-white px-3 rounded-lg text-sm w-fit"
+            id="createQuizBtn">
+            <svg class="fill-white w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+            </svg>
+            Add Students
+          </button>
+        </div>
 
+        <!-- Folder Container -->
+        <div class="mb-8 flex gap-4 ">
+
+          <!-- Folder Wrapper -->
+          <div class="relative w-full ">
+
+            <!-- Folder Background (Link) -->
+            <a href="#" class="bg-gradient-to-b from-[#fef8f4] to-[#ede6e0] absolute w-full h-[110%] top-5 rounded-xl p-3 
+              flex flex-col justify-between hover:top-4 transition-all ease-in-out">
+
+              <!-- Class Name -->
+              <p class="class-name font-semibold">Robotics Camp</p>
+
+              <!-- Student Count -->
+              <p class="text-xs">
+                <span class="font-medium">25</span> Students
+              </p>
+
+            </a>
+
+            <!-- Folder SVG Icon -->
+            <img class=" h-[80px]" src="assets/img/classroom/folder-part.png" alt="folder">
+
+          </div>
+
+          <div class="  w-full h-full ">
+            <p class="text-black/50 italic">Created 20-8-2024</p>
+            <p><span class="font-medium">6</span> Materials</p>
+            <p><span class="font-medium">5</span> Quiz</p>
+          </div>
+        </div>
+
+        <!-- students list -->
+        <div id="studentList" class="space-y-2">
+          <div class="flex justify-between">
+            <a class="hover:underline" href="#">Select All</a>
+            <a class="text-primaryDark font-medium" href="#">Delete</a>
+          </div>
+        </div>
 
       </section>
 
     </main>
+
+  </div>
+
+
+  <!-- =========================================== -->
+  <!-- Create a Quiz Popup -->
+  <!-- =========================================== -->
+
+  <div id="createQuizPopup" class="hidden fixed z-[200] bg-black/70 w-screen h-screen justify-center items-center">
+
+    <!-- Popup Box container -->
+    <div
+      class="bg-white rounded-xl lg:max-w-2xl w-full lg:min-h-[220px] h-fit pb-14  flex flex-col  relative overflow-hidden">
+
+      <!-- header -->
+      <div class="flex justify-between px-4 py-2">
+        <p class="text-lg font-semibold">Create a Class</p>
+        <button
+          class="close-create-class-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
+          <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
+        </button>
+      </div>
+
+      <!-- seperator -->
+      <div class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[2px]"></div>
+
+      <!-- content -->
+      <div class="p-4 flex flex-col">
+
+        <label for="questionTitle" class="block text-xs  font-medium text-black/70">NAME</label>
+        <input type="text" id="questionTitle"
+          class="mt-1 capitalize block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg "
+          placeholder="Type here...">
+
+      </div>
+
+      <!-- Popup Footer -->
+      <div
+        class="flex absolute bottom-0 justify-between gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
+
+        <!-- dyanmic class folder color -->
+        <div class="flex gap-2 items-center">
+          <p class="block text-xs font-medium text-black/70 uppercase">Color</p>
+          <div id="colorContainer" class="flex gap-2"></div>
+        </div>
+
+        <div>
+          <button
+            class="close-create-class-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg">Cancel</button>
+          <button id="classCreateButton"
+            class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg">Create</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- =========================================== -->
+  <!-- Add Material Popup -->
+  <!-- =========================================== -->
+
+  <div id="addMaterialPopup" class="hidden fixed z-[200] bg-black/70 w-screen h-screen justify-center items-center">
+
+    <!-- Popup Box container -->
+    <div
+      class="bg-white rounded-xl lg:max-w-2xl w-full lg:min-h-[220px] h-fit pb-14  flex flex-col  relative overflow-hidden">
+
+      <!-- header -->
+      <div class="flex justify-between px-4 py-2">
+        <p class="text-lg font-semibold">Create a Class</p>
+        <button
+          class="close-create-class-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
+          <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
+        </button>
+      </div>
+
+      <!-- seperator -->
+      <div class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[2px]"></div>
+
+      <!-- content -->
+      <div class="p-4 flex flex-col">
+
+        <label for="questionTitle" class="block text-xs  font-medium text-black/70">NAME</label>
+        <input type="text" id="questionTitle"
+          class="mt-1 capitalize block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg "
+          placeholder="Type here...">
+
+      </div>
+
+      <!-- Popup Footer -->
+      <div
+        class="flex absolute bottom-0 justify-between gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
+
+        <!-- dyanmic class folder color -->
+        <div class="flex gap-2 items-center">
+          <p class="block text-xs font-medium text-black/70 uppercase">Color</p>
+          <div id="colorContainer" class="flex gap-2"></div>
+        </div>
+
+        <div>
+          <button
+            class="close-create-class-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg">Cancel</button>
+          <button id="classCreateButton"
+            class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg">Create</button>
+        </div>
+      </div>
+
+    </div>
 
   </div>
 
@@ -554,6 +494,7 @@
   <script src="./js/main.js"></script>
   <script src="./js/classroomDetail.js"></script>
   <script src="./js/quizQuestionCreation.js"></script>
+  <script src="./js/classroomStudentList.js"></script>
 
 
   <!-- Swiper JS -->

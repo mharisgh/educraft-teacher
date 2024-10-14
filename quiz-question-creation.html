@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Detail Page</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+
+  <style>
+    .active {
+      background-color: #fa9d53;
+    }
+  </style>
+</head>
+
+<body class="flex font-sans">
+
+
+  <!-- tabs & contents -->
+  <div>
+
+    <!-- Full-Screen Popup for Creating Quiz -->
+    <div id="QuizQuestionWindowModal" class="flex  z-[60] transition-all top-0 left-0 fixed h-screen w-screen">
+
+      <div class="bg-white h-screen w-full lg:max-w-screen-2xl relative rounded-lg shadow-lg">
+
+        <!-- bottom fixed  -->
+        <div
+          class="bg-white border border-t-black/30 border-transparent fixed bottom-0 px-4 py-2 w-full lg:max-w-screen-2xl flex justify-end gap-4 z-[200]">
+          <button type="button" onclick="closeQuizQuestionWindow()"
+            class="px-4 py-2  border border-black/20 hover:border-black/30 rounded-lg ">
+            Cancel
+          </button>
+
+          <button type="button" onclick="closeQuizQuestionWindow()"
+            class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primaryDark">
+            Publish
+          </button>
+        </div>
+
+        <!-- header fixed -->
+        <div>
+
+          <div class="flex justify-between px-4 py-2">
+            <!-- quiz name -->
+            <p class="text-lg font-semibold">Robotics Club - Quiz</p>
+
+            <!-- Close Button -->
+            <button onclick="closeQuizQuestionWindow()"
+              class=" bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
+              <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
+            </button>
+
+          </div>
+
+          <!-- seprator -->
+          <div class="w-full bg-gradient-to-r from-black/5 via-black/10 to-black/5 min-h-[2px]"></div>
+
+        </div>
+
+        <!-- Content of Quiz Creation Window -->
+        <div class="lg:flex h-full">
+
+          <!-- question type  -->
+          <div class="lg:min-w-[180px] border border-r-black/10  p-4 ">
+
+            <!-- Question Type Selection -->
+            <div class="flex lg:flex-col items-center gap-3 lg:h-screen text-center">
+              <p class=" text-black/60 text-xs font-medium ">QUESTION TYPE</p>
+
+              <div id="mcqOption"
+                class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                <img class="w-8" src="assets/img/classroom/mcq.png" alt="mcq">
+                <input type="radio" class="hidden" name="questionType" value="mcq" />
+                <p>Multiple Choice</p>
+              </div>
+
+              <div id="trueFalseOption"
+                class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                <img class="w-8" src="assets/img/classroom/trueorfalse.png" alt="truefalse">
+                <input type="radio" class="hidden" name="questionType" value="trueFalse" />
+                <p>True/False</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- question creation  -->
+          <div class="w-full  relative grid grid-rows-[min(240px)_1f_1fr] overflow-auto">
+
+            <!-- question Creation -->
+            <div class="p-3">
+
+              <div id="mcqQuestionCreator" class="flex gap-3 bg-gray-100 rounded-xl h-full p-3">
+
+                <div class=" w-[85%] border border-transparent border-r-black/10">
+
+                  <label for="questionTitle" class="block text-xs  font-medium text-black/50 ">QUESTION
+                    TITLE</label>
+                  <input type="text" id="questionTitle"
+                    class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg font-medium"
+                    placeholder="Type Question here...">
+
+                  <div class="flex mt-8 gap-3 items-center pr-4">
+
+                    <div id="mcqOption"
+                      class="radioOption bg-white flex justify-center flex-col items-center border-[3px] border-transparent rounded-lg px-4 py-2 cursor-pointer w-full relative min-h-[100px]">
+
+                      <img id="deleteAnswer" class="w-4 absolute top-2 right-2" src="assets/icons/delete.svg" alt="mcq">
+
+                      <input type="radio" class="hidden" name="questionType" value="mcq" />
+                      <input type="text" id="questionTitle"
+                        class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0"
+                        placeholder="Type answer here...">
+                    </div>
+
+                    <div id="mcqOption"
+                      class="radioOption bg-white flex justify-center flex-col items-center border-[3px] border-transparent rounded-lg px-4 py-2 cursor-pointer w-full relative min-h-[100px]">
+
+                      <img id="deleteAnswer" class="w-4 absolute top-2 right-2" src="assets/icons/delete.svg" alt="mcq">
+
+                      <input type="radio" class="hidden" name="questionType" value="mcq" />
+                      <input type="text" id="questionTitle"
+                        class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0"
+                        placeholder="Type answer here...">
+                    </div>
+
+                    <div id="mcqOption"
+                      class="radioOption bg-white flex justify-center flex-col items-center border-[3px] border-transparent rounded-lg px-4 py-2 cursor-pointer w-full relative min-h-[100px]">
+
+                      <img id="deleteAnswer" class="w-4 absolute top-2 right-2" src="assets/icons/delete.svg" alt="mcq">
+
+                      <input type="radio" class="hidden" name="questionType" value="mcq" />
+                      <input type="text" id="questionTitle"
+                        class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0"
+                        placeholder="Type answer here...">
+                    </div>
+
+                    <div id="mcqOption"
+                      class="radioOption bg-white flex justify-center flex-col items-center border-[3px] border-transparent rounded-lg px-4 py-2 cursor-pointer w-full relative min-h-[100px]">
+
+                      <img id="deleteAnswer" class="w-4 absolute top-2 right-2" src="assets/icons/delete.svg" alt="mcq">
+
+                      <input type="radio" class="hidden" name="questionType" value="mcq" />
+                      <input type="text" id="questionTitle"
+                        class="mt-2 block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0"
+                        placeholder="Type answer here...">
+                    </div>
+
+                    <div id="mcqOptionAddBtn">
+                      <p
+                        class="leading-3 text-2xl w-10 h-10 bg-white rounded-lg flex justify-center items-center hover:bg-primaryLight cursor-pointer">
+                        +</p>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="w-[15%]">
+
+                  <!-- Question Type -->
+                  <p class="text-black/80 mb-2">Question Type</p>
+                  <div class="flex gap-2">
+                    <img class="w-6" src="assets/img/classroom/mcq.png" alt="mcq">
+                    <p class="font-semibold">Multiple Choice</p>
+                  </div>
+
+                  <!-- Educoin Dropdown -->
+                  <div class="mt-4">
+                    <div class="flex gap-1 items-center mb-2">
+                      <p class="text-black/80">Educoins</p>
+                      <img class="w-6 " src="assets/img/general/educoin-sm.png" alt="educoin">
+                    </div>
+
+                    <select id="educoin"
+                      class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md font-medium">
+                      <option value="1">1 Educoin</option>
+                      <option value="2">2 Educoin</option>
+                      <option value="3">3 Educoin</option>
+                      <option value="4">4 Educoin</option>
+                      <option value="5">5 Educoin</option>
+                      <option value="6">6 Educoin</option>
+                      <option value="7">7 Educoin</option>
+                      <option value="8">8 Educoin</option>
+                      <option value="9">9 Educoin</option>
+                    </select>
+                  </div>
+
+                  <!--  Add Quesiton Button -->
+                  <button type="button" onclick="createQuizQuestion()"
+                    class="px-4 py-2 mt-3 bg-primary text-white rounded-lg hover:bg-primaryDark">
+                    + Add Question
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- sticky question header-->
+            <div
+              class="py-2 px-4 flex justify-between items-center sticky top-0 bg-white border border-b-black/20 border-transparent shadow">
+              <div class="flex gap-1 items-center">
+                <div class="text-lg font-semibold">All Questions</div>
+                <div
+                  class="w-[20px] h-[20px] flex justify-center font-semibold items-center bg-primary text-white rounded-full">
+                  3</div>
+              </div>
+
+              <div>
+                <div class="flex gap-1 items-center mb-2">
+                  <img class="w-6 " src="assets/img/general/educoin-sm.png" alt="educoin">
+                  <p class="text-black/80">Educoins:</p>
+                  <p class="font-semibold">8</p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- question listing -->
+            <div class="bg-primaryLight w-full flex flex-col p-4 pb-[120px]">
+
+              <div id="questionContainer" class="space-y-6"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- custom script -->
+  <script src="./js/main.js"></script>
+  <script src="./js/classroomDetail.js"></script>
+  <script src="./js/quizQuestionCreation.js"></script>
+
+</body>
+
+</html>

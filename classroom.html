@@ -289,35 +289,385 @@
       </section>
 
       <!-- right side section -->
-      <section
-        class="bg-white border border-l-black/20 flex flex-col lg:w-1/3 p-4 gap-4 lg:overflow-auto scrollbar-custom">
+      <section class="bg-white border border-l-black/20 flex flex-col lg:w-1/3 gap-4 relative">
 
-        <p class="text-lg-custom h-10">Announcements</p>
+        <div class="sticky top-0 px-4 pt-2">
+          <div class="flex justify-between items-center pb-4">
+            <p class="text-lg-custom">Announcements</p>
+            <select name="insight-class" id="insightClass"
+              class="cursor-pointer bg-transparent text-primaryDark font-medium px-2 py-1">
+              <option value="1">Sort by</option>
+              <option value="2">Class 5B</option>
+              <option value="3">Class 6B</option>
+              <option value="4">Class 6C</option>
+              <option value="5">Class 6D</option>
+            </select>
+          </div>
 
-        <div id="announcementContainer" class="flex flex-col gap-5">
-          <!-- Announcements will be injected here by JavaScript -->
-
-          <div id="postNewAnnoucementBtn" class="w-full h-[60px] border border-black/10 cursor-pointer  bg-[#fff5e7] hover:bg-[#f9ebd8] flex justify-center items-center font-semibold text-primaryDark rounded-lg">
+          <div id="postNewAnnoucementBtn"
+            class="w-full min-h-[40px] border border-black/10 cursor-pointer  bg-[#fff5e7] hover:bg-[#f9ebd8] flex justify-center items-center font-semibold text-primaryDark rounded-lg">
             <svg class="fill-[#8f5c34] w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
             </svg>
             Post New Announcement
           </div>
+
+        </div>
+
+        <div id="announcementContainer" class="flex flex-col gap-5 px-4 py-2 lg:overflow-auto scrollbar-custom ">
+          <!-- Announcements will be injected here by JavaScript -->
         </div>
 
       </section>
 
-
     </main>
 
+  </div>
 
+  <!-- =========================================== -->
+  <!-- Announcement Post Popup -->
+  <!-- =========================================== -->
+
+  <div id="announcementPostPopup"
+    class="hidden fixed z-[200] bg-black/70 w-screen h-screen justify-center items-center">
+
+
+    <!-- Popup Box container -->
+    <div
+      class="bg-white rounded-xl lg:max-w-2xl w-full lg:min-h-[220px] h-fit pb-14  flex flex-col  relative overflow-hidden">
+
+      <!-- header -->
+      <div class="flex justify-between px-4 py-2">
+        <p class="text-lg font-semibold">Post New Announcement</p>
+        <button
+          class="close-announcement-post-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
+          <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
+        </button>
+      </div>
+
+      <!-- seperator -->
+      <div class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[2px]"></div>
+
+      <!-- content -->
+      <div class="p-4 flex flex-col">
+
+        <!-- Tabs for switching between views -->
+        <div>
+          <p class="uppercase text-black/60 font-medium text-xs pb-2">post to</p>
+
+          <div class="flex bg-primaryLight justify-between mb-4">
+            <!-- Tab Buttons -->
+            <button class="post-announcement-tab-btn px-4 py-2 rounded-md bg-primary text-white w-full"
+              data-tab="post-all-students">
+              All Students
+            </button>
+            <button class="post-announcement-tab-btn px-4 py-2 rounded-md w-full" data-tab="post-school-classes">
+              School Classes
+            </button>
+            <button class="post-announcement-tab-btn px-4 py-2 rounded-md w-full" data-tab="post-classrooms-courses">
+              Classrooms & Courses
+            </button>
+          </div>
+
+        </div>
+
+
+        <!-- Tab Content Sections -->
+
+        <!-- All students -->
+        <div class="post-announcement-tab-content flex flex-col gap-5 overflow-auto" id="post-all-students">
+
+
+          <!-- announcement type -->
+          <div>
+            <p class="uppercase text-black/60 font-medium text-xs pb-2">announcement type</p>
+
+            <!-- Question Type Selection -->
+            <div class="flex text-center justify-between w-full gap-3" id="questionTypeContainer">
+
+              <div id="general"
+                class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-[#9c663b] rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full selected">
+                <img class="w-8" src="assets/img/classroom/general.png" alt="general">
+                <input type="radio" class="hidden" name="announcementType" value="general" checked />
+                <p>General</p>
+              </div>
+
+              <div id="impNotice"
+                class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                <img class="w-8" src="assets/img/classroom/important.png" alt="important notice">
+                <input type="radio" class="hidden" name="announcementType" value="important-notice" />
+                <p>Important Notice</p>
+              </div>
+
+              <div id="studyTips"
+                class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                <img class="w-8" src="assets/img/classroom/tips.png" alt="study tips">
+                <input type="radio" class="hidden" name="announcementType" value="study-tips" />
+                <p>Study Tips</p>
+              </div>
+
+              <div id="question"
+                class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                <img class="w-8" src="assets/img/classroom/question.png" alt="question">
+                <input type="radio" class="hidden" name="announcementType" value="question" />
+                <p>Question</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- text area -->
+          <div>
+            <p class="uppercase text-black/60 font-medium text-xs pb-2">message</p>
+            <textarea class="w-full p-2 border rounded-lg focus:outline-none focus:border-primary"
+              placeholder="Type your message here.."></textarea>
+          </div>
+
+        </div>
+
+        <!-- School Classes -->
+        <div class="post-announcement-tab-content hidden" id="post-school-classes">
+          <!-- Inside Tab contents -->
+          <div class="flex flex-col gap-5 overflow-auto">
+
+            <!-- school classes dropdown selection -->
+            <div class="flex w-full gap-3 items-center">
+
+              <div class="w-full">
+                <p class="uppercase text-black/60 font-medium text-xs pb-2">class</p>
+
+                <select name="insight-class" id="insightClass" class="border px-4 py-2 w-full">
+                  <option value="2">Class 5</option>
+                  <option value="3">Class 6</option>
+                  <option value="4">Class 7</option>
+                  <option value="5">Class 8</option>
+                </select>
+              </div>
+
+              <div class="w-full">
+                <p class="uppercase text-black/60 font-medium text-xs pb-2 rounded-lg">grade</p>
+
+                <select name="insight-class" id="insightClass" class="border px-4 pr-8 py-2 w-full rounded-lg">
+                  <option value="1">A</option>
+                  <option value="2">B</option>
+                  <option value="2">C</option>
+                  <option value="2">D</option>
+                </select>
+              </div>
+
+
+            </div>
+
+            <!-- announcement type -->
+            <div>
+              <p class="uppercase text-black/60 font-medium text-xs pb-2">announcement type</p>
+
+              <!-- Question Type Selection -->
+              <div class="flex text-center justify-between w-full gap-3" id="questionTypeContainer">
+
+                <div id="general"
+                  class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-[#9c663b] rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full selected">
+                  <img class="w-8" src="assets/img/classroom/general.png" alt="general">
+                  <input type="radio" class="hidden" name="announcementType" value="general" checked />
+                  <p>General</p>
+                </div>
+
+                <div id="impNotice"
+                  class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                  <img class="w-8" src="assets/img/classroom/important.png" alt="important notice">
+                  <input type="radio" class="hidden" name="announcementType" value="important-notice" />
+                  <p>Important Notice</p>
+                </div>
+
+                <div id="studyTips"
+                  class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                  <img class="w-8" src="assets/img/classroom/tips.png" alt="study tips">
+                  <input type="radio" class="hidden" name="announcementType" value="study-tips" />
+                  <p>Study Tips</p>
+                </div>
+
+                <div id="question"
+                  class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                  <img class="w-8" src="assets/img/classroom/question.png" alt="question">
+                  <input type="radio" class="hidden" name="announcementType" value="question" />
+                  <p>Question</p>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- text area -->
+            <div>
+              <p class="uppercase text-black/60 font-medium text-xs pb-2">message</p>
+              <textarea class="w-full p-2 border rounded-lg focus:outline-none focus:border-primary"
+                placeholder="Type your message here.."></textarea>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Classrooms & Courses -->
+        <div class="post-announcement-tab-content hidden" id="post-classrooms-courses">
+
+          <!-- Inside Tab contents -->
+          <div class="flex flex-col gap-5 overflow-auto">
+
+            <!-- classroom & course dropdown selection -->
+            <div class="flex w-full gap-3 items-center">
+
+              <div class="w-full">
+                <p class="uppercase text-black/60 font-medium text-xs pb-2">classroom</p>
+
+                <select name="insight-class" id="insightClass" class="border px-4 py-2 w-full">
+                  <option value="2">Robotics Camp</option>
+                  <option value="3">Quiz 101</option>
+                  <option value="4">Python Camp</option>
+                  <option value="5">Class Diamond</option>
+                </select>
+              </div>
+
+              <div class="w-full">
+                <p class="uppercase text-black/60 font-medium text-xs pb-2 rounded-lg">courses</p>
+
+                <select name="insight-class" id="insightClass" class="border px-4 pr-8 py-2 w-full rounded-lg">
+                  <option value="1">Hardware and solution</option>
+                  <option value="2">Google Slides</option>
+                  <option value="2">Microbit Projects</option>
+                  <option value="2">Intro to Logo Programming</option>
+                </select>
+              </div>
+
+
+            </div>
+
+            <!-- announcement type -->
+            <div>
+              <p class="uppercase text-black/60 font-medium text-xs pb-2">announcement type</p>
+
+              <!-- Question Type Selection -->
+              <div class="flex text-center justify-between w-full gap-3" id="questionTypeContainer">
+
+                <div id="general"
+                  class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-[#9c663b] rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full selected">
+                  <img class="w-8" src="assets/img/classroom/general.png" alt="general">
+                  <input type="radio" class="hidden" name="announcementType" value="general" checked />
+                  <p>General</p>
+                </div>
+
+                <div id="impNotice"
+                  class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                  <img class="w-8" src="assets/img/classroom/important.png" alt="important notice">
+                  <input type="radio" class="hidden" name="announcementType" value="important-notice" />
+                  <p>Important Notice</p>
+                </div>
+
+                <div id="studyTips"
+                  class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                  <img class="w-8" src="assets/img/classroom/tips.png" alt="study tips">
+                  <input type="radio" class="hidden" name="announcementType" value="study-tips" />
+                  <p>Study Tips</p>
+                </div>
+
+                <div id="question"
+                  class="radioOption bg-[#fcf7f0] flex justify-center flex-col items-center border-[3px] border-black/5 hover:border-black/30 rounded-lg text-primaryDark font-semibold text-xs px-4 py-2 cursor-pointer w-full">
+                  <img class="w-8" src="assets/img/classroom/question.png" alt="question">
+                  <input type="radio" class="hidden" name="announcementType" value="question" />
+                  <p>Question</p>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- text area -->
+            <div>
+              <p class="uppercase text-black/60 font-medium text-xs pb-2">message</p>
+              <textarea class="w-full p-2 border rounded-lg focus:outline-none focus:border-primary"
+                placeholder="Type your message here.."></textarea>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Popup Footer -->
+      <div
+        class="flex absolute bottom-0 justify-end gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
+        <button
+          class="close-announcement-post-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg">Cancel</button>
+        <button id="createButton" class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg">Post</button>
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+
+  <!-- =========================================== -->
+  <!-- Class Create Post Popup -->
+  <!-- =========================================== -->
+
+  <div id="classCreatePopup" class="hidden fixed z-[200] bg-black/70 w-screen h-screen justify-center items-center">
+
+    <!-- Popup Box container -->
+    <div
+      class="bg-white rounded-xl lg:max-w-2xl w-full lg:min-h-[220px] h-fit pb-14  flex flex-col  relative overflow-hidden">
+
+      <!-- header -->
+      <div class="flex justify-between px-4 py-2">
+        <p class="text-lg font-semibold">Create a Class</p>
+        <button
+          class="close-create-class-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
+          <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
+        </button>
+      </div>
+
+      <!-- seperator -->
+      <div class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[2px]"></div>
+
+      <!-- content -->
+      <div class="p-4 flex flex-col">
+
+        <label for="questionTitle" class="block text-xs  font-medium text-black/70">NAME</label>
+        <input type="text" id="questionTitle"
+          class="mt-1 capitalize block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg "
+          placeholder="Type here...">
+
+      </div>
+
+      <!-- Popup Footer -->
+      <div
+        class="flex absolute bottom-0 justify-between gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
+
+        <!-- dyanmic class folder color -->
+        <div class="flex gap-2 items-center">
+          <p class="block text-xs font-medium text-black/70 uppercase">Color</p>
+          <div id="colorContainer" class="flex gap-2"></div>
+        </div>
+
+        <div>
+          <button
+            class="close-create-class-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg">Cancel</button>
+          <button id="classCreateButton"
+            class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg">Create</button>
+        </div>
+      </div>
+
+    </div>
 
   </div>
 
   <!-- custom script -->
   <script src="./js/main.js"></script>
   <script src="./js/classroom.js"></script>
-  <script src="./js/classroomTeacher.js"></script>
+  <script src="./js/announcement.js"></script>
 
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

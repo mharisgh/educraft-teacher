@@ -68,7 +68,7 @@ createClassFolders();
 const stdAnnouncementData = [
   {
     "announcementType": "general",
-    "sendTo": "Class 4",
+    "sendTo": "Class 4", // or All Students or School Classes (Class 4A,) or Classroom(Roboitcs Camp)
     "postedDate": "2024-09-27",
     "message": "Student Fasial Saleem has asked for clarification on the AI project requirements. Please provide detailed instructions for the final submission."
   },
@@ -214,3 +214,97 @@ function renderAnnouncements() {
 
 // Call the function to render announcements on page load
 renderAnnouncements();
+
+
+
+  // Simulated JSON object with color data
+  const classCreationFolderColor = {
+    color1: "#9e693e",
+    color2: "#b7a597",
+    color3: "#7a4e2a",
+    color4: "#ec6409",
+    color5: "#bf4b00",
+    color5: "#ffaf43"
+  };
+
+  const colorContainer = document.getElementById('colorContainer');
+  let selectedColorId = null; // Track the currently selected color
+
+  // Function to render colors dynamically
+  function renderColors() {
+    Object.entries(classCreationFolderColor).forEach(([id, color], index) => {
+      const colorDiv = document.createElement('div');
+      colorDiv.className =
+        `w-5 h-5 rounded flex justify-center items-center cursor-pointer`;
+      colorDiv.style.backgroundColor = color;
+
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'color';
+      input.className = 'hidden';
+      input.value = id; // Store the color ID as value
+
+      const checkMark = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      checkMark.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      checkMark.setAttribute('viewBox', '0 0 24 24');
+      checkMark.setAttribute('fill', '#ffffff');
+      checkMark.classList.add('w-4', 'h-4', 'hidden'); // Hide initially
+
+      checkMark.innerHTML = `
+        <path d="M9.9997 15.1709L19.1921 5.97852L20.6063 7.39273L9.9997 17.9993L3.63574 11.6354L5.04996 10.2212L9.9997 15.1709Z"/>
+      `;
+
+      // Add elements to color div
+      colorDiv.appendChild(input);
+      colorDiv.appendChild(checkMark);
+      colorContainer.appendChild(colorDiv);
+
+      // Set the first color as default selected
+      if (index === 0) {
+        input.checked = true;
+        checkMark.classList.remove('hidden'); // Show checkmark
+        selectedColorId = id;
+      }
+
+      // Add event listener to handle click
+      colorDiv.addEventListener('click', () => selectColor(id, input, checkMark));
+    });
+  }
+
+  // Function to handle color selection
+  function selectColor(id, input, checkMark) {
+    // Deselect previously selected color
+    if (selectedColorId) {
+      const prevSelected = document.querySelector(`input[value="${selectedColorId}"]`);
+      prevSelected.nextElementSibling.classList.add('hidden'); // Hide previous checkmark
+    }
+
+    // Select the new color
+    input.checked = true;
+    checkMark.classList.remove('hidden'); // Show checkmark on selected color
+    selectedColorId = id;
+
+    // Log selected color ID to console
+    console.log(`Selected Color ID: ${id}`);
+  }
+
+  // Render colors on page load
+  renderColors();
+
+
+// Get the elements
+const createClassButton = document.getElementById('createClassButton');
+const classCreatePopup = document.getElementById('classCreatePopup');
+const closeCreateClassPopupBtn = document.querySelectorAll('.close-create-class-popup-btn');
+
+createClassButton.addEventListener('click', () => {
+  classCreatePopup.classList.toggle('hidden');
+  classCreatePopup.classList.toggle('flex');
+})
+
+closeCreateClassPopupBtn.forEach(btn => {
+  btn.addEventListener('click', () => {
+    classCreatePopup.classList.toggle('hidden');
+    classCreatePopup.classList.toggle('flex');
+  })
+})
