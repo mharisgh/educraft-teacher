@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
   <link href="output.css" rel="stylesheet">
 
+  <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+  <!-- <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" /> -->
+  
   <style>
     .menu-active {
       background-color: #ba9070;
@@ -320,7 +323,7 @@
 
         <!-- Header and add button -->
         <div class="flex justify-between items-center>
-          <p class="text-lg-custom h-10">Students</p>
+          <p class=" text-lg-custom h-10">Students</p>
           <!-- Create Quiz Button -->
           <button
             class="h-10 bg-primary hover:bg-primaryDark flex gap-1 items-center text-white px-3 rounded-lg text-sm w-fit"
@@ -391,7 +394,7 @@
 
       <!-- header -->
       <div class="flex justify-between px-4 py-2">
-        <p class="text-lg font-semibold">Create a Class</p>
+        <p class="text-lg font-semibold">Create a Quiz</p>
         <button
           class="close-create-class-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
           <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
@@ -404,24 +407,87 @@
       <!-- content -->
       <div class="p-4 flex flex-col">
 
-        <label for="questionTitle" class="block text-xs  font-medium text-black/70">NAME</label>
-        <input type="text" id="questionTitle"
-          class="mt-1 capitalize block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg "
-          placeholder="Type here...">
+        <div>
+          <label for="questionTitle" class="block text-xs  font-medium">NAME</label>
+          <input type="text" id="questionTitle"
+            class="mt-1 capitalize block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg "
+            placeholder="Type Quiz Name...">
+        </div>
+
+        <div class="pt-6">
+          <label for="questionTitle" class="block text-xs pb-2 font-medium">STARTS FROM</label>
+          <div>
+            <!-- quiz creation from -->
+            <div>
+
+
+              <!-- Question Type Selection -->
+              <div class="flex text-center justify-between w-full gap-3" id="questionTypeContainer">
+
+                <div id="scratch"
+                  class="radioOption border-[3px] border-[#9c663b] hover:border-black/30 rounded-lg  cursor-pointer w-full selected min-h-[150px] overflow-hidden">
+
+                  <div class="h-1/2 bg-primaryLight flex justify-center items-center">
+                    <img class="w-14" src="assets/img/classroom/scratch.webp" alt="scratch">
+                    <input type="radio" class="hidden" name="quizTemplate" value="general" checked />
+                  </div>
+
+
+                  <div class="h-1/2 flex justify-center items-center flex-col gap-1">
+                    <p class="text-[1rem] font-medium tracking-tight">From Scratch</p>
+                    <p class="leading-4 lg:max-w-[80%]">
+                      Create a quiz from the ground up.
+                    </p>
+
+                  </div>
+                </div>
+
+                <div id="ai"
+                  class="radioOption border-[3px] border-black/5 hover:border-black/30 rounded-lg  cursor-pointer w-full selected min-h-[180px] overflow-hidden">
+
+                  <div class="h-1/2 bg-primaryLight flex justify-center items-center">
+                    <img class="w-14" src="assets/img/classroom/ai.webp" alt="ai">
+                    <input type="radio" class="hidden" name="quizTemplate" value="ai" />
+                  </div>
+
+                  <div class="h-1/2 flex justify-center items-center flex-col gap-1">
+                    <p class="text-[1rem] font-medium tracking-tight">Generate with AI</p>
+                    <p class="leading-4 lg:max-w-[80%]">
+                      Let AI helps to generate your questions.
+                    </p>
+                  </div>
+                </div>
+
+                <div id="sheet"
+                  class="radioOption border-[3px] border-black/5 hover:border-black/30 rounded-lg  cursor-pointer w-full selected min-h-[150px] overflow-hidden">
+
+                  <div class="h-1/2 bg-primaryLight flex justify-center items-center">
+                    <img class="w-14" src="assets/img/classroom/sheet.webp" alt="sheet">
+                    <input type="radio" class="hidden" name="quizTemplate" value="sheet" />
+                  </div>
+
+
+                  <div class="h-1/2 flex justify-center items-center flex-col gap-1">
+                    <p class="text-[1rem] font-medium tracking-tight">Import Worksheet</p>
+                    <p class="leading-4 lg:max-w-[80%]">
+                      Upload your worksheet to convert into a quiz.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
 
       </div>
 
       <!-- Popup Footer -->
       <div
-        class="flex absolute bottom-0 justify-between gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
+        class="flex absolute bottom-0 justify-end gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
 
-        <!-- dyanmic class folder color -->
-        <div class="flex gap-2 items-center">
-          <p class="block text-xs font-medium text-black/70 uppercase">Color</p>
-          <div id="colorContainer" class="flex gap-2"></div>
-        </div>
-
-        <div>
+        <div class="flex gap-2">
           <button
             class="close-create-class-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg">Cancel</button>
           <button id="classCreateButton"
@@ -445,9 +511,9 @@
 
       <!-- header -->
       <div class="flex justify-between px-4 py-2">
-        <p class="text-lg font-semibold">Create a Class</p>
+        <p class="text-lg font-semibold">Add Material</p>
         <button
-          class="close-create-class-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
+          class="close-add-material-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
           <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
         </button>
       </div>
@@ -458,26 +524,37 @@
       <!-- content -->
       <div class="p-4 flex flex-col">
 
-        <label for="questionTitle" class="block text-xs  font-medium text-black/70">NAME</label>
-        <input type="text" id="questionTitle"
-          class="mt-1 capitalize block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg "
-          placeholder="Type here...">
+        <div>
+          <label for="questionTitle" class="block text-xs  font-medium">NAME</label>
+          <input type="text" id="questionTitle"
+            class="mt-1 capitalize block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg "
+            placeholder="Type Material Name...">
+        </div>
+
+        <div class="pt-6">
+          <label for="documentUpload" class="block text-xs pb-2 font-medium">UPLOAD</label>
+          <form action="/upload" method="POST" enctype="multipart/form-data"
+            class="dropzone min-h-[160px] bg-primaryLight rounded-xl border border-dashed border-black/30 flex flex-col justify-center items-center h-fit"
+            id="myDropzone">
+            <img class="w-14" src="assets/img/classroom/pdf.webp" alt="upload" />
+            <p id="uploadText" class="text-primaryDark underline font-medium cursor-pointer">
+              Click to upload or Drag & Drop here
+            </p>
+            <p class="text-black/70">Max file size: 5MB</p>
+          </form>
+        </div>
+        
+
 
       </div>
 
       <!-- Popup Footer -->
       <div
-        class="flex absolute bottom-0 justify-between gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
+        class="flex absolute bottom-0 justify-end gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
 
-        <!-- dyanmic class folder color -->
-        <div class="flex gap-2 items-center">
-          <p class="block text-xs font-medium text-black/70 uppercase">Color</p>
-          <div id="colorContainer" class="flex gap-2"></div>
-        </div>
-
-        <div>
+        <div class="flex gap-2">
           <button
-            class="close-create-class-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg">Cancel</button>
+            class="close-add-material-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg">Cancel</button>
           <button id="classCreateButton"
             class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg">Create</button>
         </div>

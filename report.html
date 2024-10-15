@@ -179,7 +179,7 @@
 
     <header id="header-menu"
       class="  bg-white  flex justify-between w-full h-14 items-center  transition-all ease-out duration-300  p-4 border border-b-black/10">
-      <p class="text-xl-custom">Student Courses</p>
+      <p class="text-xl-custom">Report</p>
 
       <!-- Search Input -->
       <div class="relative w-1/3">
@@ -223,76 +223,124 @@
     <!-- =========================================== -->
 
     <main id="main"
-      class=" bg-primaryLight  max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row overflow-auto lg:overflow-hidden h-[calc(100vh-3.5rem)]">
+      class=" max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row overflow-auto lg:overflow-hidden h-[calc(100vh-3.5rem)]">
 
       <!-- main section-->
       <section class="p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide lg:h-full w-full">
 
-        <p class="text-lg-custom">Students Report</p>
 
+        <!-- Tabs and Content Section -->
+        <div class="flex flex-col">
 
-        <div class="flex justify-between w-full items-center =">
+          <!-- tab buttons -->
+          <div class="flex justify-between items-center w-full sticky top-0 bg-white mb-4">
+            <!-- Tabs for switching between views -->
+            <div class="flex bg-white border border-black/10 rounded-lg w-fit">
+              <!-- Tab Buttons -->
+              <button
+                class="reports-tab-btn active px-4 min-w-[140px] py-2 rounded-lg bg-primary text-white w-fit flex gap-2 items-center justify-center"
+                data-tab="students-tab">
+                <img class="w-4" src="assets/icons/student-courses.svg" alt="report">
+                <p>Students</p>
+              </button>
 
+              <button
+                class="reports-tab-btn px-4 min-w-[140px] py-2 rounded-lg w-fit flex gap-2 items-center justify-center"
+                data-tab="quiz-tab">
+                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z">
+                  </path>
+                </svg>
+                <p>Quiz</p>
+              </button>
+            </div>
 
-          <!-- Tab Buttons -->
-          <div class="flex justify-around mb-4">
-            <!-- Student Tab -->
-            <button id="studentTab"
-              class="tab-btn flex items-center gap-2 p-2 focus:outline-none text-primary border-b-2 border-primary">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M5.121 17.804A5.002 5.002 0 0112 7v7h1a1 1 0 011 1v5H9v-5a1 1 0 011-1h1V7a3 3 0 10-3 3v7.804z" />
-              </svg>
-              Student
-            </button>
-
-            <!-- Quiz Tab -->
-            <button id="quizTab" class="tab-btn flex items-center gap-2 p-2 focus:outline-none text-gray-500">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M8 6a4 4 0 118 0v4a4 4 0 11-8 0V6zM6 12v4m12-4v4m-6 8v2m0-2H6m6 0h6m-6-6v-4m0 4v2m0-6h.01" />
-              </svg>
-              Quiz
-            </button>
-          </div>
-
-          <!-- Tab Content -->
-          <div id="tabContent">
-            <!-- Filter Section -->
-            <div class="flex gap-3">
-              <!-- Class Filter -->
-
+            <div class="flex gap-5 items-center">
               <p>Filter by</p>
-              <div>
-                <label class="block text-sm font-medium">Class</label>
-                <select id="classDropdown" class="w-full border border-gray-300 rounded-lg p-2 mt-1">
-                  <!-- Dynamic options will be loaded here -->
-                </select>
-              </div>
 
-              <!-- Grade Filter -->
-              <div>
-                <label class="block text-sm font-medium">Grade</label>
-                <select id="gradeDropdown" class="w-full border border-gray-300 rounded-lg p-2 mt-1">
-                  <!-- Dynamic options will be loaded here -->
-                </select>
-              </div>
+              <select name="class" id="filterClass" class="px-2 py-1 border rounded-lg">
+                <option value="class1">Class</option>
+                <option value="class1">Class 1</option>
+                <option value="class1">Class 1</option>
+                <option value="class1">Class 1</option>
+                <option value="class1">Class 1</option>
+              </select>
 
-              <!-- Download PDF Button -->
-              <button id="downloadPdfBtn" class="bg-primary text-white px-4 py-2 rounded-lg mt-4">
-                Download PDF
+              <select name="class" id="filterClass" class="px-2 py-1 border rounded-lg">
+                <option value="class1">Grade</option>
+                <option value="class1">Class 1</option>
+                <option value="class1">Class 1</option>
+                <option value="class1">Class 1</option>
+                <option value="class1">Class 1</option>
+              </select>
+
+              <p class="underline text-primaryDark font-medium cursor-pointer">Reset Filter</p>
+
+              <button class="flex gap-2 px-2 py-2 rounded-lg border border-black/50 hover:bg-primaryLight bg-white">
+                <img class="w-6" src="assets/img/classroom/pdf.webp" alt="pdf">
+                <p>Download Report</p>
               </button>
             </div>
           </div>
 
+          <!-- Tab Students Content -->
+          <div id="students-tab" class="tab-content block">
+            <!-- Student report content -->
+            <div class="">
+              <div class="overflow-auto border border-gray-200 rounded-lg">
+                <div class="bg-primaryLight flex items-center">
+
+                  <!-- Checkbox Column -->
+                  <div class="w-[20px] p-4">
+                    <input type="checkbox" id="selectAll">
+                  </div>
+                  <div class="w-1/5 p-4 flex gap-1">
+                    <img class="w-5" src="assets/icons/arrow-left.svg" alt="">
+                    <p>Student Name & Grade</p>
+                  </div>
+                  <div class="w-1/5 p-4 font-semibold">Email</div>
+                  <div class="w-1/5 p-4 font-semibold">EduCoins</div>
+                  <div class="w-1/5 p-4 font-semibold">Level & Badge</div>
+                  <div class="w-1/5 p-4 font-semibold">Courses & Quizzes</div>
+                </div>
+
+                <div class="table-body" id="tableBody">
+                  <!-- Rows will be dynamically added here -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Tab Quiz Content -->
+          <div id="quiz-tab" class="tab-content hidden">
+            <div class="">
+              <div class="overflow-auto border border-gray-200 rounded-lg">
+                <div class="bg-primaryLight flex items-center">
+                  <div class="w-[20px] pl-4">
+                    <input type="checkbox" id="selectAll" class="select-all-checkbox" />
+                  </div>
+                  <div class="w-1/4 p-4 font-semibold">Quiz Name</div>
+                  <div class="w-1/4 p-4 font-semibold">Question Count</div>
+                  <div class="w-1/4 p-4 font-semibold">EduCoins</div>
+                  <div class="w-1/4 p-4 font-semibold">Participation</div>
+                </div>
+
+                <div class="table-body" id="quizTableBody">
+                  <!-- Rows will be dynamically added here -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
         </div>
 
 
-        <div>
-          <img src="assets/img/std-report.svg" class="w-full" alt="">
-        </div>
+
 
       </section>
 
@@ -305,7 +353,7 @@
 
   <!-- custom script -->
   <script src="./js/main.js"></script>
-  <script src="./js/reports.js"></script>
+  <script src="./js/report.js"></script>
 
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

@@ -1,8 +1,14 @@
 // Select elements
 const tabButtons = document.querySelectorAll('.post-announcement-tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
+
+const closeCreateQuizButtons = document.querySelectorAll('.close-create-class-popup-btn');
+const closeAddMaterialButtons = document.querySelectorAll('.close-add-material-popup-btn');
 const createQuizBtn = document.getElementById('createQuizBtn');
 const addMaterialBtn = document.getElementById('addMaterialBtn');
+const createQuizPopup = document.getElementById('createQuizPopup');
+const addMaterialPopup = document.getElementById('addMaterialPopup');
+
 
 // Function to switch tabs and toggle buttons
 function switchTab(selectedTab) {
@@ -198,3 +204,78 @@ displayQuizzes();
 
 
 
+// Select the container and all radio options
+const questionTypeContainer = document.getElementById('questionTypeContainer');
+const radioOptions = document.querySelectorAll('.radioOption');
+
+// Function to handle selection
+function handleSelection(selectedOption) {
+  // Remove selected class and border from all options
+  radioOptions.forEach(option => {
+    option.classList.remove('selected');
+    option.classList.replace('border-[#9c663b]', 'border-black/5');
+  });
+
+  // Add selected class and border color to the clicked option
+  selectedOption.classList.add('selected');
+  selectedOption.classList.replace('border-black/5', 'border-[#9c663b]');
+}
+
+// Add click event listeners to each radio option
+radioOptions.forEach(option => {
+  option.addEventListener('click', () => {
+    handleSelection(option);
+    // Check the associated hidden input
+    option.querySelector('input').checked = true;
+  });
+});
+
+// Initialize Dropzone
+Dropzone.autoDiscover = false;
+
+const myDropzone = new Dropzone("#myDropzone", {
+  maxFiles: 1,
+  maxFilesize: 5, // 5MB limit
+  acceptedFiles: ".pdf", // Only accept PDF files
+  autoProcessQueue: false,
+  previewsContainer: false, // Disable the Dropzone preview feature
+  dictDefaultMessage: "", // Disable Dropzone's default message
+
+  init: function () {
+    const uploadText = document.getElementById("uploadText");
+
+    // Ensure clicking the text triggers file upload dialog
+    uploadText.addEventListener("click", () => {
+      this.hiddenFileInput.click(); // Trigger Dropzone's hidden input
+    });
+
+    this.on("addedfile", function (file) {
+      // Update the text to show the uploaded file name
+      uploadText.textContent = `Uploaded: ${file.name}`;
+
+      // Allow re-upload by clicking again
+      this.on("click", () => {
+        this.removeAllFiles();
+        uploadText.textContent = "Click to upload or Drag & Drop here";
+      });
+    });
+
+    this.on("error", function (file, message) {
+      alert(message); // Display any error message (e.g., file size exceeded)
+      this.removeFile(file); // Clear the invalid file
+    });
+  },
+});
+
+const togglePopup = (popup) => {
+  popup.classList.toggle('hidden');
+  popup.classList.toggle('flex');
+};
+
+// Toggle Quiz Popup
+createQuizBtn.addEventListener('click', () => togglePopup(createQuizPopup));
+closeCreateQuizButtons.forEach(btn => btn.addEventListener('click', () => togglePopup(createQuizPopup)));
+
+// Toggle Material Popup
+addMaterialBtn.addEventListener('click', () => togglePopup(addMaterialPopup));
+closeAddMaterialButtons.forEach(btn => btn.addEventListener('click', () => togglePopup(addMaterialPopup)));

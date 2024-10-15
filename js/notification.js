@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const notificationBtn = document.getElementById('notificationBtn');
+  // const notificationBtns = document.querySelectorAll('.notification-btn');
   const popupNotification = document.getElementById('popupNotification');
   const closePopup = document.getElementById('closeNotificationPopup');
 
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     popupNotification.classList.toggle('hidden'); // Toggle visibility
     popupNotification.classList.toggle('lg:flex'); // Toggle visibility
   });
+
 
   // Close the popup when the close button is clicked
   closePopup.addEventListener('click', () => {

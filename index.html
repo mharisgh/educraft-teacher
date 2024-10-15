@@ -365,7 +365,7 @@
 
         <!-- Notification Button -->
         <div id="notificationBtn"
-          class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative cursor-pointer">
+          class=" bg-[#fdf0e7] hidden rounded-full w-10 h-10 lg:flex justify-center items-center relative cursor-pointer">
           <span
             class="w-4 h-4 bg-[#ffbc00] absolute top-1 right-1 rounded-full flex justify-center text-xs font-semibold items-center">4</span>
           <img src="assets/icons/bell.svg" alt="Notification Bell">
@@ -395,10 +395,10 @@
     <!-- =========================================== -->
 
     <main id="main"
-      class="max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row  overflow-auto lg:overflow-hidden h-[calc(100vh-3.5rem)]">
+      class="max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row overflow-auto lg:overflow-hidden h-[calc(100vh-3.5rem)]">
 
       <!-- main section-->
-      <section class="lg:w-2/3 p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide h-full relative">
+      <section class="lg:w-2/3 p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide h-full relative ">
 
 
 
@@ -619,7 +619,8 @@
       </section>
 
       <!-- right side section -->
-      <section class="border border-l-black/20 flex flex-col lg:w-1/3 p-4 gap-2 lg:overflow-auto scrollbar-hide">
+      <section
+        class="border border-l-black/20 flex flex-col lg:w-1/3 p-4 gap-2 lg:overflow-auto scrollbar-hide mt-[12rem] lg:mt-[0rem]">
 
 
         <!-- whats new -->
@@ -895,7 +896,7 @@
         <div class="w-full bg-gradient-to-r from-black/5 via-black/10 to-black/5 min-h-[2px] "></div>
 
         <!-- Reviews -->
-        <div class="w-full min-h-[290px] overflow-hidden">
+        <div class="w-full min-h-[290px]  overflow-hidden">
 
           <!-- heading -->
           <div class="h-[34px] flex gap-2 items-center ">
@@ -910,7 +911,7 @@
           </div>
 
 
-          <div class="flex flex-col h-[calc(290px-44px)] gap-4 pr-4 scrollbar-custom pt-2 overflow-auto">
+          <div class="flex flex-col h-full pb-[44px] gap-4 pr-4 scrollbar-custom pt-2 overflow-auto">
 
             <!-- Reviews Container -->
             <div id="reviewsContainer" class="flex flex-col gap-4 ">
