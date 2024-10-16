@@ -1,0 +1,697 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link href="output.css" rel="stylesheet">
+
+
+
+  <style>
+    .menu-active {
+      background-color: #ba9070;
+    }
+  </style>
+</head>
+
+<body class="flex font-sans">
+
+  <!-- =========================================== -->
+  <!-- Nav menu left sidebar -->
+  <!-- =========================================== -->
+
+  <aside id="sidebar"
+    class="bg-[#9c663b] z-50 text-white w-72 h-screen transition-all ease-out duration-300 hidden lg:block">
+
+    <div class="h-full overflow-y-auto px-4 flex flex-col justify-between scrollbar-custom">
+
+      <div>
+        <!-- educraft logo -->
+        <div id="sidemenu-logo" class=" flex gap-2 ml-3 items-start mt-4">
+          <img src="./assets/img/educraft-logo-white.svg" alt="educraft logo">
+          <div class="grid">
+            <p class="logo-text font-bold text-2xl">EduCraft</p>
+            <p class="logo-text justify-self-end">Teacher</p>
+          </div>
+        </div>
+
+        <!-- shrink expand button -->
+        <div id="toggle-btn-area" class="w-full flex justify-end py-4 ">
+          <button id="toggleBtn" class="bg-white/20 p-2  rounded-lg">
+            <img class="w-3 h-3 " src="assets/icons/small.svg" alt="menu expand button">
+          </button>
+        </div>
+
+        <!-- top menu list -->
+        <nav class="flex flex-col justify-between ">
+          <ul class="flex flex-col gap-1">
+
+            <a href="/index.html">
+              <li id="sidemenu-list"
+                class="h-12 flex items-center hover:bg-[#ba9070] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list  cursor-pointer ">
+                <div class="flex gap-4 ">
+                  <img class="w-6 h-6" src="assets/icons/home.svg" alt="home">
+                  <span class="sidebar-text">Home</span>
+                </div>
+              </li>
+            </a>
+
+            <a href="/training-courses.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer ">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/my-courses.svg" alt="home">
+                  <span class="sidebar-text">Training Courses</span>
+                </div>
+              </li>
+            </a>
+
+            <a href="/student-courses.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer ">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/student-courses.svg" alt="home">
+                  <span class="sidebar-text">Student Courses</span>
+                </div>
+              </li>
+            </a>
+
+            <a href="/classroom.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/clasroom.svg" alt="home">
+                  <span class="sidebar-text">Classroom</span>
+                </div>
+              </li>
+            </a>
+
+            <a href="/report.html">
+              <li id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer menu-active">
+                <div class="flex gap-4 items-center">
+                  <img class="w-6 h-6" src="assets/icons/report.svg" alt="home">
+                  <span class="sidebar-text">Report</span>
+                </div>
+              </li>
+            </a>
+
+          </ul>
+
+        </nav>
+      </div>
+
+
+      <!-- bottom menu list -->
+      <div>
+
+        <!-- expanded educat chatbot button-->
+        <div id="educat-sidemenu-big"
+          class="lg:min-h-[100px] bg-gradient-to-b from-[#92623d] to-[#ad764c] rounded-2xl relative my-6 overflow-hidden">
+          <img class="absolute z-10  w-[90px] top-2 -right-2 " src="assets/img/educy.webp" alt="chat bot">
+          <div class="px-3 py-3">
+            <p class="">I'm</p>
+            <p class="font-bold text-lg tracking-tight -mt-1">EduCy<span class="text-xs font-base">&nbsp;2.0</span></p>
+
+            <p class="mt-6">Your AI</p>
+            <p class=" text-sm tracking-tight">Learning Assistant</p>
+
+            <button
+              class=" ecChatBotBtn bg-white text-[#bf4b00] mt-4 w-full py-2 text-semibold flex gap-1 rounded-lg justify-center items-center font-lg font-semibold hover:shadow-sm">
+              <img src="assets/icons/chat-regular.svg" alt="chat with educat">
+              Let's Chat
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- shrink educat chatbot button -->
+        <button id="educat-sidemenu-sm"
+          class="ecChatBotBtnSm bg-white text-[#bf4b00] my-6 w-full py-2 text-semibold hidden rounded-lg justify-center items-center">
+          <img src="assets/icons/chat-regular.svg" alt="chat with educat">
+
+        </button>
+
+        <!-- bottom menu list -->
+        <nav class="pb-4">
+          <ul class="flex flex-col gap-1">
+            <!-- <li id="sidemenu-list"
+              class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list">
+              <a href="#" class="flex gap-4">
+                <img class="w-6 h-6" src="assets/icons/help-center.svg" alt="home">
+                <span class="sidebar-text">Help</span>
+              </a>
+            </li> -->
+
+
+            <!-- sperator -->
+            <li class="w-full h-[2px] bg-white/20"></li>
+
+            <li id="sidemenu-list"
+              class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300">
+              <a href="#" class="flex gap-4 items-center">
+                <img class="w-6 h-6" src="assets/icons/logout.svg" alt="home">
+                <span class="sidebar-text">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  </aside>
+
+
+  <!-- =========================================== -->
+  <!-- Main -->
+  <!-- =========================================== -->
+
+  <div class="w-full h-screen  overflow-hidden relative ">
+
+    <!-- =========================================== -->
+    <!-- Top Header Menu -->
+    <!-- =========================================== -->
+
+    <header id="header-menu"
+      class="  bg-white  flex justify-between w-full h-14 items-center  transition-all ease-out duration-300  p-4 border border-b-black/10">
+      <p class="text-xl-custom">Report</p>
+
+      <!-- Search Input -->
+      <div class="relative w-1/3">
+        <input type="text" placeholder="Search"
+          class="w-full pl-12 pr-4 py-2 rounded-full bg-[#fffaf4] focus:outline-none focus:border-primary border border-gray-200">
+        <img src="assets/icons/search-bar.svg" alt="Search Icon"
+          class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-red-700" />
+      </div>
+
+      <!-- full screen toggle & notification -->
+      <div class="flex gap-4">
+
+        <!-- Fullscreen Toggle Button -->
+        <div id="fullscreenToggle"
+          class="bg-[#fdf0e7] rounded-full w-10 h-10 lg:flex justify-center items-center relative hidden">
+
+          <img src="assets/icons/fullscreen.svg" alt="fullscreen">
+
+        </div>
+
+        <!-- Notification Button -->
+        <div id="notificationBtn"
+          class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative cursor-pointer">
+          <span
+            class="w-4 h-4 bg-[#ffbc00] absolute top-1 right-1 rounded-full flex justify-center text-xs font-semibold items-center">4</span>
+          <img src="assets/icons/bell.svg" alt="Notification Bell">
+        </div>
+
+      </div>
+
+      <!-- user profile -->
+      <div class="flex gap-2 justify-center items-center">
+        <p class="font-semibold">Fathima Thasneem</p>
+        <img class="w-10 h-10 rounded-full border-2 border-primary" src="assets/img/general/teacher.png"
+          alt="user profile">
+      </div>
+    </header>
+
+    <!-- =========================================== -->
+    <!-- Main Content Area - Dashboard -->
+    <!-- =========================================== -->
+
+    <main id="main"
+      class=" bg-primaryLight  max-w-screen-2xl mx-auto transition-all ease-out duration-300  flex flex-col lg:flex-row overflow-auto lg:overflow-hidden h-[calc(100vh-3.5rem)]">
+
+      <!-- main section-->
+      <section class="bg-primaryLight lg:w-2/3 p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide lg:h-full">
+
+        <!-- Page title & back button -->
+        <div class="flex justify-between items-center ">
+          <div class="flex gap-4">
+            <a href="#" onclick="history.back(); return false;"
+              class="pl-2 pr-6 h-[40px] rounded-xl bg-white  border border-black/20 hover:border-black/50 flex items-center gap-1">
+              <img class="w-5" src="/assets/icons/arrow-left.svg" alt="back">
+              <p class="font-medium">Back</p>
+            </a>
+            <div class="flex gap-3 items-center">
+              <p class="text-lg-custom">Student Profile</p>
+            </div>
+          </div>
+          <div>
+
+            <!-- Send Report to Parent Button -->
+            <button
+              class="h-10 bg-primary hover:bg-primaryDark flex gap-2 items-center text-white px-3 rounded-lg text-sm w-fit"
+              id="createQuizBtn">
+              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(255,255,255,1)">
+                <path
+                  d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z">
+                </path>
+              </svg>
+              Send Reports to Parent
+            </button>
+
+          </div>
+        </div>
+
+        <!-- profile overview -->
+        <div class="w-full   flex-col flex gap-2 ">
+
+          <div class="border border-black/20  p-2 rounded-2xl flex flex-col justify-between relative">
+
+            <div class="bg-primary relative rounded-tl-xl rounded-tr-xl  h-[60px] overflow-hidden">
+
+              <!-- Badge dyanmic change here -->
+              <div class="absolute z-20 right-2 top-3 flex gap-2 items-center">
+                <span class="text-white ">Bronze Gear</span>
+                <img class="w-6" src="assets/img/general/educoin-big.png" alt="badge">
+              </div>
+
+              <div class="absolute z-10 bg-primary w-full h-full opacity-50"></div>
+              <img src="assets/img/profile-bg.png" class="w-full h-full object-cover" alt="badge">
+            </div>
+
+            <!-- Details here -->
+
+            <!-- profile picture & name -->
+            <div class=" absolute z-30 left-[3%] top-[10%] gap-2">
+              <img class="w-[100px] ml-4 rounded-full  border-3 border-white" src="assets/img/general/user.png"
+                alt="student-image" />
+              <div class="mt-2 flex flex-col justify-center items-center">
+                <p class="font-medium text-md-custom">Faisal Saleem</p>
+                <p>class <span class="font-semibold">6A</span></p>
+              </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row w-full lg:gap-6 gap-4 lg:pl-[150px] lg:py-2 pt-[140px] lg:mt-2  ">
+
+              <div class="bg-primaryLight rounded-xl flex justify-around lg:w-[60%] items-center p-4 ">
+
+                <!-- chapters -->
+                <div class="flex flex-col items-center">
+                  <img class="w-8" src="assets/img/chapters.png" alt="chapters">
+                  <p class="text-xs font-medium text-black/60">Chapters</p>
+
+                  <!-- chapters completed value change here -->
+                  <span class="text-xl font-semibold text-primaryDark">2</span>
+
+                </div>
+
+                <!-- seprator -->
+                <div class="w-[3px] bg-gradient-to-b from-transparent via-gray-200 to-transparent h-full "></div>
+
+                <!-- quizzes -->
+                <div class="flex flex-col items-center">
+                  <img class="w-8" src="assets/img/quiz.png" alt="chapters">
+                  <p class="text-xs font-medium text-black/60">Quizzes</p>
+
+                  <!-- quizzes completed value change here -->
+                  <span class="text-xl font-semibold text-primaryDark">5</span>
+
+                </div>
+
+                <!-- seprator -->
+                <div class="w-[3px] bg-gradient-to-b from-transparent via-gray-200 to-transparent h-full "></div>
+
+                <!-- educoins -->
+                <div class="flex flex-col items-center">
+                  <img class="w-8" src="assets/img/general/educoin-sm.png" alt="chapters">
+                  <p class="text-xs font-medium text-black/60">Educoins</p>
+
+                  <!-- Educoins completed value change here -->
+                  <span class="text-xl font-semibold text-primaryDark">23</span>
+
+                </div>
+
+
+              </div>
+
+              <!-- email & syllabus -->
+              <div class="flex flex-col gap-3">
+                <div class="flex gap-3">
+                  <img src="/assets/icons/mail.svg" alt="email id">
+                  <p>faisal@nimsdxb.com</p>
+                </div>
+
+                <div class="flex gap-3">
+                  <img src="/assets/icons/mail.svg" alt="email id">
+                  <p>parent@nimsdxb.com</p>
+                </div>
+
+                <div class="flex gap-3">
+                  <img src="/assets/icons/note.svg" alt="syllabus">
+                  <p>CBSE Morning 6-O</p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Badges -->
+        <div class="relative">
+
+          <div class="flex gap-2 items-center">
+
+            <p class="text-lg-custom">Badges</p>
+            <!-- show the count if there is a new unread comment or review -->
+            <div
+              class="min-w-3 px-2 h-5 rounded bg-primary text-white  flex justify-center items-center text-xs font-medium">
+              2
+            </div>
+          </div>
+
+          <!-- Badge container -->
+          <div class="flex gap-4 py-4">
+
+            <div class="border border-black/20 flex flex-col px-4 py-2 rounded-xl h-fit ">
+
+              <div class="flex justify-between">
+                <img class="w-[40px] h-[40px]" src="/assets/img/badges/badge1.png" alt="">
+                <div>
+                  <p class="text-black/70">Unlocked by</p>
+                  <p class="text-primary font-semibold">10 Educoins</p>
+                </div>
+              </div>
+
+              <p class="text-base mt-1 flex flex-col items-center">Diamond Star Collector</p>
+
+            </div>
+
+            <div class="border border-black/20 flex flex-col px-4 py-2 rounded-xl h-fit ">
+
+              <div class="flex justify-between">
+                <img class="w-[40px] h-[40px]" src="/assets/img/badges/badge2.png" alt="">
+                <div>
+                  <p class="text-black/70">Unlocked by</p>
+                  <p class="text-primary font-semibold">20 Educoins</p>
+                </div>
+              </div>
+
+              <p class="text-base mt-1 flex flex-col items-center">Diamond Star Collector</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Skills -->
+
+        <div class="flex gap-2 items-center">
+
+          <p class="text-lg-custom">Skills</p>
+          <!-- show the count if there is a new unread comment or review -->
+          <div
+            class="min-w-3 px-2 h-5 rounded bg-primary text-white  flex justify-center items-center text-xs font-medium">
+            8
+          </div>
+        </div>
+
+        <div class="bg-primaryLight  rounded-xl border border-black/10 w-full h-full flex flex-col">
+
+          <div class="p-4 rounded-xl w-full h-full overflow-hidden relative">
+            <!-- skill names -->
+            <div class="w-full h-full flex flex-wrap gap-2 relative z-20">
+              <p class="px-3 py-2 bg-white rounded-md w-fit h-fit border border-black/10">Basic Computer Literacy</p>
+              <p class="px-3 py-2 bg-white rounded-md w-fit h-fit border border-black/10">Internet Safety</p>
+              <p class="px-3 py-2 bg-white rounded-md w-fit h-fit border border-black/10">Introduction to Coding</p>
+              <p class="px-3 py-2 bg-white rounded-md w-fit h-fit border border-black/10">Word Processing</p>
+              <p class="px-3 py-2 bg-white rounded-md w-fit h-fit border border-black/10">Basic Hardware</p>
+              <p class="px-3 py-2 bg-white rounded-md w-fit h-fit border border-black/10">Basic Hardware</p>
+              <p class="px-3 py-2 bg-white rounded-md w-fit h-fit border border-black/10">Basic Hardware</p>
+              <p class="px-3 py-2 bg-white rounded-md w-fit h-fit border border-black/10">Basic Hardware</p>
+            </div>
+
+            <img class="absolute z-10 w-[200px] -top-[3rem] -right-[3rem] opacity-10" src="assets/img/skills.png"
+              alt="">
+          </div>
+
+        </div>
+
+        <!-- Certificates -->
+
+        <div class="flex gap-2 items-center">
+
+          <p class="text-lg-custom">Certificates</p>
+          <!-- show the count if there is a new unread comment or review -->
+          <div
+            class="min-w-3 px-2 h-5 rounded bg-primary text-white  flex justify-center items-center text-xs font-medium">
+            0
+          </div>
+        </div>
+        <div class="w-full">
+
+          <div
+            class="bg-primaryLight p-4 rounded-xl border border-black/10 w-full flex flex-col justify-around min-h-[150px] relative overflow-hidden">
+
+            <img class="absolute w-[200px] -top-[3rem] -right-[3rem] opacity-10" src="assets/img/certificate.png"
+              alt="">
+
+            <img class="w-[50px]" src="assets/img/certificate.png" alt="">
+            <p class="font-semibold text-base ">No Certificates Achieved</p>
+            <p class="text-black/50">You haven't acquired any skills yet. Keep learning to unlock new skills!</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- right side section -->
+      <section
+        class="bg-white border border-l-black/20 flex flex-col lg:w-1/3 p-4 gap-4 ">
+
+        <!-- Quiz Scores -->
+        <div class="h-1/2 lg:overflow-auto scrollbar-custom pr-3">
+          <div class="flex gap-2 items-center sticky top-0 bg-white pb-2">
+            <p class="text-lg-custom">Quiz Scores</p>
+            <div
+              class="min-w-3 px-2 h-5 rounded bg-primary text-white flex justify-center items-center text-xs font-medium">
+              4
+            </div>
+          </div>
+          <div id="quiz-container" class="flex flex-col gap-3 py-3"></div>
+        </div>
+
+        <!-- Courses -->
+        <div class="h-1/2 lg:overflow-auto scrollbar-custom pr-3">
+          <div class="flex justify-between sticky top-0 bg-white pb-2">
+            <div class="flex gap-2 items-center">
+              <p class="text-lg-custom">Courses</p>
+              <div
+                class="min-w-3 px-2 h-5 rounded bg-primary text-white flex justify-center items-center text-xs font-medium">
+                4
+              </div>
+            </div>
+            <div>Inprogress: <span class="font-semibold text-[16px]">1</span></div>
+          </div>
+          <div id="course-container" class="flex flex-col gap-3 py-3"></div>
+        </div>
+
+      </section>
+
+
+    </main>
+
+  </div>
+
+
+  <!-- =========================================== -->
+  <!-- Create a Quiz Popup -->
+  <!-- =========================================== -->
+
+  <div id="createQuizPopup" class="hidden fixed z-[200] bg-black/70 w-screen h-screen justify-center items-center">
+
+    <!-- Popup Box container -->
+    <div
+      class="bg-white rounded-xl lg:max-w-2xl w-full lg:min-h-[220px] h-fit pb-14  flex flex-col  relative overflow-hidden">
+
+      <!-- header -->
+      <div class="flex justify-between px-4 py-2">
+        <p class="text-lg font-semibold">Create a Quiz</p>
+        <button
+          class="close-create-class-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
+          <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
+        </button>
+      </div>
+
+      <!-- seperator -->
+      <div class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[2px]"></div>
+
+      <!-- content -->
+      <div class="p-4 flex flex-col">
+
+        <div>
+          <label for="questionTitle" class="block text-xs  font-medium">NAME</label>
+          <input type="text" id="questionTitle"
+            class="mt-1 capitalize block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg "
+            placeholder="Type Quiz Name...">
+        </div>
+
+        <div class="pt-6">
+          <label for="questionTitle" class="block text-xs pb-2 font-medium">STARTS FROM</label>
+          <div>
+            <!-- quiz creation from -->
+            <div>
+
+
+              <!-- Question Type Selection -->
+              <div class="flex text-center justify-between w-full gap-3" id="questionTypeContainer">
+
+                <div id="scratch"
+                  class="radioOption border-[3px] border-[#9c663b] hover:border-black/30 rounded-lg  cursor-pointer w-full selected min-h-[150px] overflow-hidden">
+
+                  <div class="h-1/2 bg-primaryLight flex justify-center items-center">
+                    <img class="w-14" src="assets/img/classroom/scratch.webp" alt="scratch">
+                    <input type="radio" class="hidden" name="quizTemplate" value="general" checked />
+                  </div>
+
+
+                  <div class="h-1/2 flex justify-center items-center flex-col gap-1">
+                    <p class="text-[1rem] font-medium tracking-tight">From Scratch</p>
+                    <p class="leading-4 lg:max-w-[80%]">
+                      Create a quiz from the ground up.
+                    </p>
+
+                  </div>
+                </div>
+
+                <div id="ai"
+                  class="radioOption border-[3px] border-black/5 hover:border-black/30 rounded-lg  cursor-pointer w-full selected min-h-[180px] overflow-hidden">
+
+                  <div class="h-1/2 bg-primaryLight flex justify-center items-center">
+                    <img class="w-14" src="assets/img/classroom/ai.webp" alt="ai">
+                    <input type="radio" class="hidden" name="quizTemplate" value="ai" />
+                  </div>
+
+                  <div class="h-1/2 flex justify-center items-center flex-col gap-1">
+                    <p class="text-[1rem] font-medium tracking-tight">Generate with AI</p>
+                    <p class="leading-4 lg:max-w-[80%]">
+                      Let AI helps to generate your questions.
+                    </p>
+                  </div>
+                </div>
+
+                <div id="sheet"
+                  class="radioOption border-[3px] border-black/5 hover:border-black/30 rounded-lg  cursor-pointer w-full selected min-h-[150px] overflow-hidden">
+
+                  <div class="h-1/2 bg-primaryLight flex justify-center items-center">
+                    <img class="w-14" src="assets/img/classroom/sheet.webp" alt="sheet">
+                    <input type="radio" class="hidden" name="quizTemplate" value="sheet" />
+                  </div>
+
+
+                  <div class="h-1/2 flex justify-center items-center flex-col gap-1">
+                    <p class="text-[1rem] font-medium tracking-tight">Import Worksheet</p>
+                    <p class="leading-4 lg:max-w-[80%]">
+                      Upload your worksheet to convert into a quiz.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Popup Footer -->
+      <div
+        class="flex absolute bottom-0 justify-end gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
+
+        <div class="flex gap-2">
+          <button
+            class="close-create-class-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg">Cancel</button>
+          <button id="classCreateButton"
+            class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg">Create</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- =========================================== -->
+  <!-- Add Material Popup -->
+  <!-- =========================================== -->
+
+  <div id="addMaterialPopup" class="hidden fixed z-[200] bg-black/70 w-screen h-screen justify-center items-center">
+
+    <!-- Popup Box container -->
+    <div
+      class="bg-white rounded-xl lg:max-w-2xl w-full lg:min-h-[220px] h-fit pb-14  flex flex-col  relative overflow-hidden">
+
+      <!-- header -->
+      <div class="flex justify-between px-4 py-2">
+        <p class="text-lg font-semibold">Add Material</p>
+        <button
+          class="close-add-material-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
+          <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
+        </button>
+      </div>
+
+      <!-- seperator -->
+      <div class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[2px]"></div>
+
+      <!-- content -->
+      <div class="p-4 flex flex-col">
+
+        <div>
+          <label for="questionTitle" class="block text-xs  font-medium">NAME</label>
+          <input type="text" id="questionTitle"
+            class="mt-1 capitalize block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg "
+            placeholder="Type Material Name...">
+        </div>
+
+        <div class="pt-6">
+          <label for="documentUpload" class="block text-xs pb-2 font-medium">UPLOAD</label>
+          <form action="/upload" method="POST" enctype="multipart/form-data"
+            class="dropzone min-h-[160px] bg-primaryLight rounded-xl border border-dashed border-black/30 flex flex-col justify-center items-center h-fit"
+            id="myDropzone">
+            <img class="w-14" src="assets/img/classroom/pdf.webp" alt="upload" />
+            <p id="uploadText" class="text-primaryDark underline font-medium cursor-pointer">
+              Click to upload or Drag & Drop here
+            </p>
+            <p class="text-black/70">Max file size: 5MB</p>
+          </form>
+        </div>
+
+
+
+      </div>
+
+      <!-- Popup Footer -->
+      <div
+        class="flex absolute bottom-0 justify-end gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
+
+        <div class="flex gap-2">
+          <button
+            class="close-add-material-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg">Cancel</button>
+          <button id="classCreateButton"
+            class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg">Create</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <!-- custom script -->
+  <script src="./js/main.js"></script>
+  <script src="./js/studentProfile.js"></script>
+
+</body>
+
+</html>
