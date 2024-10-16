@@ -40,14 +40,15 @@ const rowsPerPage = 10; // Number of rows to load per request
 // Sample JSON data (replace this with your actual data fetching)
 const sampleData = [
   {
-    "studentName": "Alice Johnson",
-    "Grade": "A",
+    "studentName": "Faisal Saleem",
+    "Grade": "6A",
     "email": "alice.johnson@example.com",
     "eduCoins": 150,
     "level": 3,
     "badgeName": "Gold",
     "courses": 3,
-    "quizzes": 5
+    "quizzes": 5,
+    "studentProfileLink" : '/student-profile.html'
   },
   {
     "studentName": "Bob Smith",
@@ -57,7 +58,8 @@ const sampleData = [
     "level": 4,
     "badgeName": "Platinum",
     "courses": 5,
-    "quizzes": 3
+    "quizzes": 3,
+    
   },
   {
     "studentName": "Charlie Brown",
@@ -67,7 +69,8 @@ const sampleData = [
     "level": 5,
     "badgeName": "Gold",
     "courses": 2,
-    "quizzes": 6
+    "quizzes": 6,
+    
   },
   {
     "studentName": "Diana Prince",
@@ -77,7 +80,8 @@ const sampleData = [
     "level": 2,
     "badgeName": "Silver",
     "courses": 4,
-    "quizzes": 2
+    "quizzes": 2,
+    
   },
   {
     "studentName": "Ethan Hunt",
@@ -87,7 +91,8 @@ const sampleData = [
     "level": 4,
     "badgeName": "Platinum",
     "courses": 5,
-    "quizzes": 4
+    "quizzes": 4,
+    
   },
   {
     "studentName": "Fiona Gallagher",
@@ -97,7 +102,8 @@ const sampleData = [
     "level": 3,
     "badgeName": "Gold",
     "courses": 3,
-    "quizzes": 5
+    "quizzes": 5,
+    
   },
   {
     "studentName": "George Costanza",
@@ -107,7 +113,8 @@ const sampleData = [
     "level": 3,
     "badgeName": "Silver",
     "courses": 4,
-    "quizzes": 3
+    "quizzes": 3,
+    
   },
   {
     "studentName": "Hannah Montana",
@@ -117,7 +124,8 @@ const sampleData = [
     "level": 5,
     "badgeName": "Gold",
     "courses": 6,
-    "quizzes": 5
+    "quizzes": 5,
+    
   },
   {
     "studentName": "Ian Malcolm",
@@ -127,7 +135,8 @@ const sampleData = [
     "level": 4,
     "badgeName": "Silver",
     "courses": 3,
-    "quizzes": 4
+    "quizzes": 4,
+    
   },
   {
     "studentName": "Julia Roberts",
@@ -137,7 +146,8 @@ const sampleData = [
     "level": 5,
     "badgeName": "Gold",
     "courses": 5,
-    "quizzes": 6
+    "quizzes": 6,
+    
   }
 ];
 
@@ -154,31 +164,43 @@ const loadMoreRows = () => {
   const dataToLoad = sampleData.slice(startIndex, endIndex);
   dataToLoad.forEach(item => {
     const row = document.createElement('div');
-    row.className = 'flex items-center pl-2 ';
+    row.className = 'grid grid-cols-[20px_minmax(180px,_1fr)_repeat(4,_1fr)] items-center p-4 border-b border-gray-200'; // 6 columns grid layout
+
     row.innerHTML = `
-                    <div class="w-[20px] pl-2">
-          <input type="checkbox" class="student-checkbox" />
+      <!-- Checkbox Column -->
+      <div class="w-[50px] ">
+        <input type="checkbox" class="student-checkbox" />
+      </div>
+
+      <!-- Student Name and Grade Column -->
+      <a href="${item.studentProfileLink}" class=" group flex gap-2 items-center">
+        <img class="w-7 h-7 rounded-full object-cover" src="assets/img/general/user2.jpg" alt="pdf" />
+        <div>
+          <p class="font-medium group-hover:underline">${item.studentName}</p>
+          <p class="text-black/40 text-xs">Grade <span class="text-primaryDark font-medium">${item.Grade}</span></p>
         </div>
-              <div class="w-1/5 flex gap-2 p-4 border-b border-gray-200 items-center">
-               <img class="w-7 h-7 rounded-full object-cover" src="assets/img/general/user2.jpg" alt="pdf">
-            <div>
-            <p class="font-medium">${item.studentName}</p>
-            <p class="text-black/40 text-xs">Grade <span class="text-primaryDark font-medium"> ${item.Grade}</span></p>
-            </div>
-            </div>
+      </a>
 
-            <div class="w-1/5 p-4 border-b border-gray-200">${item.email}</div>
+      <!-- Email Column -->
+      <div class="truncate">${item.email}</div>
 
-            <div class="w-1/5 p-4 border-b border-gray-200">${item.eduCoins}</div>
-            
-            <div class="w-1/5 p-4 border-b border-gray-200">Level ${item.level}<span class="font-medium"> ${item.badgeName}</span></div>
-            
-            <div class="w-1/5 p-4 border-b border-gray-200">Courses: <span class="font-medium">${item.courses}</span>, Quizzes: <span class="font-medium">${item.quizzes}</span></div>
-        `;
+      <!-- EduCoins Column -->
+      <div>${item.eduCoins}</div>
+
+      <!-- Level and Badge Column -->
+      <div>Level ${item.level} <span class="font-medium">${item.badgeName}</span></div>
+
+      <!-- Courses and Quizzes Column -->
+      <div>Courses: <span class="font-medium">${item.courses}</span>, Quizzes: <span class="font-medium">${item.quizzes}</span></div>
+    `;
+
     tableBody.appendChild(row);
   });
+
   currentPage++;
 };
+
+
 
 // Initial load
 loadMoreRows();
@@ -280,15 +302,15 @@ const loadMoreQuizRows = () => {
   const quizDataToLoad = sampleQuizData.slice(startIndex, endIndex);
   quizDataToLoad.forEach(item => {
     const row = document.createElement('div');
-    row.className = 'flex items-center p-4 border-b  border-gray-200';
+    row.className = 'grid grid-cols-[20px_minmax(180px,_1fr)_1fr_1fr_1fr] items-center p-4 border-b border-gray-200';
     row.innerHTML = `
-      <div class="w-[20px] ">
+      <div>
         <input type="checkbox" class="quiz-checkbox" />
       </div>
-      <div class="w-1/4">${item.quizName}</div>
-      <div class="w-1/4">${item.questionCount}</div>
-      <div class="w-1/4">${item.eduCoins}</div>
-      <div class="w-1/4">${item.participation}</div>
+      <div>${item.quizName}</div>
+      <div>${item.questionCount}</div>
+      <div>${item.eduCoins}</div>
+      <div>${item.participation}</div>
     `;
     quizTableBody.appendChild(row);
   });
@@ -297,6 +319,7 @@ const loadMoreQuizRows = () => {
 
 // Initial load for quizzes
 loadMoreQuizRows();
+
 
 // Infinite scroll listener for quizzes
 const quizObserver = new IntersectionObserver((entries) => {

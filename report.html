@@ -287,44 +287,66 @@
           <!-- Tab Students Content -->
           <div id="students-tab" class="tab-content block">
             <!-- Student report content -->
-            <div class="">
-              <div class="overflow-auto border border-gray-200 rounded-lg">
-                <div class="bg-primaryLight flex items-center">
 
-                  <!-- Checkbox Column -->
-                  <div class="w-[20px] p-4">
-                    <input type="checkbox" id="selectAll">
-                  </div>
-                  <div class="w-1/5 p-4 flex gap-1">
-                    <img class="w-5" src="assets/icons/arrow-left.svg" alt="">
-                    <p>Student Name & Grade</p>
-                  </div>
-                  <div class="w-1/5 p-4 font-semibold">Email</div>
-                  <div class="w-1/5 p-4 font-semibold">EduCoins</div>
-                  <div class="w-1/5 p-4 font-semibold">Level & Badge</div>
-                  <div class="w-1/5 p-4 font-semibold">Courses & Quizzes</div>
+            <div class="overflow-auto border border-gray-200 rounded-lg">
+              <!-- Header Section -->
+              <div class="grid grid-cols-[20px_minmax(180px,_1fr)_repeat(4,_1fr)] items-center bg-primaryLight p-4">
+
+                <!-- Checkbox Column -->
+                <div class="flex items-center w-[50px] ">
+                  <input type="checkbox" id="selectAll">
                 </div>
 
-                <div class="table-body" id="tableBody">
-                  <!-- Rows will be dynamically added here -->
+                <!-- Student Name & Grade Column -->
+                <div class="flex items-center gap-1 ">
+                  <!-- <img class="w-5" src="assets/icons/arrow-left.svg" alt=""> -->
+                  <p class="font-semibold">Name & Grade</p>
                 </div>
+
+                <!-- Email Column -->
+                <div class="truncate font-semibold">Email</div>
+
+                <!-- EduCoins Column -->
+                <div class="font-semibold">EduCoins</div>
+
+                <!-- Level & Badge Column -->
+                <div class="font-semibold">Level & Badge</div>
+
+                <!-- Courses & Quizzes Column -->
+                <div class="font-semibold">Courses & Quizzes</div>
+              </div>
+
+              <!-- Table Body -->
+              <div class="table-body" id="tableBody">
+                <!-- Rows will be dynamically added here via JavaScript -->
               </div>
             </div>
+
+
 
           </div>
 
           <!-- Tab Quiz Content -->
           <div id="quiz-tab" class="tab-content hidden">
-            <div class="">
+            <div>
               <div class="overflow-auto border border-gray-200 rounded-lg">
-                <div class="bg-primaryLight flex items-center">
-                  <div class="w-[20px] pl-4">
+                <div class="grid grid-cols-[20px_minmax(180px,_1fr)_1fr_1fr_1fr] items-center bg-primaryLight">
+                  <!-- Checkbox Column -->
+                  <div class="pl-4">
                     <input type="checkbox" id="selectAll" class="select-all-checkbox" />
                   </div>
-                  <div class="w-1/4 p-4 font-semibold">Quiz Name</div>
-                  <div class="w-1/4 p-4 font-semibold">Question Count</div>
-                  <div class="w-1/4 p-4 font-semibold">EduCoins</div>
-                  <div class="w-1/4 p-4 font-semibold">Participation</div>
+
+                  <!-- Quiz Name Column -->
+                  <div class="p-4  font-semibold">Quiz Name</div>
+
+                  <!-- Question Count Column -->
+                  <div class="p-4 pl-0 font-semibold">Question Count</div>
+
+                  <!-- EduCoins Column -->
+                  <div class="p-4 pl-0 font-semibold">EduCoins</div>
+
+                  <!-- Participation Column -->
+                  <div class="p-4  pl-0 font-semibold">Participation</div>
                 </div>
 
                 <div class="table-body" id="quizTableBody">
@@ -333,6 +355,7 @@
               </div>
             </div>
           </div>
+
 
 
 
