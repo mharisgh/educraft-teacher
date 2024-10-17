@@ -123,7 +123,7 @@ function updateSkillTags() {
   skillTags.innerHTML = '';
   selectedSkills.forEach(skill => {
     const skillTag = document.createElement('div');
-    skillTag.classList.add('bg-blue-100', 'px-2', 'py-1', 'rounded-lg', 'flex', 'items-center', 'gap-2');
+    skillTag.classList.add('bg-[#fcf7f0]', 'px-2', 'py-1', 'rounded-lg', 'flex', 'items-center', 'gap-2');
 
     skillTag.innerHTML = `
       <span>${skill}</span>

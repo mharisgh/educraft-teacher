@@ -51,8 +51,8 @@ function renderQuizzes(data) {
         </div>
         <div class="flex items-center gap-1">
           <p>Educoins</p>
-          <img class="w-8" src="assets/img/general/educoin-sm.png" alt="educoin">
-          <p class="font-medium text-lg">${quiz.eduCoins}</p>
+          <img class="w-6" src="assets/img/general/educoin-sm.png" alt="educoin">
+          <p class="font-medium t">${quiz.eduCoins}</p>
         </div>
       </div>
     `;
