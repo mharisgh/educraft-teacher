@@ -142,6 +142,7 @@ function removeSkill(skill) {
 courseTitle.addEventListener('input', () => {
   previewTitle.textContent = `Title: ${courseTitle.value}`;
 });
+
 courseCategory.addEventListener('change', () => {
   previewCategory.textContent = `Category: ${courseCategory.value}`;
 });
