@@ -256,15 +256,15 @@ document.getElementById('mcqOption').click();
 
 const studentListPopupContainer = document.getElementById('studentListPopup');
 const studentListPopupBtn = document.getElementById('studentListPopupBtn');
-const closeAddStudentButtons = document.querySelectorAll('.close-add-student-popup-btn');
+const closeStudentAddBtn = document.querySelectorAll('.close-add-student-popup-btn');
 
-const togglePopups = (popup) => {
+const togglePopupS = (popup) => {
   popup.classList.toggle('hidden');
   popup.classList.toggle('flex');
   console.log(popup)
 };
 
 // Toggle Quiz Popup
-studentListPopupBtn.addEventListener('click', () => togglePopups(studentListPopupContainer));
+studentListPopupBtn.addEventListener('click', () => togglePopupS(studentListPopupContainer));
 
-closeAddStudentButtons.forEach(btn => btn.addEventListener('click', () => togglePopups(studentListPopupContainer)));
+closeStudentAddBtn.forEach(btn => btn.addEventListener('click', () => togglePopupS(studentListPopupContainer)));
