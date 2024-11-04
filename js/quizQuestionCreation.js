@@ -176,20 +176,95 @@ var sortable = new Sortable(container, {
 
 
 // Select all options
-  const options = document.querySelectorAll('.radioOption');
+const options = document.querySelectorAll('.radioOption');
 
-  options.forEach(option => {
-    option.addEventListener('click', () => {
-      // Reset all borders
-      options.forEach(opt => {
-        opt.classList.remove('border-[#9c663b]');
-        opt.classList.add('border-black/10');
-        opt.querySelector('input').checked = false;
-      });
-      
-      // Apply selected styles
-      option.classList.add('border-[#9c663b]');
-      option.classList.remove('border-black/10');
-      option.querySelector('input').checked = true;
+options.forEach(option => {
+  option.addEventListener('click', () => {
+    // Reset all borders
+    options.forEach(opt => {
+      opt.classList.remove('border-[#9c663b]');
+      opt.classList.add('border-black/10');
+      opt.querySelector('input').checked = false;
     });
+
+    // Apply selected styles
+    option.classList.add('border-[#9c663b]');
+    option.classList.remove('border-black/10');
+    option.querySelector('input').checked = true;
   });
+});
+
+// Select all answer options
+const answerOptions = document.querySelectorAll('.answerRadioOption');
+
+// Loop through each option and add click event listener
+answerOptions.forEach(option => {
+  option.addEventListener('click', () => {
+
+    // Remove border and hide check icon from all options
+    answerOptions.forEach(opt => {
+      opt.classList.remove('border-[#9c663b]'); // Remove border
+      opt.querySelector('.checkIcon').classList.add('hidden'); // Hide check icon
+    });
+
+    // Add border to the clicked option
+    // option.classList.add('border-[#9c663b]');
+    option.classList.add('border-[#9c663b]');
+
+    // Show the check icon for the clicked option
+    option.querySelector('.checkIcon').classList.remove('hidden');
+  });
+});
+
+
+// Select all radio options
+// const radioOptions = document.querySelectorAll('.radioOption');
+const mcqQCreation = document.getElementById('mcqQCreation');
+const tfQCreation = document.getElementById('tfQCreation');
+
+// Handle option click
+options.forEach(option => {
+  option.addEventListener('click', () => {
+    // Reset borders and uncheck all radios
+    options.forEach(opt => {
+      opt.classList.remove('border-[#9c663b]');
+      opt.classList.add('border-black/10');
+      opt.querySelector('input').checked = false;
+    });
+
+    // Apply selected styles to clicked option
+    option.classList.add('border-[#9c663b]');
+    option.classList.remove('border-black/10');
+    option.querySelector('input').checked = true;
+
+    // Show the relevant content div based on the selected option
+    if (option.id === 'mcqOption') {
+      mcqQCreation.classList.remove('hidden');
+      tfQCreation.classList.add('hidden');
+    } else if (option.id === 'trueFalseOption') {
+      tfQCreation.classList.remove('hidden');
+      mcqQCreation.classList.add('hidden');
+    }
+  });
+});
+
+// Ensure the MCQ option is selected by default
+document.getElementById('mcqOption').click();
+
+
+// Assign students to quiz 
+
+const studentListPopupContainer = document.getElementById('studentListPopup');
+const studentListPopupBtn = document.getElementById('studentListPopupBtn');
+const closeAddStudentButtons = document.querySelectorAll('.close-add-student-popup-btn');
+
+const togglePopups = (popup) => {
+  popup.classList.toggle('hidden');
+  popup.classList.toggle('flex');
+  console.log(popup)
+};
+
+// Toggle Quiz Popup
+studentListPopupBtn.addEventListener('click', () => togglePopups(studentListPopupContainer));
+
+closeAddStudentButtons.forEach(btn => btn.addEventListener('click', () => togglePopups(studentListPopupContainer)));

@@ -279,3 +279,22 @@ closeCreateQuizButtons.forEach(btn => btn.addEventListener('click', () => toggle
 // Toggle Material Popup
 addMaterialBtn.addEventListener('click', () => togglePopup(addMaterialPopup));
 closeAddMaterialButtons.forEach(btn => btn.addEventListener('click', () => togglePopup(addMaterialPopup)));
+
+
+
+// Add studnet to quiz page
+
+const studentListAddPopupContainer = document.getElementById('studentListAddPopupContainer');
+const studentAddPopupBtn = document.getElementById('studentAddPopupBtn');
+const closeAddStudentButtons = document.querySelectorAll('.close-add-student-popup-btn');
+
+const togglePopups = (popup) => {
+  popup.classList.toggle('hidden');
+  popup.classList.toggle('flex');
+  console.log(popup)
+};
+
+// Toggle Quiz Popup
+studentAddPopupBtn.addEventListener('click', () => togglePopups(studentListAddPopupContainer));
+
+closeAddStudentButtons.forEach(btn => btn.addEventListener('click', () => togglePopups(studentListAddPopupContainer)));

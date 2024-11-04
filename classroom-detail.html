@@ -14,7 +14,7 @@
 
   <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
   <!-- <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" /> -->
-  
+
   <style>
     .menu-active {
       background-color: #ba9070;
@@ -327,7 +327,7 @@
           <!-- Create Quiz Button -->
           <button
             class="h-10 bg-primary hover:bg-primaryDark flex gap-1 items-center text-white px-3 rounded-lg text-sm w-fit"
-            id="createQuizBtn">
+            id="studentAddPopupBtn">
             <svg class="fill-white w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
             </svg>
@@ -543,7 +543,7 @@
             <p class="text-black/70">Max file size: 5MB</p>
           </form>
         </div>
-        
+
 
 
       </div>
@@ -564,13 +564,93 @@
 
   </div>
 
+  <!-- =========================================== -->
+  <!-- Add Student Popup -->
+  <!-- =========================================== -->
+  
+  <div id="studentListAddPopupContainer" class="hidden fixed z-[200] bg-black/70 w-screen h-screen justify-center items-center">
+    <!-- Popup Box container -->
+    <div
+      class="bg-white rounded-xl lg:max-w-2xl w-full lg:min-h-[220px] h-fit pb-14  flex flex-col  relative overflow-hidden">
+
+      <!-- header -->
+      <div id="studentAddPopupBtn" class="flex justify-between px-4 py-2">
+        <p class="text-lg font-semibold">Add Students</p>
+        <button
+          class="close-add-student-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
+          <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
+        </button>
+      </div>
+
+      <!-- seperator -->
+      <div class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[2px]"></div>
+
+      <!-- content -->
+      <div class="p-4 flex flex-col gap-4">
+
+        <input class="border px-4 py-2 w-full rounded-lg" type="text" placeholder="Search students here..">
+
+        <div class="flex w-full gap-3 items-center">
+
+          <div class="w-full">
+            <p class="uppercase text-black/60 font-medium text-xs pb-2">class</p>
+
+            <select name="insight-class" id="insightClass" class="border px-4 py-2 w-full rounded-lg">
+              <option value="2">Class 5</option>
+              <option value="3">Class 6</option>
+              <option value="4">Class 7</option>
+              <option value="5">Class 8</option>
+            </select>
+          </div>
+
+          <div class="w-full">
+            <p class="uppercase text-black/60 font-medium text-xs pb-2 rounded-lg">grade</p>
+
+            <select name="insight-class" id="insightClass" class="border px-4 pr-8 py-2 w-full rounded-lg">
+              <option value="1">A</option>
+              <option value="2">B</option>
+              <option value="2">C</option>
+              <option value="2">D</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="flex justify-between">
+          <a class="hover:underline" href="#">Select All</a>
+          <a class="text-primaryDark font-medium" href="#">Delete</a>
+        </div>
+
+        <!-- students list -->
+        <div id="studentList" class="space-y-2 overflow-auto  lg:h-[50vh]">
+
+        </div>
+
+
+      </div>
+
+      <!--  Footer -->
+      <div
+        class="flex absolute bottom-0 justify-end gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
+
+        <div class="flex gap-2">
+          <button
+            class="close-add-student-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg">Cancel</button>
+          <button id="classCreateButton"
+            class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg">Create</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 
 
 
   <!-- custom script -->
   <script src="./js/main.js"></script>
   <script src="./js/classroomDetail.js"></script>
-  <script src="./js/quizQuestionCreation.js"></script>
+  <!-- <script src="./js/quizQuestionCreation.js"></script> -->
   <script src="./js/classroomStudentList.js"></script>
 
 
