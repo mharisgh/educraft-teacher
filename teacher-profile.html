@@ -240,22 +240,12 @@
               <p class="font-medium">Back</p>
             </a>
             <div class="flex gap-3 items-center">
-              <p class="text-lg-custom">Student Profile</p>
+              <p class="text-lg-custom">Teacher Profile</p>
             </div>
           </div>
           <div>
 
-            <!-- Send Report to Parent Button -->
-            <button
-              class="h-10 bg-primary hover:bg-primaryDark flex gap-2 items-center text-white px-3 rounded-lg text-sm w-fit"
-              id="createQuizBtn">
-              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(255,255,255,1)">
-                <path
-                  d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z">
-                </path>
-              </svg>
-              Send Reports to Parent
-            </button>
+
 
           </div>
         </div>
@@ -268,10 +258,7 @@
             <div class="bg-primary relative rounded-tl-xl rounded-tr-xl  h-[60px] overflow-hidden">
 
               <!-- Badge dyanmic change here -->
-              <div class="absolute z-20 right-2 top-3 flex gap-2 items-center">
-                <span class="text-white ">Bronze Gear</span>
-                <img class="w-6" src="assets/img/general/educoin-big.png" alt="badge">
-              </div>
+              
 
               <div class="absolute z-10 bg-primary w-full h-full opacity-50"></div>
               <img src="assets/img/profile-bg.png" class="w-full h-full object-cover" alt="badge">
@@ -281,25 +268,25 @@
 
             <!-- profile picture & name -->
             <div class=" absolute z-30 left-[3%] top-[10%] gap-2">
-              <img class="w-[100px] ml-4 rounded-full  border-3 border-white" src="assets/img/general/user.png"
+              <img class="w-[100px] ml-4 rounded-full  border-3 border-white" src="assets/img/general/teacher.png"
                 alt="student-image" />
               <div class="mt-2 flex flex-col justify-center items-center">
-                <p class="font-medium text-md-custom">Faisal Saleem</p>
-                <p>class <span class="font-semibold">6A</span></p>
+                <p class="font-medium text-md-custom">Fathima Thasneem</p>
+                <p>Teacher<span class="font-semibold"></span></p>
               </div>
             </div>
 
-            <div class="flex flex-col lg:flex-row w-full lg:gap-6 gap-4 lg:pl-[150px] lg:py-2 pt-[140px] lg:mt-2  ">
+            <div class="flex flex-col lg:flex-row w-full lg:gap-6 gap-4 lg:pl-[180px] lg:py-2 pt-[140px] lg:mt-2  ">
 
-              <div class="bg-primaryLight rounded-xl flex justify-around lg:w-[60%] items-center p-4 ">
+              <div class="bg-white rounded-xl flex justify-around lg:w-[60%] items-center p-4 ">
 
                 <!-- chapters -->
                 <div class="flex flex-col items-center">
-                  <img class="w-8" src="assets/img/chapters.png" alt="chapters">
-                  <p class="text-xs font-medium text-black/60">Chapters</p>
+                  <img class="w-8" src="assets/img/total-students.png" alt="chapters">
+                  <p class="text-xs font-medium text-black/60">Total Students</p>
 
                   <!-- chapters completed value change here -->
-                  <span class="text-xl font-semibold text-primaryDark">2</span>
+                  <span class="text-xl font-semibold text-primaryDark">52</span>
 
                 </div>
 
@@ -308,8 +295,8 @@
 
                 <!-- quizzes -->
                 <div class="flex flex-col items-center">
-                  <img class="w-8" src="assets/img/quiz.png" alt="chapters">
-                  <p class="text-xs font-medium text-black/60">Quizzes</p>
+                  <img class="w-8" src="assets/img/training-done.png" alt="chapters">
+                  <p class="text-xs font-medium text-black/60">Training Done</p>
 
                   <!-- quizzes completed value change here -->
                   <span class="text-xl font-semibold text-primaryDark">5</span>
@@ -321,11 +308,11 @@
 
                 <!-- educoins -->
                 <div class="flex flex-col items-center">
-                  <img class="w-8" src="assets/img/general/educoin-sm.png" alt="chapters">
-                  <p class="text-xs font-medium text-black/60">Educoins</p>
+                  <img class="w-8" src="assets/img/general/courses-icon-3d.png" alt="chapters">
+                  <p class="text-xs font-medium text-black/60">My Courses</p>
 
                   <!-- Educoins completed value change here -->
-                  <span class="text-xl font-semibold text-primaryDark">23</span>
+                  <span class="text-xl font-semibold text-primaryDark">2</span>
 
                 </div>
 
@@ -356,47 +343,196 @@
 
         </div>
 
-        <!-- Badges -->
-        <div class="relative">
+        <!-- My Added Courses -->
+        <div class="w-full">
+          <div class="flex py-6 justify-between w-full items-center">
 
-          <div class="flex gap-2 items-center">
-
-            <p class="text-lg-custom">Badges</p>
-            <!-- show the count if there is a new unread comment or review -->
-            <div
-              class="min-w-3 px-2 h-5 rounded bg-primary text-white  flex justify-center items-center text-xs font-medium">
-              2
+            <div class="flex gap-2 items-center">
+              <p class="text-lg-custom">My Added Courses</p>
+              <!-- show the count if there is a new unread comment or review -->
+              <div
+                class="min-w-3 px-2 h-5 rounded bg-primary text-white  flex justify-center items-center text-xs font-medium">
+                3
+              </div>
             </div>
+
+            <!-- Add New Course Button -->
+            <button
+              class="h-10 bg-primary hover:bg-primaryDark flex gap-1 items-center text-white px-3 rounded-xl text-sm"
+              id="addCourseButton">
+              <svg class="fill-white w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+              </svg>
+              Add New Course
+            </button>
+
+
+
           </div>
 
-          <!-- Badge container -->
-          <div class="flex gap-4 py-4">
+          <div class="grid lg:grid-cols-3 gap-4">
 
-            <div class="border bg-white border-black/20 flex flex-col px-4 py-2 rounded-xl h-fit ">
+            <!-- course list in grid - dymanic change here.. -->
+            <div
+              class="bg-white w-full flex flex-col gap-3 border border-black/10 rounded-2xl p-3 relative hover:border-black/20 justify-between">
 
-              <div class="flex justify-between">
-                <img class="w-[40px] h-[40px]" src="/assets/img/badges/badge1.png" alt="">
-                <div>
-                  <p class="text-black/70">Unlocked by</p>
-                  <p class="text-primary font-semibold">10 Educoins</p>
+              <!-- course image, unit, time -->
+              <div class="h-[160px] w-full relative rounded-xl overflow-hidden">
+                <div class="flex justify-between w-full bg-black/40 backdrop-blur-md  absolute text-white bottom-0 px-2 py-1
+                        text-xs items-center">
+                  <p>Digital Literacy</p>
                 </div>
+                <img src="/assets/img/course-thumbnail/modern.jpg" alt="course">
               </div>
 
-              <p class="text-base mt-1 flex flex-col items-center">Diamond Star Collector</p>
+              <p class="text-md font-semibold">Classroom Management and Student Engagement</p>
+              <div class="flex justify-between w-full items-center">
+
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/star.svg" alt="rating">
+                  <span>4.7</span>
+                </div>
+
+                <div class="flex gap-1">
+                  <img class="min-w-[20px]" src="assets/icons/enrolled.svg" alt="lesson">
+                  <p class="text-black/60">Enrolled</p>
+                  <span class="font-semibold">23</span>
+                </div>
+
+
+              </div>
+
+              <div class="flex gap-2 items-center justify-between ">
+                <div class="flex  gap-2">
+                  <div class="bg-white border border-black/20 rounded-full w-8 h-8 flex justify-center items-center">
+                    <img class="w-full h-full rounded-full" src="assets/img/general/teacher.png" alt="teacher">
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold">Fathima Thasneem</p>
+                    <p class="text-black/50 text-xs">Author</p>
+                  </div>
+                </div>
+
+                <!-- more  -->
+                <div class="min-w-8 min-h-8 cursor-pointer hover:bg-primaryLight rounded p-1">
+                  <svg class="fill-primaryDark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3ZM12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z">
+                    </path>
+                  </svg>
+                </div>
+
+              </div>
 
             </div>
 
-            <div class="border bg-white border-black/20 flex flex-col px-4 py-2 rounded-xl h-fit ">
+            <div
+              class="bg-white w-full flex flex-col gap-3 border border-black/10 rounded-2xl p-3 relative hover:border-black/20 justify-between">
 
-              <div class="flex justify-between">
-                <img class="w-[40px] h-[40px]" src="/assets/img/badges/badge2.png" alt="">
-                <div>
-                  <p class="text-black/70">Unlocked by</p>
-                  <p class="text-primary font-semibold">20 Educoins</p>
+              <!-- course image, unit, time -->
+              <div class="h-[160px] w-full relative rounded-xl overflow-hidden">
+                <div class="flex justify-between w-full bg-black/40 backdrop-blur-md  absolute text-white bottom-0 px-2 py-1
+                        text-xs items-center">
+                  <p>Digital Literacy</p>
+                </div>
+                <img src="/assets/img/course-thumbnail/diverse.jpg" alt="course">
+              </div>
+
+              <p class="text-md font-semibold">Differentiated Instruction for Diverse Learners</p>
+              <div class="flex justify-between w-full items-center">
+
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/star.svg" alt="rating">
+                  <span>4.7</span>
+                </div>
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/idea.svg" alt="lesson">
+                  <span class="font-semibold">3</span>
+                  <p class="text-black/60">skills</p>
+                </div>
+
+
+              </div>
+
+              <div class="flex gap-2 items-center justify-between ">
+                <div class="flex  gap-2">
+                  <div class="bg-white border border-black/20 rounded-full w-8 h-8 flex justify-center items-center">
+                    <img class="w-[20px]" src="assets/img/general/educraft-color.svg" alt="teacher">
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold">Educraft</p>
+                    <p class="text-black/50 text-xs">Author</p>
+                  </div>
+                </div>
+
+                <!-- more  -->
+                <div class="min-w-8 min-h-8 cursor-pointer hover:bg-primaryLight rounded p-1">
+                  <svg class="fill-primaryDark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3ZM12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z">
+                    </path>
+                  </svg>
                 </div>
               </div>
 
-              <p class="text-base mt-1 flex flex-col items-center">Diamond Star Collector</p>
+            </div>
+
+            <div
+              class="bg-white w-full flex flex-col gap-3 border border-black/10 rounded-2xl p-3 relative hover:border-black/20 justify-between">
+
+              <!-- course image, unit, time -->
+              <div class="h-[160px] w-full relative rounded-xl overflow-hidden">
+                <div class="flex justify-between w-full bg-black/40 backdrop-blur-md  absolute text-white bottom-0 px-2 py-1
+                      text-xs items-center">
+                  <p>Digital Literacy</p>
+                </div>
+                <img src="/assets/img/course-thumbnail/clasroom.jpg" alt="course">
+              </div>
+
+              <p class="text-md font-semibold">Technology Integration in Modern Classrooms</p>
+              <div class="flex justify-between w-full items-center">
+
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/star.svg" alt="rating">
+                  <span>4.7</span>
+                </div>
+
+                <div class="flex gap-2">
+                  <img class="min-w-[20px]" src="assets/icons/idea.svg" alt="lesson">
+                  <span class="font-semibold">3</span>
+                  <p class="text-black/60">skills</p>
+                </div>
+
+
+              </div>
+
+              <div class="flex gap-2 items-center justify-between ">
+                <div class="flex  gap-2">
+                  <div class="bg-white border border-black/20 rounded-full w-8 h-8 flex justify-center items-center">
+                    <img class="w-[20px]" src="assets/img/general/educraft-color.svg" alt="teacher">
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold">Educraft</p>
+                    <p class="text-black/50 text-xs">Author</p>
+                  </div>
+                </div>
+
+                <!-- more  -->
+                <div class="min-w-8 min-h-8 cursor-pointer hover:bg-primaryLight rounded p-1">
+                  <svg class="fill-primaryDark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                      d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3ZM12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z">
+                    </path>
+                  </svg>
+                </div>
+              </div>
 
             </div>
 
@@ -416,11 +552,11 @@
           </div>
         </div>
 
-        <div class="bg-primaryLight  rounded-xl border border-black/10 w-full h-fit flex flex-col">
+        <div class="bg-primaryLight  rounded-xl border border-black/10 w-full h-full flex flex-col">
 
-          <div class="p-4 rounded-xl w-full h-fit overflow-hidden relative">
+          <div class="p-4 rounded-xl w-full h-full overflow-hidden relative">
             <!-- skill names -->
-            <div class="w-full h-fit flex flex-wrap gap-2 relative z-20">
+            <div class="w-full h-full flex flex-wrap gap-2 relative z-20">
               <p class="px-3 py-2 bg-white rounded-md w-fit h-fit border border-black/10">Basic Computer Literacy</p>
               <p class="px-3 py-2 bg-white rounded-md w-fit h-fit border border-black/10">Internet Safety</p>
               <p class="px-3 py-2 bg-white rounded-md w-fit h-fit border border-black/10">Introduction to Coding</p>
@@ -469,7 +605,7 @@
         class="bg-white border border-l-black/20 flex flex-col lg:w-1/3 p-4 gap-4 ">
 
         <!-- Quiz Scores -->
-        <div class="h-1/2 lg:overflow-auto scrollbar-custom pr-3">
+        <div class="hidden h-1/2 lg:overflow-auto scrollbar-custom pr-3">
           <div class="flex gap-2 items-center sticky top-0 bg-white pb-2">
             <p class="text-lg-custom">Quiz Scores</p>
             <div
@@ -481,16 +617,16 @@
         </div>
 
         <!-- Courses -->
-        <div class="h-1/2 lg:overflow-auto scrollbar-custom pr-3">
+        <div class="h-full lg:overflow-auto scrollbar-custom pr-3">
           <div class="flex justify-between sticky top-0 bg-white pb-2">
             <div class="flex gap-2 items-center">
-              <p class="text-lg-custom">Courses</p>
+              <p class="text-lg-custom">My Learning Courses</p>
               <div
                 class="min-w-3 px-2 h-5 rounded bg-primary text-white flex justify-center items-center text-xs font-medium">
-                4
+                5
               </div>
             </div>
-            <div>Inprogress: <span class="font-semibold text-[16px]">1</span></div>
+            <div>Inprogress: <span class="font-semibold text-[16px]">3</span></div>
           </div>
           <div id="course-container" class="flex flex-col gap-3 py-3"></div>
         </div>
