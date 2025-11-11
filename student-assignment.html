@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Report</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    />
+    <link href="output.css" rel="stylesheet" />
+
+    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+    <!-- <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" /> -->
+
+    <style>
+      .menu-active {
+        background-color: #ba9070;
+      }
+      /* Modern minimal scrollbar */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f9f5f0;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #e0c8a5;
+        border-radius: 9999px;
+      }
+    </style>
+  </head>
+
+  <body class="flex font-sans">
+    <!-- =========================================== -->
+    <!-- Nav menu left sidebar -->
+    <!-- =========================================== -->
+
+    <aside
+      id="sidebar"
+      class="bg-[#9c663b] z-50 text-white w-72 h-screen transition-all ease-out duration-300 hidden lg:block"
+    >
+      <div
+        class="h-full overflow-y-auto px-4 flex flex-col justify-between scrollbar-custom"
+      >
+        <div>
+          <!-- educraft logo -->
+          <div id="sidemenu-logo" class="flex gap-2 ml-3 items-start mt-4">
+            <img
+              src="./assets/img/educraft-logo-white.svg"
+              alt="educraft logo"
+            />
+            <div class="grid">
+              <p class="logo-text font-bold text-2xl">EduCraft</p>
+              <p class="logo-text justify-self-end">Teacher</p>
+            </div>
+          </div>
+
+          <!-- shrink expand button -->
+          <div id="toggle-btn-area" class="w-full flex justify-end py-4">
+            <button id="toggleBtn" class="bg-white/20 p-2 rounded-lg">
+              <img
+                class="w-3 h-3"
+                src="assets/icons/small.svg"
+                alt="menu expand button"
+              />
+            </button>
+          </div>
+
+          <!-- top menu list -->
+          <nav class="flex flex-col justify-between">
+            <ul class="flex flex-col gap-1">
+              <a href="/index.html">
+                <li
+                  id="sidemenu-list"
+                  class="h-12 flex items-center hover:bg-[#ba9070] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list cursor-pointer"
+                >
+                  <div class="flex gap-4">
+                    <img
+                      class="w-6 h-6"
+                      src="assets/icons/home.svg"
+                      alt="home"
+                    />
+                    <span class="sidebar-text">Home</span>
+                  </div>
+                </li>
+              </a>
+
+              <a href="/training-courses.html">
+                <li
+                  id="sidemenu-list"
+                  class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer"
+                >
+                  <div class="flex gap-4 items-center">
+                    <img
+                      class="w-6 h-6"
+                      src="assets/icons/my-courses.svg"
+                      alt="home"
+                    />
+                    <span class="sidebar-text">Training Courses</span>
+                  </div>
+                </li>
+              </a>
+
+              <a href="/student-courses.html">
+                <li
+                  id="sidemenu-list"
+                  class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer"
+                >
+                  <div class="flex gap-4 items-center">
+                    <img
+                      class="w-6 h-6"
+                      src="assets/icons/student-courses.svg"
+                      alt="home"
+                    />
+                    <span class="sidebar-text">Student Courses</span>
+                  </div>
+                </li>
+              </a>
+
+              <a href="/classroom.html">
+                <li
+                  id="sidemenu-list"
+                  class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer menu-active"
+                >
+                  <div class="flex gap-4 items-center">
+                    <img
+                      class="w-6 h-6"
+                      src="assets/icons/clasroom.svg"
+                      alt="home"
+                    />
+                    <span class="sidebar-text">Classroom</span>
+                  </div>
+                </li>
+              </a>
+              <a href="/report.html">
+                <li
+                  id="sidemenu-list"
+                  class="h-12 pl-4 flex items-center hover:bg-[#ba9070] rounded-xl sidemenu-list transition-all ease-out duration-300 cursor-pointer"
+                >
+                  <div class="flex gap-4 items-center">
+                    <img
+                      class="w-6 h-6"
+                      src="assets/icons/report.svg"
+                      alt="home"
+                    />
+                    <span class="sidebar-text">Report</span>
+                  </div>
+                </li>
+              </a>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- bottom menu list -->
+        <div>
+          <!-- expanded educat chatbot button-->
+          <div
+            id="educat-sidemenu-big"
+            class="lg:min-h-[100px] bg-gradient-to-b from-[#92623d] to-[#ad764c] rounded-2xl relative my-6 overflow-hidden"
+          >
+            <img
+              class="absolute z-10 w-[90px] top-2 -right-2"
+              src="assets/img/educy.webp"
+              alt="chat bot"
+            />
+            <div class="px-3 py-3">
+              <p class="">I'm</p>
+              <p class="font-bold text-lg tracking-tight -mt-1">
+                EduCy<span class="text-xs font-base">&nbsp;2.0</span>
+              </p>
+
+              <p class="mt-6">Your AI</p>
+              <p class="text-sm tracking-tight">Learning Assistant</p>
+
+              <button
+                class="ecChatBotBtn bg-white text-[#bf4b00] mt-4 w-full py-2 text-semibold flex gap-1 rounded-lg justify-center items-center font-lg font-semibold hover:shadow-sm"
+              >
+                <img
+                  src="assets/icons/chat-regular.svg"
+                  alt="chat with educat"
+                />
+                Let's Chat
+              </button>
+            </div>
+          </div>
+
+          <!-- shrink educat chatbot button -->
+          <button
+            id="educat-sidemenu-sm"
+            class="ecChatBotBtnSm bg-white text-[#bf4b00] my-6 w-full py-2 text-semibold hidden rounded-lg justify-center items-center"
+          >
+            <img src="assets/icons/chat-regular.svg" alt="chat with educat" />
+          </button>
+
+          <!-- bottom menu list -->
+          <nav class="pb-4">
+            <ul class="flex flex-col gap-1">
+              <!-- <li id="sidemenu-list"
+              class="h-12 flex items-center hover:bg-[#fa9d53] rounded-xl pl-4 transition-all ease-out duration-300 sidemenu-list">
+              <a href="#" class="flex gap-4">
+                <img class="w-6 h-6" src="assets/icons/help-center.svg" alt="home">
+                <span class="sidebar-text">Help</span>
+              </a>
+            </li> -->
+
+              <!-- sperator -->
+              <li class="w-full h-[2px] bg-white/20"></li>
+
+              <li
+                id="sidemenu-list"
+                class="h-12 pl-4 flex items-center hover:bg-[#fa9d53] rounded-xl sidemenu-list transition-all ease-out duration-300"
+              >
+                <a href="#" class="flex gap-4 items-center">
+                  <img
+                    class="w-6 h-6"
+                    src="assets/icons/logout.svg"
+                    alt="home"
+                  />
+                  <span class="sidebar-text">Logout</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </aside>
+
+    <!-- =========================================== -->
+    <!-- Main -->
+    <!-- =========================================== -->
+
+    <div class="w-full h-screen overflow-hidden relative">
+      <!-- =========================================== -->
+      <!-- Top Header Menu -->
+      <!-- =========================================== -->
+
+      <header
+        id="header-menu"
+        class="bg-white flex justify-between w-full h-14 items-center transition-all ease-out duration-300 p-4 border border-b-black/10"
+      >
+        <p class="text-xl-custom">Classrooms</p>
+
+        <!-- Search Input -->
+        <div class="relative w-1/3">
+          <input
+            type="text"
+            placeholder="Search"
+            class="w-full pl-12 pr-4 py-2 rounded-full bg-[#fffaf4] focus:outline-none focus:border-primary border border-gray-200"
+          />
+          <img
+            src="assets/icons/search-bar.svg"
+            alt="Search Icon"
+            class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-red-700"
+          />
+        </div>
+
+        <!-- full screen toggle & notification -->
+        <div class="flex gap-4">
+          <!-- Fullscreen Toggle Button -->
+          <div
+            id="fullscreenToggle"
+            class="bg-[#fdf0e7] rounded-full w-10 h-10 lg:flex justify-center items-center relative hidden"
+          >
+            <img src="assets/icons/fullscreen.svg" alt="fullscreen" />
+          </div>
+
+          <!-- Notification Button -->
+          <div
+            id="notificationBtn"
+            class="bg-[#fdf0e7] rounded-full w-10 h-10 flex justify-center items-center relative cursor-pointer"
+          >
+            <span
+              class="w-4 h-4 bg-[#ffbc00] absolute top-1 right-1 rounded-full flex justify-center text-xs font-semibold items-center"
+              >4</span
+            >
+            <img src="assets/icons/bell.svg" alt="Notification Bell" />
+          </div>
+        </div>
+
+        <!-- user profile -->
+        <div class="flex gap-2 justify-center items-center">
+          <p class="font-semibold">Fathima Thasneem</p>
+          <img
+            class="w-10 h-10 rounded-full border-2 border-primary"
+            src="assets/img/general/teacher.png"
+            alt="user profile"
+          />
+        </div>
+      </header>
+
+      <!-- =========================================== -->
+      <!-- Main Content Area - Dashboard -->
+      <!-- =========================================== -->
+
+      <main
+        id="main"
+        class="bg-primaryLight max-w-screen-2xl mx-auto transition-all ease-out duration-300 flex flex-col lg:flex-row overflow-auto lg:overflow-hidden h-[calc(100vh-3.5rem)]"
+      >
+        <!-- main section-->
+        <section
+          class="bg-primaryLight lg:w-2/3 p-4 flex flex-col gap-4 lg:overflow-auto scrollbar-hide lg:h-full"
+        >
+          <!-- Page title & back button -->
+          <div class="flex gap-4 items-center">
+            <a
+              href="#"
+              onclick="history.back(); return false;"
+              class="pl-2 pr-6 h-[40px] rounded-xl bg-white border border-black/20 hover:border-black/50 flex items-center gap-1"
+            >
+              <img class="w-5" src="/assets/icons/arrow-left.svg" alt="back" />
+              <p class="font-medium">Back</p>
+            </a>
+            <div class="flex gap-3 items-center">
+              <p class="text-lg-custom">Robotics Camp</p>
+              <img
+                class="w-6"
+                src="/assets/img/classroom/folder-icon.png"
+                alt="folder"
+              />
+            </div>
+          </div>
+
+          <!-- ================================================ -->
+
+          <!-- Tabs and Content Section -->
+          <div class="flex flex-col">
+            <div class="flex justify-between w-full">
+              <!-- Tabs for switching between views -->
+              <div
+                class="flex bg-white border border-black/10 rounded-lg w-fit mb-4 p-[2px]"
+              >
+                <!-- Tab Buttons -->
+                <button
+                  class="post-announcement-tab-btn active px-4 min-w-[140px] py-2 rounded-lg bg-primary text-white w-fit flex gap-2 items-center justify-center"
+                  data-tab="quiz-tab"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z"
+                    ></path>
+                  </svg>
+                  <p>Quiz</p>
+                </button>
+
+                <button
+                  class="post-announcement-tab-btn px-4 min-w-[140px] py-2 rounded-lg w-fit flex gap-2 items-center justify-center"
+                  data-tab="materials-tab"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12.4142 5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H10.4142L12.4142 5ZM4 5V19H20V7H11.5858L9.58579 5H4ZM13 13H16L12 17L8 13H11V9H13V13Z"
+                    ></path>
+                  </svg>
+                  <p>Materials</p>
+                </button>
+              </div>
+
+              <!-- Create Quiz Button -->
+              <button
+                class="h-10 bg-primary hover:bg-primaryDark flex gap-1 items-center text-white px-3 rounded-lg text-sm w-fit"
+                id="createQuizBtn"
+              >
+                <svg
+                  class="fill-white w-5 h-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                </svg>
+                Create Quiz
+              </button>
+
+              <!-- Add Material Button -->
+              <button
+                class="hidden h-10 bg-primary hover:bg-primaryDark gap-1 items-center text-white px-3 flex rounded-lg text-sm w-fit"
+                id="addMaterialBtn"
+              >
+                <svg
+                  class="fill-white w-5 h-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                </svg>
+                Add Material
+              </button>
+            </div>
+
+            <!-- Tab Quiz Content -->
+            <div id="quiz-tab" class="tab-content block">
+              <div
+                id="classroomClassQuizes"
+                class="grid lg:grid-cols-3 gap-4"
+              ></div>
+            </div>
+
+            <!-- Tab Material Content -->
+            <div id="materials-tab" class="tab-content hidden">
+              <!-- <div id="classroomClassContents" class="flex flex-wrap gap-4 mb-4"></div> -->
+              <div class="w-full bg-white rounded-2xl p-6">
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-4">
+                  <div>
+                    <h2
+                      class="text-lg font-semibold text-[#2B2B2B] flex items-center gap-2"
+                    >
+                      My Uploads
+                      <span
+                        class="text-xs bg-[#9C663B] text-white w-6 h-6 flex items-center justify-center rounded-full font-medium"
+                        >8</span
+                      >
+                    </h2>
+                    <p class="text-xs text-black mt-0.5">
+                      Files teacher shared with students
+                    </p>
+                  </div>
+
+                  <div class="flex items-center gap-2">
+                    <div class="relative">
+                      <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search"
+                        class="pl-10 pr-4 py-2 rounded-xl border border-[#E4DAD0] text-xs focus:ring-2 focus:ring-[#E4CBB0] focus:outline-none"
+                      />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4 absolute left-3 top-2.5 text-[#8B7B70]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
+                        />
+                      </svg>
+                    </div>
+                    <button
+                      class="flex items-center gap-2 px-3 py-2 text-xs border border-[#E4DAD0] rounded-xl hover:bg-[#F9F5F0]"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
+                        <g opacity="0.5">
+                          <path
+                            d="M18.0156 3.86955C17.9194 3.64729 17.76 3.45822 17.5572 3.32584C17.3544 3.19347 17.1172 3.12363 16.875 3.12502H3.12498C2.88305 3.1255 2.64646 3.19617 2.4439 3.32846C2.24135 3.46076 2.08154 3.64899 1.98386 3.87032C1.88618 4.09165 1.85483 4.33658 1.8936 4.57538C1.93238 4.81418 2.03963 5.03659 2.20232 5.21565L2.20857 5.22268L7.49998 10.8727V16.875C7.49993 17.1013 7.56127 17.3233 7.67747 17.5174C7.79368 17.7115 7.96038 17.8704 8.15981 17.9772C8.35924 18.084 8.58392 18.1347 8.8099 18.1239C9.03587 18.113 9.25466 18.0411 9.44295 17.9156L11.9429 16.2485C12.1143 16.1343 12.2548 15.9796 12.352 15.798C12.4492 15.6165 12.5 15.4137 12.5 15.2078V10.8727L17.7922 5.22268L17.7984 5.21565C17.9628 5.03741 18.0711 4.8147 18.1097 4.57531C18.1484 4.33592 18.1156 4.09045 18.0156 3.86955ZM11.4203 10.2016C11.3122 10.3162 11.2513 10.4675 11.25 10.625V15.2078L8.74998 16.875V10.625C8.75003 10.4663 8.6897 10.3135 8.58123 10.1977L3.12498 4.37502H16.875L11.4203 10.2016Z"
+                            fill="black"
+                          />
+                        </g>
+                      </svg>
+                      Filter
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Table -->
+                <div
+                  class="overflow-hidden rounded-[10px] border border-[#F3E7D9]"
+                >
+                  <div class="max-h-[340px] overflow-y-auto custom-scrollbar">
+                    <table class="w-full text-left text-sm">
+                      <thead class="bg-[#FFF5E7] text-black sticky top-0">
+                        <tr>
+                          <th class="py-3 px-5 font-medium">
+                            Document Details
+                          </th>
+                          <th class="py-3 px-5 font-medium">File Size</th>
+                          <th class="py-3 px-5 font-medium">Uploaded Date</th>
+                          <th class="py-3 px-5 font-medium text-right">
+                            Actions
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody id="fileTable" class="text-black">
+                        <!-- Rows injected by JS -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col pt-5">
+                <div class="flex justify-between w-full">
+                  <!-- Tabs Container -->
+                  <div
+                    class="flex bg-white border border-black/10 rounded-lg w-fit mb-4 p-[2px]"
+                    id="tabContainer"
+                  >
+                    <!-- Student Submission Tab -->
+                    <button
+                      class="tab-btn active px-4 min-w-[140px] py-2 rounded-lg bg-primary text-white w-fit flex gap-2 items-center justify-center"
+                      data-tab="student-tab"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="15"
+                        height="15"
+                        viewBox="0 0 15 15"
+                        fill="none"
+                      >
+                        <path
+                          d="M5.91917 5.9199C5.91917 5.74547 5.98846 5.57819 6.11179 5.45485C6.23513 5.33151 6.40242 5.26222 6.57684 5.26222H9.64599C9.82042 5.26222 9.9877 5.33151 10.111 5.45485C10.2344 5.57819 10.3037 5.74547 10.3037 5.9199C10.3037 6.09433 10.2344 6.26161 10.111 6.38495C9.9877 6.50828 9.82042 6.57757 9.64599 6.57757H6.57684C6.40242 6.57757 6.23513 6.50828 6.11179 6.38495C5.98846 6.26161 5.91917 6.09433 5.91917 5.9199Z"
+                          fill="black"
+                        />
+                      </svg>
+                      <p>Student Submission</p>
+                    </button>
+
+                    <!-- Tab: My Assignments -->
+                    <button
+                      class="tab-btn px-4 min-w-[140px] py-2 rounded-lg w-fit flex gap-2 items-center justify-center"
+                      data-tab="assignment-tab"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="15"
+                        height="15"
+                        viewBox="0 0 15 15"
+                        fill="none"
+                      >
+                        <path
+                          d="M12.7041 2.93486L7.35007 1.15019C7.21296 1.10391 7.06444 1.10391 6.92733 1.15019L1.57333 2.93486C1.44557 2.97717 1.33355 3.05701 1.25186 3.16397C1.17018 3.27092 1.12264 3.40001 1.11545 3.5344C1.11484 3.5461 1.11484 3.55783 1.11545 3.56953V8.0312C1.11545 8.2087 1.18596 8.37892 1.31147 8.50443C1.43698 8.62994 1.6072 8.70045 1.7847 8.70045C1.96219 8.70045 2.13242 8.62994 2.25793 8.50443C2.38344 8.37892 2.45395 8.2087 2.45395 8.0312V4.49812L3.77628 4.93871C3.36589 5.72424 3.24394 6.6288 3.43164 7.49496C3.61934 8.36113 4.10482 9.13406 4.80358 9.67923C3.88917 10.1301 3.1153 10.8223 2.56549 11.6808C2.51598 11.7544 2.48159 11.8371 2.46432 11.9241C2.44705 12.0111 2.44724 12.1007 2.46489 12.1876C2.48253 12.2745 2.51728 12.3571 2.56711 12.4304C2.61694 12.5038 2.68085 12.5665 2.75514 12.615C2.82943 12.6635 2.91261 12.6967 2.99984 12.7127C3.08707 12.7287 3.17662 12.7272 3.26328 12.7083C3.34994 12.6895 3.43198 12.6535 3.50463 12.6027C3.57728 12.5518 3.6391 12.487 3.68649 12.412C4.48234 11.1873 5.74443 10.4851 7.1387 10.4851C8.53297 10.4851 9.79507 11.1873 10.5937 12.412C10.6411 12.487 10.7029 12.5518 10.7756 12.6027C10.8482 12.6535 10.9303 12.6895 11.0169 12.7083C11.1036 12.7272 11.1931 12.7287 11.2804 12.7127C11.3676 12.6967 11.4508 12.6635 11.5251 12.615C11.5993 12.5665 11.6633 12.5038 11.7131 12.4304C11.7629 12.3571 11.7977 12.2745 11.8153 12.1876C11.833 12.1007 11.8331 12.0111 11.8159 11.9241C11.7986 11.8371 11.7642 11.7544 11.7147 11.6808Z"
+                          fill="white"
+                        />
+                      </svg>
+                      <p>My Assignments</p>
+                    </button>
+                  </div>
+
+                  <!-- Create Quiz Button -->
+                  <button
+                    class="h-10 bg-primary hover:bg-primaryDark flex gap-1 items-center text-white px-3 rounded-lg text-sm w-fit"
+                    id="createQuizBtn"
+                  >
+                    <svg
+                      class="fill-white w-5 h-5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                      ></path>
+                    </svg>
+                    Create Assignment
+                  </button>
+                </div>
+                <div class="w-full bg-white rounded-2xl p-6">
+                  <!-- Student Submission content -->
+                  <div id="student-tab" class="tab-content-1 block">
+                    <div class="flex justify-between items-center mb-4">
+                      <div>
+                        <h2
+                          class="text-lg font-semibold text-[#2B2B2B] flex items-center gap-2"
+                        >
+                          Students Submissions
+                          <span
+                            class="text-xs bg-[#9C663B] text-white w-6 h-6 flex items-center justify-center rounded-full font-medium"
+                            >23</span
+                          >
+                        </h2>
+                        <p class="text-xs text-black mt-0.5">
+                          Review and evaluate student assignments
+                        </p>
+                      </div>
+
+                      <div class="flex items-center gap-2">
+                        <div class="relative">
+                          <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search"
+                            class="pl-10 pr-4 py-2 rounded-xl border border-[#E4DAD0] text-xs focus:ring-2 focus:ring-[#E4CBB0] focus:outline-none"
+                          />
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-4 h-4 absolute left-3 top-2.5 text-[#8B7B70]"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
+                            />
+                          </svg>
+                        </div>
+                        <button
+                          class="flex items-center gap-2 px-3 py-2 text-xs border border-[#E4DAD0] rounded-xl hover:bg-[#F9F5F0]"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                          >
+                            <g opacity="0.5">
+                              <path
+                                d="M18.0156 3.86955C17.9194 3.64729 17.76 3.45822 17.5572 3.32584C17.3544 3.19347 17.1172 3.12363 16.875 3.12502H3.12498C2.88305 3.1255 2.64646 3.19617 2.4439 3.32846C2.24135 3.46076 2.08154 3.64899 1.98386 3.87032C1.88618 4.09165 1.85483 4.33658 1.8936 4.57538C1.93238 4.81418 2.03963 5.03659 2.20232 5.21565L2.20857 5.22268L7.49998 10.8727V16.875C7.49993 17.1013 7.56127 17.3233 7.67747 17.5174C7.79368 17.7115 7.96038 17.8704 8.15981 17.9772C8.35924 18.084 8.58392 18.1347 8.8099 18.1239C9.03587 18.113 9.25466 18.0411 9.44295 17.9156L11.9429 16.2485C12.1143 16.1343 12.2548 15.9796 12.352 15.798C12.4492 15.6165 12.5 15.4137 12.5 15.2078V10.8727L17.7922 5.22268L17.7984 5.21565C17.9628 5.03741 18.0711 4.8147 18.1097 4.57531C18.1484 4.33592 18.1156 4.09045 18.0156 3.86955ZM11.4203 10.2016C11.3122 10.3162 11.2513 10.4675 11.25 10.625V15.2078L8.74998 16.875V10.625C8.75003 10.4663 8.6897 10.3135 8.58123 10.1977L3.12498 4.37502H16.875L11.4203 10.2016Z"
+                                fill="black"
+                              />
+                            </g>
+                          </svg>
+                          Filter
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class="w-full rounded-xl overflow-hidden border border-black/10"
+                    >
+                      <div
+                        class="bg-[#FDF5EC] px-6 py-4 border-b border-gray-200"
+                      >
+                        <h2 class="text-xs font-semibold text-black">
+                          Assignment Details
+                        </h2>
+                      </div>
+
+                      <div
+                        id="assignment-list"
+                        class="divide-y divide-gray-200"
+                      >
+                        <!-- Assignment Card -->
+                        <div
+                          class="assignment-card px-6 py-5 hover:bg-[#FFF9F3] transition-all duration-200 cursor-pointer relative"
+                        >
+                          <h3 class="text-xs font-semibold text-black mb-1">
+                            Algebra Basic Question 101
+                          </h3>
+                          <div
+                            class="flex items-center gap-4 text-[10px] text-black/70 mb-2"
+                          >
+                            <span class="flex items-center gap-1">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="12"
+                                height="12"
+                                viewBox="0 0 12 12"
+                                fill="none"
+                              >
+                                <g opacity="0.5">
+                                  <path
+                                    d="M9.75 1.5H8.625V1.125C8.625 1.02554 8.58549 0.930161 8.51517 0.859835C8.44484 0.789509 8.34946 0.75 8.25 0.75C8.15054 0.75 8.05516 0.789509 7.98483 0.859835C7.91451 0.930161 7.875 1.02554 7.875 1.125V1.5H4.125V1.125C4.125 1.02554 4.08549 0.930161 4.01516 0.859835C3.94484 0.789509 3.84946 0.75 3.75 0.75C3.65054 0.75 3.55516 0.789509 3.48484 0.859835C3.41451 0.930161 3.375 1.02554 3.375 1.125V1.5H2.25C2.05109 1.5 1.86032 1.57902 1.71967 1.71967C1.57902 1.86032 1.5 2.05109 1.5 2.25V9.75C1.5 9.94891 1.57902 10.1397 1.71967 10.2803C1.86032 10.421 2.05109 10.5 2.25 10.5H9.75C9.94891 10.5 10.1397 10.421 10.2803 10.2803C10.421 10.1397 10.5 9.94891 10.5 9.75V2.25C10.5 2.05109 10.421 1.86032 10.2803 1.71967C10.1397 1.57902 9.94891 1.5 9.75 1.5ZM3.375 2.25V2.625C3.375 2.72446 3.41451 2.81984 3.48484 2.89016C3.55516 2.96049 3.65054 3 3.75 3C3.84946 3 3.94484 2.96049 4.01516 2.89016C4.08549 2.81984 4.125 2.72446 4.125 2.625V2.25H7.875V2.625C7.875 2.72446 7.91451 2.81984 7.98483 2.89016C8.05516 2.96049 8.15054 3 8.25 3C8.34946 3 8.44484 2.96049 8.51517 2.89016C8.58549 2.81984 8.625 2.72446 8.625 2.625V2.25H9.75V3.75H2.25V2.25H3.375ZM9.75 9.75H2.25V4.5H9.75V9.75Z"
+                                    fill="black"
+                                  />
+                                </g>
+                              </svg>
+                              Created Jan 12, 2025 10:33 AM
+                            </span>
+                            <span class="flex items-center gap-1">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="10"
+                                height="12"
+                                viewBox="0 0 10 12"
+                                fill="none"
+                              >
+                                <path
+                                  d="M9.49703 3.19047L6.43453 0.127969C6.39387 0.0873538 6.34561 0.0551477 6.2925 0.0331905C6.23939 0.0112332 6.18247 -4.50563e-05 6.125 1.35274e-07H0.875C0.642936 1.35274e-07 0.420376 0.0921873 0.256282 0.256282C0.0921872 0.420376 0 0.642936 0 0.875V10.5C0 10.7321 0.0921872 10.9546 0.256282 11.1187C0.420376 11.2828 0.642936 11.375 0.875 11.375H8.75C8.98206 11.375 9.20462 11.2828 9.36872 11.1187C9.53281 10.9546 9.625 10.7321 9.625 10.5V3.5C9.62504 3.44253 9.61377 3.38561 9.59181 3.3325C9.56985 3.27939 9.53765 3.23113 9.49703 3.19047ZM6.5625 1.49352L8.13148 3.0625H6.5625V1.49352ZM8.75 10.5H0.875V0.875H5.6875V3.5C5.6875 3.61603 5.73359 3.72731 5.81564 3.80936C5.89769 3.89141 6.00897 3.9375 6.125 3.9375H8.75V10.5Z"
+                                  fill="black"
+                                />
+                              </svg>
+                              Question 101.pdf
+                            </span>
+                          </div>
+                          <p class="text-[10px] text-black/70 leading-relaxed">
+                            Explain the difference between useState and
+                            useEffect hooks. Provide practical examples of when
+                            to use each hook, and demonstrate your understanding
+                            by writing code snippets that showcase common use
+                            cases.
+                          </p>
+                          <div
+                            class="absolute right-6 top-6 bg-[#9C663B33]/20 text-black text-xs px-3 py-1 rounded-full font-semibold text-[10px]"
+                          >
+                            1 <span class="font-normal">submission</span>
+                          </div>
+                        </div>
+
+                        <!-- Assignment Card -->
+                        <div
+                          class="assignment-card px-6 py-5 hover:bg-[#FFF9F3] transition-all duration-200 cursor-pointer relative"
+                        >
+                          <h3 class="text-xs font-semibold text-black mb-1">
+                            Calculus Intermediate Question 303
+                          </h3>
+                          <div
+                            class="flex items-center gap-4 text-[10px] text-black/70 mb-2"
+                          >
+                            <span class="flex items-center gap-1">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="12"
+                                height="12"
+                                viewBox="0 0 12 12"
+                                fill="none"
+                              >
+                                <g opacity="0.5">
+                                  <path
+                                    d="M9.75 1.5H8.625V1.125C8.625 1.02554 8.58549 0.930161 8.51517 0.859835C8.44484 0.789509 8.34946 0.75 8.25 0.75C8.15054 0.75 8.05516 0.789509 7.98483 0.859835C7.91451 0.930161 7.875 1.02554 7.875 1.125V1.5H4.125V1.125C4.125 1.02554 4.08549 0.930161 4.01516 0.859835C3.94484 0.789509 3.84946 0.75 3.75 0.75C3.65054 0.75 3.55516 0.789509 3.48484 0.859835C3.41451 0.930161 3.375 1.02554 3.375 1.125V1.5H2.25C2.05109 1.5 1.86032 1.57902 1.71967 1.71967C1.57902 1.86032 1.5 2.05109 1.5 2.25V9.75C1.5 9.94891 1.57902 10.1397 1.71967 10.2803C1.86032 10.421 2.05109 10.5 2.25 10.5H9.75C9.94891 10.5 10.1397 10.421 10.2803 10.2803C10.421 10.1397 10.5 9.94891 10.5 9.75V2.25C10.5 2.05109 10.421 1.86032 10.2803 1.71967C10.1397 1.57902 9.94891 1.5 9.75 1.5ZM3.375 2.25V2.625C3.375 2.72446 3.41451 2.81984 3.48484 2.89016C3.55516 2.96049 3.65054 3 3.75 3C3.84946 3 3.94484 2.96049 4.01516 2.89016C4.08549 2.81984 4.125 2.72446 4.125 2.625V2.25H7.875V2.625C7.875 2.72446 7.91451 2.81984 7.98483 2.89016C8.05516 2.96049 8.15054 3 8.25 3C8.34946 3 8.44484 2.96049 8.51517 2.89016C8.58549 2.81984 8.625 2.72446 8.625 2.625V2.25H9.75V3.75H2.25V2.25H3.375ZM9.75 9.75H2.25V4.5H9.75V9.75Z"
+                                    fill="black"
+                                  />
+                                </g>
+                              </svg>
+                              Created Jan 14, 2025 09:30 AM
+                            </span>
+                            <span class="flex items-center gap-1">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="10"
+                                height="12"
+                                viewBox="0 0 10 12"
+                                fill="none"
+                              >
+                                <path
+                                  d="M9.49703 3.19047L6.43453 0.127969C6.39387 0.0873538 6.34561 0.0551477 6.2925 0.0331905C6.23939 0.0112332 6.18247 -4.50563e-05 6.125 1.35274e-07H0.875C0.642936 1.35274e-07 0.420376 0.0921873 0.256282 0.256282C0.0921872 0.420376 0 0.642936 0 0.875V10.5C0 10.7321 0.0921872 10.9546 0.256282 11.1187C0.420376 11.2828 0.642936 11.375 0.875 11.375H8.75C8.98206 11.375 9.20462 11.2828 9.36872 11.1187C9.53281 10.9546 9.625 10.7321 9.625 10.5V3.5C9.62504 3.44253 9.61377 3.38561 9.59181 3.3325C9.56985 3.27939 9.53765 3.23113 9.49703 3.19047ZM6.5625 1.49352L8.13148 3.0625H6.5625V1.49352ZM8.75 10.5H0.875V0.875H5.6875V3.5C5.6875 3.61603 5.73359 3.72731 5.81564 3.80936C5.89769 3.89141 6.00897 3.9375 6.125 3.9375H8.75V10.5Z"
+                                  fill="black"
+                                />
+                              </svg>
+                              2 Files uploaded
+                            </span>
+                          </div>
+                          <p class="text-[10px] text-black/70 leading-relaxed">
+                            What is the Fundamental Theorem of Calculus?
+                            Elaborate on its significance and provide examples
+                            demonstrating how it connects differentiation and
+                            integration.
+                          </p>
+                          <div
+                            class="absolute right-6 top-6 bg-[#9C663B33]/20 text-black text-xs px-3 py-1 rounded-full text-[10px]"
+                          >
+                            1 submission
+                          </div>
+                        </div>
+
+                        <!-- Assignment Card -->
+                        <div
+                          class="assignment-card px-6 py-5 hover:bg-[#FFF9F3] transition-all duration-200 cursor-pointer relative"
+                        >
+                          <h3 class="text-xs font-semibold text-black mb-1">
+                            Algebra Advanced Question 202
+                          </h3>
+                          <div
+                            class="flex items-center gap-4 text-[10px] text-black/70 mb-2"
+                          >
+                            <span class="flex items-center gap-1">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="12"
+                                height="12"
+                                viewBox="0 0 12 12"
+                                fill="none"
+                              >
+                                <g opacity="0.5">
+                                  <path
+                                    d="M9.75 1.5H8.625V1.125C8.625 1.02554 8.58549 0.930161 8.51517 0.859835C8.44484 0.789509 8.34946 0.75 8.25 0.75C8.15054 0.75 8.05516 0.789509 7.98483 0.859835C7.91451 0.930161 7.875 1.02554 7.875 1.125V1.5H4.125V1.125C4.125 1.02554 4.08549 0.930161 4.01516 0.859835C3.94484 0.789509 3.84946 0.75 3.75 0.75C3.65054 0.75 3.55516 0.789509 3.48484 0.859835C3.41451 0.930161 3.375 1.02554 3.375 1.125V1.5H2.25C2.05109 1.5 1.86032 1.57902 1.71967 1.71967C1.57902 1.86032 1.5 2.05109 1.5 2.25V9.75C1.5 9.94891 1.57902 10.1397 1.71967 10.2803C1.86032 10.421 2.05109 10.5 2.25 10.5H9.75C9.94891 10.5 10.1397 10.421 10.2803 10.2803C10.421 10.1397 10.5 9.94891 10.5 9.75V2.25C10.5 2.05109 10.421 1.86032 10.2803 1.71967C10.1397 1.57902 9.94891 1.5 9.75 1.5ZM3.375 2.25V2.625C3.375 2.72446 3.41451 2.81984 3.48484 2.89016C3.55516 2.96049 3.65054 3 3.75 3C3.84946 3 3.94484 2.96049 4.01516 2.89016C4.08549 2.81984 4.125 2.72446 4.125 2.625V2.25H7.875V2.625C7.875 2.72446 7.91451 2.81984 7.98483 2.89016C8.05516 2.96049 8.15054 3 8.25 3C8.34946 3 8.44484 2.96049 8.51517 2.89016C8.58549 2.81984 8.625 2.72446 8.625 2.625V2.25H9.75V3.75H2.25V2.25H3.375ZM9.75 9.75H2.25V4.5H9.75V9.75Z"
+                                    fill="black"
+                                  />
+                                </g>
+                              </svg>
+                              Created Jan 13, 2025 11:45 AM
+                            </span>
+                          </div>
+                          <p class="text-[10px] text-black/70 leading-relaxed">
+                            Discuss the principles of object-oriented
+                            programming. Include examples of encapsulation,
+                            inheritance, and polymorphism with relevant code
+                            snippets.
+                          </p>
+                          <div
+                            class="absolute right-6 top-6 bg-[#9C663B33]/20 text-black text-xs px-3 py-1 rounded-full text-[10px]"
+                          >
+                            1 submission
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- MY assignment content -->
+                  <div id="assignment-tab" class="tab-content-1 hidden">
+                    <div
+                      class="w-full bg-white rounded-xl shadow-md overflow-hidden border border-gray-200"
+                    >
+                      <div class="">
+                        <table
+                          class="w-full text-sm text-gray-800 border-collapse"
+                        >
+                          <!-- Table Header -->
+                          <thead
+                            class="bg-[#FEF5EC] text-gray-800 font-semibold text-sm border-b border-gray-200"
+                          >
+                            <tr>
+                              <th class="px-6 py-3 text-left">
+                                <div class="flex items-center gap-3">
+                                  <input
+                                    id="selectAll"
+                                    type="checkbox"
+                                    class="w-4 h-4 accent-[#F6A44D] rounded-[6px] cursor-pointer"
+                                    onclick="toggleAllCheckboxes(this)"
+                                  />
+                                  <span>Student</span>
+                                </div>
+                              </th>
+                              <th class="px-6 py-3 text-left">
+                                Assignment Details
+                              </th>
+                              <th class="px-6 py-3 text-left">Status</th>
+                              <th class="px-6 py-3 text-left">Actions</th>
+                            </tr>
+                          </thead>
+
+                          <!-- Table Body -->
+                          <tbody class="max-h-[320px] overflow-y-auto">
+                            <!-- Row 1 -->
+                            <tr
+                              class="hover:bg-[#FFF9F3] transition-all duration-200 border-b border-gray-100"
+                            >
+                              <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                  <input
+                                    type="checkbox"
+                                    class="rowCheckbox w-4 h-4 accent-[#F6A44D] rounded-[6px] cursor-pointer"
+                                  />
+                                  <img
+                                    src="https://i.pravatar.cc/40?img=12"
+                                    class="w-10 h-10 rounded-full object-cover"
+                                    alt="Ali"
+                                  />
+                                  <div>
+                                    <p
+                                      class="text-[15px] font-semibold text-gray-800 leading-tight whitespace-nowrap"
+                                    >
+                                      Ali Abdul Aziz
+                                    </p>
+                                    <p class="text-sm text-gray-500">
+                                      Grade
+                                      <span class="text-[#E06C2C] font-medium"
+                                        >5A</span
+                                      >
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                  <img
+                                    src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
+                                    class="w-6 h-6"
+                                    alt="PDF"
+                                  />
+                                  <div>
+                                    <p
+                                      class="text-[15px] text-gray-800 font-medium leading-tight"
+                                    >
+                                      Algebra Basic Question 101
+                                    </p>
+                                    <p
+                                      class="text-xs flex items-center gap-1 text-gray-500"
+                                    >
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="9"
+                                        height="10"
+                                        viewBox="0 0 9 10"
+                                        fill="none"
+                                      >
+                                        <path
+                                          d="M8.25 0.75H7.125V0.375C7.125 0.275544 7.08549 0.180161 7.01517 0.109835C6.94484 0.0395088 6.84946 0 6.75 0C6.65054 0 6.55516 0.0395088 6.48483 0.109835C6.41451 0.180161 6.375 0.275544 6.375 0.375V0.75H2.625V0.375C2.625 0.275544 2.58549 0.180161 2.51516 0.109835C2.44484 0.0395088 2.34946 0 2.25 0C2.15054 0 2.05516 0.0395088 1.98484 0.109835C1.91451 0.180161 1.875 0.275544 1.875 0.375V0.75H0.75C0.551088 0.75 0.360322 0.829018 0.21967 0.96967C0.0790176 1.11032 0 1.30109 0 1.5V9C0 9.19891 0.0790176 9.38968 0.21967 9.53033C0.360322 9.67098 0.551088 9.75 0.75 9.75H8.25C8.44891 9.75 8.63968 9.67098 8.78033 9.53033C8.92098 9.38968 9 9.19891 9 9V1.5C9 1.30109 8.92098 1.11032 8.78033 0.96967C8.63968 0.829018 8.44891 0.75 8.25 0.75ZM1.875 1.5V1.875C1.875 1.97446 1.91451 2.06984 1.98484 2.14016C2.05516 2.21049 2.15054 2.25 2.25 2.25C2.34946 2.25 2.44484 2.21049 2.51516 2.14016C2.58549 2.06984 2.625 1.97446 2.625 1.875V1.5H6.375V1.875C6.375 1.97446 6.41451 2.06984 6.48483 2.14016C6.55516 2.21049 6.65054 2.25 6.75 2.25C6.84946 2.25 6.94484 2.21049 7.01517 2.14016C7.08549 2.06984 7.125 1.97446 7.125 1.875V1.5H8.25V3H0.75V1.5H1.875ZM8.25 9H0.75V3.75H8.25V9Z"
+                                          fill="black"
+                                        />
+                                      </svg>
+                                      Uploaded Jan 12, 2025 10:33 AM
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="px-6 py-4">
+                                <span
+                                  class="bg-[#51B590] text-white px-3 py-1 rounded-full text-xs font-semibold"
+                                  >Completed</span
+                                >
+                              </td>
+                              <td class="px-6 py-4">
+                                <button
+                                  class="border border-gray-300 rounded-[10px] px-[14px] py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition"
+                                >
+                                  View
+                                </button>
+                              </td>
+                            </tr>
+
+                            <!-- Row 2 -->
+                            <tr
+                              class="hover:bg-[#FFF9F3] transition-all duration-200 border-b border-gray-100"
+                            >
+                              <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                  <input
+                                    type="checkbox"
+                                    class="rowCheckbox w-4 h-4 accent-[#F6A44D] rounded-[6px] cursor-pointer"
+                                  />
+                                  <img
+                                    src="https://i.pravatar.cc/40?img=30"
+                                    class="w-10 h-10 rounded-full object-cover"
+                                    alt="Bella"
+                                  />
+                                  <div>
+                                    <p
+                                      class="text-[15px] font-semibold text-gray-800 leading-tight"
+                                    >
+                                      Bella Chen
+                                    </p>
+                                    <p class="text-sm text-gray-500">
+                                      Grade
+                                      <span class="text-[#E06C2C] font-medium"
+                                        >5B</span
+                                      >
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                  <img
+                                    src="https://cdn-icons-png.flaticon.com/512/337/337953.png"
+                                    class="w-6 h-6"
+                                    alt="Doc"
+                                  />
+                                  <div>
+                                    <p
+                                      class="text-[15px] text-gray-800 font-medium leading-tight"
+                                    >
+                                      Science Fair Project.pdf
+                                    </p>
+                                    <p class="text-sm text-gray-400">--</p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="px-6 py-4">
+                                <span
+                                  class="bg-[#D3D3D3] text-black px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap"
+                                  >Not uploaded</span
+                                >
+                              </td>
+                              <td class="px-6 py-4">
+                                <button
+                                  class="border border-gray-300 rounded-[10px] px-[14px] py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition"
+                                >
+                                  View
+                                </button>
+                              </td>
+                            </tr>
+
+                            <!-- Row 3 -->
+                            <tr
+                              class="hover:bg-[#FFF9F3] transition-all duration-200 border-b border-gray-100"
+                            >
+                              <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                  <input
+                                    type="checkbox"
+                                    class="rowCheckbox w-4 h-4 accent-[#F6A44D] rounded-[6px] cursor-pointer"
+                                  />
+                                  <img
+                                    src="https://i.pravatar.cc/40?img=8"
+                                    class="w-10 h-10 rounded-full object-cover"
+                                    alt="Carlos"
+                                  />
+                                  <div>
+                                    <p
+                                      class="text-[15px] font-semibold text-gray-800 leading-tight whitespace-nowrap"
+                                    >
+                                      Carlos Mendez
+                                    </p>
+                                    <p class="text-sm text-gray-500">
+                                      Grade
+                                      <span class="text-[#E06C2C] font-medium"
+                                        >5A</span
+                                      >
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                  <img
+                                    src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
+                                    class="w-6 h-6"
+                                    alt="PDF"
+                                  />
+                                  <div>
+                                    <p
+                                      class="text-[15px] text-gray-800 font-medium leading-tight"
+                                    >
+                                      History Essay.docx
+                                    </p>
+                                    <p
+                                      class="text-xs flex items-center gap-1 text-gray-500"
+                                    >
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="9"
+                                        height="10"
+                                        viewBox="0 0 9 10"
+                                        fill="none"
+                                      >
+                                        <path
+                                          d="M8.25 0.75H7.125V0.375C7.125 0.275544 7.08549 0.180161 7.01517 0.109835C6.94484 0.0395088 6.84946 0 6.75 0C6.65054 0 6.55516 0.0395088 6.48483 0.109835C6.41451 0.180161 6.375 0.275544 6.375 0.375V0.75H2.625V0.375C2.625 0.275544 2.58549 0.180161 2.51516 0.109835C2.44484 0.0395088 2.34946 0 2.25 0C2.15054 0 2.05516 0.0395088 1.98484 0.109835C1.91451 0.180161 1.875 0.275544 1.875 0.375V0.75H0.75C0.551088 0.75 0.360322 0.829018 0.21967 0.96967C0.0790176 1.11032 0 1.30109 0 1.5V9C0 9.19891 0.0790176 9.38968 0.21967 9.53033C0.360322 9.67098 0.551088 9.75 0.75 9.75H8.25C8.44891 9.75 8.63968 9.67098 8.78033 9.53033C8.92098 9.38968 9 9.19891 9 9V1.5C9 1.30109 8.92098 1.11032 8.78033 0.96967C8.63968 0.829018 8.44891 0.75 8.25 0.75ZM1.875 1.5V1.875C1.875 1.97446 1.91451 2.06984 1.98484 2.14016C2.05516 2.21049 2.15054 2.25 2.25 2.25C2.34946 2.25 2.44484 2.21049 2.51516 2.14016C2.58549 2.06984 2.625 1.97446 2.625 1.875V1.5H6.375V1.875C6.375 1.97446 6.41451 2.06984 6.48483 2.14016C6.55516 2.21049 6.65054 2.25 6.75 2.25C6.84946 2.25 6.94484 2.21049 7.01517 2.14016C7.08549 2.06984 7.125 1.97446 7.125 1.875V1.5H8.25V3H0.75V1.5H1.875ZM8.25 9H0.75V3.75H8.25V9Z"
+                                          fill="black"
+                                        />
+                                      </svg>
+                                      Uploaded Jan 14, 2025 09:45 AM
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="px-6 py-4">
+                                <span
+                                  class="bg-[#FFEFE3] text-[#B85C0A] px-3 py-1 rounded-full text-xs font-semibold"
+                                  >Pending</span
+                                >
+                              </td>
+                              <td class="px-6 py-4">
+                                <button
+                                  class="bg-[#C55300] text-white rounded-[10px] px-[14px] py-2 text-sm font-medium hover:bg-[#a84700] transition"
+                                >
+                                  Evaluate
+                                </button>
+                              </td>
+                            </tr>
+
+                            <!-- Row 4 -->
+                            <tr
+                              class="hover:bg-[#FFF9F3] transition-all duration-200 border-b border-gray-100"
+                            >
+                              <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                  <input
+                                    type="checkbox"
+                                    class="rowCheckbox w-4 h-4 accent-[#F6A44D] rounded-[6px] cursor-pointer"
+                                  />
+                                  <img
+                                    src="https://i.pravatar.cc/40?img=18"
+                                    class="w-10 h-10 rounded-full object-cover"
+                                    alt="Diana"
+                                  />
+                                  <div>
+                                    <p
+                                      class="text-[15px] font-semibold text-gray-800 leading-tight"
+                                    >
+                                      Diana Kim
+                                    </p>
+                                    <p class="text-sm text-gray-500">
+                                      Grade
+                                      <span class="text-[#E06C2C] font-medium"
+                                        >5C</span
+                                      >
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                  <img
+                                    src="https://cdn-icons-png.flaticon.com/512/337/337958.png"
+                                    class="w-6 h-6"
+                                    alt="Excel"
+                                  />
+                                  <div>
+                                    <p
+                                      class="text-[15px] text-gray-800 font-medium leading-tight"
+                                    >
+                                      Math Homework.xlsx
+                                    </p>
+                                    <p class="text-xs text-gray-500">
+                                      0.8 Mb • Uploaded Jan 13, 2025 02:20 PM
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="px-6 py-4">
+                                <span
+                                  class="bg-[#51B590] text-white px-3 py-1 rounded-full text-xs font-semibold"
+                                  >Completed</span
+                                >
+                              </td>
+                              <td class="px-6 py-4">
+                                <button
+                                  class="border border-gray-300 rounded-[10px] px-[14px] py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition"
+                                >
+                                  View
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Popup -->
+                  <div
+                    id="popup-overlay"
+                    class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center hidden"
+                  >
+                    <div
+                      class="bg-white w-[400px] rounded-xl shadow-lg flex flex-col relative"
+                    >
+                      <div class="flex justify-between items-center p-4">
+                        <h3 class="text-base font-semibold text-black">
+                          Edit Assignment
+                        </h3>
+                        <button
+                          id="close-popup"
+                          class="text-black bg-[#F4F4F4] flex justify-center items-center p-2 rounded-full"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="11"
+                            height="11"
+                            viewBox="0 0 11 11"
+                            fill="none"
+                          >
+                            <path
+                              d="M10.6089 9.51461C10.7543 9.65998 10.8359 9.85714 10.8359 10.0627C10.8359 10.2683 10.7543 10.4655 10.6089 10.6108C10.4635 10.7562 10.2664 10.8379 10.0608 10.8379C9.85521 10.8379 9.65805 10.7562 9.51268 10.6108L5.41861 6.51548L1.32326 10.6095C1.17789 10.7549 0.980728 10.8366 0.775146 10.8366C0.569565 10.8366 0.372403 10.7549 0.227035 10.6095C0.081667 10.4642 3.0634e-09 10.267 0 10.0614C-3.0634e-09 9.85585 0.081667 9.65869 0.227035 9.51332L4.32239 5.41926L0.228325 1.3239C0.0829565 1.17853 0.0012897 0.981372 0.0012897 0.775791C0.0012897 0.570209 0.0829565 0.373048 0.228325 0.22768C0.373693 0.0823118 0.570854 0.00064473 0.776435 0.000644728C0.982017 0.000644726 1.17918 0.0823118 1.32455 0.22768L5.41861 4.32304L9.51397 0.227035C9.65934 0.0816668 9.8565 -3.42499e-09 10.0621 0C10.2677 3.42499e-09 10.4648 0.0816668 10.6102 0.227035C10.7556 0.372403 10.8372 0.569564 10.8372 0.775146C10.8372 0.980727 10.7556 1.17789 10.6102 1.32326L6.51483 5.41926L10.6089 9.51461Z"
+                              fill="black"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                      <div
+                        class="bg-[linear-gradient(90deg,rgba(0,0,0,0.10)_0%,#FE9614_48.57%,rgba(0,0,0,0.10)_100%)] w-full h-[1px]"
+                      ></div>
+                      <div class="flex flex-col gap-4 items-start p-4">
+                        <div class="flex flex-col gap-1 items-start w-full">
+                          <p class="text-[10px] font-semibold text-black/50">
+                            Assignment Title
+                          </p>
+                          <div class="flex items-center gap-1 w-full">
+                            <input
+                              type="text"
+                              placeholder="Type here"
+                              class="w-full"
+                            />
+                            <p class="text-[10px] text-black/50">
+                              20 char. left
+                            </p>
+                          </div>
+                        </div>
+                        <div class="flex flex-col gap-2 items-start w-full">
+                          <p class="text-[10px] font-semibold text-black/50">
+                            QUESTION
+                          </p>
+                          <div
+                            class="rounded-[10px] border border-[#D9D9D9] bg-[#FFFCF7] flex items-start p-2"
+                          >
+                            <p class="text-xs text-black">
+                              Dear Carlos Mendez, Thank you for your hard work
+                              on the History Research assignment. While your
+                              scores reflect some challenges, it's important to
+                              recognize the progress you've made in..
+                            </p>
+                          </div>
+                        </div>
+                        <div class="flex flex-col gap-2 items-start w-full">
+                          <p class="text-[10px] font-semibold text-black/50">
+                            Upload DOCUMENT (OPTIONAL)
+                          </p>
+                          <div
+                            class="rounded-[10px] border border-dashed border-[#DFDFDF] bg-[#F5F3F1] flex justify-center items-center p-2 w-full"
+                          >
+                            <div
+                              class="flex flex-col justify-center items-center gap-1"
+                            >
+                              <img
+                                src="./assets/img/pdfimg.png"
+                                alt=""
+                                srcset=""
+                              />
+                              <p
+                                class="text-[10px] font-medium underline text-[#BF4B00]"
+                              >
+                                FIle name. pdf
+                              </p>
+                              <p class="text-[10px] text-black/60">
+                                Max file size : 5 MB
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex justify-between items-center w-full">
+                          <div class="flex justify-center items-center gap-2">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                            >
+                              <path
+                                d="M20.25 4.5H3.75C3.55109 4.5 3.36032 4.57902 3.21967 4.71967C3.07902 4.86032 3 5.05109 3 5.25C3 5.44891 3.07902 5.63968 3.21967 5.78033C3.36032 5.92098 3.55109 6 3.75 6H4.5V19.5C4.5 19.8978 4.65804 20.2794 4.93934 20.5607C5.22064 20.842 5.60218 21 6 21H18C18.3978 21 18.7794 20.842 19.0607 20.5607C19.342 20.2794 19.5 19.8978 19.5 19.5V6H20.25C20.4489 6 20.6397 5.92098 20.7803 5.78033C20.921 5.63968 21 5.44891 21 5.25C21 5.05109 20.921 4.86032 20.7803 4.71967C20.6397 4.57902 20.4489 4.5 20.25 4.5ZM18 19.5H6V6H18V19.5ZM7.5 2.25C7.5 2.05109 7.57902 1.86032 7.71967 1.71967C7.86032 1.57902 8.05109 1.5 8.25 1.5H15.75C15.9489 1.5 16.1397 1.57902 16.2803 1.71967C16.421 1.86032 16.5 2.05109 16.5 2.25C16.5 2.44891 16.421 2.63968 16.2803 2.78033C16.1397 2.92098 15.9489 3 15.75 3H8.25C8.05109 3 7.86032 2.92098 7.71967 2.78033C7.57902 2.63968 7.5 2.44891 7.5 2.25Z"
+                                fill="#BF4B00"
+                              />
+                            </svg>
+                            <p class="text-xs font-semibold">Delete</p>
+                          </div>
+                          <div class="flex items-center justify-center gap-2">
+                            <button
+                              class="border border-gray-300 rounded-[10px] text-sm font-medium text-gray-700 hover:bg-gray-100 transition w-[95px] h-[36px]"
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              class="bg-[#C55300] text-white rounded-[10px] text-sm font-medium hover:bg-[#a84700] transition w-[95px] h-[36px]"
+                            >
+                              Update
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--Evaluate Popup -->
+                  <div
+                    id="popup-overlay"
+                    class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center hidden"
+                  >
+                    <div
+                      class="bg-white w-[400px] rounded-xl shadow-lg flex flex-col relative"
+                    >
+                      <div class="flex justify-between items-center p-4">
+                        <h3 class="text-base font-semibold text-black">
+                          Edit Assignment
+                        </h3>
+                        <div class="flex justify-center items-center gap-1">
+                          <p
+                            class="px-[10px] py-[4px] rounded-full text-[#9A3F5A] bg-[#FFEDD5] flex items-center justify-center"
+                          >
+                            Pending
+                          </p>
+                          <button
+                            id="close-popup"
+                            class="text-black bg-[#F4F4F4] flex justify-center items-center p-2 rounded-full"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 11"
+                              fill="none"
+                            >
+                              <path
+                                d="M10.6089 9.51461C10.7543 9.65998 10.8359 9.85714 10.8359 10.0627C10.8359 10.2683 10.7543 10.4655 10.6089 10.6108C10.4635 10.7562 10.2664 10.8379 10.0608 10.8379C9.85521 10.8379 9.65805 10.7562 9.51268 10.6108L5.41861 6.51548L1.32326 10.6095C1.17789 10.7549 0.980728 10.8366 0.775146 10.8366C0.569565 10.8366 0.372403 10.7549 0.227035 10.6095C0.081667 10.4642 3.0634e-09 10.267 0 10.0614C-3.0634e-09 9.85585 0.081667 9.65869 0.227035 9.51332L4.32239 5.41926L0.228325 1.3239C0.0829565 1.17853 0.0012897 0.981372 0.0012897 0.775791C0.0012897 0.570209 0.0829565 0.373048 0.228325 0.22768C0.373693 0.0823118 0.570854 0.00064473 0.776435 0.000644728C0.982017 0.000644726 1.17918 0.0823118 1.32455 0.22768L5.41861 4.32304L9.51397 0.227035C9.65934 0.0816668 9.8565 -3.42499e-09 10.0621 0C10.2677 3.42499e-09 10.4648 0.0816668 10.6102 0.227035C10.7556 0.372403 10.8372 0.569564 10.8372 0.775146C10.8372 0.980727 10.7556 1.17789 10.6102 1.32326L6.51483 5.41926L10.6089 9.51461Z"
+                                fill="black"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                      <div
+                        class="bg-[linear-gradient(90deg,rgba(0,0,0,0.10)_0%,#FE9614_48.57%,rgba(0,0,0,0.10)_100%)] w-full h-[1px]"
+                      ></div>
+                      <div class="flex flex-col gap-4 items-start p-4 max-h-[80vh] overflow-y-auto">
+                        <div class="flex justify-center items-center gap-10">
+                          <div class="flex items-center justify-center gap-2">
+                            <img
+                              src="./assets/img/studentpic.png"
+                              alt=""
+                              srcset=""
+                            />
+                            <div class="flex flex-col gap-1 items-start">
+                              <p class="text-xs font-medium text-black">
+                                Carlos Mendez
+                              </p>
+                              <p class="text-[10px] text-black/70">Grade 5A</p>
+                            </div>
+                          </div>
+                          <div class="flex flex-col gap-1 items-start">
+                            <p class="text-[10px] text-black/70">TITLE</p>
+                            <p class="text-xs font-medium">
+                              Algebra Basic Question 101
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2 items-start w-full">
+                          <p class="text-[10px] font-semibold text-black/50">
+                            QUESTION
+                          </p>
+                          <div class="">
+                            <p class="text-xs text-black">
+                              Dear Carlos Mendez, Thank you for your hard work
+                              on the History Research assignment. While your
+                              scores reflect some challenges, it's important to
+                              recognize the progress you've made in..
+                            </p>
+                          </div>
+                        </div>
+                        <div class="flex flex-col gap-2 items-start w-full">
+                          <p class="text-[10px] font-semibold text-black/70">
+                            Submitted Files
+                          </p>
+                          <div class="flex flex-col gap-1 w-full">
+                            <div
+                              class="rounded-[16px] bg-[#FFF5E7] flex justify-start items-center gap-3 px-3 py-4 w-full"
+                            >
+                              <img
+                                src="./assets/img/pdfimg.png"
+                                alt=""
+                                srcset=""
+                              />
+                              <div
+                                class="flex flex-col justify-center items-start gap-1"
+                              >
+                                <p
+                                  class="text-xs font-medium underline text-[#BF4B00]"
+                                >
+                                  History Essay.docx
+                                </p>
+                                <div
+                                  class="flex justify-center items-center gap-2"
+                                >
+                                  <p class="text-black/70 text-[10px]">
+                                    2.0 Mb
+                                  </p>
+                                  <p
+                                    class="text-[10px] text-black/60 flex items-center justify-center gap-1"
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="12"
+                                      height="12"
+                                      viewBox="0 0 12 12"
+                                      fill="none"
+                                    >
+                                      <g
+                                        opacity="0.5"
+                                        clip-path="url(#clip0_46_2189)"
+                                      >
+                                        <path
+                                          d="M10.1863 1.5H9.06128V1.125C9.06128 1.02554 9.02177 0.930161 8.95144 0.859835C8.88112 0.789509 8.78574 0.75 8.68628 0.75C8.58682 0.75 8.49144 0.789509 8.42111 0.859835C8.35079 0.930161 8.31128 1.02554 8.31128 1.125V1.5H4.56128V1.125C4.56128 1.02554 4.52177 0.930161 4.45144 0.859835C4.38112 0.789509 4.28574 0.75 4.18628 0.75C4.08682 0.75 3.99144 0.789509 3.92111 0.859835C3.85079 0.930161 3.81128 1.02554 3.81128 1.125V1.5H2.68628C2.48737 1.5 2.2966 1.57902 2.15595 1.71967C2.0153 1.86032 1.93628 2.05109 1.93628 2.25V9.75C1.93628 9.94891 2.0153 10.1397 2.15595 10.2803C2.2966 10.421 2.48737 10.5 2.68628 10.5H10.1863C10.3852 10.5 10.576 10.421 10.7166 10.2803C10.8573 10.1397 10.9363 9.94891 10.9363 9.75V2.25C10.9363 2.05109 10.8573 1.86032 10.7166 1.71967C10.576 1.57902 10.3852 1.5 10.1863 1.5ZM3.81128 2.25V2.625C3.81128 2.72446 3.85079 2.81984 3.92111 2.89016C3.99144 2.96049 4.08682 3 4.18628 3C4.28574 3 4.38112 2.96049 4.45144 2.89016C4.52177 2.81984 4.56128 2.72446 4.56128 2.625V2.25H8.31128V2.625C8.31128 2.72446 8.35079 2.81984 8.42111 2.89016C8.49144 2.96049 8.58682 3 8.68628 3C8.78574 3 8.88112 2.96049 8.95144 2.89016C9.02177 2.81984 9.06128 2.72446 9.06128 2.625V2.25H10.1863V3.75H2.68628V2.25H3.81128ZM10.1863 9.75H2.68628V4.5H10.1863V9.75Z"
+                                          fill="black"
+                                        />
+                                      </g>
+                                      <defs>
+                                        <clipPath id="clip0_46_2189">
+                                          <rect
+                                            width="12"
+                                            height="12"
+                                            fill="white"
+                                          />
+                                        </clipPath>
+                                      </defs>
+                                    </svg>
+                                    >Jan 14, 2025 09:45 AM
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="rounded-[16px] bg-[#FFF5E7] flex justify-start items-center gap-3 px-3 py-4 w-full"
+                            >
+                              <img
+                                src="./assets/img/pdfimg.png"
+                                alt=""
+                                srcset=""
+                              />
+                              <div
+                                class="flex flex-col justify-center items-start gap-1"
+                              >
+                                <p
+                                  class="text-xs font-medium underline text-[#BF4B00]"
+                                >
+                                  History Essay.docx
+                                </p>
+                                <div
+                                  class="flex justify-center items-center gap-2"
+                                >
+                                  <p class="text-black/70 text-[10px]">
+                                    2.0 Mb
+                                  </p>
+                                  <p
+                                    class="text-[10px] text-black/60 flex items-center justify-center gap-1"
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="12"
+                                      height="12"
+                                      viewBox="0 0 12 12"
+                                      fill="none"
+                                    >
+                                      <g
+                                        opacity="0.5"
+                                        clip-path="url(#clip0_46_2189)"
+                                      >
+                                        <path
+                                          d="M10.1863 1.5H9.06128V1.125C9.06128 1.02554 9.02177 0.930161 8.95144 0.859835C8.88112 0.789509 8.78574 0.75 8.68628 0.75C8.58682 0.75 8.49144 0.789509 8.42111 0.859835C8.35079 0.930161 8.31128 1.02554 8.31128 1.125V1.5H4.56128V1.125C4.56128 1.02554 4.52177 0.930161 4.45144 0.859835C4.38112 0.789509 4.28574 0.75 4.18628 0.75C4.08682 0.75 3.99144 0.789509 3.92111 0.859835C3.85079 0.930161 3.81128 1.02554 3.81128 1.125V1.5H2.68628C2.48737 1.5 2.2966 1.57902 2.15595 1.71967C2.0153 1.86032 1.93628 2.05109 1.93628 2.25V9.75C1.93628 9.94891 2.0153 10.1397 2.15595 10.2803C2.2966 10.421 2.48737 10.5 2.68628 10.5H10.1863C10.3852 10.5 10.576 10.421 10.7166 10.2803C10.8573 10.1397 10.9363 9.94891 10.9363 9.75V2.25C10.9363 2.05109 10.8573 1.86032 10.7166 1.71967C10.576 1.57902 10.3852 1.5 10.1863 1.5ZM3.81128 2.25V2.625C3.81128 2.72446 3.85079 2.81984 3.92111 2.89016C3.99144 2.96049 4.08682 3 4.18628 3C4.28574 3 4.38112 2.96049 4.45144 2.89016C4.52177 2.81984 4.56128 2.72446 4.56128 2.625V2.25H8.31128V2.625C8.31128 2.72446 8.35079 2.81984 8.42111 2.89016C8.49144 2.96049 8.58682 3 8.68628 3C8.78574 3 8.88112 2.96049 8.95144 2.89016C9.02177 2.81984 9.06128 2.72446 9.06128 2.625V2.25H10.1863V3.75H2.68628V2.25H3.81128ZM10.1863 9.75H2.68628V4.5H10.1863V9.75Z"
+                                          fill="black"
+                                        />
+                                      </g>
+                                      <defs>
+                                        <clipPath id="clip0_46_2189">
+                                          <rect
+                                            width="12"
+                                            height="12"
+                                            fill="white"
+                                          />
+                                        </clipPath>
+                                      </defs>
+                                    </svg>
+                                    >Jan 14, 2025 09:45 AM
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="rounded-[8px] bg-[#4D311F] h-[38px] flex justify-center items-center w-full"
+                        >
+                          <p
+                            class="text-xs font-semibold flex justify-center items-center gap-1 text-white"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="15"
+                              height="16"
+                              viewBox="0 0 15 16"
+                              fill="none"
+                            >
+                              <g clip-path="url(#clip0_46_2229)">
+                                <path
+                                  d="M7.10838 10.5104L6.55237 11.8688C6.33887 12.3909 5.66138 12.3909 5.44738 11.8688L4.89138 10.5104C4.39638 9.30129 3.50587 8.33916 2.39487 7.81329L0.864875 7.08903C0.378375 6.85863 0.378375 6.10343 0.864875 5.87302L2.34738 5.17116C3.48688 4.63142 4.39338 3.63356 4.87988 2.38396L5.44287 0.936491C5.65188 0.399425 6.34788 0.399425 6.55688 0.936491L7.11987 2.38396C7.60637 3.63409 8.51288 4.63196 9.65238 5.17116L11.1349 5.87302C11.6214 6.10343 11.6214 6.85863 11.1349 7.08903L9.60437 7.81382C8.49388 8.33969 7.60288 9.30183 7.10838 10.5104Z"
+                                  fill="white"
+                                />
+                                <path
+                                  d="M12.2404 14.8248L12.0709 15.2392C11.9469 15.5426 11.5529 15.5426 11.4289 15.2392L11.2594 14.8248C10.9574 14.0861 10.4129 13.4978 9.73388 13.1757L9.21187 12.9282C8.92937 12.7944 8.92937 12.3565 9.21187 12.2226L9.70488 11.989C10.4014 11.6589 10.9554 11.0488 11.2524 10.285L11.4264 9.83703C11.5479 9.52503 11.9524 9.52503 12.0734 9.83703L12.2474 10.285C12.5444 11.0488 13.0984 11.6589 13.7949 11.989L14.2879 12.2226C14.5704 12.3565 14.5704 12.7944 14.2879 12.9282L13.7659 13.1757C13.0869 13.4978 12.5424 14.0861 12.2404 14.8248Z"
+                                  fill="white"
+                                />
+                              </g>
+                              <defs>
+                                <clipPath id="clip0_46_2229">
+                                  <rect
+                                    width="15"
+                                    height="16"
+                                    rx="7.5"
+                                    fill="white"
+                                  />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            AI Evaluation
+                          </p>
+                        </div>
+                        <div class="flex gap-2 justify-start items-center w-full">
+                          <div
+                            class="border border-[#D9D9D9] rounded-md flex justify-between items-center p-2 w-full"
+                          >
+                            <input
+                              type="text"
+                              placeholder="Enter count"
+                              class="w-full"
+                            />
+                            <img src="./assets/img/coin.png" alt="" srcset="" />
+                          </div>
+                          <p
+                            class="text-[10px] font-semibold uppercase text-black/70"
+                          >
+                            EDUCOINS
+                          </p>
+                        </div>
+                        <div class="flex flex-col gap-2 items-start w-full">
+                          <p
+                            class="text-[10px] font-semibold text-black/50 uppercase"
+                          >
+                            Comment
+                          </p>
+                          <div
+                            class="rounded-[10px] border border-[#D9D9D9] bg-[#FFFCF7] flex items-start p-2 h-[131px] w-full"
+                          >
+                            <p class="text-xs text-black">
+                              Write your feedback and remarks here..
+                            </p>
+                          </div>
+                        </div>
+                        <div class="flex justify-between items-center w-full">
+                          <div class="flex justify-center items-center gap-2">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                            >
+                              <path
+                                d="M20.25 4.5H3.75C3.55109 4.5 3.36032 4.57902 3.21967 4.71967C3.07902 4.86032 3 5.05109 3 5.25C3 5.44891 3.07902 5.63968 3.21967 5.78033C3.36032 5.92098 3.55109 6 3.75 6H4.5V19.5C4.5 19.8978 4.65804 20.2794 4.93934 20.5607C5.22064 20.842 5.60218 21 6 21H18C18.3978 21 18.7794 20.842 19.0607 20.5607C19.342 20.2794 19.5 19.8978 19.5 19.5V6H20.25C20.4489 6 20.6397 5.92098 20.7803 5.78033C20.921 5.63968 21 5.44891 21 5.25C21 5.05109 20.921 4.86032 20.7803 4.71967C20.6397 4.57902 20.4489 4.5 20.25 4.5ZM18 19.5H6V6H18V19.5ZM7.5 2.25C7.5 2.05109 7.57902 1.86032 7.71967 1.71967C7.86032 1.57902 8.05109 1.5 8.25 1.5H15.75C15.9489 1.5 16.1397 1.57902 16.2803 1.71967C16.421 1.86032 16.5 2.05109 16.5 2.25C16.5 2.44891 16.421 2.63968 16.2803 2.78033C16.1397 2.92098 15.9489 3 15.75 3H8.25C8.05109 3 7.86032 2.92098 7.71967 2.78033C7.57902 2.63968 7.5 2.44891 7.5 2.25Z"
+                                fill="#BF4B00"
+                              />
+                            </svg>
+                            <p class="text-xs font-semibold">Delete</p>
+                          </div>
+                          <div class="flex items-center justify-center gap-2">
+                            <button
+                              class="border border-gray-300 rounded-[10px] text-sm font-medium text-gray-700 hover:bg-gray-100 transition w-[95px] h-[36px]"
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              class="bg-[#C55300] text-white rounded-[10px] text-sm font-medium hover:bg-[#a84700] transition px-4 w-auto h-[36px]"
+                            >
+                              Save Evaluation
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================ -->
+        </section>
+
+        <!-- right side section -->
+        <section
+          class="bg-white border border-l-black/20 flex flex-col lg:w-1/3 p-4 gap-4 lg:overflow-auto scrollbar-custom"
+        >
+          <!-- Header and add button -->
+          <div class="flex justify-between items-center">
+            <p class="text-lg-custom h-10">Students</p>
+            <!-- Create Quiz Button -->
+            <button
+              class="h-10 bg-primary hover:bg-primaryDark flex gap-1 items-center text-white px-3 rounded-lg text-sm w-fit"
+              id="studentAddPopupBtn"
+            >
+              <svg
+                class="fill-white w-5 h-5"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+              </svg>
+              Add Students
+            </button>
+          </div>
+
+          <!-- Folder Container -->
+          <div class="mb-8 flex gap-4">
+            <!-- Folder Wrapper -->
+            <div class="relative w-full">
+              <!-- Folder Background (Link) -->
+              <a
+                href="#"
+                class="bg-gradient-to-b from-[#fef8f4] to-[#ede6e0] absolute w-full h-[110%] top-5 rounded-xl p-3 flex flex-col justify-between hover:top-4 transition-all ease-in-out"
+              >
+                <!-- Class Name -->
+                <p class="class-name font-semibold">Robotics Camp</p>
+
+                <!-- Student Count -->
+                <p class="text-xs">
+                  <span class="font-medium">25</span> Students
+                </p>
+              </a>
+
+              <!-- Folder SVG Icon -->
+              <img
+                class="h-[80px]"
+                src="assets/img/classroom/folder-part.png"
+                alt="folder"
+              />
+            </div>
+
+            <div class="w-full h-full">
+              <p class="text-black/50 italic">Created 20-8-2024</p>
+              <p><span class="font-medium">6</span> Materials</p>
+              <p><span class="font-medium">5</span> Quiz</p>
+            </div>
+          </div>
+
+          <!-- students list -->
+          <div id="studentList" class="space-y-2">
+            <div class="flex justify-between">
+              <a class="hover:underline" href="#">Select All</a>
+              <a class="text-primaryDark font-medium" href="#">Delete</a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- =========================================== -->
+    <!-- Create a Quiz Popup -->
+    <!-- =========================================== -->
+
+    <div
+      id="createQuizPopup"
+      class="hidden fixed z-[200] bg-black/70 w-screen h-screen justify-center items-center"
+    >
+      <!-- Popup Box container -->
+      <div
+        class="bg-white rounded-xl lg:max-w-2xl w-full lg:min-h-[220px] h-fit pb-14 flex flex-col relative overflow-hidden"
+      >
+        <!-- header -->
+        <div class="flex justify-between px-4 py-2">
+          <p class="text-lg font-semibold">Create a Quiz</p>
+          <button
+            class="close-create-class-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20"
+          >
+            <img
+              class="fill-black w-5"
+              src="/assets/icons/close-line.svg"
+              alt="close button"
+            />
+          </button>
+        </div>
+
+        <!-- seperator -->
+        <div
+          class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[2px]"
+        ></div>
+
+        <!-- content -->
+        <div class="p-4 flex flex-col">
+          <div>
+            <label for="questionTitle" class="block text-xs font-medium"
+              >NAME</label
+            >
+            <input
+              type="text"
+              id="questionTitle"
+              class="mt-1 capitalize block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg"
+              placeholder="Type Quiz Name..."
+            />
+          </div>
+
+          <div class="pt-6">
+            <label for="questionTitle" class="block text-xs pb-2 font-medium"
+              >STARTS FROM</label
+            >
+            <div>
+              <!-- quiz creation from -->
+              <div>
+                <!-- Question Type Selection -->
+                <div
+                  class="flex text-center justify-between w-full gap-3"
+                  id="questionTypeContainer"
+                >
+                  <div
+                    id="scratch"
+                    class="radioOption border-[3px] border-[#9c663b] hover:border-black/30 rounded-lg cursor-pointer w-full selected min-h-[150px] overflow-hidden"
+                  >
+                    <div
+                      class="h-1/2 bg-primaryLight flex justify-center items-center"
+                    >
+                      <img
+                        class="w-14"
+                        src="assets/img/classroom/scratch.webp"
+                        alt="scratch"
+                      />
+                      <input
+                        type="radio"
+                        class="hidden"
+                        name="quizTemplate"
+                        value="general"
+                        checked
+                      />
+                    </div>
+
+                    <div
+                      class="h-1/2 flex justify-center items-center flex-col gap-1"
+                    >
+                      <p class="text-[1rem] font-medium tracking-tight">
+                        From Scratch
+                      </p>
+                      <p class="leading-4 lg:max-w-[80%]">
+                        Create a quiz from the ground up.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    id="ai"
+                    class="radioOption border-[3px] border-black/5 hover:border-black/30 rounded-lg cursor-pointer w-full selected min-h-[180px] overflow-hidden"
+                  >
+                    <div
+                      class="h-1/2 bg-primaryLight flex justify-center items-center"
+                    >
+                      <img
+                        class="w-14"
+                        src="assets/img/classroom/ai.webp"
+                        alt="ai"
+                      />
+                      <input
+                        type="radio"
+                        class="hidden"
+                        name="quizTemplate"
+                        value="ai"
+                      />
+                    </div>
+
+                    <div
+                      class="h-1/2 flex justify-center items-center flex-col gap-1"
+                    >
+                      <p class="text-[1rem] font-medium tracking-tight">
+                        Generate with AI
+                      </p>
+                      <p class="leading-4 lg:max-w-[80%]">
+                        Let AI helps to generate your questions.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    id="sheet"
+                    class="radioOption border-[3px] border-black/5 hover:border-black/30 rounded-lg cursor-pointer w-full selected min-h-[150px] overflow-hidden"
+                  >
+                    <div
+                      class="h-1/2 bg-primaryLight flex justify-center items-center"
+                    >
+                      <img
+                        class="w-14"
+                        src="assets/img/classroom/sheet.webp"
+                        alt="sheet"
+                      />
+                      <input
+                        type="radio"
+                        class="hidden"
+                        name="quizTemplate"
+                        value="sheet"
+                      />
+                    </div>
+
+                    <div
+                      class="h-1/2 flex justify-center items-center flex-col gap-1"
+                    >
+                      <p class="text-[1rem] font-medium tracking-tight">
+                        Import Worksheet
+                      </p>
+                      <p class="leading-4 lg:max-w-[80%]">
+                        Upload your worksheet to convert into a quiz.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Popup Footer -->
+        <div
+          class="flex absolute bottom-0 justify-end gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full"
+        >
+          <div class="flex gap-2">
+            <button
+              class="close-create-class-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg"
+            >
+              Cancel
+            </button>
+            <button
+              id="classCreateButton"
+              class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg"
+            >
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================== -->
+    <!-- Add Material Popup -->
+    <!-- =========================================== -->
+
+    <div
+      id="addMaterialPopup"
+      class="hidden fixed z-[200] bg-black/70 w-screen h-screen justify-center items-center"
+    >
+      <!-- Popup Box container -->
+      <div
+        class="bg-white rounded-xl lg:max-w-2xl w-full lg:min-h-[220px] h-fit pb-14 flex flex-col relative overflow-hidden"
+      >
+        <!-- header -->
+        <div class="flex justify-between px-4 py-2">
+          <p class="text-lg font-semibold">Add Material</p>
+          <button
+            class="close-add-material-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20"
+          >
+            <img
+              class="fill-black w-5"
+              src="/assets/icons/close-line.svg"
+              alt="close button"
+            />
+          </button>
+        </div>
+
+        <!-- seperator -->
+        <div
+          class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[2px]"
+        ></div>
+
+        <!-- content -->
+        <div class="p-4 flex flex-col">
+          <div>
+            <label for="questionTitle" class="block text-xs font-medium"
+              >NAME</label
+            >
+            <input
+              type="text"
+              id="questionTitle"
+              class="mt-1 capitalize block w-full bg-transparent rounded-md placeholder-gray-400 focus:outline-none focus:ring-0 text-lg"
+              placeholder="Type Material Name..."
+            />
+          </div>
+
+          <div class="pt-6">
+            <label for="documentUpload" class="block text-xs pb-2 font-medium"
+              >UPLOAD</label
+            >
+            <form
+              action="/upload"
+              method="POST"
+              enctype="multipart/form-data"
+              class="dropzone min-h-[160px] bg-primaryLight rounded-xl border border-dashed border-black/30 flex flex-col justify-center items-center h-fit"
+              id="myDropzone"
+            >
+              <img
+                class="w-14"
+                src="assets/img/classroom/pdf.webp"
+                alt="upload"
+              />
+              <p
+                id="uploadText"
+                class="text-primaryDark underline font-medium cursor-pointer"
+              >
+                Click to upload or Drag & Drop here
+              </p>
+              <p class="text-black/70">Max file size: 5MB</p>
+            </form>
+          </div>
+        </div>
+
+        <!-- Popup Footer -->
+        <div
+          class="flex absolute bottom-0 justify-end gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full"
+        >
+          <div class="flex gap-2">
+            <button
+              class="close-add-material-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg"
+            >
+              Cancel
+            </button>
+            <button
+              id="classCreateButton"
+              class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg"
+            >
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================== -->
+    <!-- Add Student Popup -->
+    <!-- =========================================== -->
+
+    <div
+      id="studentListAddPopupContainer"
+      class="hidden fixed z-[200] bg-black/70 w-screen h-screen justify-center items-center"
+    >
+      <!-- Popup Box container -->
+      <div
+        class="bg-white rounded-xl lg:max-w-2xl w-full lg:min-h-[220px] h-fit pb-14 flex flex-col relative overflow-hidden"
+      >
+        <!-- header -->
+        <div id="studentAddPopupBtn" class="flex justify-between px-4 py-2">
+          <p class="text-lg font-semibold">Add Students</p>
+          <button
+            class="close-add-student-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20"
+          >
+            <img
+              class="fill-black w-5"
+              src="/assets/icons/close-line.svg"
+              alt="close button"
+            />
+          </button>
+        </div>
+
+        <!-- seperator -->
+        <div
+          class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[2px]"
+        ></div>
+
+        <!-- content -->
+        <div class="p-4 flex flex-col gap-4">
+          <div class="flex w-full gap-3 items-center">
+            <div class="w-full">
+              <p class="uppercase text-black/60 font-medium text-xs pb-2">
+                class
+              </p>
+
+              <select
+                name="insight-class"
+                id="insightClass"
+                class="border px-4 py-2 w-full rounded-lg"
+              >
+                <option value="2">Class 5</option>
+                <option value="3">Class 6</option>
+                <option value="4">Class 7</option>
+                <option value="5">Class 8</option>
+              </select>
+            </div>
+
+            <div class="w-full">
+              <p
+                class="uppercase text-black/60 font-medium text-xs pb-2 rounded-lg"
+              >
+                grade
+              </p>
+
+              <select
+                name="insight-class"
+                id="insightClass"
+                class="border px-4 pr-8 py-2 w-full rounded-lg"
+              >
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="2">C</option>
+                <option value="2">D</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="flex justify-between">
+            <a class="hover:underline" href="#">Select All</a>
+            <a class="text-primaryDark font-medium" href="#">Delete</a>
+          </div>
+
+          <!-- students list -->
+          <div
+            id="studentList"
+            class="space-y-2 overflow-auto lg:h-[50vh]"
+          ></div>
+        </div>
+
+        <!--  Footer -->
+        <div
+          class="flex absolute bottom-0 justify-end gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full"
+        >
+          <div class="flex gap-2">
+            <button
+              class="close-add-student-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg"
+            >
+              Cancel
+            </button>
+            <button
+              id="classCreateButton"
+              class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg"
+            >
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- custom script -->
+    <script src="./js/main.js"></script>
+    <script src="./js/classroomDetail.js"></script>
+    <!-- <script src="./js/quizQuestionCreation.js"></script> -->
+    <script src="./js/classroomStudentList.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      const uploads = [
+        {
+          name: 'Tutorial Python v2.pdf',
+          size: '3.5 Mb',
+          date: '23-03-2025',
+          img: './assets/img/pdfimg.png',
+        },
+        {
+          name: 'Project Report Q1 2025.jpg',
+          size: '1.2 Mb',
+          date: '15-04-2025',
+          img: './assets/img/yellowimg.png',
+        },
+        {
+          name: 'Meeting Notes 2025-06-03.txt',
+          size: '0.5 Mb',
+          date: '03-06-2025',
+          img: './assets/img/pdfimg.png',
+        },
+        {
+          name: 'Meeting Notes 2025-06-03.png',
+          size: '0.5 Mb',
+          date: '03-06-2025',
+          img: './assets/img/yellowimg.png',
+        },
+        {
+          name: 'Design Mockups v3.pdf',
+          size: '5.8 Mb',
+          date: '01-05-2025',
+          img: './assets/img/pdfimg.png',
+        },
+      ]
+
+      const fileTable = document.getElementById('fileTable')
+
+      uploads.forEach((file) => {
+        const tr = document.createElement('tr')
+        tr.className = 'border-t border-[#F5EDE5] hover:bg-[#FFF9F5] transition'
+        tr.innerHTML = `
+        <td class="py-3 px-5 flex items-center gap-3">
+            <img src="${file.img}" alt="file icon" class="w-6 h-6 object-contain" />
+          <span class="font-medium">${file.name}</span>
+        </td>
+        <td class="py-3 px-5">${file.size}</td>
+        <td class="py-3 px-5">${file.date}</td>
+        <td class="py-3 px-5 text-right">
+          <button class="p-1.5 rounded hover:bg-[#F3E7D9]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 6v.01M12 12v.01M12 18v.01" />
+            </svg>
+          </button>
+        </td>
+      `
+        fileTable.appendChild(tr)
+      })
+
+      // Search function
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase()
+        Array.from(fileTable.children).forEach((row) => {
+          const fileName = row.children[0].innerText.toLowerCase()
+          row.style.display = fileName.includes(term) ? '' : 'none'
+        })
+      })
+    </script>
+    <script>
+      // Handle popup open
+      const cards = document.querySelectorAll('.assignment-card')
+      const popup = document.getElementById('popup-overlay')
+      const closePopup = document.getElementById('close-popup')
+
+      cards.forEach((card) => {
+        card.addEventListener('click', () => {
+          popup.classList.remove('hidden')
+        })
+      })
+
+      closePopup.addEventListener('click', () => {
+        popup.classList.add('hidden')
+      })
+
+      popup.addEventListener('click', (e) => {
+        if (e.target === popup) popup.classList.add('hidden')
+      })
+    </script>
+    <script>
+      function toggleAllCheckboxes(source) {
+        document
+          .querySelectorAll('.rowCheckbox')
+          .forEach((cb) => (cb.checked = source.checked))
+      }
+    </script>
+    <script>
+      const tabButtons = document.querySelectorAll('.tab-btn')
+      const tabContents = document.querySelectorAll('.tab-content-1')
+
+      tabButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          tabButtons.forEach((b) =>
+            b.classList.remove('bg-primary', 'text-white', 'active')
+          )
+          btn.classList.add('bg-primary', 'text-white', 'active')
+
+          tabContents.forEach((content) => content.classList.add('hidden'))
+          const target = btn.getAttribute('data-tab')
+          document.getElementById(target).classList.remove('hidden')
+        })
+      })
+    </script>
+  </body>
+</html>
