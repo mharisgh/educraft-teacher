@@ -25,14 +25,14 @@ function switchTab(selectedTab) {
   const tabId = selectedTab.getAttribute('data-tab');
   document.getElementById(tabId).classList.remove('hidden');
 
-  // Show/hide buttons based on active tab
-  if (tabId === 'quiz-tab') {
-    createQuizBtn.classList.remove('hidden');
-    addMaterialBtn.classList.add('hidden');
-  } else {
-    addMaterialBtn.classList.remove('hidden');
-    createQuizBtn.classList.add('hidden');
-  }
+  // // Show/hide buttons based on active tab
+  // if (tabId === 'quiz-tab') {
+  //   createQuizBtn.classList.remove('hidden');
+  //   addMaterialBtn.classList.add('hidden');
+  // } else {
+  //   addMaterialBtn.classList.remove('hidden');
+  //   createQuizBtn.classList.add('hidden');
+  // }
 }
 
 // Add event listeners to each tab button
@@ -122,26 +122,26 @@ function truncateString(str, num) {
 function displayMaterials() {
   const container = document.getElementById("classroomClassContents");
 
-  materials.forEach((material) => {
-    const materialElement = document.createElement("a");
-    materialElement.className = "bg-white border border-black/20 p-4 rounded-xl relative lg:min-w-[194px] group hover:border-black/40";
-    materialElement.href = material.downloadLink;
-    materialElement.target = "_blank";
+  // materials.forEach((material) => {
+  //   const materialElement = document.createElement("a");
+  //   materialElement.className = "bg-white border border-black/20 p-4 rounded-xl relative lg:min-w-[194px] group hover:border-black/40";
+  //   materialElement.href = material.downloadLink;
+  //   materialElement.target = "_blank";
 
-    materialElement.innerHTML = `
-      <img class="w-8 mb-2" src="/assets/img/classroom/material-icon.png" alt="material">
-      <p class="text-black/60 text-xs">${material.fileSize}</p>  
-      <p class="font-medium">${truncateString(material.fileName, 23)}</p>
-      <a href="${material.downloadLink}" target="_blank" class="absolute top-2 right-2 group-hover:visible invisible">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4">
-          <path class="fill-[#bf4b00]" d="M13 10H18L12 16L6 10H11V3H13V10ZM4 19H20V12H22V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V12H4V19Z">
-          </path>
-        </svg>
-      </a>
-    `;
+  //   materialElement.innerHTML = `
+  //     <img class="w-8 mb-2" src="/assets/img/classroom/material-icon.png" alt="material">
+  //     <p class="text-black/60 text-xs">${material.fileSize}</p>  
+  //     <p class="font-medium">${truncateString(material.fileName, 23)}</p>
+  //     <a href="${material.downloadLink}" target="_blank" class="absolute top-2 right-2 group-hover:visible invisible">
+  //       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4">
+  //         <path class="fill-[#bf4b00]" d="M13 10H18L12 16L6 10H11V3H13V10ZM4 19H20V12H22V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V12H4V19Z">
+  //         </path>
+  //       </svg>
+  //     </a>
+  //   `;
 
-    container.appendChild(materialElement);
-  });
+  //   container.appendChild(materialElement);
+  // });
 }
 
 function displayQuizzes() {

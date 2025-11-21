@@ -267,7 +267,7 @@
 
               <button
                 class="post-announcement-tab-btn px-4 min-w-[140px] py-2 rounded-lg w-fit flex gap-2 items-center justify-center"
-                data-tab="materials-tab">
+                data-tab="classroomClassContents">
                 <svg class="w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z">
@@ -280,18 +280,18 @@
 
 
             <!-- Add Material Button -->
-            <button
+            <!-- <button
               class="hidden h-10 bg-primary hover:bg-primaryDark gap-1 items-center text-white px-3 flex rounded-lg text-sm w-fit"
               id="addMaterialBtn">
               <svg class="fill-white w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
               </svg>
               Add Material
-            </button>
+            </button> -->
           </div>
 
           <!-- Tab Quiz Content -->
-          <div id="quiz-tab" class="tab-content hidden block">
+          <div id="quiz-tab" class="tab-content block ">
 
             <!-- category header - Quiz Cards -->
             <div class="flex justify-between items-center">
@@ -399,8 +399,8 @@
 
           </div>
 
-          <!-- Tab Material Content  id classroomClassContents-->
-          <div id="materials-tab" class="tab-content block">
+          <!-- Tab Assignment Content -->
+          <div id="classroomClassContents" class="tab-content  hidden">
             <div id="" class="">
 
               <!-- category header - Assignment Questions -->
@@ -440,115 +440,116 @@
                 </div>
               </div>
 
-              <div id="assignment-list"
-                class="divide-y divide-gray-200 bg-white border border-black/10 rounded-lg mt-4">
-                <!-- Assignment Card -->
-                <div
-                  class="assignment-card px-6 py-5 hover:bg-[#FFF9F3] transition-all duration-200 cursor-pointer relative">
-                  <h3 class="text-sm font-semibold text-black mb-1">
-                    Algebra Basic Question 101
-                  </h3>
-                  <div class="flex items-center gap-4 text-xs text-black/70 mb-2">
-                    <span class="flex items-center gap-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                        <g opacity="0.5">
-                          <path
-                            d="M9.75 1.5H8.625V1.125C8.625 1.02554 8.58549 0.930161 8.51517 0.859835C8.44484 0.789509 8.34946 0.75 8.25 0.75C8.15054 0.75 8.05516 0.789509 7.98483 0.859835C7.91451 0.930161 7.875 1.02554 7.875 1.125V1.5H4.125V1.125C4.125 1.02554 4.08549 0.930161 4.01516 0.859835C3.94484 0.789509 3.84946 0.75 3.75 0.75C3.65054 0.75 3.55516 0.789509 3.48484 0.859835C3.41451 0.930161 3.375 1.02554 3.375 1.125V1.5H2.25C2.05109 1.5 1.86032 1.57902 1.71967 1.71967C1.57902 1.86032 1.5 2.05109 1.5 2.25V9.75C1.5 9.94891 1.57902 10.1397 1.71967 10.2803C1.86032 10.421 2.05109 10.5 2.25 10.5H9.75C9.94891 10.5 10.1397 10.421 10.2803 10.2803C10.421 10.1397 10.5 9.94891 10.5 9.75V2.25C10.5 2.05109 10.421 1.86032 10.2803 1.71967C10.1397 1.57902 9.94891 1.5 9.75 1.5ZM3.375 2.25V2.625C3.375 2.72446 3.41451 2.81984 3.48484 2.89016C3.55516 2.96049 3.65054 3 3.75 3C3.84946 3 3.94484 2.96049 4.01516 2.89016C4.08549 2.81984 4.125 2.72446 4.125 2.625V2.25H7.875V2.625C7.875 2.72446 7.91451 2.81984 7.98483 2.89016C8.05516 2.96049 8.15054 3 8.25 3C8.34946 3 8.44484 2.96049 8.51517 2.89016C8.58549 2.81984 8.625 2.72446 8.625 2.625V2.25H9.75V3.75H2.25V2.25H3.375ZM9.75 9.75H2.25V4.5H9.75V9.75Z"
-                            fill="black" />
-                        </g>
-                      </svg>
-                      Created Jan 12, 2025 10:33 AM
-                    </span>
-                    <span class="flex items-center gap-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" viewBox="0 0 10 12" fill="none">
-                        <path
-                          d="M9.49703 3.19047L6.43453 0.127969C6.39387 0.0873538 6.34561 0.0551477 6.2925 0.0331905C6.23939 0.0112332 6.18247 -4.50563e-05 6.125 1.35274e-07H0.875C0.642936 1.35274e-07 0.420376 0.0921873 0.256282 0.256282C0.0921872 0.420376 0 0.642936 0 0.875V10.5C0 10.7321 0.0921872 10.9546 0.256282 11.1187C0.420376 11.2828 0.642936 11.375 0.875 11.375H8.75C8.98206 11.375 9.20462 11.2828 9.36872 11.1187C9.53281 10.9546 9.625 10.7321 9.625 10.5V3.5C9.62504 3.44253 9.61377 3.38561 9.59181 3.3325C9.56985 3.27939 9.53765 3.23113 9.49703 3.19047ZM6.5625 1.49352L8.13148 3.0625H6.5625V1.49352ZM8.75 10.5H0.875V0.875H5.6875V3.5C5.6875 3.61603 5.73359 3.72731 5.81564 3.80936C5.89769 3.89141 6.00897 3.9375 6.125 3.9375H8.75V10.5Z"
-                          fill="black" />
-                      </svg>
-                      Question 101.pdf
-                    </span>
-                  </div>
-                  <p class="text-xs text-black/70 leading-relaxed">
-                    Explain the difference between useState and
-                    useEffect hooks. Provide practical examples of when
-                    to use each hook, and demonstrate your understanding
-                    by writing code snippets that showcase common use
-                    cases.
-                  </p>
+              <a href="edit-assignment.html">
+                <div id="assignment-list"
+                  class="divide-y divide-gray-200 bg-white border border-black/10 rounded-lg mt-4">
+                  <!-- Assignment Card -->
                   <div
-                    class="absolute right-6 top-6 bg-[#9C663B33]/20 text-black text-xs px-3 py-1 rounded-full font-semibold text-xs">
-                    1 <span class="font-normal">submission</span>
-                  </div>
-                </div>
-
-                <!-- Assignment Card -->
-                <div
-                  class="assignment-card px-6 py-5 hover:bg-[#FFF9F3] transition-all duration-200 cursor-pointer relative">
-                  <h3 class="text-sm font-semibold text-black mb-1">
-                    Calculus Intermediate Question 303
-                  </h3>
-                  <div class="flex items-center gap-4 text-xs text-black/70 mb-2">
-                    <span class="flex items-center gap-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                        <g opacity="0.5">
+                    class="assignment-card px-6 py-5 hover:bg-[#FFF9F3] transition-all duration-200 cursor-pointer relative">
+                    <h3 class="text-sm font-semibold text-black mb-1">
+                      Algebra Basic Question 101
+                    </h3>
+                    <div class="flex items-center gap-4 text-xs text-black/70 mb-2">
+                      <span class="flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <g opacity="0.5">
+                            <path
+                              d="M9.75 1.5H8.625V1.125C8.625 1.02554 8.58549 0.930161 8.51517 0.859835C8.44484 0.789509 8.34946 0.75 8.25 0.75C8.15054 0.75 8.05516 0.789509 7.98483 0.859835C7.91451 0.930161 7.875 1.02554 7.875 1.125V1.5H4.125V1.125C4.125 1.02554 4.08549 0.930161 4.01516 0.859835C3.94484 0.789509 3.84946 0.75 3.75 0.75C3.65054 0.75 3.55516 0.789509 3.48484 0.859835C3.41451 0.930161 3.375 1.02554 3.375 1.125V1.5H2.25C2.05109 1.5 1.86032 1.57902 1.71967 1.71967C1.57902 1.86032 1.5 2.05109 1.5 2.25V9.75C1.5 9.94891 1.57902 10.1397 1.71967 10.2803C1.86032 10.421 2.05109 10.5 2.25 10.5H9.75C9.94891 10.5 10.1397 10.421 10.2803 10.2803C10.421 10.1397 10.5 9.94891 10.5 9.75V2.25C10.5 2.05109 10.421 1.86032 10.2803 1.71967C10.1397 1.57902 9.94891 1.5 9.75 1.5ZM3.375 2.25V2.625C3.375 2.72446 3.41451 2.81984 3.48484 2.89016C3.55516 2.96049 3.65054 3 3.75 3C3.84946 3 3.94484 2.96049 4.01516 2.89016C4.08549 2.81984 4.125 2.72446 4.125 2.625V2.25H7.875V2.625C7.875 2.72446 7.91451 2.81984 7.98483 2.89016C8.05516 2.96049 8.15054 3 8.25 3C8.34946 3 8.44484 2.96049 8.51517 2.89016C8.58549 2.81984 8.625 2.72446 8.625 2.625V2.25H9.75V3.75H2.25V2.25H3.375ZM9.75 9.75H2.25V4.5H9.75V9.75Z"
+                              fill="black" />
+                          </g>
+                        </svg>
+                        Created Jan 12, 2025 10:33 AM
+                      </span>
+                      <span class="flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" viewBox="0 0 10 12" fill="none">
                           <path
-                            d="M9.75 1.5H8.625V1.125C8.625 1.02554 8.58549 0.930161 8.51517 0.859835C8.44484 0.789509 8.34946 0.75 8.25 0.75C8.15054 0.75 8.05516 0.789509 7.98483 0.859835C7.91451 0.930161 7.875 1.02554 7.875 1.125V1.5H4.125V1.125C4.125 1.02554 4.08549 0.930161 4.01516 0.859835C3.94484 0.789509 3.84946 0.75 3.75 0.75C3.65054 0.75 3.55516 0.789509 3.48484 0.859835C3.41451 0.930161 3.375 1.02554 3.375 1.125V1.5H2.25C2.05109 1.5 1.86032 1.57902 1.71967 1.71967C1.57902 1.86032 1.5 2.05109 1.5 2.25V9.75C1.5 9.94891 1.57902 10.1397 1.71967 10.2803C1.86032 10.421 2.05109 10.5 2.25 10.5H9.75C9.94891 10.5 10.1397 10.421 10.2803 10.2803C10.421 10.1397 10.5 9.94891 10.5 9.75V2.25C10.5 2.05109 10.421 1.86032 10.2803 1.71967C10.1397 1.57902 9.94891 1.5 9.75 1.5ZM3.375 2.25V2.625C3.375 2.72446 3.41451 2.81984 3.48484 2.89016C3.55516 2.96049 3.65054 3 3.75 3C3.84946 3 3.94484 2.96049 4.01516 2.89016C4.08549 2.81984 4.125 2.72446 4.125 2.625V2.25H7.875V2.625C7.875 2.72446 7.91451 2.81984 7.98483 2.89016C8.05516 2.96049 8.15054 3 8.25 3C8.34946 3 8.44484 2.96049 8.51517 2.89016C8.58549 2.81984 8.625 2.72446 8.625 2.625V2.25H9.75V3.75H2.25V2.25H3.375ZM9.75 9.75H2.25V4.5H9.75V9.75Z"
+                            d="M9.49703 3.19047L6.43453 0.127969C6.39387 0.0873538 6.34561 0.0551477 6.2925 0.0331905C6.23939 0.0112332 6.18247 -4.50563e-05 6.125 1.35274e-07H0.875C0.642936 1.35274e-07 0.420376 0.0921873 0.256282 0.256282C0.0921872 0.420376 0 0.642936 0 0.875V10.5C0 10.7321 0.0921872 10.9546 0.256282 11.1187C0.420376 11.2828 0.642936 11.375 0.875 11.375H8.75C8.98206 11.375 9.20462 11.2828 9.36872 11.1187C9.53281 10.9546 9.625 10.7321 9.625 10.5V3.5C9.62504 3.44253 9.61377 3.38561 9.59181 3.3325C9.56985 3.27939 9.53765 3.23113 9.49703 3.19047ZM6.5625 1.49352L8.13148 3.0625H6.5625V1.49352ZM8.75 10.5H0.875V0.875H5.6875V3.5C5.6875 3.61603 5.73359 3.72731 5.81564 3.80936C5.89769 3.89141 6.00897 3.9375 6.125 3.9375H8.75V10.5Z"
                             fill="black" />
-                        </g>
-                      </svg>
-                      Created Jan 14, 2025 09:30 AM
-                    </span>
-                    <span class="flex items-center gap-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" viewBox="0 0 10 12" fill="none">
-                        <path
-                          d="M9.49703 3.19047L6.43453 0.127969C6.39387 0.0873538 6.34561 0.0551477 6.2925 0.0331905C6.23939 0.0112332 6.18247 -4.50563e-05 6.125 1.35274e-07H0.875C0.642936 1.35274e-07 0.420376 0.0921873 0.256282 0.256282C0.0921872 0.420376 0 0.642936 0 0.875V10.5C0 10.7321 0.0921872 10.9546 0.256282 11.1187C0.420376 11.2828 0.642936 11.375 0.875 11.375H8.75C8.98206 11.375 9.20462 11.2828 9.36872 11.1187C9.53281 10.9546 9.625 10.7321 9.625 10.5V3.5C9.62504 3.44253 9.61377 3.38561 9.59181 3.3325C9.56985 3.27939 9.53765 3.23113 9.49703 3.19047ZM6.5625 1.49352L8.13148 3.0625H6.5625V1.49352ZM8.75 10.5H0.875V0.875H5.6875V3.5C5.6875 3.61603 5.73359 3.72731 5.81564 3.80936C5.89769 3.89141 6.00897 3.9375 6.125 3.9375H8.75V10.5Z"
-                          fill="black" />
-                      </svg>
-                      2 Files uploaded
-                    </span>
+                        </svg>
+                        Question 101.pdf
+                      </span>
+                    </div>
+                    <p class="text-xs text-black/70 leading-relaxed">
+                      Explain the difference between useState and
+                      useEffect hooks. Provide practical examples of when
+                      to use each hook, and demonstrate your understanding
+                      by writing code snippets that showcase common use
+                      cases.
+                    </p>
+                    <div
+                      class="absolute right-6 top-6 bg-[#9C663B33]/20 text-black text-xs px-3 py-1 rounded-full font-semibold text-xs">
+                      1 <span class="font-normal">submission</span>
+                    </div>
                   </div>
-                  <p class="text-xs text-black/70 leading-relaxed">
-                    What is the Fundamental Theorem of Calculus?
-                    Elaborate on its significance and provide examples
-                    demonstrating how it connects differentiation and
-                    integration.
-                  </p>
-                  <div class="absolute right-6 top-6 bg-[#9C663B33]/20 text-black px-3 py-1 rounded-full text-xs">
-                    1 submission
-                  </div>
-                </div>
 
-                <!-- Assignment Card -->
-                <div
-                  class="assignment-card px-6 py-5 hover:bg-[#FFF9F3] transition-all duration-200 cursor-pointer relative">
-                  <h3 class="text-sm font-semibold text-black mb-1">
-                    Algebra Advanced Question 202
-                  </h3>
-                  <div class="flex items-center gap-4 text-xs text-black/70 mb-2">
-                    <span class="flex items-center gap-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                        <g opacity="0.5">
-                          <path
-                            d="M9.75 1.5H8.625V1.125C8.625 1.02554 8.58549 0.930161 8.51517 0.859835C8.44484 0.789509 8.34946 0.75 8.25 0.75C8.15054 0.75 8.05516 0.789509 7.98483 0.859835C7.91451 0.930161 7.875 1.02554 7.875 1.125V1.5H4.125V1.125C4.125 1.02554 4.08549 0.930161 4.01516 0.859835C3.94484 0.789509 3.84946 0.75 3.75 0.75C3.65054 0.75 3.55516 0.789509 3.48484 0.859835C3.41451 0.930161 3.375 1.02554 3.375 1.125V1.5H2.25C2.05109 1.5 1.86032 1.57902 1.71967 1.71967C1.57902 1.86032 1.5 2.05109 1.5 2.25V9.75C1.5 9.94891 1.57902 10.1397 1.71967 10.2803C1.86032 10.421 2.05109 10.5 2.25 10.5H9.75C9.94891 10.5 10.1397 10.421 10.2803 10.2803C10.421 10.1397 10.5 9.94891 10.5 9.75V2.25C10.5 2.05109 10.421 1.86032 10.2803 1.71967C10.1397 1.57902 9.94891 1.5 9.75 1.5ZM3.375 2.25V2.625C3.375 2.72446 3.41451 2.81984 3.48484 2.89016C3.55516 2.96049 3.65054 3 3.75 3C3.84946 3 3.94484 2.96049 4.01516 2.89016C4.08549 2.81984 4.125 2.72446 4.125 2.625V2.25H7.875V2.625C7.875 2.72446 7.91451 2.81984 7.98483 2.89016C8.05516 2.96049 8.15054 3 8.25 3C8.34946 3 8.44484 2.96049 8.51517 2.89016C8.58549 2.81984 8.625 2.72446 8.625 2.625V2.25H9.75V3.75H2.25V2.25H3.375ZM9.75 9.75H2.25V4.5H9.75V9.75Z"
-                            fill="black" />
-                        </g>
-                      </svg>
-                      Created Jan 13, 2025 11:45 AM
-                    </span>
-                  </div>
-                  <p class="text-xs text-black/70 leading-relaxed">
-                    Discuss the principles of object-oriented
-                    programming. Include examples of encapsulation,
-                    inheritance, and polymorphism with relevant code
-                    snippets.
-                  </p>
+                  <!-- Assignment Card -->
                   <div
-                    class="absolute right-6 top-6 bg-[#9C663B33]/20 text-black text-xs px-3 py-1 rounded-full text-xs">
-                    1 submission
+                    class="assignment-card px-6 py-5 hover:bg-[#FFF9F3] transition-all duration-200 cursor-pointer relative">
+                    <h3 class="text-sm font-semibold text-black mb-1">
+                      Calculus Intermediate Question 303
+                    </h3>
+                    <div class="flex items-center gap-4 text-xs text-black/70 mb-2">
+                      <span class="flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <g opacity="0.5">
+                            <path
+                              d="M9.75 1.5H8.625V1.125C8.625 1.02554 8.58549 0.930161 8.51517 0.859835C8.44484 0.789509 8.34946 0.75 8.25 0.75C8.15054 0.75 8.05516 0.789509 7.98483 0.859835C7.91451 0.930161 7.875 1.02554 7.875 1.125V1.5H4.125V1.125C4.125 1.02554 4.08549 0.930161 4.01516 0.859835C3.94484 0.789509 3.84946 0.75 3.75 0.75C3.65054 0.75 3.55516 0.789509 3.48484 0.859835C3.41451 0.930161 3.375 1.02554 3.375 1.125V1.5H2.25C2.05109 1.5 1.86032 1.57902 1.71967 1.71967C1.57902 1.86032 1.5 2.05109 1.5 2.25V9.75C1.5 9.94891 1.57902 10.1397 1.71967 10.2803C1.86032 10.421 2.05109 10.5 2.25 10.5H9.75C9.94891 10.5 10.1397 10.421 10.2803 10.2803C10.421 10.1397 10.5 9.94891 10.5 9.75V2.25C10.5 2.05109 10.421 1.86032 10.2803 1.71967C10.1397 1.57902 9.94891 1.5 9.75 1.5ZM3.375 2.25V2.625C3.375 2.72446 3.41451 2.81984 3.48484 2.89016C3.55516 2.96049 3.65054 3 3.75 3C3.84946 3 3.94484 2.96049 4.01516 2.89016C4.08549 2.81984 4.125 2.72446 4.125 2.625V2.25H7.875V2.625C7.875 2.72446 7.91451 2.81984 7.98483 2.89016C8.05516 2.96049 8.15054 3 8.25 3C8.34946 3 8.44484 2.96049 8.51517 2.89016C8.58549 2.81984 8.625 2.72446 8.625 2.625V2.25H9.75V3.75H2.25V2.25H3.375ZM9.75 9.75H2.25V4.5H9.75V9.75Z"
+                              fill="black" />
+                          </g>
+                        </svg>
+                        Created Jan 14, 2025 09:30 AM
+                      </span>
+                      <span class="flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" viewBox="0 0 10 12" fill="none">
+                          <path
+                            d="M9.49703 3.19047L6.43453 0.127969C6.39387 0.0873538 6.34561 0.0551477 6.2925 0.0331905C6.23939 0.0112332 6.18247 -4.50563e-05 6.125 1.35274e-07H0.875C0.642936 1.35274e-07 0.420376 0.0921873 0.256282 0.256282C0.0921872 0.420376 0 0.642936 0 0.875V10.5C0 10.7321 0.0921872 10.9546 0.256282 11.1187C0.420376 11.2828 0.642936 11.375 0.875 11.375H8.75C8.98206 11.375 9.20462 11.2828 9.36872 11.1187C9.53281 10.9546 9.625 10.7321 9.625 10.5V3.5C9.62504 3.44253 9.61377 3.38561 9.59181 3.3325C9.56985 3.27939 9.53765 3.23113 9.49703 3.19047ZM6.5625 1.49352L8.13148 3.0625H6.5625V1.49352ZM8.75 10.5H0.875V0.875H5.6875V3.5C5.6875 3.61603 5.73359 3.72731 5.81564 3.80936C5.89769 3.89141 6.00897 3.9375 6.125 3.9375H8.75V10.5Z"
+                            fill="black" />
+                        </svg>
+                        2 Files uploaded
+                      </span>
+                    </div>
+                    <p class="text-xs text-black/70 leading-relaxed">
+                      What is the Fundamental Theorem of Calculus?
+                      Elaborate on its significance and provide examples
+                      demonstrating how it connects differentiation and
+                      integration.
+                    </p>
+                    <div class="absolute right-6 top-6 bg-[#9C663B33]/20 text-black px-3 py-1 rounded-full text-xs">
+                      1 submission
+                    </div>
+                  </div>
+
+                  <!-- Assignment Card -->
+                  <div
+                    class="assignment-card px-6 py-5 hover:bg-[#FFF9F3] transition-all duration-200 cursor-pointer relative">
+                    <h3 class="text-sm font-semibold text-black mb-1">
+                      Algebra Advanced Question 202
+                    </h3>
+                    <div class="flex items-center gap-4 text-xs text-black/70 mb-2">
+                      <span class="flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <g opacity="0.5">
+                            <path
+                              d="M9.75 1.5H8.625V1.125C8.625 1.02554 8.58549 0.930161 8.51517 0.859835C8.44484 0.789509 8.34946 0.75 8.25 0.75C8.15054 0.75 8.05516 0.789509 7.98483 0.859835C7.91451 0.930161 7.875 1.02554 7.875 1.125V1.5H4.125V1.125C4.125 1.02554 4.08549 0.930161 4.01516 0.859835C3.94484 0.789509 3.84946 0.75 3.75 0.75C3.65054 0.75 3.55516 0.789509 3.48484 0.859835C3.41451 0.930161 3.375 1.02554 3.375 1.125V1.5H2.25C2.05109 1.5 1.86032 1.57902 1.71967 1.71967C1.57902 1.86032 1.5 2.05109 1.5 2.25V9.75C1.5 9.94891 1.57902 10.1397 1.71967 10.2803C1.86032 10.421 2.05109 10.5 2.25 10.5H9.75C9.94891 10.5 10.1397 10.421 10.2803 10.2803C10.421 10.1397 10.5 9.94891 10.5 9.75V2.25C10.5 2.05109 10.421 1.86032 10.2803 1.71967C10.1397 1.57902 9.94891 1.5 9.75 1.5ZM3.375 2.25V2.625C3.375 2.72446 3.41451 2.81984 3.48484 2.89016C3.55516 2.96049 3.65054 3 3.75 3C3.84946 3 3.94484 2.96049 4.01516 2.89016C4.08549 2.81984 4.125 2.72446 4.125 2.625V2.25H7.875V2.625C7.875 2.72446 7.91451 2.81984 7.98483 2.89016C8.05516 2.96049 8.15054 3 8.25 3C8.34946 3 8.44484 2.96049 8.51517 2.89016C8.58549 2.81984 8.625 2.72446 8.625 2.625V2.25H9.75V3.75H2.25V2.25H3.375ZM9.75 9.75H2.25V4.5H9.75V9.75Z"
+                              fill="black" />
+                          </g>
+                        </svg>
+                        Created Jan 13, 2025 11:45 AM
+                      </span>
+                    </div>
+                    <p class="text-xs text-black/70 leading-relaxed">
+                      Discuss the principles of object-oriented
+                      programming. Include examples of encapsulation,
+                      inheritance, and polymorphism with relevant code
+                      snippets.
+                    </p>
+                    <div
+                      class="absolute right-6 top-6 bg-[#9C663B33]/20 text-black text-xs px-3 py-1 rounded-full text-xs">
+                      1 submission
+                    </div>
                   </div>
                 </div>
-              </div>
-
+              </a>
 
               <!-- category header -Student Submissions -->
               <div class="flex justify-between items-center py-6">

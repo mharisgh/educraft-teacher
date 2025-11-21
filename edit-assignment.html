@@ -267,7 +267,7 @@
 
               <button
                 class="post-announcement-tab-btn px-4 min-w-[140px] py-2 rounded-lg w-fit flex gap-2 items-center justify-center"
-                data-tab="materials-tab">
+                data-tab="classroomClassContents">
                 <svg class="w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z">
@@ -280,18 +280,18 @@
 
 
             <!-- Add Material Button -->
-            <button
+            <!-- <button
               class="hidden h-10 bg-primary hover:bg-primaryDark gap-1 items-center text-white px-3 flex rounded-lg text-sm w-fit"
               id="addMaterialBtn">
               <svg class="fill-white w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
               </svg>
               Add Material
-            </button>
+            </button> -->
           </div>
 
           <!-- Tab Quiz Content -->
-          <div id="quiz-tab" class="tab-content hidden block">
+          <div id="quiz-tab" class="tab-content block ">
 
             <!-- category header - Quiz Cards -->
             <div class="flex justify-between items-center">
@@ -399,8 +399,8 @@
 
           </div>
 
-          <!-- Tab Material Content  id classroomClassContents-->
-          <div id="materials-tab" class="tab-content block">
+          <!-- Tab Assignment Content -->
+          <div id="classroomClassContents" class="tab-content  hidden">
             <div id="" class="">
 
               <!-- category header - Assignment Questions -->
@@ -1057,140 +1057,241 @@
 
   </div>
 
-  <!-- =========================================== -->
-  <!-- Add Student Popup -->
-  <!-- =========================================== -->
-
-  <div id="studentListAddPopupContainer"
-    class="hidden fixed z-[200] bg-black/70 w-screen h-screen justify-center items-center">
-    <!-- Popup Box container -->
-    <div
-      class="bg-white rounded-xl lg:max-w-2xl w-full lg:min-h-[220px] h-fit pb-14  flex flex-col  relative overflow-hidden">
-
-      <!-- header -->
-      <div id="studentAddPopupBtn" class="flex justify-between px-4 py-2">
-        <p class="text-lg font-semibold">Add Students</p>
-        <button
-          class="close-add-student-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
-          <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
+  <!-- Popup -->
+  <div id="popup-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center ">
+    <div class="bg-white w-[500px] rounded-xl shadow-lg flex flex-col relative">
+      <div class="flex justify-between items-center p-4">
+        <h3 class="text-base font-semibold text-black">
+          Edit Assignment
+        </h3>
+        <button id="close-popup" class="text-black bg-[#F4F4F4] flex justify-center items-center p-2 rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path
+              d="M10.6089 9.51461C10.7543 9.65998 10.8359 9.85714 10.8359 10.0627C10.8359 10.2683 10.7543 10.4655 10.6089 10.6108C10.4635 10.7562 10.2664 10.8379 10.0608 10.8379C9.85521 10.8379 9.65805 10.7562 9.51268 10.6108L5.41861 6.51548L1.32326 10.6095C1.17789 10.7549 0.980728 10.8366 0.775146 10.8366C0.569565 10.8366 0.372403 10.7549 0.227035 10.6095C0.081667 10.4642 3.0634e-09 10.267 0 10.0614C-3.0634e-09 9.85585 0.081667 9.65869 0.227035 9.51332L4.32239 5.41926L0.228325 1.3239C0.0829565 1.17853 0.0012897 0.981372 0.0012897 0.775791C0.0012897 0.570209 0.0829565 0.373048 0.228325 0.22768C0.373693 0.0823118 0.570854 0.00064473 0.776435 0.000644728C0.982017 0.000644726 1.17918 0.0823118 1.32455 0.22768L5.41861 4.32304L9.51397 0.227035C9.65934 0.0816668 9.8565 -3.42499e-09 10.0621 0C10.2677 3.42499e-09 10.4648 0.0816668 10.6102 0.227035C10.7556 0.372403 10.8372 0.569564 10.8372 0.775146C10.8372 0.980727 10.7556 1.17789 10.6102 1.32326L6.51483 5.41926L10.6089 9.51461Z"
+              fill="black" />
+          </svg>
         </button>
       </div>
+      <div class="bg-[linear-gradient(90deg,rgba(0,0,0,0.10)_0%,#FE9614_48.57%,rgba(0,0,0,0.10)_100%)] w-full h-[1px]">
+      </div>
+      <div class="flex flex-col gap-4 items-start p-4">
+        <div class="flex flex-col gap-1 items-start w-full">
+          <p class="text-xs upppercase font-semibold text-black/50">
+            ASSIGNMENT TITLE
+          </p>
+          <div class="flex items-center gap-1 w-full justify-between">
+            <p class="font-semibold">Algebra Basic Question 101</p>
+            <p class="text-[10px] text-black/50 whitespace-nowrap">
+              20 char. left
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 items-start w-full">
+          <p class="text-xs font-semibold text-black/50">
+            QUESTION
+          </p>
+          <div class="rounded-[10px] border border-[#D9D9D9] bg-[#FFFCF7] flex items-start p-2">
+            <p class="text-xs text-black">
+              Dear Carlos Mendez, Thank you for your hard work on
+              the History Research assignment. While your scores
+              reflect some challenges, it's important to recognize
+              the progress you've made in.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 items-start w-full">
+          <p class="text-xs font-semibold text-black/50">
+            UPLOADED FILE
+          </p>
+          <div
+            class="rounded-[10px] border border-dashed border-[#DFDFDF] bg-[#F5F3F1] flex justify-center items-center p-2 w-full">
+            <div class="flex flex-col justify-center items-center gap-1">
+              <img src="./assets/img/pdfimg.png" alt="" srcset="" />
+              <p class="text-[10px] font-medium underline text-[#BF4B00]">
+                FIle name. pdf
+              </p>
+              <p class="text-[10px] text-black/60">
+                Max file size : 5 MB
+              </p>
+            </div>
+          </div>
+        </div>
 
-      <!-- seperator -->
-      <div class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[2px]"></div>
-
-      <!-- content -->
-      <div class="p-4 flex flex-col gap-4">
-
-
-
-        <div class="flex w-full gap-3 items-center">
-
-          <div class="w-full">
-            <p class="uppercase text-black/60 font-medium text-xs pb-2">class</p>
-
-            <select name="insight-class" id="insightClass" class="border px-4 py-2 w-full rounded-lg">
-              <option value="2">Class 5</option>
-              <option value="3">Class 6</option>
-              <option value="4">Class 7</option>
-              <option value="5">Class 8</option>
-            </select>
+        <div>
+          <p class="text-xs font-semibold text-black/50 uppercase">
+            submitted
+          </p>
+          <div class="flex gap-2 items-center pb-2">
+            <div class="flex -space-x-3 mt-2">
+              <img src="assets/student.png" class="w-8 rounded-full border-2 border-white" alt="">
+              <img src="assets/student.png" class="w-8 rounded-full border-2 border-white" alt="">
+              <img src="assets/student.png" class="w-8 rounded-full border-2 border-white" alt="">
+              <img src="assets/student.png" class="w-8 rounded-full border-2 border-white" alt="">
+            </div>
+            <div class="text-xs mt-2">
+              <p><span class="font-semibold">12</span> students submitted assignment.</p>
+            </div>
           </div>
 
-          <div class="w-full">
-            <p class="uppercase text-black/60 font-medium text-xs pb-2 rounded-lg">grade</p>
+        </div>
 
-            <select name="insight-class" id="insightClass" class="border px-4 pr-8 py-2 w-full rounded-lg">
-              <option value="1">A</option>
-              <option value="2">B</option>
-              <option value="2">C</option>
-              <option value="2">D</option>
-            </select>
+        <div class="flex justify-between items-center w-full ">
+          <div class="flex justify-center items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M20.25 4.5H3.75C3.55109 4.5 3.36032 4.57902 3.21967 4.71967C3.07902 4.86032 3 5.05109 3 5.25C3 5.44891 3.07902 5.63968 3.21967 5.78033C3.36032 5.92098 3.55109 6 3.75 6H4.5V19.5C4.5 19.8978 4.65804 20.2794 4.93934 20.5607C5.22064 20.842 5.60218 21 6 21H18C18.3978 21 18.7794 20.842 19.0607 20.5607C19.342 20.2794 19.5 19.8978 19.5 19.5V6H20.25C20.4489 6 20.6397 5.92098 20.7803 5.78033C20.921 5.63968 21 5.44891 21 5.25C21 5.05109 20.921 4.86032 20.7803 4.71967C20.6397 4.57902 20.4489 4.5 20.25 4.5ZM18 19.5H6V6H18V19.5ZM7.5 2.25C7.5 2.05109 7.57902 1.86032 7.71967 1.71967C7.86032 1.57902 8.05109 1.5 8.25 1.5H15.75C15.9489 1.5 16.1397 1.57902 16.2803 1.71967C16.421 1.86032 16.5 2.05109 16.5 2.25C16.5 2.44891 16.421 2.63968 16.2803 2.78033C16.1397 2.92098 15.9489 3 15.75 3H8.25C8.05109 3 7.86032 2.92098 7.71967 2.78033C7.57902 2.63968 7.5 2.44891 7.5 2.25Z"
+                fill="#BF4B00" />
+            </svg>
+            <p class="text-xs font-semibold">Delete</p>
           </div>
-
-        </div>
-
-        <div class="flex justify-between">
-          <a class="hover:underline" href="#">Select All</a>
-          <a class="text-primaryDark font-medium" href="#">Delete</a>
-        </div>
-
-        <!-- students list -->
-        <div id="studentList" class="space-y-2 overflow-auto  lg:h-[50vh]">
-
-        </div>
-
-
-      </div>
-
-      <!--  Footer -->
-      <div
-        class="flex absolute bottom-0 justify-end gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
-
-        <div class="flex gap-2">
-          <button
-            class="close-add-student-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg">Cancel</button>
-          <button id="classCreateButton"
-            class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg">Create</button>
+          <div class="flex items-center justify-center gap-2">
+            <button
+              class="border border-gray-300 rounded-[10px] text-sm font-medium text-gray-700 hover:bg-gray-100 transition w-[95px] h-[36px]">
+              Cancel
+            </button>
+            <button
+              class="bg-[#C55300] text-white rounded-[10px] text-sm font-medium hover:bg-[#a84700] transition w-[95px] h-[36px]">
+              Update
+            </button>
+          </div>
         </div>
       </div>
-
     </div>
-  </div>
+
+    <!-- =========================================== -->
+    <!-- Add Student Popup -->
+    <!-- =========================================== -->
+
+    <div id="studentListAddPopupContainer"
+      class="hidden fixed z-[200] bg-black/70 w-screen h-screen justify-center items-center">
+      <!-- Popup Box container -->
+      <div
+        class="bg-white rounded-xl lg:max-w-2xl w-full lg:min-h-[220px] h-fit pb-14  flex flex-col  relative overflow-hidden">
+
+        <!-- header -->
+        <div id="studentAddPopupBtn" class="flex justify-between px-4 py-2">
+          <p class="text-lg font-semibold">Add Students</p>
+          <button
+            class="close-add-student-popup-btn bg-black/10 w-8 h-8 rounded-full cursor-pointer flex justify-center items-center hover:bg-black/20">
+            <img class="fill-black w-5" src="/assets/icons/close-line.svg" alt="close button">
+          </button>
+        </div>
+
+        <!-- seperator -->
+        <div class="w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent min-h-[2px]"></div>
+
+        <!-- content -->
+        <div class="p-4 flex flex-col gap-4">
+
+
+
+          <div class="flex w-full gap-3 items-center">
+
+            <div class="w-full">
+              <p class="uppercase text-black/60 font-medium text-xs pb-2">class</p>
+
+              <select name="insight-class" id="insightClass" class="border px-4 py-2 w-full rounded-lg">
+                <option value="2">Class 5</option>
+                <option value="3">Class 6</option>
+                <option value="4">Class 7</option>
+                <option value="5">Class 8</option>
+              </select>
+            </div>
+
+            <div class="w-full">
+              <p class="uppercase text-black/60 font-medium text-xs pb-2 rounded-lg">grade</p>
+
+              <select name="insight-class" id="insightClass" class="border px-4 pr-8 py-2 w-full rounded-lg">
+                <option value="1">A</option>
+                <option value="2">B</option>
+                <option value="2">C</option>
+                <option value="2">D</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="flex justify-between">
+            <a class="hover:underline" href="#">Select All</a>
+            <a class="text-primaryDark font-medium" href="#">Delete</a>
+          </div>
+
+          <!-- students list -->
+          <div id="studentList" class="space-y-2 overflow-auto  lg:h-[50vh]">
+
+          </div>
+
+
+        </div>
+
+        <!--  Footer -->
+        <div
+          class="flex absolute bottom-0 justify-end gap-3 px-4 py-2 border border-t-black/10 border-transparent bg-white w-full">
+
+          <div class="flex gap-2">
+            <button
+              class="close-add-student-popup-btn bg-gray-200 text-black px-4 py-2 w-fit min-w-[120px] rounded-lg">Cancel</button>
+            <button id="classCreateButton"
+              class="bg-primary text-white px-4 py-2 w-fit min-w-[120px] rounded-lg">Create</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
 
 
 
-  <!-- custom script -->
-  <script src="./js/main.js"></script>
-  <script src="./js/classroomDetail.js"></script>
-  <!-- <script src="./js/quizQuestionCreation.js"></script> -->
-  <script src="./js/classroomStudentList.js"></script>
+    <!-- custom script -->
+    <script src="./js/main.js"></script>
+    <script src="./js/classroomDetail.js"></script>
+    <!-- <script src="./js/quizQuestionCreation.js"></script> -->
+    <script src="./js/classroomStudentList.js"></script>
 
-  <script>
+    <script>
 
-    const uploads = [
-      {
-        name: 'Tutorial Python v2.pdf',
-        size: '3.5 Mb',
-        date: '23-03-2025',
-        img: './assets/img/classroom/material-icon.png',
-      },
-      {
-        name: 'Project Report Q1 2025.jpg',
-        size: '1.2 Mb',
-        date: '15-04-2025',
-        img: './assets/img/classroom/material-icon.png',
+      const uploads = [
+        {
+          name: 'Tutorial Python v2.pdf',
+          size: '3.5 Mb',
+          date: '23-03-2025',
+          img: './assets/img/classroom/material-icon.png',
+        },
+        {
+          name: 'Project Report Q1 2025.jpg',
+          size: '1.2 Mb',
+          date: '15-04-2025',
+          img: './assets/img/classroom/material-icon.png',
 
-      },
-      {
-        name: 'Meeting Notes 2025-06-03.txt',
-        size: '0.5 Mb',
-        date: '03-06-2025',
-        img: './assets/img/classroom/material-icon.png',
+        },
+        {
+          name: 'Meeting Notes 2025-06-03.txt',
+          size: '0.5 Mb',
+          date: '03-06-2025',
+          img: './assets/img/classroom/material-icon.png',
 
-      },
-      {
-        name: 'Meeting Notes 2025-06-03.png',
-        size: '0.5 Mb',
-        date: '03-06-2025',
-        img: './assets/img/classroom/material-icon.png',
+        },
+        {
+          name: 'Meeting Notes 2025-06-03.png',
+          size: '0.5 Mb',
+          date: '03-06-2025',
+          img: './assets/img/classroom/material-icon.png',
 
-      },
-      {
-        name: 'Design Mockups v3.pdf',
-        size: '5.8 Mb',
-        date: '01-05-2025',
-        img: './assets/img/classroom/material-icon.png',
-      },
-    ]
+        },
+        {
+          name: 'Design Mockups v3.pdf',
+          size: '5.8 Mb',
+          date: '01-05-2025',
+          img: './assets/img/classroom/material-icon.png',
+        },
+      ]
 
-    const fileTable = document.getElementById('fileTable')
+      const fileTable = document.getElementById('fileTable')
 
-    uploads.forEach((file) => {
-      const tr = document.createElement('tr')
-      tr.className = 'border-t border-[#F5EDE5] hover:bg-[#FFF9F5] transition'
-      tr.innerHTML = `
+      uploads.forEach((file) => {
+        const tr = document.createElement('tr')
+        tr.className = 'border-t border-[#F5EDE5] hover:bg-[#FFF9F5] transition'
+        tr.innerHTML = `
         <td class="py-3 px-5 flex items-center gap-3">
             <img src="${file.img}" alt="file icon" class="w-6 h-6 object-contain" />
           <span class="font-medium">${file.name}</span>
@@ -1206,13 +1307,13 @@
           </button>
         </td>
       `
-      fileTable.appendChild(tr)
-    })
-  </script>
+        fileTable.appendChild(tr)
+      })
+    </script>
 
 
-  <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 </body>
 
