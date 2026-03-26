@@ -1,0 +1,403 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Story Detail</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    />
+
+    <style>
+      .active {
+        background-color: #fa9d53;
+      }
+    </style>
+  </head>
+  <body class="flex bg-[#fcf7f0] font-sans text-[#16130f]">
+    <aside
+      id="sidebar"
+      class="bg-primary z-50 hidden h-screen w-72 text-white transition-all duration-300 ease-out lg:block"
+    >
+      <div
+        class="scrollbar-custom flex h-full flex-col justify-between overflow-y-auto px-4"
+      >
+        <div>
+          <div id="sidemenu-logo" class="mt-4 flex items-center gap-2">
+            <img
+              src="./assets/img/educraft-logo-white.svg"
+              alt="educraft logo"
+            />
+            <span id="logo-text" class="text-2xl font-bold">EduCraft</span>
+          </div>
+
+          <div id="toggle-btn-area" class="flex w-full justify-end py-4">
+            <button id="toggleBtn" class="rounded-lg bg-white/20 p-2">
+              <img
+                class="h-3 w-3"
+                src="./assets/icons/small.svg"
+                alt="menu expand button"
+              />
+            </button>
+          </div>
+
+          <nav class="flex flex-col justify-between">
+            <ul class="flex flex-col gap-1">
+              <a href="./index.html">
+                <li
+                  class="sidemenu-list flex h-12 cursor-pointer items-center rounded-xl pl-4 transition-all duration-300 ease-out hover:bg-[#fa9d53]"
+                >
+                  <div class="flex gap-4">
+                    <img
+                      class="h-6 w-6"
+                      src="./assets/icons/home.svg"
+                      alt="home"
+                    />
+                    <span class="sidebar-text">Home</span>
+                  </div>
+                </li>
+              </a>
+
+              <a href="./mycourses.html">
+                <li
+                  class="sidemenu-list flex h-12 cursor-pointer items-center rounded-xl pl-4 transition-all duration-300 ease-out hover:bg-[#fa9d53]"
+                >
+                  <div class="flex items-center gap-4">
+                    <img
+                      class="h-6 w-6"
+                      src="./assets/icons/my-courses.svg"
+                      alt="courses"
+                    />
+                    <span class="sidebar-text">Courses</span>
+                  </div>
+                </li>
+              </a>
+
+              <li
+                class="sidemenu-list flex h-12 cursor-pointer items-center rounded-xl pl-4 transition-all duration-300 ease-out hover:bg-[#fa9d53]"
+              >
+                <a href="#" class="flex items-center gap-4">
+                  <img
+                    class="h-6 w-6"
+                    src="./assets/icons/learning-journey.svg"
+                    alt="learning journey"
+                  />
+                  <span class="sidebar-text">Learning Journey</span>
+                </a>
+              </li>
+
+              <a href="./classroom.html">
+                <li
+                  class="sidemenu-list flex h-12 cursor-pointer items-center rounded-xl pl-4 transition-all duration-300 ease-out hover:bg-[#fa9d53]"
+                >
+                  <div class="flex items-center gap-4">
+                    <img
+                      class="h-6 w-6"
+                      src="./assets/icons/clasroom.svg"
+                      alt="classroom"
+                    />
+                    <span class="sidebar-text">Classroom</span>
+                  </div>
+                </li>
+              </a>
+
+              <a href="./educraft-academy.html">
+                <li
+                  class="sidemenu-list flex h-12 cursor-pointer items-center rounded-xl pl-4 transition-all duration-300 ease-out hover:bg-[#fa9d53]"
+                >
+                  <div class="flex items-center gap-4">
+                    <img
+                      class="h-6 w-6"
+                      src="./assets/icons/edu-academy.svg"
+                      alt="academy"
+                    />
+                    <span class="sidebar-text">Educraft Academy</span>
+                  </div>
+                </li>
+              </a>
+
+              <li
+                class="active sidemenu-list flex h-12 cursor-pointer items-center rounded-xl pl-4 transition-all duration-300 ease-out"
+              >
+                <a href="./student-story.html" class="flex items-center gap-4">
+                  <img
+                    class="h-6 w-6"
+                    src="./assets/icons/story.svg"
+                    alt="student story"
+                  />
+                  <span class="sidebar-text">Student Stories</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div>
+          <nav class="pb-4">
+            <ul class="flex flex-col gap-1">
+              <li
+                class="sidemenu-list flex h-12 items-center rounded-xl pl-4 transition-all duration-300 ease-out hover:bg-[#fa9d53]"
+              >
+                <a href="#" class="flex gap-4">
+                  <img
+                    class="h-6 w-6"
+                    src="./assets/icons/help-center.svg"
+                    alt="help"
+                  />
+                  <span class="sidebar-text">Help Center</span>
+                </a>
+              </li>
+              <li
+                class="sidemenu-list flex h-12 items-center rounded-xl pl-4 transition-all duration-300 ease-out hover:bg-[#fa9d53]"
+              >
+                <a href="#" class="flex items-center gap-4">
+                  <img
+                    class="h-6 w-6"
+                    src="./assets/icons/settings.svg"
+                    alt="settings"
+                  />
+                  <span class="sidebar-text">Settings</span>
+                </a>
+              </li>
+              <li class="h-[2px] w-full bg-white/20"></li>
+              <li
+                class="sidemenu-list flex h-12 items-center rounded-xl pl-4 transition-all duration-300 ease-out hover:bg-[#fa9d53]"
+              >
+                <a href="#" class="flex items-center gap-4">
+                  <img
+                    class="h-6 w-6"
+                    src="./assets/icons/logout.svg"
+                    alt="logout"
+                  />
+                  <span class="sidebar-text">Log out</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </aside>
+
+    <div class="h-screen w-full overflow-hidden">
+      <header
+        id="header-menu"
+        class="flex h-14 w-full items-center justify-between border border-b-black/10 bg-white p-4 transition-all duration-300 ease-out"
+      >
+        <p class="text-xl-custom">Student Stories</p>
+
+        <div class="relative hidden w-1/3 md:block">
+          <input
+            type="text"
+            placeholder="Search"
+            class="w-full rounded-full border border-gray-200 bg-[#fffaf4] py-2 pl-12 pr-4 focus:border-primary focus:outline-none"
+          />
+          <img
+            src="./assets/icons/search-bar.svg"
+            alt="Search Icon"
+            class="absolute left-4 top-1/2 h-6 w-6 -translate-y-1/2"
+          />
+        </div>
+
+        <div>
+          <div
+            class="relative flex h-10 w-10 items-center justify-center rounded-full bg-[#fdf0e7]"
+          >
+            <span
+              class="absolute right-1 top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#ffbc00] text-xs font-semibold"
+              >4</span
+            >
+            <img src="./assets/icons/bell.svg" alt="notification" />
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-2">
+          <div class="hidden text-right md:block">
+            <p class="font-semibold">Faisal Saleem</p>
+            <p class="text-xs text-black/55">faisal@educraft.com</p>
+          </div>
+          <img
+            class="h-10 w-10 rounded-full border-2 border-primary"
+            src="./assets/img/user.png"
+            alt="user profile"
+          />
+        </div>
+      </header>
+
+      <main
+        id="main"
+        class="scrollbar-custom h-[calc(100vh-3.5rem)] bg-white overflow-y-auto"
+      >
+        <div
+          class="sticky top-0 z-30 flex items-center justify-between gap-4 bg-white/95 py-4 backdrop-blur-xl max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <a
+            href="./student-story.html"
+            class="inline-flex rounded-lg border border-black/10 bg-white px-4 py-2 text-sm font-medium text-black/70 transition hover:border-black/20 hover:text-black"
+          >
+            Back to stories
+          </a>
+          <div class="relative">
+            <button
+              id="storyActionsToggle"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              class="inline-flex items-center gap-3 rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold text-black/75 shadow-[0_12px_28px_rgba(15,23,42,0.08)] transition hover:border-black/20 hover:text-black"
+            >
+              <span>Actions</span>
+              <svg
+                class="h-4 w-4 text-black/55 transition-transform duration-200"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+              >
+                <path d="M5 7.5 10 12.5 15 7.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div
+              id="storyActionsMenu"
+              class="absolute right-0 top-full z-40 mt-3 hidden min-w-[220px] overflow-hidden rounded-[24px] border border-black/10 bg-white p-2 shadow-[0_22px_60px_rgba(15,23,42,0.18)]"
+              role="menu"
+            >
+              <a
+                id="storyEditLink"
+                href="./submit-story.html"
+                class="flex w-full items-center rounded-2xl px-4 py-3 text-sm font-medium text-black/75 transition hover:bg-[#fff4ea] hover:text-[#bf4b00]"
+                role="menuitem"
+              >
+                Edit Story
+              </a>
+              <button
+                id="storyPublishButton"
+                type="button"
+                class="flex w-full items-center rounded-2xl px-4 py-3 text-sm font-medium text-[#236b43] transition hover:bg-[#edf9f1]"
+                role="menuitem"
+              >
+                Publish
+              </button>
+              <button
+                id="storyRejectButton"
+                type="button"
+                class="flex w-full items-center rounded-2xl px-4 py-3 text-sm font-medium text-[#c14032] transition hover:bg-[#fff1ef]"
+                role="menuitem"
+              >
+                Reject
+              </button>
+              <button
+                id="storyDeleteButton"
+                type="button"
+                class="flex w-full items-center rounded-2xl px-4 py-3 text-sm font-medium text-[#9a1f16] transition hover:bg-[#fff0ee]"
+                role="menuitem"
+              >
+                Delete
+              </button>
+              <button
+                id="storyEditorsChoiceButton"
+                type="button"
+                class="flex w-full items-center rounded-2xl px-4 py-3 text-sm font-medium text-[#9b7000] transition hover:bg-[#fff7db]"
+                role="menuitem"
+              >
+                Mark as Editor's Choice
+              </button>
+            </div>
+          </div>
+        </div>
+        <section class="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+          <!-- The full story detail view is rendered from data/student-stories.json. -->
+          <div id="storyDetailRoot" class="mt-6"></div>
+        </section>
+      </main>
+    </div>
+
+    <div
+      id="storyActionDialog"
+      class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/45 px-4 backdrop-blur-sm"
+    >
+      <div
+        class="w-full max-w-lg rounded-[30px] border border-white/40 bg-white p-6 shadow-[0_24px_80px_rgba(15,23,42,0.24)] sm:p-7"
+      >
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p
+              id="storyActionDialogTitle"
+              class="text-2xl font-semibold text-black"
+            >
+              Confirm Action
+            </p>
+            <p
+              id="storyActionDialogBody"
+              class="mt-3 text-sm leading-7 text-black/65"
+            >
+              Please confirm this action.
+            </p>
+          </div>
+          <button
+            id="storyActionDialogClose"
+            type="button"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-black/55 transition hover:border-black/20 hover:text-black"
+            aria-label="Close action dialog"
+          >
+            <svg
+              class="h-4 w-4"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+            >
+              <path d="M5 5 15 15" stroke-linecap="round" />
+              <path d="M15 5 5 15" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+
+        <div id="storyActionDialogReasonWrap" class="mt-5 hidden">
+          <label
+            for="storyActionDialogReason"
+            class="text-sm font-semibold text-black/80"
+            >Reason for rejection</label
+          >
+          <textarea
+            id="storyActionDialogReason"
+            rows="5"
+            class="mt-3 min-h-[150px] w-full rounded-[24px] border border-black/10 bg-[#fcfaf7] px-5 py-4 text-sm leading-7 text-black/80 outline-none transition focus:border-[#f8740b]"
+            placeholder="Write a short, clear reason. The student will receive this in the rejection email."
+          ></textarea>
+          <p
+            id="storyActionDialogReasonHelp"
+            class="mt-2 hidden text-sm font-medium text-[#c14032]"
+          >
+            Please add a short rejection reason.
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center justify-end gap-3">
+          <button
+            id="storyActionDialogCancel"
+            type="button"
+            class="inline-flex rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold text-black/65 transition hover:border-black/20 hover:text-black"
+          >
+            Cancel
+          </button>
+          <button
+            id="storyActionDialogConfirm"
+            type="button"
+            class="inline-flex rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-black/90"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/story-card-renderer.js"></script>
+    <script src="./js/story-detail.js"></script>
+  </body>
+</html>
